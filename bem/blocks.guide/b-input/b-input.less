@@ -1,0 +1,79 @@
+@import '~i-less/i-less';
+
+.b-input {
+    @bl: ~".b-input";
+
+    padding: 11px 23px;
+    margin: 0;
+    border: 1px solid @color-input-border;
+    color: @color-text;
+    font: @font-medium-compact;
+    background: #fff;
+    transition: border 220ms ease-in-out;
+
+    &[disabled] {
+        opacity: 0.4;
+        cursor: default;
+    }
+
+    // по гайду стили
+    &_type {
+        &_new {
+            position: relative;
+            z-index: 1;
+            padding: 5px 12px;
+            font: @font-normal-compact;
+        }
+    }
+
+    &_border {
+        &_invert {
+            border: 1px solid @color-input-border-invert;
+        }
+
+        &_none {
+            border: none;
+        }
+    }
+
+    &_size {
+        &_small {
+            padding: 5px 11px;
+            font: @font-normal-compact;
+        }
+
+        &_compact {
+            padding: 8px 11px;
+            font: @font-normal-compact;
+        }
+
+        &_medium {
+            padding: 11px 12px;
+        }
+    }
+
+    &_state_error,
+    &.glamor_error_border {
+        border: 1px solid @color-input-border-error !important;
+    }
+
+    &_style {
+        &_block {
+            display: block;
+            box-sizing: border-box;
+            width: 100%;
+        }
+    }
+
+    & + .b-validate__short-error {
+        font: @font-normal-compact;
+        white-space: normal; //незаморачиваемся с длинными ошибками
+    }
+
+    &_font-size {
+        &_normal {
+            padding: 14px 24px;
+            font: @font-normal-compact;
+        }
+    }
+}

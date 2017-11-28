@@ -1,0 +1,43 @@
+[%~
+IF params.size() && params.attrs;
+    params.attrs            = params.attrs || {};
+    params.mods             = params.mods || {};
+    params.mods.marker      = params.mods.marker || 'thin';
+    params.mods.font_size   = params.mods.font_size || 'normal';
+    params.mods.font_weight = params.mods.font_weight || 'normal';
+    params.mods.text_case   = params.mods.text_case || 'normal';
+
+
+    SET element_attrs = [];
+    FOREACH a = params.attrs;
+        NEXT IF a.key == 'class';
+        NEXT IF a.key == 'checked' && !a.value;
+        NEXT IF a.key == 'disabled' && !a.value;
+        element_attrs.push("$a.key=\"$a.value\"");
+    END;
+
+    SET element_mods = [];
+    FOREACH a = params.mods;
+        IF a.value.size() == 1;
+            mod_class = 'b-checkbox_' _ a.key.replace('_','-') _ '_' _ a.value;
+        ELSE;
+            mod_name_class = 'b-checkbox_' _ a.key.replace('_','-') _ '_';
+            mod_class = mod_name_class _ a.value.join(" ${mod_name_class}");
+        END;
+
+        element_mods.push(mod_class);
+    END;
+~%]
+<span class="b-checkbox [% element_mods.join(' ') ~%][%~ ' ' _ params.attrs.class  IF params.attrs.class ~%]">
+    <input class="b-checkbox__native" type="checkbox" autocomplete="off" [% element_attrs.join(' ') ~%]/>
+[%~ UNLESS params.no_label_tag ~%]
+    <label class="b-checkbox__label" for="[% params.attrs.id %]">
+[%~ ELSE ~%]
+    <span class="b-checkbox__label">
+[%~ END ~%]
+        <span class="b-checkbox__fake">[% ~%]
+            <span class="b-checkbox__fake-mark b-checkbox__fake-mark_style_[% params.mods.marker %]"></span>[% ~%]
+        </span>[%~ IF params.label ~%]<span class="b-checkbox__name [% 'b-tooltip'  IF params.tooltip %]" [% 'data-title="' _ params.tooltip _ '"'  IF params.tooltip %]>[% params.label %]</span>[%~ END # IF params.label ~%]
+[%~ params.no_label_tag ? '</span>' : '</label>' ~%]
+</span>
+[%~ END # IF params ~%]

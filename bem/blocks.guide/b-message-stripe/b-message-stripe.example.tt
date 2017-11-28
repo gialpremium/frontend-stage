@@ -1,0 +1,4 @@
+[%-
+    INCLUDE 'b-message-stripe.inc'
+        #{fixture};
+-%]

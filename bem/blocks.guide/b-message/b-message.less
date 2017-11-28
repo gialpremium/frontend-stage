@@ -1,0 +1,53 @@
+@import '~i-less/i-less';
+
+.b-message {
+    @bl: ~'.b-message';
+    padding: 24px 60px 24px 36px;
+    position: relative;
+    color: @color-text-invert;
+    font: @font-normal;
+
+    &_type {
+        &_error {
+            background-color: @message-bg-error;
+        }
+        &_done {
+            background-color: @message-bg-done;
+        }
+        &_info {
+            background-color: @message-bg-info;
+        }
+        &_partial {
+            background-color: @message-bg-partial;
+        }
+    }
+
+    &__close {
+        position: absolute;
+        width: 60px !important;
+        height: 60px !important;
+        background-position: center;
+        cursor: pointer;
+        top: 6px;
+        right: 0;
+    }
+
+    &__content {
+        .b-link,
+        a:not(.b-button) {
+            color: @color-text-invert;
+            text-decoration: underline;
+            opacity: 0.8;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+
+    &_display {
+        &_none {
+            display: none;
+        }
+    }
+}

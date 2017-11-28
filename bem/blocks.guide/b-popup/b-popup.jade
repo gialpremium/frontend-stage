@@ -1,0 +1,52 @@
+mixin getClass( options )
+  - options = options || {};
+  if options.className
+    |  #{options.className}
+  else if options.attr && options.attr.className
+    |  #{options.attr.className}
+
+mixin getAttrs( options )
+  - options = options || {};
+  - each val, key in options
+    unless key == 'className' || key == 'tag'
+      |  #{key}="#{val}"
+
+mixin bPopup( options )
+  | <div class="b-popup
+  +getClass(options)
+  if !options.nojs
+    |  b-popup_js_on
+  if options.overlay
+    |  b-popup_overlayed
+  if options.modal
+    |  b-popup_modal
+  if options.responsive
+    |  b-popup_responsive
+  |"
+  if options.attr
+    +getAttrs(options.attr)
+  | >
+  if options.overlay || options.modal
+    div.b-popup__fade
+    | <div class="b-popup__box">
+
+  if !options.hide_top_close
+    span.b-popup__close.b-popup__trigger-close.b-icon.b-icon_style_cross
+  if options.popup_title
+    strong.b-popup__title #{options.popup_title}
+
+  if block
+    block
+
+  if options.show_bottom_close
+    div.b-popup__close-indent
+      - var params = { color: ( options.show_bottom_close.color ? options.show_bottom_close.color : 'primary' ), wide: 1 }
+      - params.attr = { 'className': 'b-button_style_wide b-popup__trigger-close' }
+      - params.text = options.show_bottom_close.text || 'OK'
+      - params.size = options.show_bottom_close.block_size || 'normal'
+      != JST['b-button'](params)
+
+  if options.overlay || options.modal
+    | </div>
+
+  | </div>

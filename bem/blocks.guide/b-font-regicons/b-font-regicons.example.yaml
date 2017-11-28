@@ -1,0 +1,64 @@
+name: 'b-font-regicons'
+about: 'Иконочный шрифт'
+
+items:
+-
+  title: 'b-font-regicons_char_add'
+  fixture:
+    char: 'add'
+-
+  title: 'b-font-regicons_char_bid'
+  fixture:
+    char: 'bid'
+-
+  title: 'b-font-regicons_char_corner-down'
+  fixture:
+    char: 'corner-down'
+-
+  title: 'b-font-regicons_char_docs'
+  fixture:
+    char: 'docs'
+-
+  title: 'b-font-regicons_char_filter'
+  fixture:
+    char: 'filter'
+-
+  title: 'b-font-regicons_char_money'
+  fixture:
+    char: 'money'
+-
+  title: 'b-font-regicons_char_plus'
+  fixture:
+    char: 'plus'
+-
+  title: 'b-font-regicons_char_plus-bold'
+  fixture:
+    char: 'plus-bold'
+-
+  title: 'b-font-regicons_char_select-all'
+  fixture:
+    char: 'select-all'
+-
+  title: 'b-font-regicons_char_shop-cart'
+  fixture:
+    char: 'shop-cart'
+-
+  title: 'b-font-regicons_char_thumbs-down'
+  fixture:
+    char: 'thumbs-down'
+-
+  title: 'b-font-regicons_char_thumbs-up'
+  fixture:
+    char: 'thumbs-up'
+-
+  title: 'b-font-regicons_char_upload'
+  fixture:
+    char: 'upload'
+-
+  title: 'b-font-regicons_char_zoom'
+  fixture:
+    char: 'zoom'
+-
+  title: 'b-font-regicons_char_rouble'
+  fixture:
+    char: 'rouble'

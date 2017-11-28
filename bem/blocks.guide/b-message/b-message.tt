@@ -1,0 +1,50 @@
+[%#
+    IF error_text;
+        INCLUDE 'b-message.inc'
+            params {
+                title => error_title
+                content => text || TT_BLOCK
+            }
+    END;
+
+type - error | done | info. type = type || 'error';
+title - заголов
+content - все что ниже заголовка
+hide_close
+no_indent - по умолчанию у алерта есть нижний маргин - этот флаг его убирает
+add_class
+content_wrapper - враппер, нужен часто для страниц где html.is_wide = 1
+reload_on_close - урл редиректа (пробел -  перегружает страницу)
+
+~%]
+[%-
+    type            = params.type || type || 'error';
+    title           = params.title || title;
+    content         = params.content || content;
+    hide_close      = params.hide_close || hide_close;
+    no_indent       = params.no_indent || no_indent;
+    add_class       = params.add_class || add_class;
+    content_wrapper = params.content_wrapper || content_wrapper;
+    reload_on_close = params.reload_on_close || reload_on_close;
+-%]
+[% '<div class="b-page__content-wrapper">' IF content_wrapper %]
+<div class="b-message b-message_type_[% type ~%]
+    [%~ UNLESS no_indent %] l-margin_bottom-normal[% END ~%]
+    [%~ IF session_storage %] l-hidden[% END ~%]
+    [%~ ' ' _ add_class IF add_class %]"
+    [%~ IF reload_on_close %] data-reload="[% reload_on_close %]"[% END ~%]
+    [%~ IF session_storage %] data-storage-key="[% session_storage %]"[% END ~%]
+    >
+    [%~ UNLESS hide_close %]<span class="b-message__close b-icon b-icon_style_cross-invert"></span>[% END ~%]
+
+    [%~ IF title ~%]
+        <strong class="b-title b-title_color_invert b-title_size_[% content ? 'medium-compact' : 'normal' %] [%' b-title_margin_none' UNLESS content %]">[% title %]</strong>
+    [%~ END # IF title ~%]
+
+    [%~ IF content ~%]
+    <div class="b-message__content">
+        [%~ content ~%]
+    </div>
+    [%~ END ~%]
+</div>
+[%~ '</div>' IF content_wrapper ~%]

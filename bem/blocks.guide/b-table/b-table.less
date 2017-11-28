@@ -1,0 +1,387 @@
+@import '~i-less/i-less';
+
+.b-table {
+    @bl: ~".b-table";
+
+    // ховеры и белая обводка для TR
+    @hover_bs_color: #cecece;
+    @first_bs: inset 3px 3px 0 #fff, inset 0 -3px 0 #fff;
+    @last_bs: inset -3px 3px 0 #fff, inset 0 -3px 0 #fff;
+    @middle_bs: inset 0 3px 0 #fff, inset 0 -3px 0 #fff;
+    @hover_first_bs: -3px 0 0 @hover_bs_color, -3px 3px 0 @hover_bs_color, -3px -3px 0 @hover_bs_color, 0 -3px 0 @hover_bs_color, 0 3px 0 @hover_bs_color, inset 3px 3px 0 #fff, inset 0 -2px 0 #fff;
+    @hover_last_bs: 0 3px 0 0 @hover_bs_color, 3px 3px 0 @hover_bs_color, 3px -3px 0 @hover_bs_color, 0 -3px 0 0 @hover_bs_color, inset -3px 3px 0 #fff, inset 0 -2px 0 #fff;
+    @hover_middle_bs: 0 3px 0 0 @hover_bs_color, 0 -3px 0 0 @hover_bs_color, 0 3px 0 0 @hover_bs_color, inset 0 3px 0 #fff, inset 0 -2px 0 #fff;
+    @hover_next_first_bs: inset 0 3px 0 @hover_bs_color, inset 3px 0 0 #fff, inset 0 -3px 0 #fff;
+    @hover_next_last_bs: inset 0 3px 0 @hover_bs_color, inset -3px 0 0 #fff, inset 0 -3px 0 #fff;
+    @hover_next_middle_bs: inset 0 3px 0 @hover_bs_color, inset 0 0 0 #fff, inset 0 -3px 0 #fff;
+
+    display: block;
+    width: 100%;
+    padding: 0 4px 4px 4px;
+
+    &__content {
+        position: relative;
+        width: 100%;
+        border-spacing: 0;
+        border-collapse: separate;
+        font: @font-normal;
+        empty-cells: show;
+    }
+
+    &_type {
+        &_compact,
+        @{bl}__item_type_compact {
+            & @{bl}__cell {
+                &_type {
+                    &_thead {
+                        padding: @blh/2;
+                    }
+
+                    &_content {
+                        padding: @blh/4 @blh/2;
+                    }
+
+                    &_wrapper {
+                        padding: 0;
+                    }
+                }
+            }
+        }
+
+        &_medium,
+        @{bl}__item_type_medium {
+            & @{bl}__cell {
+                &_type {
+                    &_thead {
+                        padding: @blh/2;
+                    }
+
+                    &_content {
+                        padding: @blh/2;
+                    }
+
+                    &_wrapper {
+                        padding: 0;
+                    }
+                }
+            }
+        }
+
+        // выпилить ???
+        // используется в веббекапах
+        &_scrollable {
+            @{bl}__head {
+                display: block;
+            }
+
+            @{bl}__body {
+                display: block;
+                overflow-y: scroll;
+                width: 100%;
+            }
+        }
+
+        &_aligned {
+            @{bl}__cell_node_first {
+                width: 40%;
+            }
+
+            @{bl}__cell_node_last {
+                text-align: right;
+            }
+        }
+    }
+
+    &_overflow_on {
+        overflow-x: auto;
+    }
+
+    &_width_auto {
+        width: auto;
+    }
+
+    &_layout_fixed {
+        @{bl}__content {
+            table-layout: fixed;
+        }
+    }
+
+    &_hover_on {
+        @{bl}__item {
+            & > @{bl}__cell {
+                box-shadow: @middle_bs;
+
+                &_node {
+                    &_first {
+                        box-shadow: @first_bs;
+                    }
+
+                    &_last {
+                        box-shadow: @last_bs;
+                    }
+                }
+            }
+
+            &:hover {
+                & > @{bl}__cell {
+                    position: relative;
+                    z-index: 1;
+                    box-shadow: @hover_middle_bs;
+
+                    &_node {
+                        &_first {
+                            box-shadow: @hover_first_bs;
+                        }
+
+                        &_last {
+                            box-shadow: @hover_last_bs;
+                        }
+                    }
+                }
+
+                .boxshadow & > @{bl}__cell {
+                    border-top-color: #fff;
+                    border-bottom-color: #fff;
+                }
+
+                // корректируем bs у следушего TR
+                & + @{bl}__item {
+                    & > @{bl}__cell {
+                        border-top-color: #fff; // Для border-last-hide
+                    }
+                }
+            }
+        }
+    }
+
+    &_border-last_hide {
+        & @{bl}__cell {
+            border-top: 1px solid #cecece;
+            border-bottom: 0 none;
+
+            &_type_thead {
+                border-top: 0 none;
+            }
+        }
+
+        & @{bl}__item:first-child,
+        & @{bl}__item_node_first {
+            & @{bl}__cell {
+                border-top: 0 none;
+            }
+        }
+    }
+
+    &_thead-bg_invert {
+        & @{bl}__cell_type_thead {
+            border-bottom: 1px solid #cecece;
+            background-color: #fff;
+        }
+    }
+
+    &_thead-border_bottom {
+        & @{bl}__cell_type_thead {
+            border-bottom: 1px solid #cecece;
+        }
+    }
+
+    &_thead-weight_normal {
+        & @{bl}__cell_type_thead {
+            color: #7e7e7e;
+            font-weight: normal;
+        }
+    }
+
+    &_padding {
+        &_small {
+            & @{bl}__cell {
+                padding: 10px 0;
+            }
+        }
+    }
+
+    &_side-indent_none {
+        & @{bl}__cell_node {
+            &_first {
+                padding-left: 0;
+            }
+
+            &_last {
+                padding-right: 0;
+            }
+        }
+    }
+
+    &__item {
+        &_padding_none {
+            & @{bl}__cell {
+                padding: 0 !important;
+            }
+        }
+
+        &_state {
+            &_disabled {
+                & > @{bl}__cell {
+                    color: rgba( 51, 51, 51, 0.4 );
+
+                    & > * {
+                        opacity: 0.4;
+                    }
+                    // в domain-shop my-lots кнопка меню
+                    &_type_undisabled {
+                        color: @color-text;
+
+                        & > * {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+
+            &_approve {
+                & > @{bl}__cell {
+                    background-color: #ddffda;
+                }
+            }
+        }
+    }
+
+    &__cell {
+        padding: 0.75*@blh @blh/2;
+        border-bottom: 1px solid #cecece;
+        color: @color-text;
+        white-space: nowrap;
+
+        &_node {
+            &_first {
+                padding-left: @blh;
+            }
+
+            &_last {
+                padding-right: @blh;
+            }
+        }
+
+        &_border {
+            &_none {
+                border: 0 none !important;
+            }
+
+            &_top-bold {
+                border-top: 5px solid #cecece;
+            }
+        }
+
+        &_width {
+            &_fit-content {
+                width: 1%;
+            }
+
+            &_quarter {
+                width: 25%;
+            }
+
+            &_full {
+                width: 100%;
+            }
+        }
+
+        &_type {
+            &_thead {
+                border: 0 none;
+                color: #000;
+                font-weight: bold;
+                box-shadow: none;
+                text-align: left;
+                background-color: #f3f3f3;
+            }
+
+            &_wrapper {
+                padding: 0;
+            }
+        }
+
+        &_sorted {
+            &_desc {
+                background-image: url('b-table__cell_sorted_desc.svg');
+            }
+
+            &_asc {
+                background-image: url('b-table__cell_sorted_asc.svg');
+            }
+
+            &_desc,
+            &_asc {
+                background-color: #e7e7e7;
+                background-position: left @blh/2 bottom @blh/4;
+                background-repeat: no-repeat;
+
+                &.l-align_right {
+                    background-position: right @blh/2 bottom @blh/4;
+                }
+
+                .no-bgpositionshorthand & {
+                    background-position: @blh/2 @blh/4;
+                }
+
+                &@{bl}__cell_node_first {
+                    background-position: left @blh bottom @blh/4;
+
+                    .no-bgpositionshorthand & {
+                        background-position: @blh @blh/4;
+                    }
+
+                    @{bl}_type_compact & {
+                        background-position: left @blh/2 bottom @blh/4;
+
+                        .no-bgpositionshorthand & {
+                            background-position: @blh/2 @blh/4;
+                        }
+                    }
+                }
+
+                &@{bl}__cell_node_last.l-align_right {
+                    background-position: right @blh bottom @blh/4;
+
+                    @{bl}_type_compact & {
+                        background-position: right @blh/2 bottom @blh/4;
+                    }
+                }
+            }
+        }
+
+        &_white-space_normal {
+            white-space: normal;
+        }
+    }
+
+    &__item-count {
+        padding: 0.25*@blh 0;
+    }
+
+    &__thead-tooltip {
+        vertical-align: middle;
+    }
+
+    &__sort-link {
+        border-bottom: 1px dashed #bfbfbf;
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+
+        &:hover {
+            border-bottom: none;
+        }
+    }
+
+    &__total {
+        font: 15px/36px @face;
+    }
+
+    &__check {
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        background: url(b-table__check.png) no-repeat 0 0;
+    }
+}

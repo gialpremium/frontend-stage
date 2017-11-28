@@ -1,0 +1,52 @@
+- self.params = self || {}
+- self.params.attr = self.params.attr || {}
+- self.params.input_attr = self.params.input_attr || {}
+- self.params.input_attr.class = self.params.input_attr.class || ''
+
+-
+  var attr_string = ''
+  var input_attr_string = ''
+  var button_tag = 'span'
+  var button_state = ''
+  var button_class = self.params.add_class || self.params.attr.class || ''
+
+unless self.params.state == 'disabled' && self.params.state == 'processing'
+  - button_class = button_class + ' b-button-switcher_hover_on'
+if self.params.js_toggle
+  - button_class = button_class + ' b-button-switcher_js_toggle'
+
+each val, key in self.params.attr
+  if key == 'class' || key == 'tag'
+    - continue
+  - attr_string = ' ' + key + '="' + val + '"' + attr_string
+
+each val, key in self.params.input_attr
+  if key == 'class' || key == 'checked'
+    - continue
+  - input_attr_string = input_attr_string + ' ' + key + '="' + val + '"'
+
+if self.params.state == 'disabled'
+  - input_attr_string = input_attr_string + ' disabled="disabled"'
+
+if self.params.attr.type == 'button' || self.params.attr.type == 'submit'
+  - button_tag = 'button'
+else if self.params.attr.href
+  - button_tag = 'a'
+else if self.params.attr.tag
+  - button_tag = self.params.attr.tag;
+
+if self.params.state
+  - button_state = ' b-button-switcher_state_' + self.params.state.join(' b-button-switcher_state_') + ' '
+
+<#{button_tag} class="b-button-switcher !{button_class}!{button_state}
+if self.params.attr.title
+  | tooltip
+| "!{attr_string}>
+if self.params.state == 'processing'
+  span.b-button-switcher__processing
+  span.b-button-switcher__processing.b-button-switcher__processing_delayed
+if self.params.input_attr
+  | <input class="b-button-switcher__hidden #{self.params.input_attr.class}" type="checkbox"!{input_attr_string}
+  if self.params.input_attr.checked
+    |  checked="checked" />
+</#{button_tag}>

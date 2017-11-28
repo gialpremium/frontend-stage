@@ -1,0 +1,265 @@
+name: 'b-tabs'
+has_js: 1
+has_css: 1
+pre_process_tt: 1
+
+_item_params_1: &_item_p_1
+  title: 'Страны и регионы'
+
+_item_content_1: &_item_c_1
+  content: >
+    Donec bibendum tristique cursus. Donec mollis quis tellus vitae cursus. Nullam consectetur risus vel erat rutrum, et molestie mauris vestibulum. Sed vulputate nisi risus, sit amet suscipit orci tempor eu. Nunc efficitur ultrices dui eu condimentum. Vivamus tempor dignissim mi a molestie. Vestibulum faucibus ligula ut velit imperdiet dignissim. Ut mattis euismod nisl, quis fermentum neque viverra a. Nulla nec enim enim. Pellentesque sed libero id neque vestibulum pellentesque in vel turpis. Suspendisse tempor, sapien fringilla vehicula faucibus, diam nulla faucibus mi, quis viverra nisi lorem quis diam. Proin in ex ac urna tempus pellentesque. Nullam sollicitudin varius justo, sit amet faucibus leo malesuada a. Aenean ac efficitur nulla.
+
+_item_params_2: &_item_p_2
+  title: 'Тематические'
+
+_item_content_2: &_item_c_2
+  content: >
+    Mauris posuere pellentesque iaculis. Sed tortor justo, posuere in suscipit eu, rutrum eget odio. Curabitur ornare gravida ipsum ac vestibulum. Donec blandit mattis mi et congue. Ut volutpat in augue quis finibus. Integer posuere urna dignissim ipsum tincidunt varius. Vivamus posuere tristique sapien, faucibus suscipit ante vehicula in. Sed vitae nibh nisl. Nunc commodo urna in velit elementum dignissim. Ut faucibus, justo et maximus sodales, mi velit faucibus est, id eleifend leo augue at lacus. Suspendisse hendrerit neque augue, et imperdiet lorem aliquam nec. Morbi orci velit, bibendum a tempus nec, cursus vitae justo. Nullam tempus urna sit amet orci ornare convallis. Pellentesque feugiat felis nec mauris vestibulum, ut condimentum magna ultrices. Donec tincidunt tempor lacus eget varius.
+
+items:
+-
+  title: 'b-tabs'
+  description: 'Базовый стиль блока. Отступы внутри табов регулируются стилями содержимого самих табов'
+  fixture:
+    item1:
+      params:
+        <<: *_item_p_1
+      <<: *_item_c_1
+
+    item2:
+      params:
+        <<: *_item_p_2
+      <<: *_item_c_2
+-
+  name: 'b-tabs_size_small'
+  description: 'Табы поменьше стандартных'
+  fixture:
+    wrapper:
+      tabs_size: 'small'
+    item1:
+      params:
+        <<: *_item_p_1
+      <<: *_item_c_1
+    item2:
+      params:
+        <<: *_item_p_2
+      <<: *_item_c_2
+-
+  name: 'b-tabs_size_medium'
+  description: 'Табы побольше стандартных'
+  fixture:
+    wrapper:
+      tabs_size: 'medium'
+    item1:
+      params:
+        <<: *_item_p_1
+      <<: *_item_c_1
+    item2:
+      params:
+        <<: *_item_p_2
+      <<: *_item_c_2
+-
+  name: 'b-tabs_size_big'
+  description: 'Большие табы'
+  fixture:
+    wrapper:
+      tabs_size: 'medium'
+    item1:
+      params:
+        <<: *_item_p_1
+      <<: *_item_c_1
+    item2:
+      params:
+        <<: *_item_p_2
+      <<: *_item_c_2
+-
+  name: 'b-tabs_color_invert'
+  description: 'Инверсный цвет, если заголовки табов не на белом фоне'
+  fixture:
+    wrapper:
+      tabs_color: 'invert'
+    item1:
+      params:
+        <<: *_item_p_1
+      <<: *_item_c_1
+    item2:
+      params:
+        <<: *_item_p_2
+      <<: *_item_c_2
+-
+  name: 'b-tabs_style_title-line'
+  description: 'Отделение содержимого от заголовков горизонтальной линией'
+  fixture:
+    wrapper:
+      tabs_style: 'title-line'
+    item1:
+      params:
+        <<: *_item_p_1
+      <<: *_item_c_1
+    item2:
+      params:
+        <<: *_item_p_2
+      <<: *_item_c_2
+-
+  name: 'b-tabs_style_bg'
+  description: 'У содержимого табов серый фон'
+  fixture:
+    wrapper:
+      tabs_style: 'bg'
+    item1:
+      params:
+        <<: *_item_p_1
+      <<: *_item_c_1
+    item2:
+      params:
+        <<: *_item_p_2
+      <<: *_item_c_2
+-
+  name: 'b-tabs_style_wide'
+  description: 'Делает контент табов растянутым по всей ширине окна, при этом заголовки выровнены по контентной части. Данный стиль надо, если у содержимого табов есть растяжки на всё окно браузера. Например https://www.reg.ru/web-tools/google-apps/'
+  fixture:
+    wrapper:
+      tabs_style: 'wide'
+    item1:
+      params:
+        <<: *_item_p_1
+      <<: *_item_c_1
+    item2:
+      params:
+        <<: *_item_p_2
+      <<: *_item_c_2
+-
+  name: 'b-tabs_title-indent_small'
+  description: 'Задает небольшой отступ между заголовками и содержимым табов'
+  fixture:
+    wrapper:
+      title_indent: 'small'
+      tabs_style: 'bg'
+    item1:
+      params:
+        <<: *_item_p_1
+      <<: *_item_c_1
+    item2:
+      params:
+        <<: *_item_p_2
+      <<: *_item_c_2
+-
+  name: 'b-tabs_title-indent_normal'
+  description: 'Задает отступ между заголовками и содержимым табов'
+  fixture:
+    wrapper:
+      title_indent: 'normal'
+      tabs_style: 'bg'
+    item1:
+      params:
+        <<: *_item_p_1
+      <<: *_item_c_1
+    item2:
+      params:
+        <<: *_item_p_2
+      <<: *_item_c_2
+-
+  name: 'b-tabs_title-size_bigger'
+  description: 'Увеличивает размер шрифта у заголовков'
+  fixture:
+    wrapper:
+      title_bigger: 1
+    item1:
+      params:
+        <<: *_item_p_1
+      <<: *_item_c_1
+    item2:
+      params:
+        <<: *_item_p_2
+      <<: *_item_c_2
+-
+  name: 'b-tabs__item-title_with_text'
+  description: 'Заголовок с текстом в табе, подходит для заголовков `tabs_size => big`'
+  fixture:
+    wrapper:
+      title_indent: 'small'
+      tabs_style: 'inline'
+      tabs_size: 'big'
+    item1:
+      params: 
+        text: 'дополнительный текст'
+        <<: *_item_p_1
+      <<: *_item_c_1
+    item2:
+      params:
+        text: 'дополнительный текст 2'
+        <<: *_item_p_2
+      <<: *_item_c_2
+
+-
+  name: 'tab_active'
+  description: 'Задает активный таб'
+  fixture:
+    wrapper:
+      tabs_style: 'bg'
+    item1:
+      params:
+        <<: *_item_p_1
+      <<: *_item_c_1
+    item2:
+      params:
+        <<: *_item_p_2
+        tab_active: 1
+      <<: *_item_c_2
+-
+  name: 'tab_link'
+  description: 'Делает таб ввиде ссылки'
+  fixture:
+    item1:
+      params:
+        <<: *_item_p_1
+        tab_link: '/company/contacts/pr'
+    item2:
+      params:
+        <<: *_item_p_2
+        tab_link: '#'
+        tab_active: 1
+      <<: *_item_c_2
+-
+  name: 'no_content'
+  description: 'Не выводить блок с контентом. В основном использует вместе с tab_link, что бы сделать меню ввиде табов'
+  fixture:
+    wrapper:
+      tabs_style: 'bg'
+    item1:
+      params:
+        <<: *_item_p_1
+        tab_link: '/company/contacts/pr'
+        no_content: 1
+    item2:
+      params:
+        <<: *_item_p_2
+        tab_link: '#'
+        tab_active: 1
+        no_content: 1
+-
+  name: 'other_attrs'
+  description: 'Дополнительные параметры: tabs_class | tab_class | tab_name | tab_id | content_class | attrs'
+  fixture:
+    wrapper:
+      tabs_class: 'some_class'
+    item1:
+      params:
+        <<: *_item_p_1
+        tab_class: 'first_tab_class'
+        tab_name: 'first_tab_name'
+        tab_id: 'first_tab_id'
+        content_class: 'first_tab_content_class'
+        attrs:
+          data-a: 'a'
+          data-b: 'b'
+      <<: *_item_c_1
+    item2:
+      params:
+        <<: *_item_p_2
+        tab_class: 'second_tab_class'
+        tab_name: 'second_tab_name'
+        tab_id: 'second_tab_id'
+        content_class: 'second_tab_content_class'
+      <<: *_item_c_2

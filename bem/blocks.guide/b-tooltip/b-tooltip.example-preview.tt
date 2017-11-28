@@ -1,0 +1,2 @@
+[%- PROCESS 'b-tooltip.inc' -%]
+[% tooltip( #{fixture} ) %]

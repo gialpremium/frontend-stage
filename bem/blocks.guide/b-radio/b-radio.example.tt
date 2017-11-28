@@ -1,0 +1,11 @@
+[%-
+    INCLUDE 'b-radio.inc'
+        params => {
+            #{params1}
+        };
+
+    INCLUDE 'b-radio.inc'
+        params => {
+            #{params2}
+        };
+-%]

@@ -1,0 +1,32 @@
+@import '~i-less/i-less';
+
+.b-font-regicons {
+    display: inline !important;
+    line-height: 0;
+    vertical-align: baseline;
+
+    &_char_rouble {
+        &:before {
+            display: none;
+        }
+    }
+
+    .no-charrouble & {
+        &_char_rouble {
+            &:before {
+                display: inline-block;
+                width: 20px;
+                font-size: 0.95em;
+            }
+        }
+    }
+}
+
+.char-rouble-native {
+    display: inline;
+    font-weight: initial;
+
+    .no-charrouble & {
+        display: none !important;
+    }
+}

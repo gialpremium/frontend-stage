@@ -1,0 +1,90 @@
+name: 'b-message'
+has_css: 1
+has_js: 1
+about: 'Используется для сообщения пользователю результатов какой-либо операции, обычно если была перезагрузка страницы'
+details_md: |
+  #### Генерация сообщения через плагин `$.bMessage`:
+
+  ```js
+  /**
+  * Сообщение вставляется вместо содержимого `$('.message_holder')`
+  * @property {string} title - заголовок
+  * @property {string} type - тип сообщения
+  * @property {string} content - текст сообщения
+  * @property {Object} options - дополнительные опции
+  */
+  $('.message_holder').bMessage(title, type, content, options);
+  ```
+
+_message_title: &_m_title
+  title: 'Невозможно выполнить команду'
+
+_message_text: &_m_text
+  content: >
+    Ваше предложение будет выслано владельцу домена.Если цена устроит его, вы сможете купить домен по предложенной вами цене. <a href="#" class="b-link">Подробнее</a>
+
+items:
+-
+  title: 'b-message'
+  description: 'Дефолтные стили блока. Ошибка с заголовком и подробностями. По умолчанию добавляется класс `l-margin_bottom-normal` для задания нижнего отступа'
+  fixture:
+    title: 'Невозможно выполнить команду'
+    <<: *_m_text
+-
+  title: 'b-message_title_only'
+  description: 'Только заголовок'
+  fixture:
+    title: 'Какоето длинное сообщение в две строки.<br>Если сообщение длиннее 2 строк, то лучше уже использовать заголовок'
+-
+  title: 'b-message_text_only'
+  description: 'Только текст'
+  fixture:
+    <<: *_m_text
+-
+  title: 'b-message_type_info'
+  description: 'Информационное сообщение'
+  fixture:
+    title: 'Витрина подключена'
+    type: 'info'
+-
+  title: 'b-message_type_done'
+  description: 'Действие выполнено'
+  fixture:
+    title: 'Выслана ссылка на восстановление паролья'
+    type: 'done'
+-
+  title: 'b-message_type_partial'
+  description: 'Действие выполнено частично'
+  fixture:
+    title: 'Услуга будет доступна после активации'
+    type: 'partial'
+-
+  title: 'b-message_hide_close'
+  description: 'Без возможности закрыть блок'
+  fixture:
+    <<: *_m_title
+    hide_close: 1
+-
+  title: 'b-message_reload_onclose'
+  description: 'Редирект на закрытие сообщения (пробел -  перегружает страницу)'
+  fixture:
+    <<: *_m_title
+    reload_on_close: '#reloaded'
+-
+  title: 'b-message_no_indent'
+  description: 'Не добавлять нижний отступ `l-margin_bottom-normal`'
+  fixture:
+    <<: *_m_title
+    no_indent: 1
+-
+  title: 'b-message_content_wrapper'
+  description: 'Добавить сообщению обертку `<div class="b-page__content-wrapper"></div>`. Бывает полезен на страницах с `html.is_wide = 1`'
+  fixture:
+    <<: *_m_title
+    content_wrapper: 1
+-
+  title: 'b-message_add_class'
+  description: 'Добавление кастомного класса для блока'
+  fixture:
+    <<: *_m_title
+    add_class: 'custom_class'

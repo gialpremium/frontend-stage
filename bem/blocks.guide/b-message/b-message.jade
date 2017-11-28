@@ -1,0 +1,38 @@
+mixin getClass( options )
+  - options = options || {};
+  if options.className
+    |  #{options.className}
+  else if options.attr && options.attr.className
+    |  #{options.attr.className}
+
+mixin getAttrs( options )
+  - options = options || {};
+  - each val, key in options
+    unless key == 'className' || key == 'tag'
+      |  #{key}="#{val}"
+
+- var message_type = self.type ? self.type : 'error'
+
+| <div class="b-message b-message_type_#{message_type}
+if !self.no_indent
+|  l-margin_bottom-normal
++getClass(self)
+|"
+if self.attr
++getAttrs(self.attr)
+| >
+
+unless self.hide_close
+  span.b-message__close.b-icon.b-icon_style_cross-invert
+
+if self.title
+  - var title_size = ' b-title_size_' + ( self.content ? 'medium-compact' : 'normal' )
+  if !self.content
+    - title_size = title_size + ' b-title_margin_none'
+
+  strong(class='b-title b-title_color_invert #{title_size}')!= self.title
+
+if self.content
+  .b-message__content!= self.content
+
+| </div>

@@ -1,0 +1,6 @@
+[%-
+    INCLUDE 'b-select.inc'
+        params => {
+            #{fixture}
+        };
+-%]

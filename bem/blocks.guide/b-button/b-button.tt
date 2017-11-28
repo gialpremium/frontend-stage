@@ -1,0 +1,187 @@
+[%#
+INCLUDE 'b-button.inc' params => {
+        attr => {
+            class    => 'class',
+            id       => 'id',
+            name     => 'name',
+            type     => 'submit', # подставляет тег button
+            href     => '#url', # подставляет тег a
+            onclick  => 'return false;',
+            tag      => 'div', # подставляет по дефолту тег span (см type, href)
+            tabindex => '5'
+        }
+        disabled       => 1
+        color          => 'цвет кнопки',
+        size           => '',
+        text_size      => '',
+        icon_single    => 'кнопка с иконкой без текста',
+        icon_left      => 'иконка слева от текста',
+        icon_right     => 'иконка справа от текста',
+        text           => 'текст кнопки'
+        text_size      => 'размер текста'
+        text_small     => 'дополнительный текст кнопки'
+        text_overflow  => 'скрываем под фейдом длинный текст'
+        text_tooltip   => 'тултип'
+        notifier       => 'круглые сообщения на кнопки'
+        notifier_align => 'ориентация круглых сообщений (см. кнопка корзины в b-header)'
+        is_price       => INCLUDE 'b-price.inc'
+        html_block     => блок html
+        block          => display:block;width:100%;
+        height_auto    => юзается для многострочных кнопок;
+        font_base      => font-size 15px !important;
+        text_size      => нестандартный размер фонта;
+        radius_none    => border-radius: 0px;
+        narrow         => тонкие отступы
+        wide           => толстые отступы
+        rel            => 'nofollow'
+        hover_off      => отключение ховера
+        icon_left_svg  => { любая иконка из b-icon
+            mod => value
+        }
+        icon_left_svg  => проба других вариант конпок с иконками
+    }
+%]
+[%-
+    DEFAULT params.size = 'normal';
+
+    # defaults
+    size           = size           || params.size;
+    color          = color          || params.color || 'primary';
+    attr           = attr           || params.attr;
+    disabled       = disabled       || params.disabled;
+    text_size      = text_size      || params.text_size;
+    icon_single    = icon_single    || params.icon_single;
+    icon_left      = icon_left      || params.icon_left;
+    icon_right     = icon_right     || params.icon_right;
+    icon_left_svg  = icon_left_svg  || params.icon_left_svg;
+    text           = text           || params.text;
+    text_size      = text_size      || params.text_size;
+    text_small     = text_small     || params.text_small;
+    text_overflow  = text_overflow  || params.text_overflow;
+    text_tooltip   = text_tooltip   || params.text_tooltip;
+    notifier       = notifier       || params.notifier;
+    notifier_align = notifier_align || params.notifier_align;
+    is_price       = is_price       || params.is_price;
+    html_block     = html_block     || params.html_block;
+    block          = block          || params.block;
+    height_auto    = height_auto    || params.height_auto;
+    font_base      = font_base      || params.font_base;
+    text_size      = text_size      || params.text_size;
+    radius_none    = radius_none    || params.radius_none;
+    narrow         = narrow         || params.narrow;
+    wide           = wide           || params.wide;
+    rel            = rel            || params.rel;
+    hover_off      = hover_off      || params.hover_off;
+
+    SET button_text = '';
+    SET button_tag  = 'button';
+    SET button_type = 'submit';
+
+    IF icon_single;
+        SET icon_left = icon_single;
+        SET icon_left_class = '';
+        text = '';
+    ELSE;
+        SET icon_left = icon_left;
+        SET icon_left_class = 'b-button__icon-left ';
+    END;
+
+
+    IF is_price;
+        button_text = INCLUDE 'b-price.inc' price => is_price, attr => is_price.attr;
+        narrow = 1;
+    ELSE;
+        button_text = text;
+    END;
+
+    # IF text_small;
+    #     button_text = button_text _ '<span class="b-text b-button__text-add">' _ text_small _ '</span>';
+    # END;
+
+    IF attr.href;
+        button_tag = 'a';
+        button_type = '';
+    END;
+
+    IF attr.tag;
+        button_tag = attr.tag;
+    END;
+
+    IF button_tag == 'button';
+        UNLESS attr.type;
+            attr.type = button_type;
+        END;
+    END;
+
+    IF disabled && button_tag == 'button';
+        attr.disabled = 'disabled';
+    END;
+
+    IF rel;
+        attr.rel = rel;
+    END;
+
+    '<'; button_tag; ' class="b-button';
+    ' b-button_color_' _ color  IF color;
+    ' b-button_icon_' _ icon_single  IF icon_single; # удалить в пользу b-button-square??
+    ' b-button_transition_off'  IF text_overflow;
+    ' b-button_height_auto'  IF height_auto;
+    ' b-button_font_base'  IF font_base;
+    ' b-button_radius_none'  IF radius_none;
+    ' b-button_hover_off'  IF hover_off || disabled;
+    #' b-button_state_checked'  IF checked;
+    ' b-button_style_block'  IF block;
+    ' b-button_style_narrow'  IF narrow;
+    ' b-button_style_wide'  IF wide;
+    ' b-button_state_disabled'  IF ( disabled && button_tag != 'button' );
+    IF button_text; # у кнопок-иконок задаем сами размеры
+        ' b-button_size_' _ size;
+    END;
+    ' b-button_text-size_' _ text_size  IF text_size;
+
+    ' ' _ attr.class  IF attr.class;
+    '"';
+
+    FOREACH a = attr;
+        NEXT  IF a.key == 'class' || a.key == 'tag';
+        " $a.key=\"$a.value\"";
+    END;
+    '>';
+
+    IF icon_left && icon_left == 'corner-down';
+        '<i class="' _ icon_left_class _ 'b-triangle b-triangle_down"></i>';
+    ELSIF icon_left;
+        '<i class="' _ icon_left_class _ 'b-font-regicons b-font-regicons_char_' _ icon_left _ '"></i>';
+    END;
+
+    # проба других вариант конпок с иконками
+    # иконки подключаем руками в том бандле, где они нужны
+    IF icon_left_svg;
+        '<i class="b-icon b-icon_' _ icon_left_svg.items.join('_') _ ' b-button__icon-left"></i>';
+    END;
+
+    overflow_span_class = text_tooltip ? 'b-button__text-overflow tooltip' : 'b-button__text-overflow';
+    '<span class="' _ overflow_span_class _ '" data-title="' _ ( text_tooltip || text ) _ '">'  IF text_overflow;
+        button_text;
+    '&nbsp;</span>'  IF text_overflow;
+
+    IF notifier; -%]
+        <span class="b-button__notifier-placeholder">
+            <span class="b-button__notifier-absolute-wrapper[% " b-button__notifier-absolute-wrapper_align_$notifier_align" IF notifier_align %]">[% notifier %]</span>
+        </span>
+[%- END; # notifier
+
+    IF icon_right && icon_right == 'corner-down';
+        '<i class="b-button__icon-right b-triangle b-triangle_down"></i>';
+    ELSIF icon_right && icon_right == 'corner-right';
+        '<i class="b-button__icon-right b-triangle b-triangle_right"></i>';
+    ELSIF icon_right;
+        '<i class="b-button__icon-right b-font-regicons b-font-regicons_char_' _ icon_right _ '"></i>';
+    END;
+
+    html_block IF html_block;
+
+    '</'; button_tag; '>';
+
+    params = {};
+-%]

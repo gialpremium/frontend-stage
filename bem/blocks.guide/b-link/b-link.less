@@ -1,0 +1,107 @@
+@import '~i-less/i-less';
+
+.b-link {
+    @bl: ~".b-link";
+
+    @lc:    @link-color;
+    @lca:   @link-color-active;
+    @lcv:   @link-color-visited;
+    @lch:   @link-color-hover;
+    @ltc:   @link-text-color;
+    @ltca:  @link-text-color-active;
+    @ltcv:  @link-text-color-visited;
+    @ltch:  @link-text-color-hover;
+
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+
+    &,
+    &:link {
+        color: @lc;
+        text-decoration: underline;
+    }
+
+    &:active {
+        color: @lca;
+    }
+
+    &:visited {
+        color: @lcv;
+    }
+
+    &:hover {
+        color: @lch;
+        text-decoration: none;
+    }
+
+    &_hover_nover {
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    &_style {
+        &_text {
+            &,
+            &:link {
+                color: @ltc;
+                text-decoration: none;
+            }
+
+            &:active {
+                color: @ltca;
+            }
+
+            &:visited {
+                color: @ltcv;
+            }
+
+            &:hover {
+                color: @ltch;
+                text-decoration: underline;
+            }
+        }
+
+        &_external {
+            background-image: url('b-link_style_external.svg');
+            background-repeat: no-repeat;
+            padding-right: 9px;
+            background-position: 100% 25%;
+        }
+        // с иконками эти стили не прокатят, надо распиливать если будет потребность
+        &_action {
+            border-bottom: 1px dotted @lc;
+            text-decoration: none !important;
+
+            &@{bl}_style_text {
+                border-bottom: 1px dotted @ltc;
+            }
+
+            &:hover {
+                border-bottom: 1px dotted transparent;
+            }
+        }
+    }
+
+    &_hover {
+        &_invert {
+            &:link {
+                text-decoration: none;
+            }
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        &_none {
+            &:link,
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}

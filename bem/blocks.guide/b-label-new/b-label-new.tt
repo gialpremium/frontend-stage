@@ -1,0 +1,28 @@
+[%#
+    INCLUDE 'b-label-new.inc'
+        params => {
+            text  => текст лейбла,
+            size  => 'thin' | 'small' | 'tiny' # высота лейбла,
+            color => 'primary-alternate'| 'discount' # цвет фона
+        };
+
+%]
+
+[%~
+    SET content_class = 'b-label-new__content';
+    IF params.size;
+        content_class = content_class _ ' b-label-new__content_size_' _ params.size;
+    END;
+    IF params.color;
+        content_class = content_class _ ' b-label-new__content_color_' _ params.color;
+    END;
+~%]
+<span class="b-label-new">
+    <span class="[% content_class %]">
+        [%
+            IF params.text;
+                params.text;
+            END;
+        %]
+    </span>
+</span>

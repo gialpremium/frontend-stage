@@ -1,7 +1,0 @@
-[%- MACRO noindex BLOCK; # ( block_id, block_html )  -%]
- <div [% IF block_id %]id="[% block_id %]"[% END %] class="i-noindex-comment">
-    <!-- <noindex>
-    [%- block_html.replace('-->', '--|>') -%]
-    </noindex> -->
-</div>
-[%- END -%]

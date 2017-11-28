@@ -1,0 +1,63 @@
+- function getMods( options )
+  - options = options || {}
+  - var mods = []
+
+  - each val, key in options
+    - var modName = 'b-checkbox_' + key.replace(/_/g, '-') + '_'
+
+    unless Array.isArray(val)
+      - mods.push(modName + val)
+    else
+      - mods.push(modName + val.join(' ' + modName))
+
+  - return mods.join(' ')
+
+- function getAttrs( options )
+  - options = options || {}
+  - var attrs = {}
+
+  - each val, key in options
+    unless key == 'className' || key == 'checked' && !val || key == 'disabled' && !val
+      - attrs[key] = val
+
+  - return attrs
+
+mixin fakeCheckbox()
+  span.b-checkbox__fake
+    span(class='b-checkbox__fake-mark b-checkbox__fake-mark_style_#{self.params.mods.marker}')
+
+  if self.params.label
+    - var checkbox_tooltip = self.params.tooltip ? self.params.tooltip : ''
+    span(
+      class='b-checkbox__name'
+      class=checkbox_tooltip ? 'tooltip' : ''
+      data-title='##{checkbox_tooltip}'
+    )
+      != self.params.label
+
+-
+  self.params.attrs = self.params.attrs || {}
+  self.params.mods = self.params.mods || {}
+  self.params.mods.marker = self.params.mods.marker || 'thin'
+  self.params.mods.font_size = self.params.mods.font_size || 'normal'
+  self.params.mods.font_weight = self.params.mods.font_weight || 'normal'
+  self.params.mods.text_case = self.params.mods.text_case || 'normal'
+
+
+span(
+  class='b-checkbox'
+  class=getMods(self.params.mods)
+  class=self.params.attrs.className ? self.params.attrs.className : ''
+)
+  input(
+    class='b-checkbox__native'
+    type='checkbox'
+    autocomplete='off'
+  )&attributes(getAttrs(self.params.attrs))
+
+  unless self.params.no_label_tag
+    label.b-checkbox__label(for='#{self.params.attrs.id}')
+      +fakeCheckbox()
+  else
+    span.b-checkbox__label
+      +fakeCheckbox()

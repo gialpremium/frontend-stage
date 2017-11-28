@@ -1,0 +1,236 @@
+.b-list_marker-align_right {
+    @bl: ~".b-list";
+
+    @{bl}__item {
+        &:before {
+            display: none;
+        }
+
+        &:after {
+            display: inline-block;
+        }
+
+        &_marker {
+            &_check {
+                &@{bl}__item_color {
+                    &_green {
+                        &@{bl}__item_size_small,
+                        &@{bl}__item_size_normal,
+                        &@{bl}__item_size_normal-compact {
+                            padding-right: 26px;
+                            padding-left: 0;
+
+                            &:after {
+                                .b-list-marker-position-right(14px, 26px);
+                            }
+                        }
+
+                        &@{bl}__item_size_big,
+                        &@{bl}__item_size_big-compact {
+                            padding-right: 40px;
+                            padding-left: 0;
+
+                            &:after {
+                                .b-list-marker-position-right(21px, 40px);
+                            }
+                        }
+                    }
+
+                    &_grey {
+                        &@{bl}__item_size_small,
+                        &@{bl}__item_size_normal,
+                        &@{bl}__item_size_normal-compact {
+                            padding-right: 26px;
+                            padding-left: 0;
+
+                            &:after {
+                                .b-list-marker-position-right(14px, 26px);
+                            }
+                        }
+
+                        &@{bl}__item_size_big,
+                        &@{bl}__item_size_big-compact {
+                            padding-right: 40px;
+                            padding-left: 0;
+
+                            &:after {
+                                .b-list-marker-position-right(21px, 40px);
+                            }
+                        }
+                    }
+
+                    &_orange {  // нет больших размеров
+                        &@{bl}__item_size_normal,
+                        &@{bl}__item_size_normal-compact {
+                            padding-right: 26px;
+                            padding-left: 0;
+
+                            &:after {
+                                .b-list-marker-position-right(14px, 26px);
+                            }
+                        }
+                    }
+                }
+            }
+
+            &_circle {
+                &@{bl}__item_color {
+                    &_green {
+                        &@{bl}__item_size_small,
+                        &@{bl}__item_size_normal,
+                        &@{bl}__item_size_normal-compact {
+                            padding-right: 20px;
+                            padding-left: 0;
+
+                            &:after {
+                                .b-list-marker-position-right(8px, 20px);
+                            }
+                        }
+
+                        &@{bl}__item_size_big,
+                        &@{bl}__item_size_big-compact {
+                            padding-right: 30px;
+                            padding-left: 0;
+
+                            &:after {
+                                .b-list-marker-position-right(12px, 30px);
+                            }
+                        }
+                    }
+
+                    &_grey {
+                        &@{bl}__item_size_small,
+                        &@{bl}__item_size_normal,
+                        &@{bl}__item_size_normal-compact {
+                            padding-right: 20px;
+                            padding-left: 0;
+
+                            &:after {
+                                .b-list-marker-position-right(8px, 20px);
+                            }
+                        }
+
+                        &@{bl}__item_size_big,
+                        &@{bl}__item_size_big-compact {
+                            padding-right: 30px;
+                            padding-left: 0;
+
+                            &:after {
+                                .b-list-marker-position-right(12px, 30px);
+                            }
+                        }
+                    }
+                }
+            }
+
+            &_cross {
+                &@{bl}__item_color {
+                    &_red {
+                        &@{bl}__item_size_normal,
+                        &@{bl}__item_size_normal-compact {
+                            padding-right: 26px;
+                            padding-left: 0;
+
+                            &:after {
+                                .b-list-marker-position-right(11px, 26px);
+                            }
+                        }
+                    }
+                }
+            }
+
+            &_dash {
+                &@{bl}__item_size_small {
+                    padding-right: 26px;
+                    padding-left: 0;
+
+                    &:after {
+                        .b-list-marker-position-right(16px, 26px);
+                    }
+                }
+
+                &@{bl}__item_size_normal,
+                &@{bl}__item_size_normal-compact {
+                    padding-right: 26px;
+                    padding-left: 0;
+
+                    &:after {
+                        .b-list-marker-position-right(19px, 26px);
+                    }
+                }
+
+                &@{bl}__item_size_big,
+                &@{bl}__item_size_big-compact {
+                    padding-right: 40px;
+                    padding-left: 0;
+
+                    &:after {
+                        .b-list-marker-position-right(26px, 40px);
+                    }
+                }
+            }
+
+            &_num {
+                &:after {
+                    display: none;
+                }
+
+                &@{bl}__item_size_small,
+                &@{bl}__item_size_normal,
+                &@{bl}__item_size_normal-compact {
+                    padding-right: 6px;
+                    padding-left: 0;
+                    margin-right: 20px;
+                    margin-left: 0;
+                }
+
+                &@{bl}__item_size_big,
+                &@{bl}__item_size_big-compact {
+                    padding-right: 12px;
+                    padding-left: 0;
+                    margin-right: 28px;
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+
+    // нужена унификация
+    &_marker {
+        // list with custon icons (b-icon)
+        &_icon {
+            .b-icon {
+                position: absolute;
+                top: 4px;
+                right: 0;
+                left: auto;
+
+                &_hosting_ubuntu {
+                    right: -4px;
+                }
+
+                &_service_license {
+                    right: -4px;
+                }
+
+                &_service_payment {
+                    right: -2px;
+                }
+            }
+
+            & @{bl}__item {
+                padding-right: 30px;
+                padding-left: 0;
+            }
+        }
+    }
+}
+
+.b-list-marker-position-right(@marker-width, @item-padding) {
+    position: relative;
+    right: -@item-padding + @marker-width;
+    left: auto;
+    margin-right: -@marker-width;
+    margin-left: 0;
+    vertical-align: baseline; // потом удалить
+}

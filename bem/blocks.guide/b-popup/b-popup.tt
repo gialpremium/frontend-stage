@@ -1,0 +1,61 @@
+[%#
+.b-popup__trigger-open - ссылка на попап
+попап появляется по id в href или rel
+
+WRAPPER popup
+    popup_title         => 'Заголовок',
+    hide_top_close      => true || false,
+    show_bottom_close   => true || false,
+    overlay             => true || false,
+    modal               => true || false,
+    attr => {
+        id => 'b-deti__popup',
+    }
+%]
+[%- BLOCK popup %]
+    <div class="b-popup[%
+            ' b-popup_overlayed'            IF overlay;
+            ' b-popup_modal'                IF modal;
+            ' ' _ attr.class                IF attr.class;
+            ' b-popup_js_on'                UNLESS nojs;
+            ' b-popup_responsive'           IF responsive;
+        %]"
+        [% IF attr.id %] id="[% attr.id %]"[% END -%]
+    >
+
+        [%- IF overlay || modal %]
+            <div class="b-popup__fade"></div>
+            <div class="b-popup__box">
+        [% END -%]
+
+        [%- UNLESS hide_top_close -%]
+            <span class="b-popup__close b-popup__trigger-close[%- IF close_size  %] b-popup__close_size_[% close_size %][% END -%] b-icon b-icon_style_cross[%- IF close_size  %] b-icon_style_cross_size_[% close_size %][% END -%]">[% # ru? 'Закрыть' : 'Close' %]</span>
+        [%- END -%]
+
+        [%- IF popup_title -%]
+            <strong class="b-popup__title">[% popup_title %]</strong>
+        [%- END -%]
+
+            [% content %]
+
+        [%- IF show_bottom_close %]
+            <div class="b-popup__close-indent">
+            [%-
+                INCLUDE 'b-button.inc'
+                    attr => {
+                        class => 'b-popup__trigger-close',
+                    },
+                    color => show_bottom_close.color || 'primary',
+                    size => show_bottom_close.block_size || 'normal',
+                    wide => 1,
+                    text => show_bottom_close.text || 'OK';
+            -%]
+            </div>
+        [%-
+            END;
+            IF overlay || modal;
+        %]
+            </div>
+        [%- END %]
+    </div>
+[%- END -%]

@@ -1,0 +1,34 @@
+name: 'b-link'
+has_css: 1
+
+items:
+-
+  title: 'b-link'
+  description: 'Базовый стиль блока'
+  fixture:
+    text: 'Link'
+-
+  title: 'b-link_hover_invert'
+  fixture:
+    mod: 'b-link_hover_invert'
+    text: 'Link'
+-
+  title: 'b-link_style_text'
+  fixture:
+    mod: 'b-link_style_text'
+    text: 'Link'
+-
+  title: 'b-link_style_external'
+  fixture:
+    mod: 'b-link_style_external'
+    text: 'Link'
+-
+  title: 'b-link_style_action'
+  fixture:
+    mod: 'b-link_style_action'
+    text: 'Link'
+-
+  title: 'b-link_style_action && b-link_style_text'
+  fixture:
+    mod: 'b-link_style_action b-link_style_text'
+    text: 'Link'

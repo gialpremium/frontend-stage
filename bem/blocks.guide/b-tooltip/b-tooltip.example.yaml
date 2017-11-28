@@ -1,0 +1,46 @@
+name: 'b-tooltip'
+has_css: 1
+has_js: 1
+
+items:
+-
+  title: 'b-tooltip'
+  description: 'Базовый стиль блока'
+  fixture:
+    text: 'Домен находится в Магазине доменов'
+-
+  title: 'b-tooltip__attrs'
+  description: |
+    Атрибуты для иконки тултипа
+
+    - `href` - тултип-ссылка
+    - `target` - для тултипа-ссылки, атрибут таргет
+    - `id` - id для иконки тултипа
+    - `add_class` - добавить кастомный класс для иконки тултипа
+    - `style` - стили для иконки тултипа(depricated)
+
+  fixture:
+    text: 'Домен находится в Магазине доменов'
+    href: '/domain/shop/'
+    target: '_black'
+    id: 'tooltip_id'
+    add_class: 'tooltip_class'
+    style: 'margin-left: 20px'
+-
+  title: 'b-tooltip__attrs-tooltip'
+  description: |
+    Атрибуты для попапа тултипа
+
+    - `extra_classes` - добавить класс к попапу
+    - `width` - задать фиксированую ширину попапа
+
+  fixture:
+    text: 'Домен находится в Магазине доменов'
+    extra_classes: 'live-tooltip_extra_classes'
+    width: '50px'
+-
+  title: 'b-tooltip__icon'
+  description: Задать кастомную иконку
+  fixture:
+    text: 'Скачать список'
+    icon: 'b-icon_button_download'

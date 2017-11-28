@@ -1,0 +1,24 @@
+[% invert = fixture.wrapper.tabs_color == 'invert' %]
+[% '<div style="background:#0068ba;padding: 20px">' IF invert %]
+
+[%
+WRAPPER layout_tabs
+    #{wrapper};
+
+    WRAPPER layout_tabs_item
+        #{item1.params};
+    ~%]
+        #{item1.content}
+    [%~
+    END;
+
+    WRAPPER layout_tabs_item
+        #{item2.params};
+    ~%]
+        #{item2.content}
+    [%~
+    END;
+
+END;
+%]
+[% '</div>' IF invert %]

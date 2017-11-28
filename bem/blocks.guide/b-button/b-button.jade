@@ -1,0 +1,107 @@
+mixin getClass( options )
+  - options = options || {}
+  if options.className
+    |  #{options.className}
+  else if options.attr && options.attr.className
+    |  #{options.attr.className}
+mixin getAttrs( options )
+  - options = options || {}
+  - each val, key in options
+    unless key == 'className' || key == 'tag'
+      |  #{key}="#{val}"
+
+//-
+   все параметры аналогичны таковым в b-button.tt
+   кроме class -> className
+
+- var button_text     = ''
+- var button_tag      = 'button'
+- var button_type     = 'button';
+- var icon_left_font  = self.icon_single ? self.icon_single : self.icon_left
+- var icon_left_svg   = self.icon_left_svg ? self.icon_left_svg : ''
+- var icon_class_name = self.icon_class_name ? self.icon_class_name : ''
+- var button_color    = self.color ? self.color : 'primary'
+- var button_size     = self.size ? self.size : 'normal'
+
+if self.is_price
+  //- - button_text = 'b-price' ({ price: self.is_price }) - b-price.jade отсутствует
+  self.narrow = 1
+else
+  - button_text = self.text
+
+if self.attr
+  if self.attr.type == 'button' || self.attr.type == 'submit'
+    - button_tag = 'button'
+  else if self.attr.href
+    - button_tag = 'a'
+  else if self.attr.tag
+    - button_tag = self.attr.tag
+
+  if button_tag === 'button'
+    unless self.attr.type
+      - self.attr.type = button_type
+
+
+if self.disabled && button_tag == 'button'
+  self.attr.disabled = 'disabled'
+
+| <#{button_tag} class="b-button b-button_color_#{button_color} b-button_size_#{button_size}
+if self.icon_single
+  |  b-button_icon-mode_single b-button_icon_#{self.icon_single}
+if self.text_overflow
+  |  b-button_transition_off
+if self.height_auto
+  |  b-button_height_auto
+if self.font_base
+  |  b-button_font_base
+if self.text_size
+  |  b-button_text-size_#{self.text_size}
+if self.radius_none
+  |  b-button_radius_none
+if self.hover_off || self.disabled
+  |  b-button_hover_off
+//- if self.checked
+//-   |  b-button_state_checked
+if self.block
+  |  b-button_style_block
+if self.narrow
+  |  b-button_style_narrow
+if self.wide
+  |  b-button_style_wide
+if self.disabled && button_tag != 'button'
+  |  b-button_state_disabled
++getClass(self)
+| "
+if self.attr
+  +getAttrs(self.attr)
+| >
+
+if icon_left_font && icon_left_font == 'corner-down'
+  i.b-triangle.b-triangle_down.b-button__icon-left
+else if icon_left_font
+  i( class='b-button__icon-left b-font-regicons b-font-regicons_char_' + icon_left_font )
+else if icon_left_svg
+  i( class='b-icon b-icon_' + icon_left_svg + (button_text ? ' b-button__icon-left ' : ' ') + icon_class_name )
+
+if self.text_overflow
+  span.b-button__text-overflow( data-title=self.text )
+    != button_text
+else
+  != button_text
+
+if self.notifier
+  span.b-button__notifier-placeholder
+    span( class='b-button__notifier-absolute-wrapper' + (self.notifier_align ? ' b-button__notifier-absolute-wrapper_align_' + self.notifier_align : '') )
+      != self.notifier
+
+if self.icon_right && self.icon_right == 'corner-down'
+  i.b-triangle.b-triangle_down.b-button__icon-right
+else if self.icon_right && self.icon_right == 'corner-right'
+  i.b-triangle.b-triangle_right.b-button__icon-right
+else if self.icon_right
+  i( class='b-button__icon-right b-font-regicons b-font-regicons_char_' + self.icon_right )
+
+if self.html_block
+  != self.html_block
+
+| </#{button_tag}>

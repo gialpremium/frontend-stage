@@ -1,0 +1,33 @@
+@import '~i-less/i-less';
+
+.b-select_style_title-desc {
+    @bl: ~".b-select";
+
+    & @{bl}__current {
+        color: @color-text;
+
+        & @{bl}__title {
+            font: bold @font-big-compact;
+        }
+
+        & @{bl}__text {
+            display: block;
+            font: @font-normal;
+            margin-left: 0;
+            color: @color-text;
+        }
+
+        &_text_empty {
+            & @{bl}__title {
+                line-height: @line-height-huge;
+            }
+        }
+
+        &:after {
+            border-width: 10px;
+            border-top-width: 6px;
+            margin-top: -3px;
+            margin-left: -42px;
+        }
+    }
+}

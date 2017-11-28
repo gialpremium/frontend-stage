@@ -1,0 +1,59 @@
+- function getMods( options )
+  - options = options || {}
+  - var mods = []
+
+  - each val, key in options
+    - var modName = 'b-radio_' + key.replace(/_/g, '-') + '_'
+
+    unless Array.isArray(val)
+      - mods.push(modName + val)
+    else
+      - mods.push(modName + val.join(' ' + modName))
+
+  - return mods.join(' ')
+
+- function getAttrs( options )
+  - options = options || {}
+  - var attrs = {}
+
+  - each val, key in options
+    unless key == 'className' || ( !val && ( key === 'checked' || key === 'disabled' ) )
+      - attrs[key] = val
+
+  - return attrs
+
+mixin fakeRadio()
+  span.b-radio__fake
+    span.b-radio__fake-mark
+
+  if self.params.label
+    - var radio_tooltip = self.params.tooltip ? self.params.tooltip : ''
+    span(
+      class='b-radio__name'
+      class=radio_tooltip ? 'tooltip' : ''
+      data-title='##{radio_tooltip}'
+    )
+      != self.params.label
+
+-
+  self.params.attrs            = self.params.attrs || {}
+  self.params.mods             = self.params.mods || {}
+  self.params.mods.font_size   = self.params.mods.font_size || 'normal'
+  self.params.mods.font_weight = self.params.mods.font_weight || 'normal'
+  self.params.mods.text_case   = self.params.mods.text_case || 'normal'
+
+
+span(
+  class='b-radio'
+  class=getMods(self.params.mods)
+  class=self.params.attrs.className
+)
+  input(
+    class='b-radio__native'
+    type='radio'
+    autocomplete='off'
+  )&attributes(getAttrs(self.params.attrs))
+
+  label.b-radio__label(for='#{self.params.attrs.id}')
+    +fakeRadio()
+

@@ -1,1 +1,0 @@
-window.moment = require('moment');

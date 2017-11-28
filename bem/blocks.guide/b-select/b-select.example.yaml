@@ -1,0 +1,459 @@
+name: 'b-select'
+has_css: 1
+has_js: 1
+about: 'Элемент формы - селект. В html выводится готовая верстка.'
+
+details_md: |
+
+    ### Параметры:
+    - `params`
+      - `attr` - атрибуты селекта
+      - `select_size` - кол-во видимых опций селекта (аналог size для select)
+      - `options` - массив хэшей - опций селекта. По умолчанию выбирается первый.
+          - `icon` - иконка селекта
+      - `styles` - стилизация блока, его параметры преобразуются в классы вида **b-select_key_value**
+
+      - `current` - дроп
+      - `label` - добавляет лейбл к селекту
+          - title - текст лейбла
+          - class - класс
+      - `error` -  текст ошибки
+      - `autowidth` - ширина выпадающего списка и самого дропа не привязаны друг к другу
+
+    ### Доступ к плагину
+
+    Можно получить через $( '.b-select' ).data('bSelect')
+    
+    ## Методы
+    - .disable() - отключает селект
+    - .enable() - включает селект
+    - .setOption( option, value ) - меняет параметры селекта
+    - .setCurrent( value ) - устанавливает селект в заданное значение
+    - .showError( text ) - показывает ошибку с текстом
+    - .hideError() - скрывает ошибку
+
+    ## Коллбэк
+    
+    Может устанавливаться через .setOption( 'onSelected',  function(){} ) )
+
+    - function onSelected() - вызывается после выбора опции
+
+_default_options: &_d_options
+  options:
+    -
+      attr:
+        value: 'name1'
+      title: '1 may 2014, 01:45'
+    -
+      attr:
+        value: 'name2'
+      title: 'Виртуальный хостинг BX-Host-1'
+    -
+      attr:
+        value: 'name3'
+      title: 'Виртуальный хостинг BX-Host-2'
+    -
+      attr:
+        value: 'name4'
+      title: 'Виртуальный хостинг BX-Host-3'
+    -
+      attr:
+        value: 'name5'
+      title: '3 мес. — 15 339 р. (5 339 р./мес.)'
+
+
+items:
+-
+  title: 'b-select'
+  description: 'Дефолт'
+  fixture:
+    attr:
+      name: 'select-1'
+    select_size: 3
+    <<: *_d_options
+
+-
+  title: 'b-select__list-item'
+  description: |
+    Параметры опции:
+
+    - `title` - заголовок
+    - `text` - текст
+    - `discount` - скидка
+    - `attr` - атрибуты опции
+    - `data` - data-атрибуты (data-title, data-text)
+
+  fixture:
+    attr:
+      name: 'select-1'
+    options:
+      -
+        title: '1 may 2014, 01:45'
+        attr:
+          value: 'name1'
+      -
+        title: 'Выбранный пункт: selected'
+        attr:
+          value: 'name2'
+          selected: 1
+      -
+
+        title: 'Отключенный пункт: disabled'
+        attr:
+          value: 'name3'
+          disabled: 1
+      -
+        title: '1 may 2014, 01:45'
+        attr:
+          value: 'name5'
+        data:
+          title: 'Кастомный заголовок'
+      -
+        title: '3 мес. — 15 339 р. (5 339 р./мес.)'
+        attr:
+          value: 'name6'
+        data:
+          text: 'Тайтл обычный, а текст кастомный'
+      -
+        title: 'Виртуальный хостинг BX-Host-1'
+        attr:
+          value: 'name7'
+        data:
+          title: 'Кастомный заголовок 2'
+          text: 'Привет, я маленький текст'
+      -
+        title: 'Виртуальный хостинг BX-Host-1'
+        discount: 17
+        attr:
+          value: 'name8'
+        data:
+          title: 'Кастомный заголовок 2'
+          text: 'Привет, я маленький текст'
+
+-
+  title: 'b-select_size_compact'
+  description: 'Компактный стиль для дропдауна. Элементы списка 38px.'
+  fixture:
+    attr:
+      name: 'select-1'
+    styles:
+      size: 'compact'
+    <<: *_d_options
+
+-
+  title: 'b-select_font-size_medium'
+  description: 'Увеличенный шрифт'
+  fixture:
+    attr:
+      name: 'select-1'
+    styles:
+      font_size: 'medium'
+    <<: *_d_options
+
+-
+  title: 'b-select_bg_default'
+  description: 'Default бэкграунд'
+  fixture:
+    attr:
+      name: 'select-1'
+    styles:
+      bg: 'default'
+    <<: *_d_options
+
+-
+  title: 'b-select_bg_invert'
+  description: 'Invert бэкграунд'
+  bg: 'default'
+  fixture:
+    attr:
+      name: 'select-1'
+    styles:
+      bg: 'invert'
+    <<: *_d_options
+
+-
+  title: 'b-select_display_block'
+  description: 'Блочный стиль, width:100%'
+  fixture:
+    attr:
+      name: 'select-1'
+    styles:
+      display: 'block'
+    <<: *_d_options
+
+-
+  title: 'b-select__list_width_full'
+  description: 'Ограничивает выпадающий список шириной самого дропа `width:100%`'
+  fixture:
+    attr:
+      name: 'select-1'
+    list:
+      styles:
+        width: 'full'
+    <<: *_d_options
+
+-
+  title: 'b-select__label'
+  description: 'Селект с лейблом'
+  fixture:
+    attr:
+      name: 'select-1'
+    label:
+      title: 'Текст лейбла'
+      class: 'b-my-block'
+    <<: *_d_options
+
+-
+  title: 'b-select__current'
+  description: |
+    Параметры дропа:
+
+    - `title` - заголовок
+    - `text` - текст под заголовком
+    - `styles` - стилизация, параметры преобразуются в классы вида **b-select__current_key_value**
+    - `class` - класс
+  fixture:
+    attr:
+      name: 'select-1'
+    current:
+      title: 'Выберите что-нибудь'
+      text: 'текст под заголовком, без title не используется'
+      styles:
+        font_size: 'medium'
+      class: 'l-bold'
+    options:
+        -
+          attr:
+            value: 'name1'
+          title: '1 may 2014, 01:45'
+        -
+          attr:
+            value: 'name2'
+          title: '2 may 2014, 01:45'
+          text: 'Я маленький текст'
+        -
+          attr:
+            value: 'name3'
+          title: 'Виртуальный хостинг BX-Host-1 со скидкой'
+          discount: 5
+
+
+-
+  title: 'b-select__current_color_default'
+  description: 'Серый цвет текста дропа'
+  fixture:
+    attr:
+      name: 'select-1'
+    current:
+      title: 'Выберите что-нибудь'
+      styles:
+        color: 'default'
+    <<: *_d_options
+
+-
+  title: 'b-select__current_size_compact'
+  description: 'Компактный стиль для дропа'
+  fixture:
+    attr:
+      name: 'select-1'
+    current:
+      title: 'Выберите что-нибудь'
+      styles:
+        size: 'compact'
+    <<: *_d_options
+
+-
+  title: 'b-select_mode_native'
+  description: 'Нативный прозрачный селект поверх декорированного, определяется на основе устройства клиента'
+  fixture:
+    attr:
+      name: 'select-1'
+      class: 'b-select_mode_native'
+    <<: *_d_options
+
+-
+  title: 'b-select__error'
+  description: 'Ошибка'
+  fixture:
+    attr:
+      name: 'select-1'
+      class: 'b-select_state_error'
+    error: 'Я страшная ошибка!'
+    <<: *_d_options
+
+-
+  title: 'b-select_style_service'
+  description: 'Сложный селект с названием услуги и ценой'
+  fixture:
+    attr:
+      name: 'select-1'
+    styles:
+      style: 'service'
+      bg: 'default'
+    options:
+      -
+        title: 'Виртуальный хостинг BX-Host-1 <span class="l-color_minor">2 Гб</span>'
+        price: '1 000 р.'
+        price_old: '1 500 р.'
+        attr:
+          value: 'name1'
+        data:
+          title: 'Виртуальный хостинг BX-Host-1'
+      -
+        title: 'Виртуальный хостинг BX-Host-2 <span class="l-color_minor">5 Гб</span>'
+        price: '2 000 р.'
+        price_old: '2 500 р.'
+        attr:
+          value: 'name2'
+        data:
+          title: 'Виртуальный хостинг BX-Host-2'
+      -
+        title: 'Виртуальный хостинг BX-Host-3 <span class="l-color_minor">10 Гб</span>'
+        price: '3 000 р.'
+        price_old: '3 500 р.'
+        attr:
+          value: 'name3'
+        data:
+          title: 'Виртуальный хостинг BX-Host-3'
+      -
+        title: 'Виртуальный хостинг BX-Host-4 <span class="l-color_minor">150 Гб</span>'
+        price: '4 000 р.'
+        price_old: '5 500 р.'
+        attr:
+          value: 'name4'
+        data:
+          title: 'Виртуальный хостинг BX-Host-4'
+
+-
+  title: 'b-select_style_title-desc'
+  description: 'Селект с большим заголовком и текстом'
+  bg: 'default'
+  fixture:
+    attr:
+      name: 'select-1'
+      size: 3
+    styles:
+      style: 'title-desc'
+      bg: 'invert'
+    current:
+      title: 'Москва'
+      text: 'Россия'
+    options:
+      -
+        title: 'Россия, Санкт-Петербург'
+        attr:
+          value: 'name1'
+        data:
+          title: 'Санкт-Петербург'
+          text: 'Россия'
+      -
+        title: 'Россия, Москва'
+        attr:
+          value: 'name2'
+        data:
+          title: 'Москва'
+          text: 'Россия'
+      -
+        title: 'Казахстан, Алматы'
+        attr:
+          value: 'name3'
+        data:
+          title: 'Алматы'
+          text: 'Казахстан'
+      -
+        title: 'США, Вашингтон'
+        attr:
+          value: 'name4'
+        data:
+          title: 'Вашингтон'
+          text: 'США'
+
+-
+  title: 'b-select_style_icon'
+  description: 'Кастомный селект с иконкой. Иконки берутся из сета конкретной страницы (blocks.page), стандартный размер 20x20. Здесь иконка b-example-block_icon_hdd-1 только для примера.'
+  bg: 'default'
+  fixture:
+    attr:
+      name: 'select-1'
+    styles:
+      style: 'icon'
+      bg: 'invert'
+    current:
+      class: 'b-example-block_icon_hdd-1'
+    options:
+      -
+        title: 'Россия, Санкт-Петербург'
+        attr:
+          value: 'name1'
+      -
+        title: 'Россия, Москва'
+        attr:
+          value: 'name2'
+      -
+        title: 'Казахстан, Алматы'
+        attr:
+          value: 'name3'
+      -
+        title: 'США, Вашингтон'
+        attr:
+          value: 'name4'
+
+-
+  title: 'autowidth'
+  description: 'Дроп и выпадающий список - независимой друг от друга ширины. Иногда Требуется для списков с длинными текстами'
+  bg: 'default'
+  fixture:
+    attr:
+      name: 'select-1'
+    autowidth: 1
+    <<: *_d_options
+
+-
+  title: 'b-select'
+  description: 'Кастомный селект с ручным вводом.'
+  bg: 'default'
+  fixture:
+    manual_input:
+      placeholder: 'Просим ввести текст'
+    attr:
+      name: 'select-1'
+    options:
+      -
+        title: 'Россия, Санкт-Петербург'
+        attr:
+          value: 'name1'
+      -
+        title: 'Россия, Москва'
+        attr:
+          value: 'name2'
+      -
+        title: 'Казахстан, Алматы'
+        attr:
+          value: 'name3'
+      -
+        title: 'США, Вашингтон'
+        attr:
+          value: 'name4'
+
+-
+  title: 'onSelected'
+  description:  |
+    У плагина есть callback, который вызывается после того как мы что-то выбрали:
+
+    ```js
+    // пример (в консоль и что-нибудь выбрать)
+    $('.b-select-callback').each(function(){
+        var bSelect = $(this).data('bSelect');
+        if ( bSelect ) {
+            // устанавить опцию плагина
+            bSelect.setOption('onSelected', function(){
+                console.log('onSelected', this); // this плагина
+            });
+        }
+    });
+    ```
+  fixture:
+    attr:
+      class: 'b-select-callback'
+      name: 'select-callback'
+    <<: *_d_options

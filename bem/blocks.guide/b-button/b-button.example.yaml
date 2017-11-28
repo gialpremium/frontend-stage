@@ -1,0 +1,265 @@
+name: 'b-button'
+has_css: 1
+has_js: 1
+about: 'Кнопки всякие разные зеленые, голубые, красные. h/fs/lh(высота кнопки/размер шрифта/интерлиньяж). По умолчанию кнопка выводится тегом SPAN. Если указать аттрибут [href] - тег будет A, [submit] - тег BUTTON'
+
+items:
+-
+  title: 'b-button'
+  description: 'Дефолтные стили кнопки h/fs/lh(36/15/36)'
+  fixture:
+    text: 'Кнопка'
+-
+  title: 'b-button_size_tiny'
+  description: 'Совсем маленькая кнопка h/fs/lh(24/12/24)'
+  fixture:
+    text: 'Кнопка'
+    size: 'tiny'
+-
+  title: 'b-button_size_small'
+  description: 'Маленькая кнопка h/fs/lh(30/15/30)'
+  fixture:
+    text: 'Кнопка'
+    size: 'small'
+-
+  title: 'b-button_size_medium'
+  description: 'Средних размеров кнопка h/fs/lh(48/20/48)'
+  fixture:
+    text: 'Кнопка'
+    size: 'medium'
+-
+  title: 'b-button_size_big'
+  description: 'Большая кнопка h/fs/lh(60/20/60)'
+  fixture:
+    text: 'Кнопка'
+    size: 'big'
+-
+  title: 'b-button_size_huge'
+  description: 'Огромная кнопка h/fs/lh(72/32/72)'
+  fixture:
+    text: 'Кнопка'
+    size: 'huge'
+-
+  title: 'b-button_color_primary-alternate'
+  description: 'Случаи, когда кнопке нужет такой цвет???'
+  fixture:
+    text: 'Кнопка'
+    color: 'primary-alternate'
+-
+  title: 'b-button_color_default'
+  description: 'Случаи, когда кнопке нужет такой цвет???'
+  fixture:
+    text: 'Кнопка'
+    color: 'default'
+-
+  title: 'b-button_color_default-inverted'
+  description: 'Случаи, когда кнопке нужет такой цвет???'
+  fixture:
+    text: 'Кнопка'
+    color: 'default-inverted'
+-
+  title: 'b-button_color_invert'
+  description: 'Случаи, когда кнопке нужет такой цвет???'
+  fixture:
+    text: 'Кнопка'
+    color: 'invert'
+-
+  title: 'b-button_color_important'
+  description: 'Случаи, когда кнопке нужет такой цвет???'
+  fixture:
+    text: 'Кнопка'
+    color: 'important'
+-
+  title: 'b-button_color_action'
+  description: 'Случаи, когда кнопке нужет такой цвет???'
+  fixture:
+    text: 'Кнопка'
+    color: 'action'
+-
+  title: 'b-button_color_link'
+  description: 'Случаи, когда кнопке нужет такой цвет???'
+  fixture:
+    text: 'Кнопка'
+    color: 'link'
+-
+  title: 'b-button_color_transparent'
+  description: 'Случаи, когда кнопке нужет такой цвет???'
+  fixture:
+    text: 'Кнопка'
+    color: 'transparent'
+-
+  title: 'b-button_style_wide'
+  description: 'Кнопка с увеличенными боковыми оступами'
+  fixture:
+    text: 'Кнопка'
+    size: 'medium'
+    wide: 1
+-
+  title: 'b-button_style_narrow'
+  description: 'Кнопка с уменьшиными боковыми оступами'
+  fixture:
+    text: 'Кнопка'
+    size: 'medium'
+    narrow: 1
+-
+  title: 'like_link'
+  description: 'Если в атрибутах указать параметр href, то кнопка будет ввиде ссылки'
+  fixture:
+    text: 'Кнопка'
+    attr:
+      href: '#some_url'
+-
+  title: 'custom_tag'
+  description: 'Кнопка отрисована специальным тегом'
+  fixture:
+    text: 'Кнопка'
+    attr:
+      tag: 'div'
+-
+  title: 'button_attrs'
+  description: 'Кнопке можно задавать различные аттрибуты'
+  fixture:
+    text: 'Нажми меня'
+    attr:
+      onclick: 'alert(JSON.stringify(this.dataset))'
+      data-val: 'some data'
+      tabindex: 2
+-
+  title: 'rel'
+  description: 'rel => "nofollow", вообще странный параметр, почему это просто в attr неположить'
+  fixture:
+    text: 'Кнопка'
+    rel: 1
+
+-
+  title: 'disabled'
+  description: 'Неактивная кнопка'
+  fixture:
+    text: 'Кнопка'
+    disabled: 1
+-
+  title: 'hover_off'
+  description: 'Кнопака без ховера'
+  fixture:
+    text: 'Кнопка'
+    hover_off: 1
+-
+  title: 'block'
+  description: 'Кнопка на всю ширину родительского контейнера'
+  fixture:
+    text: 'Кнопка'
+    block: 1
+-
+  title: 'radius_none'
+  description: 'Кнопка без скруглений'
+  fixture:
+    text: 'Кнопка'
+    radius_none: 1
+-
+  title: 'icon_left'
+  description: 'Кнопка с иконкой перед текстом из [иконочного шрифта](/bem/blocks/b-font-regicons/b-font-regicons.html)'
+  fixture:
+    text: 'Скачать'
+    icon_left: 'docs'
+    color: 'link'
+    size: 'medium'
+-
+  title: 'icon_right'
+  description: 'Кнопка с иконкой после текста из [иконочного шрифта](/bem/blocks/b-font-regicons/b-font-regicons.html)'
+  fixture:
+    text: 'Отфильтровать'
+    icon_right: 'filter'
+    color: 'default'
+    size: 'medium'
+-
+  title: 'icon_right_coner'
+  description: 'Кнопка с треугольником после текста(иконка на css, имхо лучше сделать иконочным шрифтом)'
+  fixture:
+    text: 'Открыть'
+    icon_right: 'corner-down'
+    size: 'medium'
+-
+  title: 'icon_right_coner_2'
+  description: 'Кнопка с треугольником после текста(иконка на css, имхо лучше сделать иконочным шрифтом)'
+  fixture:
+    text: 'Открыть'
+    icon_right: 'corner-right'
+    size: 'medium'
+-
+  title: 'icon_left_svg'
+  description: 'Кнопка с иконкой перед текстом с изпользованием b-icon(подключается в нужном бандле)'
+  fixture:
+    text: 'Скачать'
+    icon_left_svg:
+      button: 'download'
+-
+  title: 'icon_single'
+  description: 'Кнопка с иконкой без текста(наверное более уместно использовать b-button-square в таких случаях)'
+  fixture:
+    text: 'Скачать'
+    icon_single: 'shop-cart'
+-
+  title: 'text_overflow'
+  description: 'Обрезает длинный текст. Работает только для цвета default + через внешние стили надо установить для b-button__text-overflow max-width'
+  fixture:
+    text: 'длинный текст на кнопке'
+    text_overflow: 1
+    color: 'default'
+    attr:
+      class: 'example_btn_text_overflow'
+-
+  title: 'notifier'
+  description: 'Кружок над кнопкой. В параметр передается HTML элемент с классом `b-button__notifier` и модификатором `_bg-color`. Позиционируется относительно конца текста'
+  fixture:
+    text: 'Кнопка'
+    notifier: '<span class="b-button__notifier b-button__notifier_bg-color_red">123</span>'
+-
+  title: 'notifier_align'
+  description: 'Кружок над кнопкой. Выровнен по правой границе кнопки'
+  fixture:
+    text: 'Кнопка'
+    notifier: '<span class="b-button__notifier b-button__notifier_bg-color_yellow">321</span>'
+    notifier_align: 'left'
+-
+  title: 'price'
+  description: 'Кнопка с ценой. Используеися инклуд `b-price.inc`'
+  fixture:
+    size: 'medium'
+    is_price:
+      amount: 999
+      from: 1
+-
+  title: 'html_block'
+  description: 'К тексту кнопки добовляет html блок'
+  fixture:
+    text: 'Кнопка'
+    html_block: '<em>&nbsp;доп. текст</em>'
+-
+  title: 'height_auto'
+  description: 'Кнопка без фиксированой высоты, для многострочного текста. Работает для размеров `medium`, `big`, `huge`'
+  fixture:
+    text: 'Кнопка<br />двойная'
+    size: 'medium'
+    height_auto: 1
+-
+  title: 'height_auto && html_block'
+  description: 'Кнопка с доп блоком и без фиксированой высоты'
+  fixture:
+    text: 'Кнопка'
+    size: 'medium'
+    height_auto: 1
+    html_block: '<br /><small>доп. текст</small>'
+-
+  title: 'font_base'
+  description: 'Кнопка с базовым размером шрифта, вне зависимости от размера кнопки'
+  fixture:
+    text: 'Кнопка'
+    size: 'big'
+    font_base: 1
+-
+  title: 'text_size'
+  description: 'Устанавливает кнопке кастомный размер шрифта: `normal`, `medium`, `large`. Тогда какой смысл в font_base? C large диссонанс выходит, нет такого размера кнопки.'
+  fixture:
+    text: 'Кнопка'
+    size: 'huge'
+    text_size: 'medium'

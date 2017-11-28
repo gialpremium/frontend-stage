@@ -1,0 +1,133 @@
+name: 'b-button-switcher'
+has_css: 1
+has_js: 1
+about: 'Элемент формы, переключатель ON/OFF, выполнен на input, checkbox.'
+    
+details_md: |
+
+    ## Параметры:
+    - `params`
+        - `state` - состояние, `['on']`
+        - `add_class` - класс
+        - `js_toggle` - js "чекбокс"
+        - `attr` - атрибуты для кнопки
+            - `title` - добавляет класс `tooltip`
+            - `data-id` - `id`
+            - 'tag' - кастомный тег кнопки, по умолчанию `span`
+            - `href` - ссылка, меняет тег кнопки на `a`
+        - `input_attr` - кастомные атрибуты для input:checkbox. Атрибут `disabled` берет из `params.state`
+            - `data-id` - `id`
+
+items:
+-
+    title: 'state_on'
+    description: 'Базовый стиль блока'
+    fixture:
+        params:
+            state:
+               - on
+-
+    title: 'state_off'
+    description: "Состояние 'off'"
+    fixture:
+        params:
+            state:
+                - off
+-
+    title: 'state_on && state_pause'
+    description: "На паузе, состояние 'on', 'pause'"
+    fixture:
+        params:
+            state:
+                - on
+                - pause
+-
+    title: 'state_off && state_pause'
+    description: "На паузе, состояние 'off', 'pause'"
+    fixture:
+        params:
+            state:
+                - off
+                - pause
+-
+    title: 'state_on && state_processing'
+    description: "В процессе переключения, состояние 'on', 'processing'"
+    fixture:
+        params:
+            state:
+                - on
+                - processing
+-
+    title: 'state_off && state_processing'
+    description: "В процессе переключения, состояние 'off', 'processing'"
+    fixture:
+        params:
+            state:
+                - off
+                - processing
+-
+    title: 'state_on && state_disabled'
+    description: "Неактивный переключатель, состояние 'on', 'disabled'"
+    fixture:
+        params:
+            state:
+                - on
+                - disabled
+-
+    title: 'state_off && state_disabled'
+    description: "Неактивный переключатель, состояние 'off', 'disabled'"
+    fixture:
+        params:
+            state:
+                - off
+                - disabled
+-
+    title: 'custom_tag'
+    description: 'Кнопка отрисована кастомным тегом'
+    fixture:
+        params:
+            state:
+                - on
+            attr:
+                tag: 'div'
+-
+    title: 'js_toggle'
+    description: "JS 'чекбокс'"
+    fixture:
+        params:
+            state:
+                - on
+            js_toggle: '1'
+-
+    title: 'button_attrs'
+    description: 'Кнопке можно задавать различные аттрибуты'
+    fixture:
+        params:
+            state:
+                - on
+            attr:
+                title: 'tooltip'
+                class: 'custom_class'
+                data-id: 'id'
+                tag: 'div'
+-
+    title: 'href'
+    description: "'Атрибут href меняет тег на 'a'"
+    fixture:
+        params:
+            state:
+                - on
+            attr:
+                href: '#href'
+-
+    title: 'input_attr'
+    description: 'Можно задавать различные аттрибуты для input'
+    fixture:
+        params:
+            state:
+                - on
+            input_attr:
+                value: 'constructor.config.prices.raid.cost'
+                class: 'b-dedicated__raid-input'
+                name: 'raid'
+                checked: 'checked'

@@ -1,0 +1,123 @@
+name: 'b-checkbox'
+has_css: 1
+about: 'Элемент формы - чекбокс.'
+
+details_md: |
+
+    ### Параметры:
+    - `params`
+      - `mods` - Модификаторы блока. На уровне темплейта символ `_` заменяется `-`. Значение у параметра можно передавать массивом
+          - `text_case` - стиль `text-transform` для лейбла. По умолчанию - `normal`.
+          - `font_weight` - стиль `font-weight` для лейбла. По умолчанию - `normal`.
+          - `marker` - Иконка маркера. По умолчанию - `thin`.
+          - `font_size` - Размер шрифта у лейбла. По умолчанию - `normal`(15px/24px).
+          - `style` - Прочие стили.
+      - `attrs` - Атрибуты для `input:checkbox`.
+          - `id` - Обязательный аттрибут.
+      - `label` - Текст для лейбла
+      - `no_label_tag` - Вместо тега `<label>` рендерится тег `<span>`
+      - `tooltip` - Добавляет тултип на лейбл
+
+    Обретка над списком чекбоксов `<div class="b-checkbox__list"></div>` делает блоки зафлоачеными и добовляет боковой отступ
+
+items:
+-
+  title: 'b-checkbox'
+  description: 'Базовый стиль блока'
+  fixture:
+    attrs:
+      id: 'checkbox_exm_1'
+      checked: 1
+    label: 'Donec bibendum tristique cursus. Donec mollis quis tellus vitae cursus. Nullam consectetur risus vel erat rutrum, et molestie mauris vestibulum.'
+-
+  title: 'b-checkbox_marker_bold'
+  description: 'Толстый маркер. Используется в промо формах'
+  fixture:
+    mods:
+      marker: 'bold'
+    attrs:
+      id: 'checkbox_exm_2'
+      checked: 1
+    label: 'Nullam consectetur risus vel erat rutrum'
+-
+  title: 'b-checkbox_marker_huge'
+  description: 'Большой маркер. Используется в промо'
+  fixture:
+    mods:
+      marker: 'huge'
+      font_size: 'big'
+    attrs:
+      id: 'checkbox_exm_3'
+      checked: 1
+    label: 'Nullam consectetur risus vel erat rutrum'
+-
+  title: 'b-checkbox_text-case_upper'
+  description: 'Текст лейбла заглавными буквами'
+  fixture:
+    mods:
+      text_case: 'upper'
+    attrs:
+      id: 'checkbox_exm_4'
+    label: 'Nullam consectetur risus vel erat rutrum'
+-
+  title: 'b-checkbox_font-size_medium'
+  description: 'Текст лейбла среднего размера(20px/24px)'
+  fixture:
+    mods:
+      font_size: 'medium'
+    attrs:
+      id: 'checkbox_exm_5'
+    label: 'Nullam consectetur risus vel erat rutrum'
+-
+  title: 'b-checkbox_font-size_big'
+  description: 'Текст лейбла большого размера(32px/36px)'
+  fixture:
+    mods:
+      marker: 'huge'
+      font_size: 'big'
+    attrs:
+      id: 'checkbox_exm_6'
+    label: 'Nullam consectetur risus vel erat rutrum'
+-
+  title: 'b-checkbox_font-size_old-is-gold'
+  description: 'Текст лейбла меньше среднего размера(18px/24px). Размерность не стандартная, осталась от старого дизайна.'
+  fixture:
+    mods:
+      font_size: 'old-is-gold'
+    attrs:
+      id: 'checkbox_exm_7'
+    label: 'Nullam consectetur risus vel erat rutrum'
+-
+  title: 'b-checkbox_font-weight_bold'
+  description: 'Текст лейбла жирным.'
+  fixture:
+    mods:
+      font_weight: 'bold'
+    attrs:
+      id: 'checkbox_exm_8'
+    label: 'Nullam consectetur risus vel erat rutrum'
+-
+  title: 'b-checkbox_style_block'
+  description: 'Блочный стиль для чекбокса `display: block`.'
+  fixture:
+    mods:
+      style: 'block'
+    attrs:
+      id: 'checkbox_exm_9'
+    label: 'Nullam consectetur risus vel erat rutrum'
+-
+  title: 'b-checkbox_no_label_tag'
+  description: 'Вместо тега `<label>` рендерится тег `<span>`.'
+  fixture:
+    attrs:
+      id: 'checkbox_exm_10'
+    no_label_tag: 1
+    label: 'Nullam consectetur risus vel erat rutrum'
+-
+  title: 'b-checkbox_tooltip'
+  description: 'Добавление тултипа на лейбл'
+  fixture:
+    attrs:
+      id: 'checkbox_exm_11'
+    tooltip: 'Donec mollis quis tellus vitae cursus.'
+    label: 'Nullam consectetur risus vel erat rutrum'

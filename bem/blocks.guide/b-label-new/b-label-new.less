@@ -1,0 +1,61 @@
+@import '~i-less/i-less';
+
+.b-label-new {
+    @bl: ~".b-label-new";
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    overflow: hidden;
+    width: 180px;
+    height: 180px;
+
+    &__content {
+        display: block;
+        position: relative;
+        top: 21px;
+        right: -44px;
+        width: 180px;
+        height: 50px;
+        color: @color-text-invert;
+        letter-spacing: 1px;
+        font: bold 16px/50px @face;
+        text-align: center;
+        text-transform: uppercase;
+        background: @color-bg-important;
+        transform: rotate3d( 0, 0, 1, 45deg );
+
+        &_size {
+            &_thin {
+                top: 12px;
+                right: -59px;
+                height: 40px;
+                font: bold 12px/40px @face;
+            }
+
+            &_small {
+                top: 18px;
+                right: -58px;
+                height: 32px;
+                font: normal 12px/32px @face;
+            }
+
+            &_tiny {
+                top: 18px;
+                right: -59px;
+                height: 30px;
+                font: bold 10px/32px @face;
+            }
+        }
+
+        &_color {
+            &_primary-alternate {
+                background: @color-bg-primary-alternate;
+            }
+
+            &_discount {
+                background: @color-text-discount;
+            }
+        }
+    }
+}

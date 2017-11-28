@@ -1,0 +1,5 @@
+[% WRAPPER popup
+    #{params}
+%]
+    CONTENT
+[% END %]

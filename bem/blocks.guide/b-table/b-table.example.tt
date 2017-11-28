@@ -1,0 +1,4 @@
+[%-
+    INCLUDE 'b-table.inc'
+        #{fixture};
+-%]

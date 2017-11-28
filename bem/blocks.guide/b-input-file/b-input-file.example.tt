@@ -1,0 +1,4 @@
+[%-
+    INCLUDE 'b-input-file.inc'
+        #{fixture};
+-%]

@@ -1,0 +1,54 @@
+- function getData(data)
+  - var data_prepared = {}
+  each val, key in data
+     - data_prepared['data-' + key] = val
+  - return data_prepared;
+
+mixin getBbutton(options)
+  - options = options || {}
+  -
+    var b_button = JST['b-button']({
+        attr: {
+          type: 'submit',
+          className: 'b-input-file__button b-button_style_bordered'
+        },
+        size:       options.size      || 'medium',
+        color:      options.color     || 'default',
+        icon_left:  options.icon_left || 'upload',
+        text:       options.text      || t('dict.Attach_file'),
+        text_size:  options.text_size || 'normal'
+    })
+  != b_button
+
+//- устанавливаем дефолтные значения
+-
+   self.label         = self.label || {}
+   self.data          = self.data || {}
+   self.data.max      = self.data.max || 1
+   self.data.name     = self.attr.name
+
+   self.attr          = self.attr || {}
+   self.attr.multiple = self.data.max > 1 ? 'multiple' : (self.attr.multiple || 'multiple')
+   self.attr.value    = self.attr.value || ''
+
+div(
+  class='b-input-file'
+  class= self.size ? 'b-input-file_size_#{self.size}' : ''
+  class= self.attr.class
+)&attributes(getData(self.data))
+  if self.label.text
+    label(
+      class='b-input-file__label'
+      class= self.label.class
+    )
+      != self.label.text
+
+  .b-input-file__wrapper
+    .b-input-file__button-wrap
+      input(
+        class="b-input-file__input"
+        type="file"
+      )&attributes(self.attr)
+      +getBbutton(self.button || {})
+    if self.tooltip_text
+      span.b-icon.b-icon_style_help.b-tooltip.b-input-file__tooltip(data-title=self.tooltip_text)

@@ -1,0 +1,229 @@
+name: 'b-list'
+has_css: 1
+about: 'Перечисляемые списки. У списка есть дефолтные внешние отступы `margin-top` и `margin-bottom` (равные по величине), которые зависят от `item_size`'
+
+_exmp: &_list_items
+  list_items:
+    - Donec bibendum tristique cursus;
+    - Nunc efficitur ultrices dui eu condimentum;
+    - Vivamus tempor dignissim mi a molestie;
+    - Nullam consectetur risus vel erat rutrum;
+    - Donec mollis quis tellus vitae cursus.
+
+items:
+-
+  title: 'b-list'
+  description: 'Дефолтные стили списка. Маркер `check` и цвет `green`. Внешние отступы - 24px'
+  fixture:
+    params:
+      <<: *_list_items
+-
+  title: 'b-list_size_normal-compact'
+  description: 'Компактный список. Внешние отступы - 12px'
+  fixture:
+    params:
+      item_size: 'normal-compact'
+      <<: *_list_items
+-
+  title: 'b-list_size_big'
+  description: 'Список большого размера. Внешние отступы - 36px'
+  fixture:
+    params:
+      item_size: 'big'
+      <<: *_list_items
+-
+  title: 'b-list_size_big-compact'
+  description: 'Список большого размера, компактный. Внешние отступы - 24px'
+  fixture:
+    params:
+      item_size: 'big-compact'
+      <<: *_list_items
+-
+  title: 'b-list_marker_check-grey'
+  description: 'Список с серыми галками'
+  fixture:
+    params:
+      marker_color: 'grey'
+      <<: *_list_items
+-
+  title: 'b-list_marker_check-grey-big'
+  description: 'Список с серыми большими галками'
+  fixture:
+    params:
+      marker_color: 'grey'
+      item_size: 'big'
+      <<: *_list_items
+-
+  title: 'b-list_marker_check-orange'
+  description: 'Пока есть только для размеров `normal` и `normal-compact`'
+  fixture:
+    params:
+      marker_color: 'orange'
+      <<: *_list_items
+-
+  title: 'b-list_marker_circle'
+  description: 'Список с булетами'
+  fixture:
+    params:
+      marker: 'circle'
+      <<: *_list_items
+-
+  title: 'b-list_marker_circle-grey'
+  description: 'Список с серыми булетами'
+  fixture:
+    params:
+      marker: 'circle'
+      marker_color: 'grey'
+      <<: *_list_items
+-
+  title: 'b-list_marker_circle-grey-big'
+  description: 'Список с серыми большими булетами'
+  fixture:
+    params:
+      marker: 'circle'
+      marker_color: 'grey'
+      item_size: 'big'
+      <<: *_list_items
+-
+  title: 'b-list_marker_cross-red'
+  description: 'Список с красными крестами.Пока есть только для размеров `normal` и `normal-compact`'
+  fixture:
+    params:
+      marker: 'cross'
+      marker_color: 'red'
+      <<: *_list_items
+-
+  title: 'b-list_marker_dash'
+  description: 'Список с тире'
+  fixture:
+    params:
+      marker: 'dash'
+      <<: *_list_items
+-
+  title: 'b-list_marker_dash-big'
+  description: 'Список с большими тире'
+  fixture:
+    params:
+      marker: 'dash'
+      item_size: 'big'
+      <<: *_list_items
+-
+  title: 'b-list_marker_num'
+  description: 'Нумерованый список'
+  fixture:
+    params:
+      marker: 'num'
+      <<: *_list_items
+-
+  title: 'b-list_marker_num-big'
+  description: 'Нумерованый список большой'
+  fixture:
+    params:
+      marker: 'num'
+      item_size: 'big'
+      <<: *_list_items
+-
+  title: 'b-list_marker_none'
+  description: 'Список без маркеров'
+  fixture:
+    params:
+      marker: 'none'
+      <<: *_list_items
+-
+  title: 'b-list_columns_2'
+  description: 'Список в две колонки'
+  fixture:
+    params:
+      columns: 2
+      <<: *_list_items
+-
+  title: 'b-list_columns_3'
+  description: 'Список в три колонки'
+  fixture:
+    params:
+      columns: 3
+      <<: *_list_items
+-
+  title: 'b-list_columns_4'
+  description: 'Список в четыре колонки'
+  fixture:
+    params:
+      columns: 4
+      <<: *_list_items
+-
+  title: 'b-list_columns_5'
+  description: 'Список в пять колонок'
+  fixture:
+    params:
+      columns: 5
+      <<: *_list_items
+-
+  title: 'b-list_items_md'
+  description: 'В параметр list_items отправлен список в формате `md`. Штука надо редко, т.к. если отдавать список из локалей, то достаточно просто оформить список в виде массива'
+  fixture:
+    params:
+      bemd: 1
+      list_items: |
+        - Donec bibendum tristique cursus;
+        - Nunc efficitur ultrices dui eu condimentum;
+        - Vivamus tempor dignissim mi a molestie;
+        - Nullam consectetur risus vel erat rutrum;
+        - Donec mollis quis tellus vitae cursus.
+-
+  title: 'b-list_different_markers'
+  description: 'Можно конкретным итемам списка указывать свои персональные маркеры и размеры. Тем итемам, у которых не указаны песональные параметры, применятся общие стили списка'
+  fixture:
+    params:
+      list_items:
+        -
+          content: 'Donec bibendum tristique cursus;'
+          item_size: 'big'
+        -
+          content: 'Nunc efficitur ultrices dui eu condimentum;'
+        -
+          content: 'Nullam consectetur risus vel erat rutrum;'
+          color: 'grey'
+        -
+          content: 'Vivamus tempor dignissim mi a molestie.'
+          marker: 'cross'
+          color: 'red'
+-
+  title: 'b-list_with_tooltip'
+  description: 'Развешиваем тултипы на итемы списка. Неработает из-за bootstrap стилей.'
+  fixture:
+    params:
+      list_items:
+        -
+          content: 'Donec bibendum tristique cursus;'
+          tooltip: 'one tooltip'
+        -
+          content: 'Nunc efficitur ultrices dui eu condimentum;'
+        -
+          content: 'Nullam consectetur risus vel erat rutrum;'
+          tooltip: 'second tooltip'
+        -
+          content: 'Vivamus tempor dignissim mi a molestie.'
+          tooltip: 'third tooltip'
+-
+  title: 'b-list_margin_none'
+  description: 'Обнуляет дефолтные внешние отступы'
+  fixture:
+    params:
+      margin_none: 1
+      <<: *_list_items
+
+-
+  title: 'b-list_marker-align_right'
+  description: 'Отдельный мод. Отображает маркер справа от текста'
+  fixture:
+    params:
+      marker_align: 'right'
+      <<: *_list_items
+
+-
+  title: 'add_custom_class'
+  description: 'Дополнительный класс на список'
+  fixture:
+    params:
+      list_class: 'l-bold'
+      <<: *_list_items

@@ -1,0 +1,117 @@
+name: 'b-message-stripe'
+has_css: 1
+has_js: 1
+no_sidebar: 1
+about: 'Сообщение - растяжка. Используется для доведения для пользователя некой информации. Обычно еще до совешения действия, призыв к действию, предупреждения. Работает с localStorage для сохранения состояния "закрыть" и "свернуть"'
+
+_message_title: &_m_title
+
+_message_text_a: &_message_a
+  message:
+    title: 'Внимание! Некоторые из ваших услуг приостановлены'
+    text: >
+      Приостановленные услуги выделены в списке розовым цветом. Подробную информацию
+      о сроках возможного продления услуг вы сможете посмотреть в карточке услуги, кликнув по услуге из списка.
+  button:
+    text: 'Срочно продлить услуги'
+    url: '/#renew'
+    color: 'important'
+
+_message_text_b: &_message_n
+  message:
+    title: 'Внимание! Истекает срок регистрации вашего домена testregruintegration.ru'
+    text: >
+      Если вы не продлите домен до 12.10.2015, все сервисы на нём, включая сайт и почту,
+      перестанут работать, а впоследствии он будет удалён и станет доступен для регистрации
+      другим пользователям.
+  button:
+    text: 'Продлить домен'
+    url: '/#renew'
+
+
+items:
+-
+  title: 'b-message-stripe'
+  description: 'Дефолтные стили блока.'
+  fixture:
+    srv_id: 'exm_1'
+    <<: *_message_n
+-
+  title: 'b-message-stripe_type_alert'
+  description: 'Строгое напоминание, предупреждение'
+  fixture:
+    srv_id: 'exm_2'
+    type: 'alert'
+    <<: *_message_a
+-
+  title: 'b-message-stripe_style_compact'
+  description: 'Блок отрисовывается в компактном виде(попап продления при после авторизации)'
+  fixture:
+    srv_id: 'exm_3'
+    style_compact: 1
+    type: 'alert'
+    <<: *_message_a
+-
+  title: 'b-message-stripe_state_collapsed'
+  description: 'Изначально в свернутом состоянии'
+  fixture:
+    collapsed: 1
+    srv_id: 'exm_4'
+    <<: *_message_n
+-
+  title: 'b-message-stripe_hide_togglers'
+  description: 'Скрыты кнопки закрыть и свернуть'
+  fixture:
+    srv_id: 'exm_5'
+    type: 'alert'
+    hide_togglers: 1
+    <<: *_message_a
+-
+  title: 'b-message-stripe_big_title_without_exclaim'
+  description: ''
+  fixture:
+    srv_id: 'exm_7'
+    big_title_without_exclaim: 1
+    <<: *_message_n
+-
+  title: 'b-message-stripe_button_params'
+  description: |
+    Дополнительные параметры для кнопки:
+
+    - `attr.class` - добавить класс для кнопки
+    - `attr.id` - добавить id для кнопки
+    - `inline` - устанавливает кнопке `display: inline-block`
+    - `before` - добавляет текст перед кнопкой. Применим вместе с `inline`
+  fixture:
+    srv_id: 'exm_6'
+    message:
+      title: 'Погасите кредит по «Доверительному продлению»'
+      text: >
+        Вы можете осуществить оплату в течении 0 дней. После этого срока продлённые услуги будут заблокированы.
+    button:
+      text: 'Оплатить'
+      attr:
+        class: 'l-margin_top-medium'
+        id: 'id_for_button'
+      inline: 1
+      before: '<span class="l-bold l-margin_right-normal">157 892 р.</span>'
+      url: '/#renew'
+-
+  title: 'b-message-stripe_other_params'
+  description: |
+    Дополнительные парамеры:
+
+    - `wrapper_class` - добавить класс на враппер сообщения
+    - `add_class` - добавить класс сообщению
+    - `add_style` - добавить стиль сообщению. Лучше не использовать, в место этого задавать стили через класс
+    - `attr.id` - произвольный идентификатор
+    - `is_static` - несворачиваемый блок и скрыты кнопки закрыть, свернуть
+  fixture:
+    wrapper_class: 'extra_wrapper_class'
+    add_class: 'custom_message_class'
+    add_style: "display:'none';"
+    srv_id: 'exm_8'
+    is_static: 1
+    attr:
+        id: 'custom_id'
+    <<: *_message_n

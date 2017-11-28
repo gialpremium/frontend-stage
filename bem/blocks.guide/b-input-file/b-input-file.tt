@@ -1,0 +1,83 @@
+[%#
+    В инклюде выставлены значения по умолчанию для b-button
+
+    INCLUDE 'b-input-file.inc'
+        data => {
+            max     => макс. кол-во файлов || 1,
+            maxfile => макс размер 1 файла Кб,
+            maxsize => макс размер всех файлов Кб,
+            minfile => мин размер 1 файла Кб,
+            minsize => мин размер всех файлов Кб,
+            accept  => принимаем расширения gif|jpg|etc...
+        },
+
+        attr => {
+            name => 'ssl_source',
+            class => ''
+        },
+
+        input => {
+            class => класс для инпута
+        },
+
+        label => {
+            text => 'текст label'
+            class => 'класс label'
+        },
+
+        button => {
+            # параметры для b-button.tt
+        },
+
+        size => size || 'medium',
+
+%]
+[%
+SET data_attr = '';
+
+data.max = data.max || 1;
+data.name = attr.name;
+
+FOREACH a = data;
+    data_attr = data_attr _ " data-$a.key=\"$a.value\"";
+END;
+
+attr.multiple = attr.multiple || 'multiple';
+
+IF data.max > 1;
+    attr.multiple = 'multiple';
+END;
+
+UNLESS attr.value;
+    attr.value = '';
+END;
+
+SET attrs = '';
+FOREACH a = attr;
+    NEXT IF a.key == 'class';
+    attrs = attrs _ " $a.key=\"$a.value\"";
+END;
+%]
+<div class="b-input-file[% ' b-input-file_size_' _ size IF size %][% ' ' _ attr.class IF attr.class %]"[% data_attr %]>
+    [%- IF label.text -%]
+    <label class="b-input-file__label[% ' ' _ label.class IF label.class %]">[%- label.text -%]</label>
+    [%- END -%]
+    <div class="b-input-file__wrapper">
+        <div class="b-input-file__button-wrap">
+            <input class="b-input-file__input[% ' ' _ attr.class IF attr.class %][% ' ' _ input.class IF input.class %]" type="file" [% attrs %] />
+            [%
+                INCLUDE 'b-button.inc'
+                    attr => {
+                        type  => 'submit',
+                        class => 'b-input-file__button b-button_style_bordered'
+                    },
+                    color     => button.color || 'default',
+                    size      => size || 'medium',
+                    icon_left => button.icon_left || 'upload',
+                    text      => button.text || t('dict.Attach_file'),
+                    text_size => button.text_size || 'normal';
+            -%]
+        </div>
+        [% tooltip( text = tooltip_text, add_class => 'b-input-file__tooltip' ) IF tooltip_text %]
+    </div>
+</div>

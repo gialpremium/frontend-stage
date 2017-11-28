@@ -1,0 +1,31 @@
+name: 'b-input'
+has_css: 1
+about: 'Элемент формы - инпут.'
+
+details_md: |
+
+    ### Параметры:
+    - `params`
+      - `mods` - Модификаторы блока. На уровне темплейта символ `_` заменяется `-`. Значение у параметра можно передавать массивом. Все имеющиеся модификаторы можно найти в `b-input.less`.
+          - `type` -  Модификатор `type` (например, `b-input_type_new`).
+          - `style` - Модификатор `style` (например, `b-input_style_block`).
+      - `attrs` - Атрибуты.
+          - `type` - Тип инпута.
+          - `class` - Любые классы, не относящиеся напрямую к `b-input` (например, классы отступов).
+
+items:
+-
+  title: 'b-input'
+  description: 'Базовый стиль блока'
+-
+  title: 'b-input_style_block'
+  description: 'Расширенный стиль блока'
+  fixture:
+    mods:
+      style: ['something', 'block']
+    attrs:
+      type: 'email'
+      id: 'usermail_exm_1'
+      name: 'usermail'
+      placeholder: 'E-mail'
+      class: 'l-margin_bottom-medium'

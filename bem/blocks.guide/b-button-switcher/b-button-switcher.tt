@@ -1,0 +1,76 @@
+[%# copy-paste
+INCLUDE 'b-button-switcher.inc'
+    params => {
+        state       => ['on'],
+        add_class   => '',
+        js_toggle   => 0 # js "чекбокс",
+        attr => {
+            title       => 'title',
+            'data-id'   => 'id',
+            tag         => '',
+            href        => '',
+        },
+        input_attr => {
+            'data-id' => 'id',      # кастомные атрибуты для инпута
+                                    # disabled берет из params.state
+        }
+    }
+%]
+
+[%
+    UNLESS params.attr;
+        params.attr = {};
+    END;
+
+    SET attr_string       = '';
+    SET input_attr_string = '';
+    SET button_tag        = 'span';
+    SET button_state      = '';
+    SET button_class      = params.add_class || params.attr.class;
+
+    UNLESS isin('disabled', params.state) || isin('processing', params.state);
+        button_class = button_class _ ' b-button-switcher_hover_on';
+    END;
+
+    IF params.js_toggle;
+        button_class = button_class _ ' b-button-switcher_js_toggle';
+    END;
+
+    FOREACH a = params.attr;
+        NEXT  IF a.key == 'class' || a.key == 'tag';
+        attr_string = " $a.key=\"$a.value\"" _ attr_string;
+    END;
+
+    FOREACH a = params.input_attr;
+        NEXT  IF a.key == 'class' || a.key == 'checked';
+        input_attr_string = input_attr_string _ " $a.key=\"$a.value\"" _ attr_string;
+    END;
+
+    IF isin('disabled', params.state);
+        input_attr_string = input_attr_string _ ' disabled="disabled"';
+    END;
+
+    IF params.attr.type == 'button' || params.attr.type == 'submit';
+        button_tag = 'button';
+    ELSIF params.attr.href;
+        button_tag = 'a';
+    ELSIF params.attr.tag;
+        button_tag = params.attr.tag;
+    END;
+
+    IF params.state;
+        button_state = ' b-button-switcher_state_' _ params.state.join(' b-button-switcher_state_') _ ' ';
+    END;
+%]
+<[% button_tag %] class="b-button-switcher [% button_class; button_state; ' tooltip' IF params.attr.title %]" [% attr_string %]>
+[%
+    IF isin('processing', params.state);
+        '<span class="b-button-switcher__processing"></span>';
+        '<span class="b-button-switcher__processing b-button-switcher__processing_delayed"></span>';
+    END;
+
+    IF params.input_attr %]
+    <input class="b-button-switcher__hidden [% params.input_attr.class %]" type="checkbox"[% input_attr_string %][% ' checked="checked"' IF params.input_attr.checked %] />
+    [% END;
+%]
+</[% button_tag %]>

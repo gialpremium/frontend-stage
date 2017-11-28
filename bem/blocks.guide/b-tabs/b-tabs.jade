@@ -1,0 +1,76 @@
+mixin bTabs( options )
+  - var cl = 'b-tabs'
+  - var tabs_type = options.tabs_type ? options.tabs_type : 'horizontal'
+  - var tabs_size = options.tabs_size ? options.tabs_size : 'normal'
+  - var tabs_color = options.tabs_color ? options.tabs_color : 'default'
+
+  - cl += ' b-tabs_type_' + tabs_type
+  - cl += ' b-tabs_size_' + tabs_size
+  - cl += ' b-tabs_color_' + tabs_color
+
+  if options
+    if options.tabs_style
+      - cl += ' b-tabs_style_' + options.tabs_style
+    if options.title_indent
+      - cl += ' b-tabs_title-indent_' + options.title_indent
+    if options.title_bigger
+      - cl += ' b-tabs_title-size_bigger'
+    if options.tabs_mobile
+      - cl += ' b-tabs_mobile_tabs_mobile'
+    if options.tabs_class
+      - cl += ' ' + options.tabs_class
+  div('class'=cl,
+     'data-disabled' = ( options && options.disabled ? 'disabled' : null ),
+     'data-active'   = ( options && options.active_tab ? options.active_tab : null ),
+     'data-namesEnabled' = 'true' )
+    if block
+      block
+    div.b-tabs__clear
+
+mixin bTabsTitles()
+  div.b-tabs__titles
+    if block
+      block
+
+mixin bTabsContent()
+  div.b-tabs__content
+    if block
+      block
+
+mixin bTabsItem( options )
+  - options.title = options.title || ''
+  +bTabsTabTitle(options)
+  +bTabsTabContent(options)
+    if block
+      block
+
+mixin bTabsTabTitle( options )
+  - var dt_cl = 'b-tabs__item-title ' + (options.title_class || '')
+  if options.text
+    - dt_cl += ' b-tabs__item-title_with_text'
+  if options.tab_active
+      - dt_cl += ' b-tabs__item-title_state_current'
+  if options.tab_class
+    - dt_cl += ' ' + options.tab_class
+  div(
+      class=dt_cl,
+      data-tab-name = ( options && options.tab_name ? options.tab_name : null ),
+      id = ( options && options.tab_id ? options.tab_id : null )
+    )
+      if options.tab_link
+        a(class="b-tabs__item-title-link"  href=options.tab_link) != options.title
+      else
+        != options.title
+      if options.text
+        span.b-tabs__item-text != options.text
+
+mixin bTabsTabContent( options )
+  - var dd_cl = 'b-tabs__item-content ' + (options.content_class || '')
+  if options.tab_active
+    - dd_cl += ' b-tabs__item-content_state_current'
+  div(
+    class=dd_cl
+    data-content-name=options.tab_name
+  )
+    if block
+      block

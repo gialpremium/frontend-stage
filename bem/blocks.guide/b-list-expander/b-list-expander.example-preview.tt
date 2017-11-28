@@ -1,0 +1,23 @@
+[%
+
+WRAPPER expander_list
+    #{wrapper};
+
+    WRAPPER expander_list_item
+        #{item1.params};
+        %] #{item1.content} [%
+    END;
+
+    WRAPPER expander_list_item
+        #{item2.params};
+        %] #{item1.content} [%
+    END;
+
+    WRAPPER expander_list_item
+        #{item3.params};
+        %] #{item1.content} [%
+    END;
+
+END;
+
+%]

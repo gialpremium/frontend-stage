@@ -1,0 +1,106 @@
+name: 'b-title'
+has_css: 1
+
+_exmp: &_title
+  text: >
+    Donec mollis quis tellus vitae cursus.
+_exmp: &_title_large
+  text: >
+    Nullam consectetur risus vel erat rutrum, et molestie mauris vestibulum.
+
+items:
+-
+  title: 'b-title'
+  description: 'Без модификатора _size у блока нет пары fs/lh и отступов. Модификатор _size устанавливает размер фонта и нижний отступ'
+  fixture:
+    <<: *_title
+-
+  title: 'b-title_size_normal'
+  description: 'fs/lh(15/24)'
+  fixture:
+    <<: *_title
+    mod: 'b-title_size_normal'
+-
+  title: 'b-title_size_normal-compact'
+  description: 'fs/lh(15/18)'
+  fixture:
+    <<: *_title
+    mod: 'b-title_size_normal-compact'
+-
+  title: 'b-title_size_medium'
+  description: 'fs/lh(20/30)'
+  fixture:
+    <<: *_title
+    mod: 'b-title_size_medium'
+-
+  title: 'b-title_size_medium-compact'
+  description: 'fs/lh(20/24)'
+  fixture:
+    <<: *_title
+    mod: 'b-title_size_medium-compact'
+-
+  title: 'b-title_size_large'
+  description: 'fs/lh(24/36)'
+  fixture:
+    <<: *_title
+    mod: 'b-title_size_large'
+-
+  title: 'b-title_size_large-compact'
+  description: 'fs/lh(24/30)'
+  fixture:
+    <<: *_title
+    mod: 'b-title_size_large-compact'
+-
+  title: 'b-title_size_big'
+  description: 'fs/lh(32/42)'
+  fixture:
+    <<: *_title
+    mod: 'b-title_size_big'
+-
+  title: 'b-title_size_big-compact'
+  description: 'fs/lh(32/36)'
+  fixture:
+    <<: *_title
+    mod: 'b-title_size_big-compact'
+-
+  title: 'b-title_size_huge'
+  description: 'fs/lh(48/60)'
+  fixture:
+    <<: *_title
+    mod: 'b-title_size_huge'
+-
+  title: 'b-title_size_huge-compact'
+  description: 'fs/lh(48/54)'
+  fixture:
+    <<: *_title
+    mod: 'b-title_size_huge-compact'
+-
+  title: 'b-title_size_giant'
+  description: 'fs/lh(72/84)'
+  fixture:
+    <<: *_title
+    mod: 'b-title_size_giant'
+-
+  title: 'b-title_size_giant-compact'
+  description: 'fs/lh(72/78)'
+  fixture:
+    <<: *_title
+    mod: 'b-title_size_giant-compact'
+-
+  title: 'b-title_color_invert'
+  description: 'Инвертный цвет текста'
+  fixture:
+    <<: *_title
+    mod: 'b-title_color_invert'
+-
+  title: 'b-title_margin_none'
+  description: 'Убирает все маргины у блока'
+  fixture:
+    <<: *_title
+    mod: 'b-title_margin_none'
+-
+  title: 'b-title_margin_top'
+  description: 'Добавляет заголовку верхний маргин'
+  fixture:
+    <<: *_title
+    mod: 'b-title_margin_top b-title_size_medium-compact'

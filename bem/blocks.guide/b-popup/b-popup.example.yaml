@@ -1,0 +1,143 @@
+name: 'b-popup'
+# стили убраны в guide.bemdecl т.к. ломается попап изза дублирования i-hooc
+#has_js: 1
+#has_css: 1
+pre_process_tt: 1
+about: 'Попап. Работает в связке с плагином i-hooc. Ширина попапа зависит от содержимого попапа. Для установки нужной ширина попапа используются классы хелперы l-width_site/l-width_grid-*'
+
+_exmp: &_content
+  content: >
+    <p>Donec bibendum tristique cursus. Donec mollis quis tellus vitae cursus. Nullam consectetur risus vel erat rutrum, et molestie mauris vestibulum. Sed vulputate nisi risus, sit amet suscipit orci tempor eu. Nunc efficitur ultrices dui eu condimentum. Vivamus tempor dignissim mi a molestie. Vestibulum faucibus ligula ut velit imperdiet dignissim. Ut mattis euismod nisl, quis fermentum neque viverra a. Nulla nec enim enim. Pellentesque sed libero id neque vestibulum pellentesque in vel turpis. Suspendisse tempor, sapien fringilla vehicula faucibus, diam nulla faucibus mi, quis viverra nisi lorem quis diam. Proin in ex ac urna tempus pellentesque. Nullam sollicitudin varius justo, sit amet faucibus leo malesuada a. Aenean ac efficitur nulla.</p>
+
+items:
+-
+  title: 'b-popup'
+  description: 'Базовый стиль блока.'
+  fixture:
+    params:
+      popup_title: 'Бесплатные услуги при регистрации доменов'
+      attr:
+        id: 'popup_example_1'
+        class: 'l-width_grid-7'
+
+    <<: *_content
+-
+  title: 'without_title'
+  description: 'Попап без заголовка'
+  fixture:
+    params:
+      attr:
+        id: 'popup_example_2'
+        class: 'l-width_grid-7'
+
+    <<: *_content
+-
+  name: 'show_bottom_close'
+  description: 'Добавляет кнопку b-button в конце контента(по клику закрывает попап)'
+  fixture:
+    params:
+      popup_title: 'Бесплатные услуги при регистрации доменов'
+      attr:
+        id: 'popup_example_3'
+        class: 'l-width_grid-7'
+      show_bottom_close: 1
+
+    <<: *_content
+-
+  name: 'show_bottom_close_custom'
+  description: 'Кастомизированый b-button в конце контента(по клику закрывает попап)'
+  fixture:
+    params:
+      popup_title: 'Бесплатные услуги при регистрации доменов'
+      attr:
+        id: 'popup_example_4'
+        class: 'l-width_grid-7'
+      show_bottom_close:
+        block_size: 'medium'
+        color: 'important'
+        text: 'close popup'
+
+    <<: *_content
+-
+  name: 'hide_top_close'
+  description: 'Попап без верхней кнопки закрыть'
+  fixture:
+    params:
+      popup_title: 'Бесплатные услуги при регистрации доменов'
+      hide_top_close: 1
+      attr:
+        id: 'popup_example_5'
+        class: 'l-width_site'
+
+    <<: *_content
+-
+  name: 'overlay'
+  description: 'Попап на сером фоне. При клике по фону - попап закрывается'
+  fixture:
+    params:
+      popup_title: 'Бесплатные услуги при регистрации доменов'
+      attr:
+        id: 'popup_example_6'
+        class: 'l-width_site'
+      overlay: 1
+
+    <<: *_content
+-
+  name: 'modal'
+  description: 'Попап на сером фоне. При клике по фону - попап закрыть нельзя'
+  fixture:
+    params:
+      popup_title: 'Бесплатные услуги при регистрации доменов'
+      modal: 1
+      attr:
+        id: 'popup_example_7'
+        class: 'l-width_site'
+
+    <<: *_content
+-
+  name: 'close_size'
+  description: 'Увеличенная кнопка закрыть'
+  fixture:
+    params:
+      popup_title: 'Бесплатные услуги при регистрации доменов'
+      close_size: 'big'
+      attr:
+        id: 'popup_example_8'
+        class: 'l-width_grid-7'
+
+    <<: *_content
+-
+  name: 'padding_small'
+  description: 'Маленькие отступы в попапе'
+  fixture:
+    params:
+      popup_title: 'Бесплатные услуги при регистрации доменов'
+      attr:
+        id: 'popup_example_9'
+        class: 'b-popup_padding_small l-width_grid-7'
+
+    <<: *_content
+-
+  name: 'border_grey'
+  description: 'Бордер вокруг попапа, вместо тени'
+  fixture:
+    params:
+      popup_title: 'Бесплатные услуги при регистрации доменов'
+      attr:
+        id: 'popup_example_10'
+        class: 'b-popup_border_grey l-width_grid-7'
+
+    <<: *_content
+-
+  name: 'open_auto'
+  description: 'Автооткрывающийся попап'
+  fixture:
+    params:
+      popup_title: 'Автооткрывающийся попап (b-popup_open_auto)'
+      attr:
+        id: 'popup_example_11'
+        class: 'b-popup_open_auto l-width_grid-7'
+
+    <<: *_content
+
+

@@ -1,0 +1,39 @@
+[%#
+INCLUDE 'b-input.inc'
+    params => {
+        attrs => {
+            class       => 'class',
+            id          => 'id',
+            name        => 'name',
+            type        => 'email',
+            disabled    => 1,
+            required    => 1,
+            placeholder => ''
+        },
+        mods => {
+            type   => 'new',
+            size   => 'small',
+            border => 'invert',
+        }
+    }
+%]
+
+[%-
+    params.attrs      = params.attrs || {};
+    params.mods       = params.mods  || {};
+    params.attrs.type = params.attrs.type || 'text';
+
+    SET input_attrs = [];
+    FOREACH a = params.attrs;
+        NEXT IF a.key == 'class';
+        input_attrs.push("$a.key=\"$a.value\"");
+    END;
+
+    SET input_mods = [];
+    FOREACH a = params.mods;
+        mod_class = 'b-input_' _ a.key.replace('_','-') _ '_' _ a.value;
+        input_mods.push(mod_class);
+    END;
+-%]
+<input class="b-input[%- ' ' _ input_mods.join(' ') IF input_mods.size() ~%][%~ ' ' _ params.attrs.class IF params.attrs.class -%]"[%- ' ' _ input_attrs.join(' '); -%] />
+

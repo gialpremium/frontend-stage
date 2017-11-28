@@ -1,0 +1,7 @@
+[% invert = '#{mod}' == 'b-text_color_invert' %]
+
+<div style="border: 1px solid red; background: #FFDAE0;">
+[% FOR i IN [1,2,3] %]
+    <p class="b-text[% ' #{mod}' IF '#{mod}' %]"  style="background: [% invert ? 'gray' : '#fff' %];">#{text}</p>
+[% END %]
+</div>

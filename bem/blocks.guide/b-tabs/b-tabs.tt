@@ -1,0 +1,79 @@
+[%#
+PROCESS 'b-tabs.inc';
+WRAPPER layout_tabs
+    tabs_class => 'some_class'
+    tabs_style => 'title-line'
+    tabs_mobile => 'column' # выстроит табы в колонку на мобильной версии
+    title_indent => ''
+    title_bigger => 1
+    tabs_color => 'invert'
+    tabs_size => 'medium';
+    WRAPPER layout_tabs_item
+        tab_id => 'some_id'
+        tab_name => 'some_name'
+        title => first_tab_title
+        text => текст под заголовком
+        tab_class => 'some_class_for_tab_title'
+        content_class => 'some_class_for_tab_content_wrapper'
+        tab_link => '/some_url'
+        tab_active => 1;
+        first_html_block;
+    END;
+    WRAPPER layout_tabs_item
+        title => second_tab_title;
+        second_html_block;
+    END;
+END;
+~%]
+[% # no_content => 1 # не выводить контент (dd) %]
+[%- BLOCK layout_tabs -%]
+    [% tabs_type = tabs_type || 'horizontal' %]
+    [% tabs_size = tabs_size || 'normal' %]
+    [% tabs_color = tabs_color || 'default' %]
+    <div class="b-tabs b-tabs_js_no
+        [%- " b-tabs_size_$tabs_size b-tabs_type_$tabs_type b-tabs_color_$tabs_color" -%]
+        [%- " b-tabs_style_$tabs_style" IF tabs_style -%]
+        [%- " b-tabs_mobile_$tabs_mobile" IF tabs_mobile -%]
+        [%- " b-tabs_title-indent_$title_indent" IF title_indent -%]
+        [%- " b-tabs_title-size_bigger" IF title_bigger -%]
+        [%- " $tabs_class" IF tabs_class -%]"
+        >
+        [% '<div class="b-tabs__title-helper"></div>' IF tabs_style == 'wide' %]
+        [% content %]
+        <div class="b-tabs__clear"></div>
+    </div>
+[%- END # BLOCK layout_tabs -%]
+[%# обёртки для titles и content, используются если нужна адаптивность %]
+[%- BLOCK layout_tabs_titles -%]
+    <div class="b-tabs__titles">
+        [% content %]
+    </div>
+[%- END -%]
+[%- BLOCK layout_tabs_content -%]
+    <div class="b-tabs__content">
+        [% content %]
+    </div>
+[%- END -%]
+[%- BLOCK layout_tabs_item -%]
+    [% PROCESS layout_tab_title %]
+    [% PROCESS layout_tab_content %]
+[%- END # BLOCK layout_tabs_item -%]
+[%- BLOCK layout_tab_title -%]
+    <div class="b-tabs__item-title[%~ ' b-tabs__item-title_with_text' IF text ~%][%~ ' b-tabs__item-title_state_current' IF tab_active ~%][%- ' ' _ tab_class IF tab_class -%]"
+        [%~ IF tab_name %] data-tab-name="[% tab_name %]"[% END ~%]
+        [%~ IF tab_id %] id="[% tab_id %]"[% END ~%]
+        [%~ FOREACH a = attrs; " $a.key=\"$a.value\""; END ~%]
+        >
+        [%- '<a href="' _ tab_link _ '" class="b-tabs__item-title-link">' IF tab_link -%]
+        [%~ title ~%]
+        [%~ '<span class="b-tabs__item-text">' _ text _ '</span>' IF text; ~%]
+        [%- '</a>' IF tab_link -%]
+    </div>
+[%- END # BLOCK layout_tabs_item -%]
+[%- BLOCK layout_tab_content -%]
+    [%~ UNLESS no_content %]
+    <div class="b-tabs__item-content[%~ ' b-tabs__item-content_state_current' IF tab_active ~%][%~ ' ' _ content_class IF content_class ~%]"[%~ IF tab_name %] data-content-name="[% tab_name %]"[% END ~%]>
+        [%- content -%]
+    </div>
+    [% END ~%]
+[%- END # BLOCK layout_tabs_item -%]

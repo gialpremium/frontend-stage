@@ -1,0 +1,176 @@
+name: 'b-list-expander'
+has_js: 1
+has_css: 1
+pre_process_tt: 1
+about: 'Раскрывающийся список.'
+
+_item_params_1: &_item_p_1
+  title: 'Сайт и хостинг'
+
+_item_content_1: &_item_c_1
+  content: >
+    Donec bibendum tristique cursus. Donec mollis quis tellus vitae cursus. Nullam consectetur risus vel erat rutrum, et molestie mauris vestibulum. Sed vulputate nisi risus, sit amet suscipit orci tempor eu. Nunc efficitur ultrices dui eu condimentum. Vivamus tempor dignissim mi a molestie. Vestibulum faucibus ligula ut velit imperdiet dignissim. Ut mattis euismod nisl, quis fermentum neque viverra a. Nulla nec enim enim. Pellentesque sed libero id neque vestibulum pellentesque in vel turpis. Suspendisse tempor, sapien fringilla vehicula faucibus, diam nulla faucibus mi, quis viverra nisi lorem quis diam. Proin in ex ac urna tempus pellentesque. Nullam sollicitudin varius justo, sit amet faucibus leo malesuada a. Aenean ac efficitur nulla.
+
+_item_params_2: &_item_p_2
+  title: 'Безопасность'
+
+_item_content_2: &_item_c_2
+  content: >
+    Mauris posuere pellentesque iaculis. Sed tortor justo, posuere in suscipit eu, rutrum eget odio. Curabitur ornare gravida ipsum ac vestibulum. Donec blandit mattis mi et congue. Ut volutpat in augue quis finibus. Integer posuere urna dignissim ipsum tincidunt varius. Vivamus posuere tristique sapien, faucibus suscipit ante vehicula in. Sed vitae nibh nisl. Nunc commodo urna in velit elementum dignissim. Ut faucibus, justo et maximus sodales, mi velit faucibus est, id eleifend leo augue at lacus. Suspendisse hendrerit neque augue, et imperdiet lorem aliquam nec. Morbi orci velit, bibendum a tempus nec, cursus vitae justo. Nullam tempus urna sit amet orci ornare convallis. Pellentesque feugiat felis nec mauris vestibulum, ut condimentum magna ultrices. Donec tincidunt tempor lacus eget varius.
+
+_item_params_3: &_item_p_3
+  title: 'Управление рекламой'
+
+_item_content_3: &_item_c_3
+  content: >
+    Mauris posuere pellentesque iaculis. Sed tortor justo, posuere in suscipit eu, rutrum eget odio. Curabitur ornare gravida ipsum ac vestibulum. Donec blandit mattis mi et congue. Ut volutpat in augue quis finibus. Integer posuere urna dignissim ipsum tincidunt varius. Vivamus posuere tristique sapien, faucibus suscipit ante vehicula in. Sed vitae nibh nisl. Nunc commodo urna in velit elementum dignissim. Ut faucibus, justo et maximus sodales, mi velit faucibus est, id eleifend leo augue at lacus. Suspendisse hendrerit neque augue, et imperdiet lorem aliquam nec. Morbi orci velit, bibendum a tempus nec, cursus vitae justo. Nullam tempus urna sit amet orci ornare convallis. Pellentesque feugiat felis nec mauris vestibulum, ut condimentum magna ultrices. Donec tincidunt tempor lacus eget varius.
+
+_expanders_content: &_exp_cnt
+  item1:
+    params:
+      <<: *_item_p_1
+    <<: *_item_c_1
+  item2:
+    params:
+      <<: *_item_p_2
+    <<: *_item_c_2
+  item3:
+    params:
+      <<: *_item_p_3
+    <<: *_item_c_3
+
+items:
+-
+  title: 'b-list-expander'
+  description: 'Базовый стиль блока. Изначальный размер b-list-expander_size_big'
+  fixture:
+    <<: *_exp_cnt
+-
+  name: 'b-list-expander_size_normal'
+  description: 'Уменьшиные табы'
+  fixture:
+    wrapper:
+      expander_size: 'normal'
+    <<: *_exp_cnt
+-
+  name: 'b-list-expander_style_indent-none'
+  description: 'У контентной части блока нет боковых отступов отступа'
+  fixture:
+    wrapper:
+      expander_style: 'indent-none'
+    <<: *_exp_cnt
+-
+  name: 'b-list-expander_style_selectable'
+  description: 'У заголовков нет болда'
+  fixture:
+    wrapper:
+      expander_style: 'selectable'
+    <<: *_exp_cnt
+-
+  name: 'b-list-expander_style_bg-none'
+  description: 'У элементов блока прозрачный фон'
+  fixture:
+    wrapper:
+      expander_style: 'bg-none'
+    <<: *_exp_cnt
+-
+  name: 'b-list-expander_style_indent-none && b-list-expander_style_bg-none'
+  description: 'Комбинация стилей'
+  fixture:
+    wrapper:
+      expander_style:
+        - 'indent-none'
+        - 'bg-none'
+    <<: *_exp_cnt
+-
+  name: 'b-list-expander_style_selectable && b-list-expander_style_bg-none'
+  description: 'Выделение заголовка блока.'
+  fixture:
+    wrapper:
+      expander_style:
+        - 'selectable'
+        - 'bg-none'
+    item1:
+      params:
+        title_class: 'b-list-expander__item_state_selected'
+        <<: *_item_p_1
+      <<: *_item_c_1
+    item2:
+      params:
+        <<: *_item_p_2
+      <<: *_item_c_2
+    item3:
+      params:
+        <<: *_item_p_3
+      <<: *_item_c_3
+-
+  name: 'b-list-expander_type_accordion'
+  description: 'Одновременно может быть открыт только один блок'
+  fixture:
+    wrapper:
+      is_accordion: 1
+    <<: *_exp_cnt
+-
+  name: 'divs_markup'
+  description: 'Разметка на дивах'
+  fixture:
+    wrapper:
+      divs_markup: 1
+    item1:
+      params:
+        divs_markup: 1
+        <<: *_item_p_1
+      <<: *_item_c_1
+    item2:
+      params:
+        divs_markup: 1
+        <<: *_item_p_2
+      <<: *_item_c_2
+    item3:
+      params:
+        divs_markup: 1
+        <<: *_item_p_3
+      <<: *_item_c_3
+-
+  name: 'subtitle'
+  description: 'Разметка на дивах'
+  fixture:
+    wrapper:
+      add_class: 'some_class'
+    item1:
+      params:
+        subtitle: 'доп текст для заголовка'
+        <<: *_item_p_1
+      <<: *_item_c_1
+    item2:
+      params:
+        subtitle: 'доп текст для заголовка'
+        <<: *_item_p_2
+      <<: *_item_c_2
+    item3:
+      params:
+        subtitle: 'доп текст для заголовка'
+        <<: *_item_p_3
+      <<: *_item_c_3
+-
+  name: 'other_attrs'
+  description: 'Дополнительные параметры: add_class | item_id | title_class | content_class | tab_expand'
+  fixture:
+    wrapper:
+      add_class: 'some_class'
+    item1:
+      params:
+        item_id: 'item_1_id'
+        title_class: 'title_class'
+        content_class: 'content_class'
+        <<: *_item_p_1
+      <<: *_item_c_1
+    item2:
+      params:
+        <<: *_item_p_2
+      <<: *_item_c_2
+    item3:
+      params:
+        tab_expand: 1
+        <<: *_item_p_3
+      <<: *_item_c_3

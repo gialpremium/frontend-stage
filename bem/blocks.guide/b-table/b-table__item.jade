@@ -1,0 +1,35 @@
+mixin getClass( options )
+  - options = options || {};
+  if options.className
+    |  #{options.className}
+  else if options.attr && options.attr.className
+    |  #{options.attr.className}
+
+mixin getAttrs( options )
+  - options = options || {};
+  - each val, key in options
+    unless key == 'className' || key == 'tag'
+      |  #{key}="#{val}"
+
+| <tr class="b-table__item
++getClass(self)
+|"
+if self.attr
+  +getAttrs(self.attr)
+| >
+- var row = self.row ? self.row : self
+each cell, i in row
+  | <td class="b-table__cell b-table__cell_type_content
+  if i === 0
+    |  b-table__cell_node_first
+  if i === row.length - 1
+    |  b-table__cell_node_last
+  +getClass(cell)
+  |"
+  if cell.attr
+    +getAttrs(cell.attr)
+  | >
+  - var cell_content = cell.content ? cell.content : cell
+  != cell_content
+  | </td>
+| </tr>

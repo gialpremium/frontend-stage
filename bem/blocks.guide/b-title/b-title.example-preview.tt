@@ -1,0 +1,5 @@
+[% invert = '#{mod}' == 'b-title_color_invert' %]
+
+<div style="border: 1px solid red; background: #FFDAE0;">
+    <strong class="b-title[% ' #{mod}' IF '#{mod}' %]" style="background: [% invert ? 'gray' : '#fff' %];">#{text}</strong>
+</div>

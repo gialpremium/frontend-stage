@@ -1,0 +1,155 @@
+name: 'b-radio'
+has_css: 1
+about: 'Элемент формы - радио батн.'
+
+details_md: |
+
+    ### Параметры:
+    - `params`
+      - `mods` - Модификаторы блока. На уровне темплейта символ `_` заменяется `-`. Значение у параметра можно передавать массивом
+          - `text_case` - стиль `text-transform` для лейбла. По умолчанию - `normal`.
+          - `font_weight` - стиль `font-weight` для лейбла. По умолчанию - `normal`.
+          - `font_size` - Размер шрифта у лейбла. По умолчанию - `normal`(15px/24px).
+          - `style` - Прочие стили.
+      - `attrs` - Атрибуты для `input:radio`.
+          - `id` - Обязательный аттрибут.
+      - `label` - Текст для лейбла
+      - `tooltip` - Добавляет тултип на лейбл
+
+items:
+-
+    title: 'b-radio'
+    description: 'Базовый стиль блока'
+    fixture:
+        params1:
+            attrs:
+                name: 'radio_exm_base'
+                id: 'radio_exm_base_1'
+                checked: 1
+            label: 'Donec bibendum tristique cursus. Donec mollis quis tellus vitae cursus.'
+        params2:
+            attrs:
+                name: 'radio_exm_base'
+                id: 'radio_exm_base_2'
+            label: 'Nullam consectetur risus vel erat rutrum, et molestie mauris vestibulum.'
+
+-
+    title: 'b-radio_text-case_upper'
+    description: 'Текст лейбла заглавными буквами'
+    fixture:
+        params1:
+            attrs:
+                name: 'radio_exm_upper'
+                id: 'radio_exm_upper_1'
+                checked: 1
+            mods:
+                text_case: 'upper'
+            label: 'Donec bibendum tristique cursus. Donec mollis quis tellus vitae cursus.'
+        params2:
+            attrs:
+                name: 'radio_exm_upper'
+                id: 'radio_exm_upper_2'
+            mods:
+                text_case: 'upper'
+            label: 'Nullam consectetur risus vel erat rutrum, et molestie mauris vestibulum.'
+
+-
+    title: 'b-radio_font-size_medium'
+    description: 'Текст лейбла среднего размера(20px/24px)'
+    fixture:
+        params1:
+            attrs:
+                name: 'radio_exm_medium'
+                id: 'radio_exm_medium_1'
+                checked: 1
+            mods:
+                font_size: 'medium'
+            label: 'Donec bibendum tristique cursus. Donec mollis quis tellus vitae cursus.'
+        params2:
+            attrs:
+                name: 'radio_exm_medium'
+                id: 'radio_exm_medium_2'
+            mods:
+                font_size: 'medium'
+            label: 'Nullam consectetur risus vel erat rutrum, et molestie mauris vestibulum.'
+   
+-
+    title: 'b-radio_font-size_big'
+    description: 'Текст лейбла большого размера(32px/36px)'
+    fixture:
+        params1:
+            attrs:
+                name: 'radio_exm_big'
+                id: 'radio_exm_big_1'
+                checked: 1
+            mods:
+                font_size: 'big'
+            label: 'Donec bibendum tristique cursus. Donec mollis quis tellus vitae cursus.'
+        params2:
+            attrs:
+                name: 'radio_exm_big'
+                id: 'radio_exm_big_2'
+            mods:
+                font_size: 'big'
+            label: 'Nullam consectetur risus vel erat rutrum, et molestie mauris vestibulum.'
+    
+-
+    title: 'b-radio_font-weight_bold'
+    description: 'Текст лейбла жирным.'
+    fixture:
+        params1:
+            attrs:
+                name: 'radio_exm_bold'
+                id: 'radio_exm_bold_1'
+                checked: 1
+            mods:
+                font_weight: 'bold'
+            label: 'Donec bibendum tristique cursus. Donec mollis quis tellus vitae cursus.'
+        params2:
+            attrs:
+                name: 'radio_exm_bold'
+                id: 'radio_exm_bold_2'
+            mods:
+                font_weight: 'bold'
+            label: 'Nullam consectetur risus vel erat rutrum, et molestie mauris vestibulum.'
+    
+
+-
+    title: 'b-radio_style_block'
+    description: 'Блочный стиль `display: block`.'
+    fixture:
+        params1:
+            attrs:
+                name: 'radio_exm_block'
+                id: 'radio_exm_block_1'
+                checked: 1
+            mods:
+                style: 'block'
+            label: 'Donec bibendum tristique cursus. Donec mollis quis tellus vitae cursus.'
+        params2:
+            attrs:
+                name: 'radio_exm_block'
+                id: 'radio_exm_block_2'
+            mods:
+                style: 'block'
+            label: 'Nullam consectetur risus vel erat rutrum, et molestie mauris vestibulum.'
+    
+
+-
+    title: 'b-radio_tooltip'
+    description: 'Добавление тултипа на лейбл'
+    fixture:
+        params1:
+            attrs:
+                name: 'radio_exm_tooltip'
+                id: 'radio_exm_tooltip_1'
+                checked: 1
+            label: 'Donec bibendum tristique cursus. Donec mollis quis tellus vitae cursus.'
+            tooltip: 'Donec bibendum tristique cursus. Donec mollis quis tellus vitae cursus.'
+        params2:
+            attrs:
+                name: 'radio_exm_tooltip'
+                id: 'radio_exm_tooltip_2'
+            label: 'Nullam consectetur risus vel erat rutrum, et molestie mauris vestibulum.'
+            tooltip: 'Nullam consectetur risus vel erat rutrum, et molestie mauris vestibulum.'
+    

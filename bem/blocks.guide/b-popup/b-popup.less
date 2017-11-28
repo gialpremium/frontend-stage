@@ -1,0 +1,129 @@
+@import '~i-less/i-less';
+
+// url(b-popup__close.png)
+.b-popup {
+    @bl: ~".b-popup";
+
+    position: absolute;
+    top: -10000px;
+    left: -10000px;
+    z-index: @zIndex-popup;
+    padding: 40px 45px;
+    box-shadow: @popup-shadow;
+    background: #fff;
+
+    &_responsive {
+        right: 20px;
+        left: 20px;
+        margin: 0 auto;
+
+        @media (max-width: 380px) {
+            right: 0;
+            left: 0;
+        }
+
+        .desktop({
+            width: 964px;
+        });
+
+        @{bl}__box {
+            padding: 40px 20px 20px;
+        }
+    }
+
+    &_padding {
+        &_small {
+            padding: 15px 20px;
+        }
+    }
+
+    &_border {
+        &_grey {
+            border: 5px solid #cecece;
+            box-shadow: none;
+        }
+    }
+
+    &_modal,
+    &_overlayed {
+        padding: 0;
+        background: transparent;
+
+        @{bl}__box {
+            position: relative;
+            padding: 18px;
+            background: #fff;
+
+            .desktop({
+                padding: 40px 45px;
+            })
+        }
+
+        &@{bl}_padding_small @{bl}__box {
+            padding: 15px 20px;
+        }
+
+
+        &@{bl}_padding_none @{bl}__box {
+            .desktop({
+                padding: 0;
+            })
+        }
+    }
+
+    &__close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1000;
+        width: 48px !important;
+        height: 48px !important;
+        text-decoration: none;
+        background-position: center;
+        cursor: pointer;
+
+        &_size {
+            &_big {
+                width: 90px !important;
+                height: 90px !important;
+            }
+        }
+    }
+
+    &__close-indent {
+        margin-top: 30px;
+    }
+
+    &__title {
+        display: block;
+        margin-bottom: 20px;
+        color: #ad1c00;
+        font: bold 20px/28px @face;
+    }
+
+    &__fade {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        background-color: #ccc;
+        opacity: 0.5;
+    }
+
+    &__group {
+        .md({
+            display: flex;
+            flex-direction: column;
+        })
+    }
+
+    &__group-item {
+        .md({
+            width: 100%;
+            margin: 0 0 12px 0;
+        })
+    }
+}

@@ -1,0 +1,24 @@
+[%
+PROCESS 'b-list-expander.inc';
+
+WRAPPER expander_list
+    #{wrapper};
+
+    WRAPPER expander_list_item
+        #{item1.params};
+        %]CONTENT[%
+    END;
+
+    WRAPPER expander_list_item
+        #{item2.params};
+        %]CONTENT[%
+    END;
+
+    WRAPPER expander_list_item
+        #{item3.params};
+        %]CONTENT[%
+    END;
+
+END;
+
+%]

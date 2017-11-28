@@ -1,0 +1,126 @@
+- block = 'b-select'
+
+mixin formatOption(option)
+  div.b-select__title
+   != option.title || option.attr.value
+    if option.discount
+      != JST['b-discount-flag']({ css_style: 1, flag_size: 'small', percent: option.discount })
+    if option.icon
+      span(class=option.icon)
+  div.b-select__text
+   != option.text || option.data.text
+    if option.price
+      div.b-select__price
+       != option.price
+        if option.price_old
+          span.b-select__price-old
+           != option.price_old
+
+mixin formatManualInput(manualInput)
+  input(
+    class='b-select__manual-input b-input'
+    class= self.isRequired ? ' required' : ''
+    type='text'
+    name=self.attr.name
+    placeholder=manualInput.placeholder
+    autocomplete='off'
+  )
+
+- function getBlockStyles()
+  - styles = self.styles || {}
+  - str = ''
+  - each val, key in styles
+    - str +=' ' + block + '_' + key.replace('_','-') + '_' + val
+  - return str
+
+-
+  function getStyleClasses(styles, prefix) {
+    var str = ''
+    for (var style in styles) {
+      str += ' ' + prefix + '_' + style.replace(/\_/g, '-') + '_' + styles[style]
+    }
+    return str
+  }
+
+
+//- подготавливаем данные для шаблона
+-
+  self.selected         = self.options[0]
+  self.attr             = self.attr || {}
+  self.current          = self.current || {}
+  self.current.data     = self.current.data || {}
+  self.current.styles   = self.current.styles || {}
+  self.list             = self.list || {}
+  self.label            = self.label || {}
+  self.wrapperClassName = self.wrapperClassName || ''
+
+each option, index in self.options
+  - option.data = option.data || {}
+  - option.attr = option.attr || {}
+
+  if option.discount
+    - discount_flag = JST['b-discount-flag']({ css_style: 1, flag_size: self.current.styles.font_size == 'medium' ? '': 'small', content: option.discount + '%'})
+    - option.data.title = (option.data.title || option.title || option.attr.value) + discount_flag
+
+  if option.attr.selected
+    - self.selected = option;
+  //- готовим data-атрибуты
+  - data = { 'data-value': option.attr.value }
+  each val, key in option.data
+    - data['data-' + key] = val
+  - self.options[index].data = data
+
+//- шаблон
+div(
+  class='#{block}' + getStyleClasses(self.styles, block)
+  class= self.attr.disabled ? '#{block}_' + 'state_disabled' : ''
+  class= self.attr.class
+  data-size= self.select_size
+  data-autowidth= self.autowidth
+)
+  if self.label && self.label.title
+    label(
+      class='#{block}__label'
+      class= self.label.class
+    )
+     != self.label.title
+  div(
+      class='#{block}__wrapper ' + self.wrapperClassName
+    )
+    div(
+      class='#{block}__current' + getStyleClasses(self.current.styles, '#{block}__current')
+      class= self.current.class
+    )
+      if self.manualInput
+        +formatManualInput(self.manualInput)
+      else
+        +formatOption(self.current.title ? self.current : self.selected)
+    div(
+      class='#{block}__list'
+    )
+      - each option in self.options
+        div(
+          class='#{block}__list-item'
+          class= option.attr.selected ? '#{block}__list-item_state_active' : ''
+          class= option.attr.disabled ? '#{block}__list-item_state_disabled' : ''
+        )&attributes(option.data)
+         +formatOption(option)
+    - delete self.attr.class
+    - delete self.attr.size
+    select(
+      class='#{block}__select' + ( self.isRequired ? ' required' : '' )
+    )&attributes(self.attr)
+      - each option in self.options
+        option(
+          value=    option.attr.value
+          selected= option.attr.selected || false
+          disabled= option.attr.disabled || false
+        )
+         != option.title || option.attr.value
+  if self.error
+    div(
+      class='#{block}__error'
+    )
+     != self.error
+
+

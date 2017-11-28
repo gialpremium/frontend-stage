@@ -1,0 +1,144 @@
+[%#
+
+INCLUDE 'b-select.inc'
+    params => {
+        options => [
+            {
+                title => тайтл опции,
+                text  => текст опции,
+                icon  => иконка опции,
+                attr => {
+                    value => value опции,
+                    selected => true | false, 1 | 0
+                    disabled => true | false, 1 | 0
+                }
+                data => {
+                    title => тайтл для подстановки вместо option.title,
+                    text  => текст для подстановки вместо option.text,
+                }
+            }
+        ],
+        select_size => кол-во видимых элементов селекта,
+        attr => {
+            name => атрибут name
+        },
+
+        styles  => {
+            bg        => 'default' //хэш стилей, добавит b-select_bg_default
+            font_size => 'small'   //b-select_font-size_small
+        },
+        current => {
+            title => текущий тайтл,
+            text  => текущий текст,
+            class => класс
+        },
+        label => {
+            title => добавляет лейбл к селекту,
+            class => класс лейбла
+        },
+        manual_input => {
+            placeholder => текст плэйсхолдера для инпута ручного ввода
+        },
+        is_required => обязательное поле
+        error => 'Текст ошибки'
+    };
+
+~%]
+[%
+
+SET attrs = '';
+FOREACH a = params.attr;
+    NEXT IF a.key == 'class' || a.key == 'size' || a.key == 'disabled';
+    attrs = attrs _ " $a.key=\"$a.value\"";
+END;
+
+SET selected = params.options.0;
+FOREACH option = params.options;
+    option.data = option.data || {};
+
+    IF option.discount;
+        discount_flag = INCLUDE 'b-discount-flag.inc'
+                        params => {
+                            css_style => 1,
+                            flag_size => params.current.styles.font_size == 'medium' ? '': 'small',
+                            percent   => option.discount
+                        };
+        option.data.title = (option.data.title || option.title || option.attr.value) _ discount_flag;
+    END;
+
+    IF option.attr.selected;
+        selected = option;
+    END;
+
+    data_attr = '';
+    FOREACH data = option.data;
+        value = data.value | html;
+        data_attr = data_attr _ " data-$data.key=\"$value\"";
+    END;
+
+    params.options.${loop.index}.data_attr = data_attr;
+END;
+
+MACRO style_classes(styles, prefix) BLOCK;
+    FOREACH style = styles;
+        ' ' _ prefix _ '_' _ style.key.replace('_', '-') _ '_' _ style.value;
+    END;
+END;
+
+%]
+[%~ BLOCK format_option ~%]
+        [% IF manual_input %]
+            <input type="text" name="[% params.attr.name %]" class="b-select__manual-input b-input [% params.is_required ? 'required' : '' %]" placeholder="[% manual_input.placeholder %]" autocomplete="off" />
+        [% ELSE %]
+            <div class="b-select__title">[%~ option.title || option.attr.value ~%]
+            [%-
+                IF option.discount;
+
+                    INCLUDE 'b-discount-flag.inc'
+                        params => {
+                            css_style => 1,
+                            flag_size => 'small',
+                            percent   => option.discount
+                        };
+                END;
+            %]
+
+            [%- IF option.icon -%]
+                <span class="[% option.icon %]"></span>
+            [%- END -%]
+
+            </div>
+
+            <div class="b-select__text">[% option.text ~%]
+            [%~ IF option.price %]
+                <div class="b-select__price">[% option.price %][% IF option.price_old %]<span class="b-select__price-old">[% option.price_old %]</span>[% END; %]
+                </div>
+            [% END; %]
+            </div>
+        [% END %]
+[%~ END # BLOCK ~%]
+
+<div class="b-select[% style_classes(params.styles, 'b-select') %][% ' b-select_state_disabled' IF params.attr.disabled %][% ' ' _  params.attr.class IF params.attr.class %]"[% ' data-size="'_ params.select_size _'"' IF params.select_size %][% ' data-autowidth="'_ params.autowidth _'"' IF params.autowidth %]>
+    [% IF params.label %]
+        <label class="b-select__label[% ' ' _ params.label.class IF params.label.class %]">[% params.label.title %]</label>
+    [% END %]
+    <div class="b-select__wrapper">
+        <div class="b-select__current[% style_classes(params.current.styles, 'b-select__current') %][% ' ' _ params.current.class IF params.current.class %]">[% INCLUDE format_option option = params.current.title ? params.current : selected, manual_input = params.manual_input %]
+        </div>
+        <div class="b-select__list">
+        [% FOREACH option = params.options %]
+            <div class="b-select__list-item[% ' b-select__list-item_state_active' IF selected.attr.value == option.attr.value %][% ' b-select__list-item_state_disabled' IF option.attr.disabled %]" data-value="[% option.attr.value %]"[% option.data_attr %]>[% INCLUDE format_option option = option %]
+            </div>
+        [% END %]
+        </div>
+
+        <select [% 'disabled="disabled"'  IF params.manual_input %] class="b-select__select [% params.is_required ? 'required' : '' %]"[% attrs %]>
+        [%~ FOREACH option = params.options ~%]
+            <option value="[% option.attr.value %]"[% ' selected="selected"' IF selected.attr.value == option.attr.value %][% ' disabled="disabled"' IF option.attr.disabled %][% option.data_attr %]>[% option.title || option.attr.value %]</option>
+        [%~ END ~%]
+        </select>
+    </div>
+    [% IF params.error %]
+        <div class="b-select__error">[% params.error %]</div>
+    [% END %]
+</div>

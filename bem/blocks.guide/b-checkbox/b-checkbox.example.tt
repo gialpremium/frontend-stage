@@ -1,0 +1,6 @@
+[%-
+    INCLUDE 'b-checkbox.inc'
+        params => {
+            #{fixture}
+        };
+-%]

@@ -1,0 +1,122 @@
+name: 'b-text'
+has_css: 1
+about: 'Параграф текста. Имеет нижний маргин(в примерах выделен розовым), который зависит от размера шрифта.'
+
+_exmp: &_text_less
+  text: >
+    Donec bibendum tristique cursus. Donec mollis quis tellus vitae cursus.
+_exmp: &_text
+  text: >
+    Donec bibendum tristique cursus. Donec mollis quis tellus vitae cursus. Nullam consectetur risus vel erat rutrum, et molestie mauris vestibulum.
+_exmp: &_text_large
+  text: >
+    Donec bibendum tristique cursus. Donec mollis quis tellus vitae cursus. Nullam consectetur risus vel erat rutrum, et molestie mauris vestibulum. Sed vulputate nisi risus, sit amet suscipit orci tempor eu. Nunc efficitur ultrices dui eu condimentum. Vivamus tempor dignissim mi a molestie.
+
+items:
+-
+  title: 'b-text'
+  description: 'По умолчанию имеет размер b-text_size_normal. fs/lh(15/24)'
+  fixture:
+    <<: *_text
+-
+  title: 'b-text_size_normal-compact'
+  description: 'Параграф текста с уменьшеной высотой строки. fs/lh(15/18)'
+  fixture:
+    <<: *_text
+    mod: 'b-text_size_normal-compact'
+-
+  title: 'b-text_size_small'
+  description: 'Мелкий размер шрифта. fs/lh(12/18)'
+  fixture:
+    <<: *_text_large
+    mod: 'b-text_size_small'
+-
+  title: 'b-text_size_small-compact'
+  description: 'Мелкий размер шрифта с уменьшеной высотой строки. fs/lh(12/12)'
+  fixture:
+    <<: *_text_large
+    mod: 'b-text_size_small-compact'
+-
+  title: 'b-text_size_medium'
+  description: 'fs/lh(20/30)'
+  fixture:
+    <<: *_text
+    mod: 'b-text_size_medium'
+-
+  title: 'b-text_size_medium-compact'
+  description: 'fs/lh(20/24)'
+  fixture:
+    <<: *_text
+    mod: 'b-text_size_medium-compact'
+-
+  title: 'b-text_size_large'
+  description: 'fs/lh(24/36)'
+  fixture:
+    <<: *_text
+    mod: 'b-text_size_large'
+-
+  title: 'b-text_size_large-compact'
+  description: 'fs/lh(24/30)'
+  fixture:
+    <<: *_text
+    mod: 'b-text_size_large-compact'
+-
+  title: 'b-text_size_big'
+  description: 'fs/lh(32/42)'
+  fixture:
+    <<: *_text
+    mod: 'b-text_size_big'
+-
+  title: 'b-text_size_big-compact'
+  description: 'fs/lh(32/36)'
+  fixture:
+    <<: *_text
+    mod: 'b-text_size_big-compact'
+-
+  title: 'b-text_size_huge'
+  description: 'fs/lh(48/60)'
+  fixture:
+    <<: *_text_less
+    mod: 'b-text_size_huge'
+-
+  title: 'b-text_size_huge-compact'
+  description: 'fs/lh(48/54)'
+  fixture:
+    <<: *_text_less
+    mod: 'b-text_size_huge-compact'
+-
+  title: 'b-text_size_giant'
+  description: 'fs/lh(72/84)'
+  fixture:
+    <<: *_text_less
+    mod: 'b-text_size_giant'
+-
+  title: 'b-text_size_giant-compact'
+  description: 'fs/lh(72/78)'
+  fixture:
+    <<: *_text_less
+    mod: 'b-text_size_giant-compact'
+-
+  title: 'b-text_color_invert'
+  description: 'Инвертный цвет текста'
+  fixture:
+    <<: *_text
+    mod: 'b-text_color_invert'
+-
+  title: 'b-text_color_minor'
+  description: 'Второстепенный цвет текста'
+  fixture:
+    <<: *_text
+    mod: 'b-text_color_minor'
+-
+  title: 'b-text_margin_none'
+  description: 'Убирает все маргины у блока'
+  fixture:
+    <<: *_text
+    mod: 'b-text_margin_none'
+-
+  title: 'b-text_margin_top'
+  description: 'Добавляет параграфу верхний маргин'
+  fixture:
+    <<: *_text
+    mod: 'b-text_margin_top b-text_size_medium-compact'

@@ -1,0 +1,247 @@
+@import '~i-less/i-less';
+
+.b-checkbox {
+    @bl: ~".b-checkbox";
+
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    padding-left: 24px;
+
+    &__label {
+        display: inline-block;
+        text-align: left;
+        cursor: pointer;
+
+        user-select: none;
+
+        @{bl}__native[disabled] + & {
+            cursor: default;
+        }
+    }
+
+    &__name {
+        display: inline-block;
+        color: @color-title;
+        vertical-align: middle;
+
+        @{bl}__native[disabled] + @{bl}__label > & {
+            color: @color-text-minor;
+        }
+
+        .b-link {
+            vertical-align: bottom;
+        }
+    }
+
+    &__fake {
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 22px;
+        height: 22px;
+        border: 1px solid #c4c4c4;
+        background-color: #fff;
+
+        &:active {
+            box-shadow: 0 1px 2px rgba( 0, 0, 0, 0.05 ), inset 0 1px 3px rgba( 0, 0, 0, 0.1 );
+        }
+        .lt-ie9 & {
+            display: none;
+        }
+    }
+
+    &__fake-mark {
+        display: none;
+        position: absolute;
+
+        &_style {
+            &_thin {
+                background-image: url('b-checkbox__fake-mark_style_thin.svg');
+                background-repeat: no-repeat;
+                width: 22px;
+                height: 22px;
+                background-position: center;
+            }
+
+            &_bold {
+                background-image: url('b-checkbox__fake-mark_style_bold.svg');
+                background-repeat: no-repeat;
+                top: -3px;
+                right: -2px;
+                width: 21px;
+                height: 23px;
+            }
+
+            &_huge {
+                background-image: url('b-checkbox__fake-mark_style_huge.svg');
+                background-repeat: no-repeat;
+                top: -3px;
+                right: -2px;
+                width: 38px;
+                height: 38px;
+            }
+        }
+    }
+
+    &__native:checked + &__label &__fake,
+    &__native[indeterminate] + &__label &__fake {
+        box-shadow: 0 1px 2px rgba( 0, 0, 0, 0.05 ), inset 0 -15px 10px -12px rgba( 0, 0, 0, 0.05 ), inset 15px 10px -12px rgba( 255, 255, 255, 0.1 );
+
+        & @{bl}__fake-mark {
+            display: block;
+        }
+    }
+
+    &__native[indeterminate] + &__label &__fake {
+        & @{bl}__fake-mark {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 80%;
+            height: 5px;
+            margin: auto;
+            background: #000;
+        }
+    }
+
+    &__native:disabled + &__label &__fake,
+    &__native:disabled + &__label &__name {
+        cursor: default;
+
+        opacity: .4;
+    }
+
+    &__native.glamor_error_border + &__label &__fake {
+        border: 1px solid @color-input-border-error;
+    }
+
+    &__native {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 24px; // ровнение для ошибки валидатора
+
+        opacity: 0;
+
+        .lt-ie9 & {
+            position: static;
+
+            opacity: 1;
+        }
+    }
+
+    &__list {
+        overflow: hidden;
+        height: 30px;
+        margin-right: 118px;
+
+        .desktop({
+            overflow: visible;
+            width: auto;
+            height: auto;
+            margin-right: 0;
+            margin-left: -24px;
+        });
+
+        @{bl} {
+            float: left;
+            margin: 0 18px 12px 0;
+
+            .desktop({
+                margin: 0 0 0 24px;
+            });
+        }
+    }
+
+    &_text-case {
+        &_normal {
+            @{bl}__name {
+                text-transform: none;
+            }
+        }
+
+        &_upper {
+            @{bl}__name {
+                text-transform: uppercase;
+            }
+        }
+    }
+
+    &_font-size {
+        &_normal {
+            font: @font-normal;
+
+            @{bl}__name {
+                padding-left: 9px;
+            }
+        }
+
+        &_medium {
+            font: @font-medium-compact;
+
+            @{bl}__name {
+                padding-left: 12px;
+            }
+        }
+
+        &_big {
+            font: @font-big-compact;
+
+            @{bl}__name {
+                padding-left: 12px;
+            }
+        }
+
+        &_old-is-gold {
+            font: 18px/24px @face;
+
+            @{bl}__name {
+                padding-left: 9px;
+            }
+        }
+    }
+
+    &_font-weight {
+        &_normal {
+            font-weight: normal;
+        }
+
+        &_bold {
+            font-weight: bold;
+        }
+    }
+
+    &_marker {
+        &_huge {
+            padding-left: 40px;
+
+            @{bl}__fake {
+                width: 38px;
+                height: 38px;
+            }
+        }
+    }
+
+    &_style {
+        &_block {
+            display: block;
+        }
+    }
+
+    // временно, для обратной совместимости
+    &_include_old {
+        @{bl}__name {
+            padding-left: 12px;
+            font: @font-normal;
+        }
+    }
+
+    & + .b-validate__short-error {
+        margin-top: 5px;
+        font: @font-normal-compact;
+    }
+}

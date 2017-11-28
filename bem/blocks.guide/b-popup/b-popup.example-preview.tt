@@ -1,0 +1,8 @@
+<a href="#[% '#{params.attr.id}' %]" class="b-popup__trigger-open">Открыть попап</a>
+[%
+    WRAPPER popup
+        #{params};
+
+        %] #{content} [%
+    END;
+%]

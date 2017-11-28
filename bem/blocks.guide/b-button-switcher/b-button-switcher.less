@@ -1,0 +1,193 @@
+@import '~i-less/i-less';
+
+.b-button-switcher {
+    @bl: ~".b-button-switcher";
+
+    display: inline-block;
+    position: relative;
+    height: 18px;
+    padding: 6px;
+    border-radius: 15px;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: @transition-default;
+    opacity: 1;
+
+    &:before,
+    &:after {
+        display: inline-block;
+        vertical-align: top;
+        box-sizing: content-box;
+    }
+
+    &_state {
+        &_on {
+            background: #06c98c;
+
+            &:before {
+                content: 'on';
+                .b-switcher-button-text();
+            }
+
+            &:after {
+                .b-switcher-button-dot();
+            }
+
+            .b-switcher-button-hover(#06c98c);
+        }
+
+        &_off {
+            background: #bcbcbc;
+
+            &:before {
+                .b-switcher-button-dot();
+            }
+
+            &:after {
+                content: 'off';
+                .b-switcher-button-text();
+            }
+
+            .b-switcher-button-hover(#bcbcbc);
+        }
+
+        &_processing&_on {
+            @{bl}__processing {
+                margin: 0 0 0 4px;
+            }
+
+            &:after {
+                content: none;
+            }
+        }
+
+        &_processing&_off {
+            &:before {
+                content: none;
+            }
+
+            @{bl}__processing_delayed {
+                left: 6px;
+            }
+        }
+
+        &_disabled {
+            cursor: default;
+            opacity: 0.5;
+        }
+
+        &_pause {
+            background: #e1c45d;
+            .b-switcher-button-hover(#e1c45d);
+        }
+    }
+
+    &_color_crytical {
+        background-color: #f97878;
+
+        .b-switcher-button-hover(#f97878);
+    }
+
+    &__processing {
+        display: inline-block;
+        position: relative;
+        z-index: 2;
+        width: 18px;
+        height: 18px;
+        margin: 0;
+        border-radius: 50%;
+        vertical-align: top;
+        background-color: @color-bg-invert;
+        opacity: 0.6;
+        animation: circlebounce 2.0s infinite ease-in-out;
+
+        &_delayed {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            z-index: 1;
+            animation-delay: -1.0s;
+        }
+
+        .no-cssanimations & {
+            background: url('b-button-switcher__processing.png') no-repeat 0 0;
+            opacity: 1;
+
+            &_delayed {
+                display: none;
+            }
+        }
+    }
+
+    &__pause {
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        border-right: 5px solid @color-input-border-invert;
+        border-left: 5px solid @color-input-border-invert;
+    }
+
+    &__hidden {
+        display: none;
+    }
+}
+
+.b-switcher-button-text() {
+    width: 30px;
+    padding: 0 9px;
+    color: @color-text-invert;
+    font: bold 15px/18px @face;
+    text-transform: uppercase;
+}
+
+.b-switcher-button-dot() {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    content: '';
+    background: @color-bg-invert;
+}
+
+.b-switcher-button-hover(@bg) {
+    &@{bl}_hover_on {
+        &:hover {
+            .i-hover-bg-color(@bg);
+        }
+
+        &:active {
+            .i-active-bg-color(@bg)
+        }
+    }
+}
+
+.b-switcher-button-keyframes {
+    0%,
+    100% {
+        transform: scale(0.0)
+    }
+
+    50% {
+        transform: scale(1.0);
+    }
+}
+
+@-webkit-keyframes circlebounce {
+    .b-switcher-button-keyframes;
+}
+
+@-moz-keyframes circlebounce {
+    .b-switcher-button-keyframes;
+}
+
+@-ms-keyframes circlebounce {
+    .b-switcher-button-keyframes;
+}
+
+@-o-keyframes circlebounce {
+    .b-switcher-button-keyframes;
+}
+
+@keyframes circlebounce {
+    .b-switcher-button-keyframes;
+}

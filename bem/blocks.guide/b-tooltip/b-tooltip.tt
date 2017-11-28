@@ -1,0 +1,12 @@
+[%- MACRO tooltip BLOCK -%]
+    [% tooltip_tag = href ? 'a' : 'span' %]
+    [% tooltip_icon = icon ? icon : 'b-icon_style_help' %]
+    <[% tooltip_tag %] class="b-icon [% tooltip_icon %] b-tooltip[% ' ' _ add_class IF add_class %]" data-title="[%- text | html -%]"
+        [%- " href='$href'" IF href -%]
+        [%- " id='$id'" IF id -%]
+        [%- " target='$target'" IF target -%]
+        [%- " style='$style'" IF style -%]
+        [%- " data-tooltip-width='$width'" IF width -%]
+        [%- " data-tooltip-extraclass='$extra_classes'" IF extra_classes -%]
+    ></[% tooltip_tag %]>
+[%- END # MACRO tooltip BLOCK -%]

@@ -1,0 +1,77 @@
+[%
+    # style_compact - используется для отрисовкии сообщения в b-popup
+    # type - тип сообщения ['alert']
+    # collapsed - изначально свёрнутое сообщение
+    # add_class
+    # prolong_message_id - уникальный id для сообщения
+    # attr.id - уникальный id без префикса
+    # hide_togglers - прячет кнопки свернуть/закрыть
+    # is_static - флаг статичного блока без сворачивания, прячет кнопки свернуть/закрыть
+    # message => {
+    #    title => 'заголовок'
+    #    text => 'текст сообщения'
+    #    html => 'html блок сообщения'
+    # }
+    # button => {
+    #     text => 'текст на кнопке'
+    #     url => 'ссылка'
+    #     color => 'цвет кнопки'
+    # }
+
+    prolong_message_id = attr.id || ( type == 'alert' ? 'alert_' : 'notify_') _ srv_id;
+%]
+<div class="b-message-stripe
+    [%~ ' b-message-stripe_type_' _ type IF type ~%]
+    [%~ ' b-message-stripe_style_compact'  IF style_compact ~%]
+    [%~ ' b-message-stripe_state_collapsed' IF collapsed ~%]
+    [%~ ' b-message-stripe_is_static'  IF is_static ~%]
+    [%~ ' ' _ add_class IF add_class ~%]"
+    [%~ ' style="' _ add_style _ '"' IF add_style ~%]
+     id="[% prolong_message_id %]"
+>
+    <div class="l-rel[% ' b-page__content-wrapper' UNLESS style_compact || wrapper_class %][% ' ' _ wrapper_class IF wrapper_class %]">
+        <div class="b-message-stripe__layout">
+            <div class="b-message-stripe__text-wrapper">
+            [% IF message.title  %]
+                <span class="b-message-stripe__title [% IF big_title_without_exclaim; 'b-message-stripe__title_size_big'; ELSE; 'b-icon b-icon_exclaim_medium'; END %]">
+                    [% message.title -%]
+                </span>
+            [% END %]
+            [% UNLESS message.html %]
+                <p class="b-message-stripe__text b-message-stripe__hiding">
+                    [% message.text -%]
+                </p>
+            [% ELSE %]
+                [% message.html -%]
+            [% END %]
+            </div>
+            <div class="b-message-stripe__button-wrapper">
+                [%- UNLESS style_compact || hide_togglers || is_static -%]
+                    <span class="b-message-stripe__toggle b-icon[% collapsed ? ' b-icon_style_unfold' : ' b-icon_style_fold' %]"></span>
+                    <span class="b-message-stripe__close b-icon b-icon_style_cross"></span>
+                [%- END -%]
+                [%
+                    IF button;
+                        IF button.before;
+                            '<div class="l-nowrap">';
+                            button.before;
+                        END;
+
+                        INCLUDE 'b-button.inc'
+                            attr => {
+                                href => button.url
+                                class => "b-message-stripe__button b-message-stripe__hiding ${button.attr.class}"
+                                id => button.attr.id
+                            },
+                            block => button.inline ? 0 : 1,
+                            size  => 'medium',
+                            color => button.color,
+                            text  => button.text;
+
+                        '</div>'  IF button.before;
+                    END;
+                %]
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+[%-
+    list_tag     = params.list_marker  == 'num' ? 'ol' : 'ul';
+
+    list_size    = params.item_size    || 'normal';
+    list_marker  = params.marker       || 'check';
+    marker_color = params.marker_color || 'green';
+    list_columns = params.columns      ?  " b-list_columns_${params.columns}" : " b-list_columns_none";
+    margin_none  = params.margin_none  ?  ' b-list_margin_none' : '';
+    marker_align = params.marker_align ?  " b-list_marker-align_${params.marker_align}" : '';
+
+    list_class   = "b-list b-list_size_${list_size} " _ list_columns _ margin_none _ ' ' _ marker_align _ params.list_class;
+    item_class   = "b-list__item b-list__item_marker_${list_marker} b-list__item_size_${list_size} b-list__item_color_${marker_color} ";
+
+    IF params.bemd;
+        params_md = {
+            classes = {
+                'ul' => list_class,
+                'ol' => list_class,
+                'li' => item_class,
+                'a'  => 'b-link',
+            }
+        };
+
+        params.list_items | bemd( params_md );
+
+    ELSE # IF params.bemd
+-%]
+    <[% list_tag %] class="[% list_class %]">
+    [%- FOREACH item IN params.list_items ~%]
+        [%~ UNLESS item.content ~%]
+            <li class="[% item_class %]">[%~ item ~%]</li>
+        [%~ ELSE ~%]
+            [%~
+                item_custom_tooltip = item.tooltip | html;
+
+                item_custom_marker  = item.marker    || list_marker;
+                item_custom_size    = item.item_size || list_size;
+                item_custom_color   = item.color     || marker_color;
+                item_custom_class   = "b-list__item b-list__item_marker_${item_custom_marker} b-list__item_size_${item_custom_size} b-list__item_color_${item_custom_color} ";
+                IF item.data;
+                    data_attrs = [];
+                    FOREACH d = item.data;
+                        data_attrs.push( "data-$d.key=\"$d.value\"" );
+                    END;
+                    item_data = data_attrs.join(' ');
+                END;
+            ~%]
+            <li class="[% item_custom_class %][% ' b-tooltip' IF item.tooltip %]" [% ' data-title="' _ item_custom_tooltip _ '"' IF item.tooltip %] [% item_data IF item.data %]>[%~ item.content ~%]</li>
+        [%~ END ~%]
+    [%~ END -%]
+    </[% list_tag %]>
+[% END # IF bemd %]

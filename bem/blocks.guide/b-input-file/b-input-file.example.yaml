@@ -1,0 +1,70 @@
+name: 'b-input-file'
+has_css: 1
+has_js: 1
+about: 'Элемент формы - файл. Связан с плагином jquery.MultiFile. Включает в себя блок b-button, которому можно передавать некоторые параметры. По умолчанию - medium серая кнопка с текстом t("dict.Attach_file"). Параметр data - data-атрибуты для настройки плагина jquery.MultiFile. Ограничения по размеру файлов - в Килобайтах. В примерах явно указан button.text - это только для гайда. '
+
+items:
+-
+  title: 'b-input-file'
+  description: 'Дефолт, без явного указания параметров '
+  fixture:
+    button:
+      text: 'Прикрепить файл'
+-
+  title: 'b-input-file_size_normal'
+  fixture:
+    size: 'normal'
+    button:
+      text: 'Прикрепить файл'
+-
+  title: 'b-input-file_size_big'
+  description: 'Большая кнопка'
+  fixture:
+    size: 'big'
+    button:
+      text: 'Прикрепить файл'
+-
+  title: 'label'
+  description: 'Лейбл + кнопка'
+  fixture:
+    label: 
+      text: 'Текст лейбла'
+      class: 'b-custom-label-class'
+    button:
+      text: 'Прикрепить файл'
+-
+  title: 'button'
+  description: |
+    Допустимые параметры кнопки:
+
+    - `text` - текст, по умолчанию _Прикрепить файл_
+    - `color` - цвет
+    - `icon_left` - иконка
+    - `text_size` - размер текста
+  fixture:
+    button:
+      text: 'Прикрепить файл'
+      color: 'important'
+      text_size: 'medium'
+      icon_left: 'add'
+-
+  title: 'data'
+  description: |
+    Настройки плагина:
+
+    - `max`     - максимальное кол-во файлов
+    - `maxfile` - макс. размер 1 файла
+    - `maxsize` - макс. размер всех файлов
+    - `minfile` - мин. размер 1 файла
+    - `minsize` - мин. размер всех файлов
+    - `accept`  - принимаемые плагином расширения файлов
+  fixture:
+    data:
+      max: 2
+      maxfile: 100
+      maxsize: 500
+      minfile: 50
+      minsize: 200
+      accept: 'gif|jpg|txt'
+    button:
+      text: 'Прикрепить файл'

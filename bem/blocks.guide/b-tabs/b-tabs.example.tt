@@ -1,0 +1,18 @@
+[%
+PROCESS 'b-tabs.inc';
+
+WRAPPER layout_tabs
+    #{wrapper};
+
+    WRAPPER layout_tabs_item
+        #{item1.params};
+        %]CONTENT[%
+    END;
+
+    WRAPPER layout_tabs_item
+        #{item2.params};
+        %]CONTENT[%
+    END;
+
+END;
+%]

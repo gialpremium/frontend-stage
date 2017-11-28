@@ -1,0 +1,153 @@
+@import '~i-less/i-less';
+
+.b-radio {
+    @bl: ~".b-radio";
+
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    padding-left: 24px;
+    margin-bottom: 12px;
+
+    &__label {
+        display: inline-block;
+        height: 24px;
+        margin-bottom: 0;
+        text-align: left;
+        cursor: pointer;
+        user-select: none;
+
+        @{bl}__native[disabled] + & {
+            cursor: default;
+        }
+    }
+
+    &__name {
+        display: inline-block;
+        color: @color-title;
+        vertical-align: middle;
+
+        @{bl}__native[disabled] + @{bl}__label > & {
+            color: @color-text-minor;
+        }
+    }
+
+    &__fake {
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 22px;
+        height: 22px;
+        margin-top: -11px;
+        border: 1px solid #c4c4c4;
+        border-radius: 12px;
+        background-color: #fff;
+
+        &:active {
+            box-shadow: 0 1px 2px rgba( 0, 0, 0, 0.05 ), inset 0 1px 3px rgba( 0, 0, 0, 0.1 );
+        }
+
+        .lt-ie9 & {
+            display: none;
+        }
+    }
+
+    &__fake-mark {
+        display: none;
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        width: 14px;
+        height: 14px;
+        border-radius: 14px;
+        background-color: @color-text;
+    }
+
+    &__native:checked + &__label &__fake {
+        box-shadow: 0 1px 2px rgba( 0, 0, 0, 0.05 ), inset 0 -15px 10px -12px rgba( 0, 0, 0, 0.05 ), inset 15px 10px -12px rgba( 255, 255, 255, 0.1 );
+
+        & @{bl}__fake-mark {
+            display: block;
+        }
+    }
+
+    &__native:disabled + &__label &__fake,
+    &__native:disabled + &__label &__name {
+        cursor: default;
+        opacity: 0.4;
+    }
+
+    &__native.glamor_error_border + &__label &__fake {
+        border: 1px solid @color-input-border-error;
+    }
+
+    &__native {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 24px;
+        opacity: 0;
+
+        .lt-ie9 & {
+            position: static;
+            opacity: 1;
+        }
+    }
+
+    &_text-case {
+        &_normal {
+            @{bl}__name {
+                text-transform: none;
+            }
+        }
+
+        &_upper {
+            @{bl}__name {
+                text-transform: uppercase;
+            }
+        }
+    }
+
+    &_font-size {
+        &_normal {
+            font: @font-normal;
+
+            @{bl}__name {
+                padding-left: 9px;
+            }
+        }
+
+        &_medium {
+            font: @font-medium-compact;
+
+            @{bl}__name {
+                padding-left: 12px;
+            }
+        }
+
+        &_big {
+            font: @font-big-compact;
+
+            @{bl}__name {
+                padding-left: 12px;
+            }
+        }
+    }
+
+    &_font-weight {
+        &_normal {
+            font-weight: normal;
+        }
+
+        &_bold {
+            font-weight: bold;
+        }
+    }
+
+    &_style {
+        &_block {
+            display: block;
+        }
+    }
+}

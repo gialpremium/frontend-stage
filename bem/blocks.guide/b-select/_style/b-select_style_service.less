@@ -1,0 +1,33 @@
+@import '~i-less/i-less';
+
+.b-select_style_service {
+    @bl: ~".b-select";
+
+    & @{bl}__price {
+        font-weight: bold;
+        font-size: @font-size-large;
+    }
+
+    & @{bl}__price-old {
+        margin-left: 18px;
+        color: #e88726;
+        font-weight: normal;
+        font-size: @font-size-normal;
+        text-decoration: line-through;
+    }
+
+    & @{bl}__current {
+        padding: 11px @indent-h-large + @indent-h-big 11px @indent-h-large;
+
+        &:after {
+            margin-top: -3px;
+            margin-left: -42px;
+            border-width: 10px;
+            border-top-width: 6px;
+        }
+    }
+
+    & @{bl}__list-item {
+        padding: 11px @indent-h-large + @indent-h-big 11px @indent-h-large;
+    }
+}

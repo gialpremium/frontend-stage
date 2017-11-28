@@ -1,0 +1,48 @@
+<div class="b-table__options b-popup-dropdown__wrapper l-float_clearfix l-margin_bottom-small">
+[% IF options.total_items %]
+    <span class="l-float_left b-table__total">[% options.total_items %]</span>
+[% END # total_items %]
+[% IF options.itemsonpage || options.type_switch %]
+    [%~ INCLUDE 'b-button-square.inc'
+        icon => 'settings',
+        color => 'default'
+        attr = {
+            class => 'b-popup-dropdown__trigger l-float_right l-margin_left-normal'
+        }
+    ~%]
+    <div class="b-popup-dropdown b-popup-dropdown_align_right">
+    [% IF options.itemsonpage %]
+        <strong class="b-title b-title_size_normal-compact">Строк на странице</strong>
+        <div class="b-list-buttons b-list-buttons_style_options b-list-buttons_arrow_up l-nowrap">
+        [% range = options.itemsonpage.range || [25, 50, 100, 200, 500] %]
+        [% FOREACH n = range %]
+          [%- IF n == itemsonpage -%]
+            <span class="b-list-buttons__item b-list-buttons__item_state_current">[%~ n ~%]</span>
+          [%- ELSE -%]
+            [% url_replaced_params = pager_url_ext_params.replace('&?itemsonpage=\d*','')%]
+            <a href="?itemsonpage=[% n %][% url_replaced_params IF pager_url_ext_params %]" class="b-list-buttons__item">[%~ n ~%]</a>
+          [%- END ~%]
+        [%- END # FOREACH %]
+        </div>
+    [% END # lots_cnt %]
+    [% IF options.type_switch %]
+        <strong class="b-title b-title_size_normal-compact l-margin_top-normal">Отображение</strong>
+        <div class="b-table__switch-type b-list-buttons b-list-buttons_style_options b-list-buttons_arrow_up l-nowrap">
+            <a href="#normal" class="b-list-buttons__item[% ' b-list-buttons__item_state_current' UNLESS isin('compact', type) %]">свободное</a>
+            <a href="#compact" class="b-list-buttons__item[% ' b-list-buttons__item_state_current' IF isin('compact', type) %]">компактное</a>
+        </div>
+    [% END # lots_cnt %]
+    </div>
+[% END # IF options.itemsonpage || options.type_switch %]
+[% IF options.add_options %]
+    <div class="b-list-buttons b-list-buttons_style_options b-list-buttons_arrow_down l-float_right l-nowrap">
+    [% FOREACH o IN options.add_options%]
+        [% IF o.href %]
+            <a href="[% o.href %]" class="b-list-buttons__item[% ' b-list-buttons__item_state_current' IF o.current && o.current != '' %] [% o.class %]">[% o.text %]</a>
+        [% ELSIF o.tag %]
+            <[% o.tag %] class="b-list-buttons__item [% o.class %]">[% o.text %]</[% o.tag %]>
+        [% END %]
+    [% END %]
+    </div>
+[% END # lots_cnt %]
+</div>

@@ -1,0 +1,141 @@
+[%# INCLUDE 'b-table.inc'
+titles - массив заголовков [{ title_name => 'имя колонки', sort_field => 'имя для сортировки', tooltip => 'тултип' }]
+table_head - массив строк thead (для сложной конфигурации th, по сути многострочный titles)
+table_data - массив строк таблицы (см. примеры в коде)
+table_data_footer - массив строк таблицы для вывода в <TFOOT>
+columns_num - число столбцов
+url_ext_params - параметры к ссылкам
+hover_off - отключаем ховер
+table_attr - атрибуты для таблицы
+table_types - включаем фильтры
+overflow_on - скроллить контент
+need_pgn - подключаем пагинацию
+table_options
+hide_last_border
+titles:
+    title_name
+    sort_field
+    js_sort_field
+    tooltip
+    no_node_classes
+%]
+[%-
+    need_hover  = table_data.size > 2 && !hover_off ? ' b-table_hover_on' : '';
+    ext_class   = table_attr.class ? ' ' _ table_attr.class : '';
+    overflow    = overflow_on ? ' b-table_overflow_on' : '';
+    columns_num = columns_num ? columns_num : table_data.0.size;
+    IF type;
+        type = type.length ? [type] : type; # если type строка, преобразуем значение в массив
+        table_types = ' b-table_type_' _ type.join(' b-table_type_') _ ' ';
+    END;
+    IF hide_last_border;
+        ext_class = ext_class _ ' b-table_border-last_hide';
+    END;
+    IF table_options;
+        '<div class="b-table__wrapper">';
+        INCLUDE 'b-table__options.inc'
+            options => table_options
+            url_ext_params => url_ext_params;
+    END;
+    IF titles.size() && !table_head.size();
+        table_head = [ titles ];
+    END;
+-%]
+[%- PROCESS 'b-tooltip.inc' # надо для вывода тултипов в гайде -%]
+<div class="b-table[%- need_hover -%][%- ext_class -%][% table_types %][% overflow %]"[%~ IF table_attr; INCLUDE element_attr attr_has = table_attr; END; ~%]>
+    <table class="b-table__content">
+        [%~ IF table_head %]
+        [% # криво работает IF title.sort_field (.b-table__cell_type_wrapper)%]
+        <thead class="b-table__head">
+            [% FOREACH titles = table_head %]
+            <tr>
+            [%~ FOREACH title = titles %]
+                [%-
+                    IF title.sort_field && title.sort_field == sortcol;
+                        sort_direct_class = sortorder == 'ASC' ? ' b-table__cell_sorted_desc' : ' b-table__cell_sorted_asc';
+                    ELSE;
+                        sort_direct_class = '';
+                    END;
+
+                    SET node_class = title.no_node_classes
+                        ? ''
+                        : loop.first
+                            ? ' b-table__cell_node_first'
+                            : loop.last
+                                ? ' b-table__cell_node_last'
+                                : '';
+                -%]
+                <th class="b-table__cell b-table__cell_type_thead[%- ' ' _ title.th_attr.class IF title.th_attr.class -%][% sort_direct_class _ node_class %][%- ' b-table__cell_white-space_normal' IF title.nobr -%]"
+                [%- IF title.th_attr; INCLUDE element_attr attr_has = title.th_attr; END; -%]>
+
+                [%~ IF title.sort_field -%]
+                    [%- INCLUDE table_sort_title t = title -%]
+                [%- ELSIF title.js_sort_field -%]
+                    <span class="b-table__sort-link">
+                        [%~ title.title_name || title ~%]
+                    </span>
+                [%- ELSE %]
+                    [%- title.title_name || title -%]
+                [%- END ~%]
+
+                [%- IF title.tooltip -%]
+                    [% tooltip(text = title.tooltip) %]
+                [%- END %]
+                </th>
+            [% END # FOREACH title = titles ~%]
+            </tr>
+            [% END # FOREACH titles = table_head %]
+        </thead>
+        [% END # IF titles ~%]
+
+        <tbody class="b-table__body">
+        [%~ FOREACH row = table_data %]
+            [%- INCLUDE row_item row = row -%]
+        [% END # FOREACH row in values ~%]
+        </tbody>
+
+        [%- IF need_pgn || table_data_footer %]
+        <tfoot>
+            [%- IF need_pgn %]
+            <tr>
+                <td class="b-table__cell b-table__cell_type_wrapper b-table__cell_border_none" colspan="[% columns_num %]">
+                    [% INCLUDE 'b-pagination_style_table.inc' %]
+                </td>
+            </tr>
+            [% ELSE %]
+                [%~ FOREACH row = table_data_footer %]
+                    [%- INCLUDE row_item row = row -%]
+                [% END # FOREACH row in values ~%]
+            [% END %]
+        </tfoot>
+        [% END %]
+    </table>
+    [% '</div>' IF table_options %]
+</div>
+
+[%- BLOCK table_sort_title %]
+    <a href="?sortcol=[% t.sort_field %][% IF sortcol == t.sort_field && sortorder == 'DESC' %]&amp;sortorder=ASC[% ELSE %]&amp;sortorder=DESC[% END %][% url_ext_params IF url_ext_params %]"
+       class="b-table__sort-link">
+        [%- t.title_name -%]
+    </a>
+[%-END # BLOCK element_attr %]
+[%~ BLOCK element_attr;
+    FOREACH attr = attr_has;
+        NEXT IF attr.key == 'class';
+        " $attr.key=\"$attr.value\"";
+    END;
+END; # BLOCK element_attr ~%]
+[%- BLOCK row_item %]
+    <tr class="b-table__item[%- ' ' _ row.tr_attr.class IF row.tr_attr.class -%]"
+        [%- IF row.tr_attr; INCLUDE element_attr attr_has = row.tr_attr; END; -%]>
+        [%- td_list = row.td_list || row %]
+        [%~ FOREACH cell = td_list %]
+            [% SET node_class = loop.first ? ' b-table__cell_node_first' : loop.last ? ' b-table__cell_node_last' : '' %]
+            [% SET type_class = cell.type ? " b-table__cell_type_${cell.type}" : ' b-table__cell_type_content' %]
+            <td class="b-table__cell[% type_class %][%~ ' ' _ cell.td_attr.class IF cell.td_attr.class ~%][%- ' b-table__cell_white-space_normal' IF cell.nobr -%][%-# ' b-table__cell_text_struck' IF cell.struck -%][% node_class %]"
+                [%~ IF cell.td_attr; INCLUDE element_attr attr_has = cell.td_attr; END; ~%]>
+                [%~ cell.content.defined ? cell.content : cell ~%]
+            </td>
+        [% END # FOREACH cell in row ~%]
+    </tr>
+[%-END # BLOCK row_item %]

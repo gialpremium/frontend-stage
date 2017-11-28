@@ -1,0 +1,51 @@
+mixin getClass( options )
+  - options = options || {}
+  if options.className
+    |  #{options.className}
+  else if options.attr && options.attr.className
+    |  #{options.attr.className}
+mixin getAttrs( options )
+  - options = options || {}
+  - each val, key in options
+    unless key == 'className' || key == 'tag'
+      |  #{key}="#{val}"
+
+| <div class="b-table
++getClass(self)
+if !self.hover_off
+  |  b-table_hover_on
+if self.overflow_on
+  |  b-table_overflow_on
+|"
+if self.attr
+  +getAttrs(self.attr)
+| >
+table.b-table__content
+  if self.titles
+    thead.b-table__head
+      tr
+        each title, i in self.titles
+          | <td class="b-table__cell b-table__cell_type_thead
+          +getClass(title)
+          if i === 0
+            |  b-table__cell_node_first
+          if i === self.titles.length - 1
+            |  b-table__cell_node_last
+          |"
+          if title.attr
+            +getAttrs(title.attr)
+          | >
+          - var title_content = title.content ? title.content : title
+          if title.sort
+            a(class='b-table__sort-link', href='##{title.sort}')
+              != title_content
+          else
+            != title_content
+          | </td>
+
+  - var body_class = self.body_class || ''
+  tbody(class="b-table__body #{body_class}")
+    if self.rows
+      for row in self.rows
+        != JST['b-table__item'](row)
+| </div>

@@ -1,0 +1,27 @@
+[%
+BLOCK expander_list;
+    expander_size = expander_size || 'big';
+    IF expander_style;
+        styles = ' b-list-expander_style_' _ expander_style.join(' b-list-expander_style_') _ ' ';
+    END;
+    SET current_dl = divs_markup ? 'div' : 'dl';
+    ~%]
+    <[% current_dl %] class="b-list-expander b-list-expander_size_[% expander_size %][% styles %] b-list-expander_js_no[% ' ' _ add_class IF add_class %][% ' b-list-expander_type_accordion' IF is_accordion %]">
+    [% content ~%]
+    </[% current_dl %]>
+[%~ END # BLOCK expander_list ~%]
+
+[%~
+BLOCK expander_list_item;
+    SET current_dt = divs_markup ? 'div' : 'dt';
+    SET current_dd = divs_markup ? 'div' : 'dd';
+    ~%]
+    <[% current_dt %] [% IF item_id %]id="[% item_id %]"[% END %] class="b-list-expander__item b-list-expander__item_state_[% tab_expand ? 'expand' : 'collapse' %] b-list-expander__item-title [% title_class %]">
+        <span class="b-list-expander__item-title-icon [% ' b-list-expander__item-title-icon_state_expand' IF tab_expand %]"></span>
+        [%~ title ~%]
+        [%~ IF subtitle %] <span class="b-list-expander__item-subtitle">[% subtitle %]</span>[% END ~%]
+    </[% current_dt %]>
+    <[% current_dd %] class="b-list-expander__item-content[% ' b-list-expander__item-content_state_expand' IF tab_expand %] [% content_class %]">
+        [%~ content ~%]
+    </[% current_dd %]>
+[%~ END # BLOCK expander_list_item ~%]

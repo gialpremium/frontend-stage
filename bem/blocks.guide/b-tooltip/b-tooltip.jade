@@ -1,0 +1,21 @@
+mixin tooltip(data)
+  - var tooltip_tag  = data.href ? 'a' : 'span'
+  - var tooltip_icon = data.icon ? data.icon : 'b-icon_style_help'
+  - var add_class    = data.add_class ? data.add_class : ''
+  - var text         = data.text ? data.text : ''
+
+  | <#{tooltip_tag} class='b-icon #{tooltip_icon} b-tooltip #{add_class}' data-title='#{text}'
+  if data.href
+    |  href='#{data.href}'
+  if data.id
+    |  id='#{data.id}'
+  if data.target
+    |  target='#{data.target}'
+  if data.style
+    |  style='#{data.style}'
+  if data.width
+    |  data-tooltip-width='#{data.width}'
+  if data.extra_classes
+    |  data-tooltip-extraclass='#{data.extra_classes}'
+  | ></#{tooltip_tag}>
+

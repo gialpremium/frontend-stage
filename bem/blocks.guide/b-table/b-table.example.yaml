@@ -1,0 +1,397 @@
+name: 'b-table'
+has_css: 1
+has_js: 1
+about: 'Таблицы'
+
+_f_titles: &_titles
+  titles:
+    - '#'
+    - First Name
+    - Last Name
+    - Username
+
+_f_data: &_data
+  table_data:
+    -
+      - 1
+      - Mark
+      - Otto
+      - @mdo
+    -
+      - 2
+      - Jacob
+      - Thornton
+      - @fat
+    -
+      - 3
+      - Larry
+      - Bird
+      - @twitter
+
+
+items:
+  -
+    title: 'b-table'
+    description: 'Дефолтные стили блока.'
+    fixture:
+      <<: [*_titles, *_data]
+  -
+    title: 'b-table_border-last_hide'
+    description: 'Не показывать бордер у последней строки таблицы'
+    fixture:
+      hide_last_border: 1
+      <<: [*_titles, *_data]
+  -
+    title: 'b-table_type_compact'
+    description: 'Компактных размеров таблица'
+    fixture:
+      type: 'compact'
+      <<: [*_titles, *_data]
+  -
+    title: 'b-table_type_aligned'
+    description: 'Первая колонка `width: 40%`, у последней - `text-align: right`'
+    fixture:
+      type: 'aligned'
+      <<: [*_titles, *_data]
+  -
+    title: 'b-table_type_scrollable'
+    description: 'Таблица с скроллом. Что бы нормально выгляделя - надо пинок со стороны JS, который выровняет заголовки и контент(Site.App.Views.FileManagerTable в блоке b-file-manager)'
+    fixture:
+      type: 'scrollable'
+      <<: [*_titles, *_data]
+  -
+    title: 'b-table_type_compact_aligned'
+    description: 'Модификатор `type` можно задавать ввиде массива значений'
+    fixture:
+      type:
+        - 'compact'
+        - 'aligned'
+      <<: [*_titles, *_data]
+  -
+    title: 'b-table_width_auto'
+    description: 'Таблица с `width: auto`'
+    fixture:
+      table_attr:
+        class: 'b-table_width_auto'
+      <<: [*_titles, *_data]
+  -
+    title: 'b-table_thead-bg_invert'
+    description: 'Инвертные заголовки'
+    fixture:
+      table_attr:
+        class: 'b-table_thead-bg_invert'
+      <<: [*_titles, *_data]
+  -
+    title: 'b-table_thead-weight_normal'
+    description: 'Инвертные тонкие заголовки'
+    fixture:
+      table_attr:
+        class: 'b-table_thead-bg_invert b-table_thead-weight_normal'
+      <<: [*_titles, *_data]
+  -
+    title: 'b-table_side-indent_none'
+    description: 'У крайних ячеек нет боковых отступов'
+    fixture:
+      table_attr:
+        class: 'b-table_side-indent_none'
+      <<: [*_titles, *_data]
+  -
+    title: 'b-table_hover_off'
+    description: 'Отключение ховера. Так же ховер не показывается, если в таблице меньше трех строк'
+    fixture:
+      hover_off: 1
+      <<: [*_titles, *_data]
+
+  -
+    title: 'b-table_overflow_on'
+    description: 'Включение горизонтальной прокрутки содержимого таблицы'
+    fixture:
+      overflow_on: 1
+      <<: [*_titles, *_data]
+  -
+    title: 'b-table_footer_data'
+    description: 'Выводит строки в теге `tfoor`. Используется для убирания ховера на нижней строке таблицы'
+    fixture:
+      <<: *_titles
+      table_data:
+        -
+          - 1
+          - Mark
+          - Otto
+          - @mdo
+        -
+          - 2
+          - Jacob
+          - Thornton
+          - @fat
+        -
+          - 3
+          - Larry
+          - Bird
+          - @twitter
+      table_data_footer:
+        -
+          - '#'
+          - First Name
+          - Last Name
+          - Username
+  -
+    title: 'b-table_titles_options'
+    description: |
+      Дополнительные параметры для ячеек заголовков:
+
+      - `sort_field` - Задает поле фильтрации(Фильтрация на уровне контроллера. Аттрибуты `sortcol` и `sortorder` присылает контроллер)
+      - `nobr` - разрешить перенос слов в ячейке
+      - `tooltip` - добавлят тултипт с текстом `tooltip`
+      - `url_ext_params` - набор гет параметров, которые добовляются ссылкам в пагинации и переключателях. Необходимо для сохранения состояний фильтров для данных таблицы
+
+    fixture:
+      sortcol: 'first_name'
+      sortorder: 'ASC'
+
+      <<: *_data
+      url_ext_params: '?pg=3&is_recommended=1&sortcol=dname&sortorder=ASC&itemsonpage=50'
+      titles:
+        - '#'
+        -
+          title_name: 'First Name'
+          sort_field: 'first_name'
+        -
+          title_name: Last Name Last Name Last Name Last Name Last Name Last Name Last Name Last Name Last Name
+          sort_field: last_name
+          nobr: 1
+        -
+          title_name: Username
+          sort_field: user_name
+          tooltip: 'tooltip'
+
+  -
+    title: 'b-table_row_classes'
+    description: 'Выделение строк таблицы'
+    fixture:
+      <<: *_titles
+      table_data:
+        -
+          - 1
+          - Mark
+          - Otto
+          - @mdo
+        -
+          tr_attr:
+            class: 'b-table__item_state_disabled'
+          td_list:
+            - 2
+            - Jacob
+            - Thornton
+            - @fat
+        -
+          tr_attr:
+            class: 'b-table__item_state_approve'
+          td_list:
+            - 3
+            - Larry
+            - Bird
+            - @twitter
+
+
+  -
+    title: 'b-table__cell_border_none'
+    description: 'Ручное управление бордерами в ячейках контента'
+    fixture:
+      <<: *_titles
+      table_data:
+        -
+          - 1
+          - Jacob
+          - Thornton
+          - @fat
+        -
+          -
+            content: 2
+            td_attr:
+              class: 'b-table__cell_border_none'
+          - 'Mark'
+          -
+            content: Otto
+            td_attr:
+              class: 'b-table__cell_border_none'
+          - '@mdo'
+        -
+          - 3
+          - Larry
+          - Bird
+          - @twitter
+
+  -
+    title: 'b-table__cell_border_top-bold'
+    description: 'Толстый бордер сверху. Обычно используется в последней строке'
+    fixture:
+      <<: *_titles
+      table_data:
+        -
+          - 1
+          - Jacob
+          - Thornton
+          - @fat
+        -
+          - 2
+          - Larry
+          - Bird
+          - @twitter
+        -
+          -
+            content: 3
+            td_attr:
+              class: 'b-table__cell_border_top-bold'
+          -
+            content: Mark
+            td_attr:
+              class: 'b-table__cell_border_top-bold'
+          -
+            content: Otto
+            td_attr:
+              class: 'b-table__cell_border_top-bold'
+          -
+            content: @mdo
+            td_attr:
+              class: 'b-table__cell_border_top-bold'
+  -
+    title: 'b-table__cell_width_fit-content'
+    description: 'Задает ячейкам колонки ширину, равную `width: 1%`'
+    fixture:
+      <<: *_data
+      titles:
+        - '#'
+        -
+          title_name: 'First Name'
+          th_attr:
+            class: 'b-table__cell_width_fit-content'
+        -
+          title_name: Last Name
+          th_attr:
+            class: 'b-table__cell_width_fit-content'
+        - Username
+  -
+    title: 'b-table__cell_width_full'
+    description: 'Задает ячейкам колонки ширину, равную `width: 100%`'
+    fixture:
+      <<: *_data
+      titles:
+        -
+          title_name: '#'
+          th_attr:
+            class: 'b-table__cell_width_full'
+        - First Name
+        - Last Name
+        - Username
+  -
+    title: 'b-table__cell_type_wrapper'
+    description: 'Убирает у ячейки внутренний отступ'
+    fixture:
+      <<: *_titles
+      table_data:
+        -
+          - 1
+          - Jacob
+          - Thornton
+          - @fat
+        -
+          - 2
+          - Larry
+          - Bird
+          - @twitter
+        -
+          -
+            content: 3
+            type: 'wrapper'
+          -
+            content: Mark
+            type: 'wrapper'
+          -
+            content: Otto
+            type: 'wrapper'
+          -
+            content: @mdo
+            type: 'wrapper'
+  -
+    title: 'b-table__cell_white-space_normal'
+    description: 'Разрешить перенос слов в ячейке'
+    fixture:
+      <<: *_titles
+      table_data:
+        -
+          - 1
+          - Jacob
+          - Thornton
+          - @fat
+        -
+          - 2
+          - Larry
+          - Bird
+          - @twitter
+        -
+          - 3
+          -
+            content: Mark Mark Mark Mark Mark Mark Mark Mark Mark Mark Mark Mark Mark Mark Mark Mark Mark Mark Mark Mark Mark Mark  Mark Mark Mark Mark Mark Mark Mark Mark Mark Mark Mark Mark Mark Mark Mark Mark Mark
+            nobr: 1
+          - Otto
+          - @mdo
+  -
+    title: 'b-table__options'
+    description: |
+      Доп. елементы для таблицы:
+
+      - `table_options.total_items` - Текст заголовка
+      - `table_options.type_switch` - Добавить переключатель вида свободное/компактное
+      - `table_options.itemsonpage` - Вывести переключатель 'Строк на странице'
+      - `table_options.itemsonpage.range` - Задать свой массив значений
+
+      параметр `itemsonpage` должен присылаться из контроллера
+    fixture:
+      <<: [*_titles, *_data]
+      itemsonpage: 50
+      table_options:
+        total_items: 'Всего 72359 лотов'
+        type_switch: 1
+        itemsonpage: 1
+      url_ext_params: '?pg=3&is_recommended=1&sortcol=dname&sortorder=ASC&itemsonpage=50'
+  -
+    title: 'b-table__pagination'
+    description: 'Пагинация для таблицы(серверная). Параметры `npages` и `pg` должны присылаться из контроллера'
+    fixture:
+      <<: [*_titles, *_data]
+      need_pgn: 1
+      npages: 333
+      pg: 85
+      url_ext_params: '?pg=3&is_recommended=1&sortcol=dname&sortorder=ASC&itemsonpage=50'
+
+  -
+    title: 'table_head'
+    description: Многострочный вариант параметра titles
+    fixture:
+      table_head:
+        -
+          - '#'
+          -
+            title_name: 'First Name'
+            th_attr:
+              class: 'b-table__cell_width_fit-content'
+          -
+            title_name: Last Name
+            th_attr:
+              class: 'b-table__cell_width_fit-content'
+          - Username
+        -
+          -
+            title_name: 'I am the colspan colspan colspan colspan'
+            th_attr:
+              colspan: 4
+      <<: *_data
+
+  -
+    title: 'b-table_thead-border_bottom'
+    description: Прозрачная шапка с нижним бордером
+    fixture:
+      table_attr:
+        class: 'b-table_thead-border_bottom'
+      <<: [*_titles, *_data]
