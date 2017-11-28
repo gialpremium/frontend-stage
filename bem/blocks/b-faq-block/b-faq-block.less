@@ -1,0 +1,82 @@
+@import '~i-variables/i-variables';
+@import '~i-less/i-less';
+
+.b-faq-block {
+    padding: 24px 30px;
+    margin: 0 0 24px;
+    position: relative;
+
+    .desktop({
+        padding: 40px 50px;
+    });
+
+    &_type {
+        &_code {
+            background: #f3f3f3;
+        }
+
+        &_advice {
+            background: #fff5df;
+        }
+
+        &_warning {
+            background: #fae0de;
+        }
+    }
+
+    &__title {
+        position: relative;
+        font: normal 20px/24px @face;
+        font-weight: bold;
+        padding: 0 0 0 35px;
+        margin: 0 0 15px;
+
+        .desktop({
+            padding-right: 170px;
+        });
+    }
+
+    &__icon {
+        display: block;
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    &__content {
+        font: normal 15px/24px @face;
+        overflow: auto;
+    }
+
+    &__download-link {
+        display: block;
+        position: absolute;
+        top: 40px;
+        right: 50px;
+        padding: 0 0 0 30px;
+        z-index: 1;
+    }
+
+    &__download-link-icon {
+        display: block;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 24px;
+        height: 24px;
+    }
+
+    &__addon {
+        display: none;
+
+        &_state_opened {
+            display: block;
+        }
+    }
+}

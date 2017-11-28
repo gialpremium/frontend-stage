@@ -1,0 +1,40 @@
+@import '~i-less/i-less';
+
+.l-bordered {
+
+    @rules: {
+        border: 5px solid @color-border-default;
+
+        &_size {
+            &_one {
+                border-width: 1px;
+            }
+
+            &_medium {
+                border-width: 10px;
+            }
+
+            &_big {
+                border-width: 15px;
+            }
+        }
+
+        &_color {
+            &_promo {
+                border-color: @color-border-promo;
+            }
+        }
+
+        &_style {
+            &_round {
+                border-radius: 6px;
+            }
+        }
+
+        &_none {
+            border: none;
+        }
+    };
+
+    .desktop(@rules);
+}

@@ -1,0 +1,23 @@
+@import '~i-less/i-less';
+
+.b-clipboard {
+    display: inline-block;
+    position: relative;
+    padding: @blh (round( 3 * @blh )) @blh @blh;
+    font: normal @font-large;
+    vertical-align: middle;
+    background-color: #fff;
+
+    &__copy {
+        position: absolute;
+        top: 20px;
+        right: 15px;
+    }
+
+    &__note {
+        display: inline-block;
+        margin-left: 24px;
+        font: normal @font-normal;
+        vertical-align: middle;
+    }
+}

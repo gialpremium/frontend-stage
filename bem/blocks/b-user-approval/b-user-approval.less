@@ -1,0 +1,72 @@
+@import '~i-less/i-less';
+
+.b-user-approval {
+    @bl: ~'.b-user-approval';
+
+    margin-bottom: @indent-v-normal;
+    background-color: @color-bg-default;
+
+    &__desc {
+        font: @font-normal;
+        background-color: @color-bg-default;
+        width: 507px;
+        margin: 0;
+        float: left;
+        padding: 36px 50px;
+
+        & .tooltip {
+            top: 3px;
+            position: relative;
+            left: 3px;
+        }
+    }
+
+    &__action {
+        background-color: @color-bg-default-darker;
+        margin: 0;
+        float: right;
+        padding: 24px 0;
+        font: @font-large-compact;
+        color: @color-text;
+        width: 389px;
+        min-height: 48px;
+        position: relative;
+
+        &-success {
+            width: 228px;
+            position: relative;
+            padding-left: 90px;
+            float: left;
+
+            & .b-icon {
+                position: absolute;
+                top: 8px;
+                left: 40px;
+            }
+
+            &-text {
+                font: bold @font-normal;
+                text-align: left;
+                display: block;
+            }
+
+            &-phone {
+                display: block;
+                font-weight: normal;
+            }
+        }
+
+        &-options {
+            height: 100%;
+            position: absolute;
+            right: 0px;
+            top: 0;
+            width: 70px;
+        }
+
+        &_style_not-approved {
+            padding: 24px 50px;
+            width: 289px;
+        }
+    }
+}

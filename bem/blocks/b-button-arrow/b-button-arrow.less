@@ -1,0 +1,127 @@
+@import '~i-less/i-less';
+
+.b-button-arrow {
+    @bl: ~".b-button-arrow";
+    @arrow-width: 24px; // если начнут меняться, разнести по size!
+    @bg-d: @button-color-default;
+
+    display: inline-block;
+    position: relative;
+    margin-right: 24px;
+    font: @font-normal;
+    padding: 12px 30px 12px 30px; // если начнут меняться, разнести по size!
+    cursor: pointer;
+    text-decoration: none;
+    box-sizing: border-box;
+
+    &:after {
+        content: ' ';
+        position: absolute;
+        top: 0px;
+        transition: 100ms ease-in-out;
+        // .i-triangle-right(_size_, _color_, @arrow-width);
+    }
+
+    &_color {
+        &_default {
+            background: @bg-d;
+            color: #515151; // в гайде на таком фоне белый цвет
+
+            transition: 100ms ease-in-out;
+
+            &:hover {
+                .i-hover-bg-color(@bg-d, 2%);
+            }
+            &:active {
+                .i-active-bg-color(@bg-d, 2%);
+            }
+
+
+            &@{bl}_direct_right{
+                &:hover {
+                    &:after {
+                        border-left-color: lighten(@bg-d, 2%)
+                    }
+                }
+                &:active {
+                    &:after {
+                        border-left-color: darken(@bg-d, 2%)
+                    }
+                }
+            }
+
+            &@{bl}_direct_left{
+                &:hover {
+                    &:after {
+                        border-right-color: lighten(@bg-d, 2%)
+                    }
+                }
+                &:active {
+                    &:after {
+                        border-right-color: darken(@bg-d, 2%)
+                    }
+                }
+            }
+
+
+        }
+    }
+    &_size {
+        &_normal {
+            height: 2 * @blh;
+
+            &@{bl}_direct_right{
+                &:after {
+                    .i-triangle-right(@blh, @bg-d, @arrow-width);
+                }
+            }
+
+            &@{bl}_direct_left{
+                &:after {
+                    .i-triangle-left(@blh, @bg-d, @arrow-width);
+                }
+            }
+        }
+        &_big {
+            height: 3 * @blh;
+
+            &@{bl}_valign_middle{
+                & @{bl}__title{
+                    margin-top: 12px;
+                }
+            }
+
+            &@{bl}_direct_right{
+                &:after {
+                    .i-triangle-right(1.5 * @blh, @bg-d, @arrow-width);
+                }
+            }
+
+            &@{bl}_direct_left{
+                &:after {
+                    .i-triangle-left(1.5 * @blh, @bg-d, @arrow-width);
+                }
+            }
+
+            & @{bl}__title {
+                display: block;
+                font: bold 20px/24px @face;
+            }
+        }
+    }
+    &_direct {
+        &_right:after {
+            right: -@arrow-width;
+        }
+        &_left:after {
+            left: -@arrow-width;
+        }
+    }
+
+    // неайс
+    &_style_page-title {
+        position: absolute;
+        top: -15px;
+        right: 0px;
+    }
+}

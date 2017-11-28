@@ -1,0 +1,121 @@
+@import '~i-less/i-less';
+
+.b-slider-select {
+    &__marks {
+        position: relative;
+        height: 34px;
+    }
+
+    &__marks-popup {
+        margin-left: -18px;
+    }
+
+    &__mark {
+        position: absolute;
+
+        &:before {
+            position: absolute;
+            top: 15px;
+            left: 12px;
+            width: 0;
+            height: 0;
+            border: 21px solid transparent;
+            border-top: 21px solid #999;
+            content: '';
+        }
+
+        &:after {
+            position: absolute;
+            top: 18px;
+            left: 20px;
+            width: 0;
+            height: 0;
+            border: 13px solid transparent;
+            border-top: 13px solid #fff;
+            content: '';
+        }
+
+        &_user-bid_max {
+            &:before {
+                border-top-color: #00974d;
+            }
+        }
+
+        &_user-bid_previous {
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        &_user-bid_lost {
+            bottom: -78px;
+            margin-left: -20px;
+
+            &:before {
+                top: -42px;
+                left: 32px;
+                border: 21px solid transparent;
+                border-bottom-color: #eb4444;
+            }
+
+            &:after {
+                top: -29px;
+                left: 40px;
+                border: 13px solid transparent;
+                border-bottom-color: #fff;
+            }
+        }
+
+        &_popup-user-bid_lost {
+            bottom: -88px;
+        }
+
+        .generate-columns(11);
+
+        .generate-columns(@position, @start_position: 0) when (@start_position =< @position) {
+          &_position-@{start_position} {
+            left: 2px + (@start_position * 48px - 48px);
+          }
+          .generate-columns(@position, (@start_position + 1));
+        }
+
+        &_position-0 {
+            display: none;
+        }
+    }
+
+    &__info {
+        padding-top: 6px;
+        margin-left: 512px;
+    }
+
+    &__info-marks {
+        position: relative;
+        padding-top: 2px;
+        padding-left: 46px;
+        margin: 0 0 10px 0;
+        text-decoration: none;
+
+        &:before {
+            top: 0;
+            left: 0;
+        }
+
+        &:after {
+            top: 3px;
+            left: 8px;
+        }
+
+        &_pointer_up {
+            bottom: auto;
+
+            &:before {
+                top: -23px;
+            }
+
+            &:after {
+                top: -10px;
+            }
+        }
+    }
+}
+

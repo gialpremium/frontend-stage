@@ -1,0 +1,19 @@
+[%~ # INCLUDE 'b-button-round.inc'action = 'remove' ~%]
+[%~
+    SET button_attr = '';
+        FOREACH a = attr;
+        NEXT IF a.key == 'class';
+        NEXT IF a.key == 'tag';
+        button_attr = button_attr _ " $a.key=\"$a.value\"";
+    END;
+
+    SET button_tag = 'span';
+    IF attr.type == 'button' || attr.type == 'submit';
+        button_tag = 'button';
+    ELSIF attr.href;
+        button_tag = 'a';
+    ELSIF attr.tag;
+        button_tag = attr.tag;
+    END;
+~%]
+<[% button_tag %] class="b-button-round b-button-round_action_[% action %][% ' ' _ attr.class IF attr.class %]"[% button_attr %]>[% text || action %]</[% button_tag %]>

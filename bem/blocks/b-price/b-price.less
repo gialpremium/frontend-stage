@@ -1,0 +1,90 @@
+@import '~i-less/i-less';
+
+.b-price {
+    @bl: ~".b-price";
+
+    position: relative;
+    text-decoration: none;
+    top: -2px;
+    white-space: nowrap;
+    line-height: normal;
+
+    &_unit_hide {
+        line-height: 50px;
+    }
+    &__from {
+        font: normal 18px @face;
+        letter-spacing: 0;
+        vertical-align: baseline;
+    }
+    &__from-desc {
+        font: 18px/24px @face;
+    }
+    &__amount {
+        display: inline-block;
+        font: bold 29px/30px @face;
+        padding:0 0 0 2px;
+        text-align: center;
+        vertical-align: baseline;
+    }
+    &__free {
+        display: inline-block;
+        font: bold 22px/30px @face;
+        padding:0 0 0 2px;
+        text-align: center;
+        vertical-align: baseline;
+    }
+    &__note {
+        position: absolute;
+    }
+    &__currency-wrapper {
+        display: inline-block;
+        letter-spacing: 0;
+        vertical-align: baseline;
+        text-align: left;
+    }
+    &__currency {
+        border-bottom: 1px solid #fff;
+        display: inline-block;
+        font: 14px @face;
+        text-decoration: none;
+        position: relative;
+        top: 3px;
+
+        &_color {
+            &_black {
+                border-color: #000;
+            }
+
+            &_text {
+                border-color: @color-text;
+            }
+        }
+
+        @{bl}_unit_hide & {
+            border-bottom: 0px none;
+            vertical-align: baseline;
+            top: 0px;
+        }
+    }
+    &__unit {
+        display: block;
+        font: 14px @face;
+        text-decoration: none;
+    }
+
+    &_size {
+        &_small {
+            @{bl}__from {
+                font-size: 16px;
+            }
+            @{bl}__amount{
+                font-size: 24px;
+            }
+        }
+
+        &_medium {
+            line-height: 56px;
+        }
+    }
+}

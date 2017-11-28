@@ -1,0 +1,111 @@
+@import '~i-less/i-less';
+
+.b-text-highlight {
+    @bl: ~'.b-text-highlight';
+
+    color: #333;
+    display: block;
+    font: @font-normal;
+    margin: 0 0 24px;
+    padding: 24px 50px;
+    position: relative;
+
+    &_style_inline {
+        display: inline-block;
+        margin: 1px 0 0;
+        padding: 0 8px 0 32px;
+
+        & @{bl}__icon {
+            width: 24px;
+        }
+    }
+
+    &__icon {
+        background-position: center center;
+        content: '';
+        display: block;
+        height: 24px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 36px;
+    }
+
+    &_color {
+        &_gray {
+            background-color: #f3f3f3;
+
+            & @{bl}__icon {
+                background-color: #e1dbdb;
+            }
+        }
+        &_yellow {
+            background-color: #fff5df;
+
+            & @{bl}__icon {
+               background-color: #f5ebd6;
+           }
+        }
+    }
+}
+
+
+.b-text-style {
+    @bl: ~'.b-text-style';
+
+    margin-bottom: 12px;
+    font: @font-normal;
+
+    &__title {
+        font: bold @font-normal;
+        margin-right: 12px;
+    }
+    &_type_inline {
+        display: inline-block;
+        margin: 1px 0 0;
+
+        & @{bl}__wrapper {
+            background-color: #fff5df;
+            margin: 0;
+            padding: 0 8px 0 32px;
+        }
+
+        & @{bl}__icon {
+            background-color: #f5ebd6;
+            width: 24px;
+        }
+    }
+    &__location {
+        background-color: #fff5df;
+        display: inline-block;
+        margin-bottom: 12px;
+        position: relative;
+        padding-left: 30px;
+        padding-right: 12px;
+
+        & @{bl}__icon {
+            background-color: #f5ebd6;
+            height: 24px;
+            width: 24px;
+        }
+    }
+    &__wrapper {
+        background-color: #f3f3f3;
+        display: block;
+        color: #333;
+        margin-bottom: 24px;
+        padding: 24px 50px;
+        position: relative;
+    }
+    &__icon {
+        background-color: #e1dbdb;
+        background-position: center center;
+        display: block;
+        height: 24px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 36px;
+    }
+}
+

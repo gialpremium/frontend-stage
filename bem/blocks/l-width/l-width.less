@@ -1,0 +1,83 @@
+@import '~i-less/i-less';
+
+.l-width {
+    // DEPRICATED START --->
+    &_100 {
+        width: 100px;
+    }
+    &_200 {
+        width: 200px;
+    }
+
+    &_260 {
+        width: 260px;
+    }
+    &_320 {
+        width: 320px;
+    }
+    &_460 {
+        width: 460px;
+    }
+    &_520 {
+        width: 520px;
+    }
+    &_700 {
+        width: 700px;
+    }
+    &_850 {
+        width: 850px;
+    }
+    &_max {
+        &_100 {
+            max-width: 100px;
+        }
+        &_300 {
+            max-width: 300px;
+        }
+    }
+    // <--- END DEPRICATED
+    &_full {
+        width: 100%;
+    }
+
+    &_half-quarter {
+        width: 75%;
+    }
+
+    &_half {
+        width: 50%;
+    }
+
+    &_quarter {
+        width: 25%;
+    }
+
+    &_site {
+        width: @site-width;
+
+        &.l-width_max {
+            max-width: @site-width;
+        }
+    }
+
+    &_auto {
+        .mobile({
+            width: auto;
+        }, mobile);
+    }
+}
+
+.l-width-loop(@n, @i: 1) when (@i <= @n) {
+    .l-width_grid-@{i} {
+        @column-width: ~"column-size-@{i}";
+
+        width: @@column-width;
+
+        &.l-width_max {
+            width: auto;
+            max-width: @@column-width;
+        }
+    }
+    .l-width-loop(@n, (@i + 1));
+}
+.l-width-loop(@column-max);

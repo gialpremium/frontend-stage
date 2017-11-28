@@ -1,0 +1,19 @@
+<div class="b-arrows-navigation">
+[% IF left_link %]
+    <a href="[%- left_link.path -%]" class="b-arrows-navigation__prev">
+        <div class="b-arrows-navigation__arrow-relative-wrapper">
+            <div class="b-arrows-navigation__arrow"></div>
+            <span class="b-arrows-navigation__controls-text">[% left_link.text %]</span>
+        </div>
+    </a>
+[% END %]
+    <div class="b-arrows-navigation__controls-divider"></div>
+[% IF right_link %]
+    <a href="[%- right_link.path -%]" class="b-arrows-navigation__next">
+        <div class="b-arrows-navigation__arrow-relative-wrapper">
+            <div class="b-arrows-navigation__arrow"></div>
+            <span class="b-arrows-navigation__controls-text">[% right_link.text %]</span>
+        </div>
+    </a>
+[% END %]
+</div>

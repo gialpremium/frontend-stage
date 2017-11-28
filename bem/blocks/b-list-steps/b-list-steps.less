@@ -1,0 +1,38 @@
+@import '~i-less/i-less';
+
+.b-list-steps {
+    @bl: ~".b-list-steps";
+
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    &__item {
+        position: relative;
+        color: @color-text;
+        margin-bottom: 24px;
+        padding: 12px 0 0 72px;
+
+        &:before {
+            content: attr(data-step);
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            width: 48px;
+            height: 48px;
+            background: #f3f3f3;
+            font: bold 20px/48px @face;
+            color: #515151;
+            text-align: center;
+        }
+    }
+    &__title {
+        display: block;
+        font: @font-medium;
+    }
+    &__desc {
+        margin: 0;
+        font: @font-normal;
+    }
+}

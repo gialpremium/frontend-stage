@@ -1,0 +1,18 @@
+<!--noindex-->
+[%
+    WRAPPER popup
+        attr => {
+            id => 'agava-popup',
+            class => 'b-agava-popup'
+        },
+        modal => 1,
+        responsive => 1,
+        show_bottom_close => {
+            text => t('dict.Continue')
+        };
+%]
+    <p class="b-text">
+        [% t('agava_popup.text') %]
+    </p>
+[% END %]
+<!--/noindex-->

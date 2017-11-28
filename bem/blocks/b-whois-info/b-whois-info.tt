@@ -1,0 +1,40 @@
+[%#
+    INCLUDE 'b-whois-info.inc'
+        params => {
+            class   => 'l-margin_bottom-small'
+            icon    => 'b-icon b-icon_shop_lot',
+            title   => 'заголовок,
+            text    => 'текст',
+            style   => 'compact|no-border',
+            buttons => [
+                # доступны все свойства из b-button.tt
+                {
+                    attr => {
+                        class => 'b-whois-info__button_size_normal',
+                        type  => 'submit',
+                    },
+                    text => 'текст кнопки',
+                }
+            ],
+        }
+%]
+[% SET params.icon  = params.icon  || 'b-icon b-icon_shop_lot'; %]
+
+<div class="b-whois-info[% ' ' _ params.class IF params.class %][% ' b-whois-info_style_' _ params.style IF params.style %]">
+    <div class="[% params.icon %] b-whois-info__icon"></div>
+    <div class="b-whois-info__content">
+        <div class="b-whois-info__title">[% params.title %]</div>
+        [% IF params.text %]
+            <div class="b-text b-whois-info__text">[% params.text %]</div>
+        [% END %]
+    </div>
+    [% IF params.buttons %]
+        <div class="b-whois-info__buttons">
+            [% FOR button_attr IN params.buttons;
+                import( button_attr );
+                button_attr.attr.class = 'b-whois-info__button ' _ button_attr.attr.class;
+                INCLUDE 'b-button.inc' IF button_attr.text;
+            END %]
+        </div>
+    [% END %]
+</div>

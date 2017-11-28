@@ -1,0 +1,20 @@
+[%#
+    INCLUDE 'b-loading.inc'
+        size        => размер (small),
+        hidden      => показывать/не показывать (0 || 1),
+        text        => 'Текст рядом с лоадером',
+        wrapped     => для показа лоадера поверх других блоков с l-rel (0 || 1),
+        bg_color    => Фон (invert, default)
+        class       => кастомые классы
+-%]
+
+<div class="b-loading[% ' b-loading_type_wrapped' IF wrapped %][% ' b-loading_bg_' _ bg_color IF bg_color %][% ' b-loading_display_none' IF hidden %][% ' ' _ class IF class %]">
+    <div class="b-loading__circle-wrapper[% ' b-loading__circle-wrapper_size_' _ size IF size %]">
+            <div class="b-loading__circle b-loading__circle_delayed"></div>
+            <div class="b-loading__circle"></div>
+        [%~ IF text ~%]
+            <div class="b-loading__text">[% text %]</div>
+        [%~ END ~%]
+    </div>
+</div>
+

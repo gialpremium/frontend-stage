@@ -1,0 +1,8 @@
+if self.options.length
+  select(class='i-dropdown b-dropdown b-dropdown_type_site', name='plan', id='plan')
+    each option, index in self.options
+      option(data-source = option.sourceString, selected = option.default, value = option.subtype)
+else
+  div.b-catalog-sites__loading
+    include ~b-loading/b-loading
+

@@ -1,0 +1,12 @@
+{
+    "env": {
+        "es6": true
+    },
+    "extends": "./eslint.json",
+    "parserOptions": {
+        "parser": "babel-eslint",
+        "sourceType": "module",
+        "allowImportExportEverywhere": true,
+        "ecmaVersion": 6
+    }
+}

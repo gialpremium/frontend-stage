@@ -1,0 +1,14 @@
+form.b-openID__form#openid_login_form(action="/user/openid_login", method="get",target="_blank")
+  label.b-openID__form-label#openid_username_label
+    span.b-openID__form-what-enter.b-text_size_normal-compact
+      !=t('authorize.auth.login')
+    | &nbsp;
+    span.b-openID__form-provider.b-text_size_normal-compact
+    span :
+    .b-openID__form-username-wrapper
+      input.b-openID__form-username#openid_username_label(type="text", name="username", maxlength="200")
+      span.b-openID__form-username-prefix.b-text_size_large-compact
+    .b-openID__form-buttons
+      input(type="hidden", name="openid_ident")
+      != JST['b-button']({attr: {type: 'submit', className: 'b-button_size_medium'}, text: t('authorize.enter') })
+

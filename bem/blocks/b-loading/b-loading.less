@@ -1,0 +1,133 @@
+@import '~i-less/i-less';
+
+.b-loading {
+    @bl: ~'.b-loading';
+
+    position: relative;
+    top: 0;
+    left: 0;
+
+    &__circle-wrapper {
+        display: inline-block;
+        position: relative;
+        z-index: 1;
+        width: 36px;
+        height: 36px;
+        margin: 0 auto;
+        vertical-align: middle;
+
+        &_size {
+            &_small {
+                width: 24px;
+                height: 24px;
+
+                & @{bl}__text {
+                    padding: 0 0 0 30px;
+                }
+            }
+        }
+
+        .no-cssanimations &,
+        .opera-old & {
+            width: 32px;
+            height: 32px;
+            background: url('b-loading.gif') no-repeat center;
+        }
+    }
+
+    &__circle {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background-color: #009bff;
+        opacity: 0.6;
+        transform: scale( 1 );
+        animation: circlebounce 2s infinite ease-in-out;
+
+        &_delayed {
+            animation-delay: -1s;
+        }
+
+        .no-cssanimations &,
+        .opera-old & {
+            display: none;
+        }
+    }
+
+    &__text {
+        padding: 6px 0 0 42px;
+        font: @font-normal;
+        white-space: nowrap;
+    }
+
+    &_type {
+        &_wrapped {
+            position: absolute;
+            z-index: 90;
+            width: 100%;
+            height: 100%;
+
+            @{bl}__circle-wrapper {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin: -18px 0 0 -18px;
+
+                &_size {
+                    &_small {
+                        margin: -12px 0 0 -12px;
+                    }
+                }
+            }
+        }
+
+        &_auth {
+            @{bl}__circle-wrapper {
+                margin-left: -75px;
+            }
+        }
+    }
+
+    &_display_none {
+        display: none;
+    }
+
+    &_bg {
+        &_default {
+            background: rgba( 243, 243, 243, 0.75 );
+        }
+
+        &_invert {
+            background: rgba( 255, 255, 255, 0.75 );
+        }
+
+        &_transparent {
+            background-color: transparent;
+        }
+    }
+
+    &_position {
+        &_fixed {
+            position: fixed;
+        }
+
+        &_absolute {
+            position: absolute;
+        }
+    }
+}
+
+@keyframes circlebounce {
+    0%,
+    100% {
+        transform: scale( 0 );
+    }
+
+    50% {
+        transform: scale( 1 );
+    }
+}

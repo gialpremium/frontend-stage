@@ -1,0 +1,29 @@
+{
+    "minify": true,
+    "options": [
+        "addTest",
+        "mq",
+        "testAllProps",
+        "testProp",
+        "teststyles",
+        "prefixes",
+        "domprefixes"
+    ],
+    "feature-detects" : [
+        "css/borderradius",
+        "css/boxshadow",
+        "css/rgba",
+        "css/textshadow",
+        "css/animations",
+        "css/gradients",
+        "css/transforms",
+        "css/transforms3d",
+        "css/transitions",
+        "input",
+        "img/webp",
+        "inputtypes",
+        "touchevents",
+        "css/boxsizing",
+        "css/displaytable"
+    ]
+}

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="443.999 362 36.002 40">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #cecece;
+      }
+    </style>
+  </defs>
+  <g transform="translate(444 362)">
+    <rect id="Rectangle_1411" data-name="Rectangle 1411" class="cls-1" width="36" height="40"/>
+    <path id="Path_1241" data-name="Path 1241" class="cls-2" d="M18,21.8l16-12A5.035,5.035,0,0,0,30,8H6A5.584,5.584,0,0,0,2,9.6Z"/>
+    <path id="Path_1242" data-name="Path 1242" class="cls-2" d="M16.2,23.8.4,12A5.917,5.917,0,0,0,0,14V26a5.893,5.893,0,0,0,6,6H30a5.893,5.893,0,0,0,6-6V14a5.917,5.917,0,0,0-.4-2L19.8,23.8,18,25.2h0"/>
+  </g>
+</svg>

@@ -1,0 +1,128 @@
+@import '~i-less/i-less';
+
+.b-steps-numeric {
+    @bl: ~".b-steps-numeric";
+
+    margin: 16px 24px 0 0;
+
+    &__bar {
+        display: table;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    &__wrapper {
+        position: relative;
+        height: 6px;
+        margin-top: 9px;
+        text-align: right;
+        background: #bcbcbc;
+    }
+
+    &__item {
+        display: table-cell;
+
+        &_node {
+            &_first {
+                width: 1%;
+
+                @{bl}__counter,
+                @{bl}__label,
+                @{bl}__label-text {
+                    left: 0;
+                }
+            }
+
+            &_last {
+                @{bl}__label,
+                @{bl}__label-text {
+                    right: 0;
+                    left: auto;
+                }
+            }
+        }
+
+        &_state {
+            &_prev {
+                @{bl}__wrapper {
+                    background: #0068ba;
+                }
+
+                @{bl}__counter {
+                    background: #0068ba;
+                    cursor: pointer;
+
+                    &:hover {
+                        .i-hover-bg-color(#0068ba, 7%);
+                    }
+                }
+
+                @{bl}__label-text {
+                    color: @color-text;
+                }
+            }
+
+            &_current {
+                @{bl}__wrapper {
+                    background: #0068ba;
+                }
+
+                @{bl}__counter {
+                    background: #06c98c;
+
+                    &:hover {
+                        .i-hover-bg-color(#06c98c);
+                    }
+                }
+
+                @{bl}__label-text {
+                    color: @color-text;
+                }
+            }
+
+            &_hold {
+                @{bl}__counter {
+                    cursor: pointer;
+
+                    &:hover {
+                        .i-hover-bg-color(#bcbcbc, 7%);
+                    }
+                }
+            }
+        }
+    }
+
+    &__label {
+        position: absolute;
+        bottom: 100%;
+        left: 12px;
+        white-space: nowrap;
+    }
+
+    &__label-text {
+        position: relative;
+        left: -50%;
+        color: #adadad;
+        font: @font-normal;
+    }
+
+    &__counter {
+        display: inline-block;
+        position: absolute;
+        top: -11px;
+        z-index: 1;
+        width: 25px;
+        height: 25px;
+        margin-left: -1px;
+        border-radius: 50%;
+        color: #fff;
+        font: @font-normal;
+        line-height: 25px;
+        text-align: center;
+        text-decoration: none;
+        background: #bcbcbc;
+        cursor: default;
+        transition: @transition-default;
+    }
+}

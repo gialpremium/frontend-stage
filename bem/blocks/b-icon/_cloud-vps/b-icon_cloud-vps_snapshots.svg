@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-103 -7620 48 40.455">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #4288c5;
+      }
+    </style>
+  </defs>
+  <g id="b-reselling-program__icon_type_free-soft" transform="translate(-103 -7626)">
+    <path id="Path_1587" data-name="Path 1587" class="cls-1" d="M44.129,6.017h-.106c-.056,0-.109-.017-.166-.017H3.871A3.872,3.872,0,0,0,0,9.872V42.559a3.883,3.883,0,0,0,3.866,3.879h31.3l.024.016h8.942A3.882,3.882,0,0,0,48,42.576V9.888a3.871,3.871,0,0,0-3.87-3.871ZM15.223,9.139H43.282a1.675,1.675,0,0,1,0,3.349H15.223a1.675,1.675,0,0,1,0-3.349Zm-5.143-.4A1.861,1.861,0,1,1,8.218,10.6,1.861,1.861,0,0,1,10.08,8.735Zm-5.4,0a1.864,1.864,0,1,1-1.316.546,1.861,1.861,0,0,1,1.316-.546Zm41.269,33.84A1.823,1.823,0,0,1,44.13,44.4H41.954l.024-.017H3.871A1.822,1.822,0,0,1,2.05,42.559V15.088h43.9Z"/>
+    <g id="Group_399" data-name="Group 399" transform="translate(4.978 17.405)">
+      <rect id="Rectangle_2008" data-name="Rectangle 2008" class="cls-1" width="17.859" height="10.752"/>
+      <rect id="Rectangle_2009" data-name="Rectangle 2009" class="cls-1" width="17.859" height="10.752" transform="translate(20.187)"/>
+      <rect id="Rectangle_2010" data-name="Rectangle 2010" class="cls-1" width="17.859" height="10.752" transform="translate(0 13.234)"/>
+      <rect id="Rectangle_2011" data-name="Rectangle 2011" class="cls-1" width="17.859" height="10.752" transform="translate(20.187 13.234)"/>
+    </g>
+  </g>
+</svg>

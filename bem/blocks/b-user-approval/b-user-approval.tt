@@ -1,0 +1,63 @@
+[%#
+    INCLUDE 'b-user-approval.inc'
+        params => {
+            description => {
+                text => 'bla', описание подтвеждаемого сервиса, в случае с is_phone не требуется
+                tooltip => 'bla', текст тултипа, если нужен
+            },
+            success => 1, сервис подтвержден
+            approved => {
+                text => 'bla', в случае с is_phone не требуется
+            },
+            is_phone => 1, блок про подтверждение номера телефона
+            phone => '+7 921 ... .. 67', подтвержденный номер
+            action => {
+                href => '', урл зеленой кнопки
+                text => '', текст зеленой кнопки
+            }
+        }
+%]
+
+<div class="b-user-approval">
+    <div class="b-user-approval__desc">
+        [%
+            params.is_phone ? t( 'services/paperless_services.approvals.phone.desc' ) : params.description.text;
+            IF params.description.tooltip;
+                tooltip( text = params.description.tooltip );
+            END;
+        %]
+    </div>
+    <div class="b-user-approval__action [% UNLESS params.success %]b-user-approval__action_style_not-approved[% END %]">
+        [% IF params.success %]
+        <div class="b-user-approval__action-success">
+            <span class="b-icon b-icon_user-approval_done-round"></span>
+            <span class="b-user-approval__action-success-text [% UNLESS params.is_phone && params.phone %]l-margin_top-small[% END %]">
+                [% params.is_phone ? t( 'services/paperless_services.approvals.phone.approved' ) : params.approved.text %]
+                [% IF params.is_phone && params.phone %]<span class="b-user-approval__action-success-phone">[% params.phone %]</span>[% END %]
+            </span>
+        </div>
+        [%~
+            IF params.is_phone;
+                INCLUDE 'b-button-square.inc'
+                    icon => 'settings',
+                    color => 'default',
+                    attr = {
+                        class => 'b-user-approval__action-options',
+                        href => '/user/prefs/sms'
+                    };
+            END;
+        ~%]
+
+        [% ELSE %]
+            [% INCLUDE 'b-button.inc'
+                attr => {
+                    href => params.is_phone ? '/user/prefs/sms' : params.action.href,
+                },
+                block => 1,
+                size => 'medium',
+                text => params.is_phone ? t( 'services/paperless_services.approvals.phone.button' ) : params.action.text;
+            %]
+        [% END %]
+    </div>
+    <div class="l-float_clear"></div>
+</div>

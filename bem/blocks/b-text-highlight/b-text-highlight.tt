@@ -1,0 +1,27 @@
+[% # icon : file || path || caatalog || code || hint || action %]
+[% # color default = gray || yellow %]
+
+[%
+    SET tag = 'span';
+    color = color || 'gray';
+    class = 'b-text-highlight b-text-highlight_color_' _ color;
+
+    IF icon == 'code';
+        tag = 'code';
+    END;
+
+    IF style == "inline";
+        class = class _ ' b-text-highlight_style_inline';
+    END;
+
+
+
+%]
+
+<[%tag%] class="[% class %]">
+    [% IF icon %]
+        <span class="b-text-highlight__icon b-text-highlight__icon_style_[% icon %]"></span>
+    [% END %]
+
+    [% text %]
+</[%tag%]>

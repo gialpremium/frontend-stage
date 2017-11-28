@@ -1,0 +1,33 @@
+<div class="b-slider-img[%
+    custom_init ? ' ' _ custom_init : ' i-slider-img';
+    ' ' _ add_class IF add_class;
+    ' b-slider-img_fancybox_on' IF use_fancybox;
+    ' b-slider-img_numbered-titles_on' IF numbered_titles;
+    ' b-slider-img_count_one' IF (slider_data.size == 1);
+%]">
+    <div class="b-slider-img__switcher">
+        <a href="#" class="b-slider-img__switch b-slider-img__switch_direct_prev">prev</a>
+        <span class="b-slider-img__counter">
+            <span class="b-slider-img__counter-current"></span>
+            <span class="b-slider-img__counter-total"></span>
+        </span>
+        <a href="#" class="b-slider-img__switch b-slider-img__switch_direct_next">next</a>
+    </div>
+    <div class="b-slider-img__list-wrapper">
+        [%~ add_header IF add_header ~%]
+        <div class="b-slider-img__list[%~ ' b-slider-img__list_height_dynamic' UNLESS images_height ~%]"[%~ ' style="height: ' _ images_height _ 'px;"' IF images_height ~%]>
+        [%~ FOREACH img IN slider_data %]
+            [%~ IF use_fancybox ~%]<a href="[% ( use_ext_urls ? use_ext_urls : static_prefix ) _ img.fancybox_url %]" class="b-slider-img__list-item">[% END ~%]
+            <img
+                src="[% ( use_ext_urls ? use_ext_urls : static_prefix ) _ img.url %]"
+                [%~ UNLESS use_fancybox ~%]class="b-slider-img__list-item"[% END ~%]
+                alt="[% img.desc %]"
+                title="[% img.desc %]"
+            />
+            [%~ IF use_fancybox ~%]</a>[% END ~%]
+        [%~ END # FOREACH img IN slider_data %]
+        </div>
+        [%~ add_footer IF add_footer ~%]
+    </div>
+    <p class="b-slider-img__list-item-title"></p>
+</div>

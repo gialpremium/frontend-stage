@@ -1,0 +1,49 @@
+@import '~i-less/i-less';
+
+.b-textarea {
+    @bl: ~".b-textarea";
+    padding: 11px 24px;
+    margin: 0;
+    border: 1px solid @color-input-border;
+    color: @color-text;
+    font: @font-normal;
+    background: #fff;
+    resize: none;
+
+    &_size {
+        &_small {
+            padding: 5px 12px;
+        }
+    }
+
+    &_style {
+        &_block {
+            display: block;
+            box-sizing: border-box;
+            width: 100%;
+        }
+    }
+
+    &_border {
+        &_invert {
+            border: 1px solid @color-input-border-invert;
+        }
+    }
+
+    &_font-size {
+        &_small {
+            font-size: @font-size-small;
+        }
+    }
+
+    &_font-family {
+        &_mono {
+            font-family: monospace;
+        }
+    }
+
+    &[disabled] {
+        opacity: .4;
+        cursor: default !important;
+    }
+}

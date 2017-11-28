@@ -1,0 +1,69 @@
+@import '~i-variables/i-variables';
+
+.b-confirmation-email {
+
+    &__window {
+        position: fixed;
+        left: 50%;
+        top: 20%;
+        display: block;
+        width: 825px;
+        margin-left: -412px;
+
+        .b-popup__fade {
+            display: block;
+        }
+        .b-popup__box {
+            padding: 80px 65px;
+        }
+        .b-text {
+            display: block;
+            margin: 0 0 5px;
+        }
+    }
+
+    &__message-item {
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        right: 0;
+    }
+
+    &__icon {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    &__content {
+        max-width: 565px;
+        display: inline-block;
+        margin-left: 30px;
+    }
+
+    .b-button {
+        display: block;
+    }
+
+    &__confirm-btn {
+        width: 490px;
+        margin-top: 20px;
+    }
+
+    &__errors {
+        margin-bottom: 12px;
+        max-width: inherit;
+    }
+
+    &__error-item {
+        margin: 0 6px 6px 0;
+        padding: 8px 21px 10px 21px;
+        display: inline-block;
+        background-color: @color-bg-important;
+        font-weight: bold;
+        max-width: 607px;
+        font-size: 15px;
+        color: @color-text-invert;
+    }
+
+}
+

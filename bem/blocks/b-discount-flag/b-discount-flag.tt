@@ -1,0 +1,1 @@
+<div class="b-discount-flag [% params.add_class %][% ' b-discount-flag_style_css' IF params.css_style %][% " b-discount-flag_size_${params.flag_size}" IF params.flag_size %]"><span class="b-discount-flag__content">[% IF params.percent.defined; "-${params.percent}%"; ELSE; params.content; END; %]</span></div>

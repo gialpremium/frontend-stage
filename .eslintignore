@@ -1,0 +1,6 @@
+root/js/**/*.js
+root/js2/**/*.js
+**/*.coffee.js
+**/*.jade.js
+**/*.spec.js
+modules/**/node_modules/**/*.js

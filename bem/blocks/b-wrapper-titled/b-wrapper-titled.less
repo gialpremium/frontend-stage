@@ -1,0 +1,31 @@
+@import '~i-less/i-less';
+
+.b-wrapper-titled {
+    @bl: ~".b-wrapper-titled";
+    border: 1px solid #DEDEDE;
+    background: #fff;
+
+    &_position_absolute {
+        border: none;
+        background: transparent;
+        position: absolute;
+        z-index: 1;
+        padding-right: 36px;
+    }
+
+    &__title {
+        background: #EFEFEF;
+        padding: 12px 24px;
+        position: relative;
+        border-bottom: 1px solid #dedede;
+        font: bold @font-normal;
+        color: #000;
+    }
+    &__content {
+        padding: 12px 24px;
+
+        &_indent_none {
+            padding: 0px;
+        }
+    }
+}

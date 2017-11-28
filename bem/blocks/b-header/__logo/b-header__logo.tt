@@ -1,0 +1,15 @@
+[% logo_href = logo_link ? logo_link : site_url_prefix_main %]
+[% logo_desc = logo_title ? logo_title : ru ? 'ООО &laquo;Регистратор доменных имен РЕГ.РУ&raquo;' : 'REG.RU Registrar of Domain Names Limited Liability Company' %]
+<div class="b-header__logo-wrapper">
+    <a href="[% logo_href %]/" class="b-header__logo[% ' b-header__logo_site_ru' IF ru %][% ' b-header__logo_site_ua' IF site.is_ua %][% ' b-header__logo_site_en' IF en %]" title="[% site.is_ua ? 'Логотип REG.UA' : 'Логотип REG.RU' %]">
+        <img
+            src="[% static_prefix %]/i/svg/b-header__logo_site_[% 'ru' IF ru && !site.is_ua %][% 'ua' IF site.is_ua %][% 'en' IF en %].svg"
+
+            alt="[% site.is_ua ? 'Логотип REG.UA' : 'Логотип REG.RU' %]"
+            class="b-header__logo-img i-svg l-hidden@mobile"
+            width="152" height="61"
+            title="[% logo_desc %]"
+        />
+        <div class="b-header__logo-mobile l-hidden@desktop"></div>
+    </a>
+</div>

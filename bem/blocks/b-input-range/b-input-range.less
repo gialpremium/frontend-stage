@@ -1,0 +1,72 @@
+@import '~i-less/i-less';
+
+.b-input-range {
+    @bl: ~".b-input-range";
+
+    border: 1px solid #c4c4c4;
+    background: #fff;
+    display: table;
+
+    &__label {
+        display: table-cell;
+        width: 50%;
+        border-left: 1px solid #c4c4c4;
+
+        &:first-child {
+            border: 0px none;
+        }
+    }
+    &__label-text,
+    &__field {
+        font: 15px/32px @face;
+        color: #333;
+    }
+    &__label-text {
+        background: #f3f3f3;
+        float: left;
+        padding: 0px 10px;
+    }
+    &__field-wrapper {
+        overflow: hidden;
+        position: relative; // юзается в датапикере
+    }
+    &__field {
+        background: #fff;
+        height: 32px;
+        width: 100% !important;
+        border:1px solid #fff;
+        padding: 0px 12px;
+        box-sizing: border-box;
+    }
+
+    &_style {
+        &_double {
+            @{bl}__label {
+                display: table-row;
+                width: 100%;
+
+                &:first-child {
+                    & @{bl}__label-text,
+                    & @{bl}__field-wrapper {
+                        border-bottom: 1px solid #c4c4c4;
+                    }
+                }
+            }
+
+            & @{bl}__label-text,
+            & @{bl}__field-wrapper {
+                float: none;
+                display: table-cell;
+            }
+        }
+
+        &_without-border {
+            border: none;
+        }
+    }
+    &_size {
+        &_full {
+            width: 100%;
+        }
+    }
+}

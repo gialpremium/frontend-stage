@@ -1,0 +1,62 @@
+[%# copy-paste
+INCLUDE 'b-switcher.inc'
+    add_class       => '',
+    switcher_submit => 1 : 0,
+    switcher_link   => 1 : 0,
+    switcher_on     => 0 : 1,
+    switcher_name   => '',
+    switcher_value  => '',
+    switcher_title  => '',
+    attr => {
+        'data-id' => 'id',
+    },
+    input_attr => {
+        'data-id' => 'id',
+    }
+%]
+[%#
+
+INCLUDE 'b-switcher.inc'
+    add_class       => '',      - добавление класса переключателю // потом убрать в attr
+    switcher_submit => 1 : 0,   - кнопка => button[submit] (js переключение не работает)
+    switcher_link   => 1 : 0,   - кнопка => cсылка с урлом switcher_link (js переключение не работает)
+    switcher_on     => 0 : 1,   - по умолчанию - переключатель в состоянии OFF
+    switcher_name   => '',      - name для переключателя // потом убрать в input_attr
+    switcher_value  => '',      - value для переключателя // потом убрать в input_attr
+    switcher_title  => '',      - title для переключателя (пока работает только для switcher_submit || switcher_link ) // потом убрать в input_attr
+    attr => {
+        'data-id' => 'id',      - кастомные атрибуты для переключателя (враппера)
+    },
+    input_attr => {
+        'data-id' => 'id',      - кастомные атрибуты для инпута
+    }
+
+-%]
+[%
+    attr_string = '';
+    FOREACH a = attr;
+        attr_string = " $a.key=\"$a.value\"" _ attr_string;
+    END;
+
+    input_attr_string = '';
+    FOREACH a = input_attr;
+        input_attr_string = " $a.key=\"$a.value\"" _ attr_string;
+    END;
+%]
+[% UNLESS switcher_title  %]
+    [% switcher_title_text = switcher_on ? (ru ? 'Выключить' : 'Switch off') : (ru ? 'Включить' : 'Switch on') %]
+[% ELSE # UNLESS switcher_title  %]
+    [% switcher_title_text = switcher_title %]
+[% END # UNLESS switcher_title  %]
+<span class="b-switcher b-switcher_state-size_2[%~ ' ' _ add_class IF add_class ~%][%~ ' b-switcher_js_no' IF switcher_link || switcher_submit ~%]"[% attr_string %]>
+[% UNLESS switcher_submit %]
+    <a class="b-switcher__button b-switcher__button_action_[% switcher_on ? 'off' : 'on' %]" href="[%~ switcher_link ? switcher_link : '#' ~%]" title="[% switcher_title_text %]">
+        <input
+            class="b-switcher__checkbox" type="checkbox" [% switcher_on ? 'checked="checked"' : '' %]
+            name="[% switcher_name %]" value="[% switcher_value || 1 %]"[% input_attr_string %] />
+    </a>
+[% ELSE # UNLESS switcher_submit %]
+    <button class="b-switcher__button b-switcher__button_action_[% switcher_on ? 'off' : 'on' %]"
+    [% 'disabled="disabled"' IF switcher_disabled %] type="submit" [% UNLESS switcher_disabled %]title="[% switcher_title_text %]"[% END %][% attr_string %]>submit</button>
+[% END # UNLESS switcher_submit %]
+</span>

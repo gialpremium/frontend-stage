@@ -1,0 +1,63 @@
+@import '~i-less/i-less';
+
+.b-pagination {
+    &_type_pages {
+        float: right;
+    }
+    &_type_show-on-page {
+        float: right;
+    }
+    &__pages-list {
+        margin: 0px;
+        padding: 0px 0px 0px 14px;
+        overflow: hidden;
+        list-style-type: none;
+    }
+    &__title {
+        padding: 0px !important;
+        font: 12px @face;
+        color: #000;
+    }
+    &__page-item {
+        float: left;
+        padding: 0px 0px 0px 6px;
+    }
+    &__page-link {
+        font: 12px @face;
+        color: #00509a;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    &__page-link:hover {
+        text-decoration: none;
+    }
+    &__page-link_state_current {
+        font-weight: bold;
+        color: #000 !important;
+        text-decoration: none !important;
+        cursor: default;
+    }
+    &__nav-button {
+        display: inline-block;
+        background: url(b-pagination__nav-button.png) no-repeat;
+        width: 21px;
+        height: 14px;
+        position: relative;
+        top: 1px;
+        cursor: pointer;
+        vertical-align: top;
+        .i-text__hidden();
+    }
+    &__nav-button_step_prev {
+        background-position: 0px 0px;
+    }
+    &__nav-button_step_prev-all {
+        background-position: 0px -14px;
+    }
+    &__nav-button_step_next {
+        background-position: -21px 0px;
+    }
+    &__nav-button_step_next-all {
+        background-position: -21px -14px;
+    }
+}

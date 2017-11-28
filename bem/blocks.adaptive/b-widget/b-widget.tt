@@ -1,0 +1,134 @@
+[%#
+    INCLUDE 'b-widget.inc'
+        params => {
+            attr => { //атрибуты блока
+                href => 'http://yandex.ru' //если задано, блок становится ссылкой
+            },
+            number => Number вместо иконки
+            icon   => 'класс иконки',
+            title  => 'заголовок',
+            text   => 'текст',
+            styles => {
+                style => 'compact' compact | card | card-column | card-column@mobile,
+                'button-valign' => 'top' // выравнивает кнопку
+            },
+
+            button => { // параметры для b-button / b-button-square, не работает если задан attr => href
+                attr => {
+                    href => ''
+                },
+                text => 'текст ссылки',
+                size => 'medium'
+            },
+
+            is_external      => 0 || 1, // внешний урл?
+            is_button_square => 1, // подключает b-button-square.inc вместо b-button
+
+
+        };
+
+
+    # Блок как враппер
+
+    WRAPPER widget
+        params => {
+            icon   => 'b-icon b-icon_metro_whois',
+            title  => 'Виджет стандартный с кастомным контентом',
+        };
+
+        # тут контент, если блок является ссылкой (attr => href), ссылки и кнопки в контенте работать не будут
+    END;
+%]
+[%-
+
+MACRO style_classes(styles, prefix) BLOCK;
+    FOREACH style = styles;
+        ' ' _ prefix _ '_' _ style.key.replace('_', '-') _ '_' _ style.value;
+    END;
+END;
+
+MACRO get_attrs(attrs) BLOCK;
+    FOREACH a = attrs;
+        NEXT IF a.key == 'class';
+        " $a.key=\"$a.value\"";
+    END;
+END;
+
+SET tag = params.attr.href ? 'a' : 'div';
+
+IF params.is_external;
+    params.attr.import({
+        target => '_blank',
+        rel    => 'nofollow noreferrer noopener'
+    });
+END;
+
+-%]
+
+[%- BLOCK widget -%]
+[%
+    UNLESS content || params.title || params.text;
+        RETURN;
+    END;
+%]
+
+<[% tag %] class="b-widget[% style_classes(params.styles, 'b-widget') %][% ' b-widget_type_link' IF params.attr.href %][% ' ' _ params.attr.class IF params.attr.class %]"[% get_attrs(params.attr) %]>
+    [% IF params.icon || params.number %]
+        <div class="b-widget__icon-wrapper">
+            [% IF params.icon %]
+                <div class="b-widget__icon [% params.icon %]"></div>
+            [% END %]
+            [% IF params.number %]
+                <div class="b-widget__number">[% params.number %]</div>
+            [% END %]
+        </div>
+    [% END %]
+
+    <div class="b-widget__content">
+        [% IF params.title %]
+            <div class="b-widget__title">[% params.title %]</div>
+        [% END %]
+        [% IF content %]
+            [% content %]
+        [% ELSIF params.text %]
+            <p class="b-text b-widget__text">[% params.text %]</p>
+        [% END %]
+    </div>
+
+    [% IF params.button %]
+        <div class="b-widget__button-wrapper">
+        [%
+
+            SET button_params = {};
+            button_params.import(params.button);
+            button_params.attr.import({
+                class => 'b-widget__button ' _ params.button.attr.class
+            });
+
+            IF params.is_external;
+                button_params.attr.import({
+                    target => '_blank',
+                    rel    => 'nofollow noreferrer noopener'
+                });
+            END;
+
+            button_params.size = params.button.size.length > 1 ? params.button.size : 'normal';
+            button_params.icon = params.button.icon || 'arrow-right';
+
+
+            IF params.is_button_square;
+                INCLUDE 'b-button-square.inc' params => button_params;
+            ELSE;
+                INCLUDE 'b-button.inc' params => button_params;
+            END;
+
+        %]
+        </div>
+    [% END %]
+    [% IF params.link %]
+        <a href="[% params.link | html %]" class="b-widget__link"></a>
+    [% END %]
+</[% tag %]>
+[%- END # BLOCK grid -%]
+
+[%- INCLUDE widget -%]

@@ -1,0 +1,172 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="555 401 54 60">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #e7e7e7;
+      }
+
+      .cls-2 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-3 {
+        fill: none;
+      }
+
+      .cls-4 {
+        fill: #34bef5;
+      }
+
+      .cls-5 {
+        opacity: 0.2;
+      }
+
+      .cls-6 {
+        fill: #fff;
+      }
+    </style>
+    <clipPath id="clip-path">
+      <rect id="_version_:_1.5.0_viewSource_:_x_:_0_y_:_0_width_:_36_height_:_40_resources_:_clipPaths_:_filters_:_gradients_:_masks_:_patterns_:_children_:_style_:_stroke_:_type_:_none_fill_:_type_:_none_name_:_type_:_shape_shape_:_type_:_rect_x_:_0_y_:_0_width_:_36_height_:_40_style_:_stroke_:_type_:_none_fill_:_type_:_solid_color_:_mode_:_RGB_value_:_r_:_52_g_:_190_b_:_245_name_:_type_:_shape_shape_:_type_:_circle_cx_:_18_cy_:_20_r_:_18_style_:_stroke_:_type_:_none_fill_:_type_:_solid_color_:_mode_:_RGB_value_:_r_:_0_g_:_0_b_:_0_opacity_:_0.2_name_:_type_:_shape_shape_:_type_:_path_path_:_M_35.26_25.082_l_-6.741_-8.416_L_24_22_H_18_l_-3_6_H_9_l_8.088_9.954_c_0.3_0.015_0.6_0.046_0.912_0.046_A_18_18_0_0_0_35.26_25.082_Z_style_:_stroke_:_type_:_none_fill_:_type_:_solid_color_:_mode_:_RGB_value_:_r_:_255_g_:_255_b_:_255_name_:_type_:_shape_shape_:_type_:_path_path_:_M_9_27.946_V_13_h_3.485_V_27.946_Z_style_:_stroke_:_type_:_none_fill_:_type_:_solid_color_:_mode_:_RGB_value_:_r_:_255_g_:_255_b_:_255_name_:_type_:_shape_shape_:_type_:_path_path_:_M_15.269_28_V_13_h_7.8_c_3.626_0_5.6_2.2_5.6_4.835_c_0_2.608_-2_4.835_-5.6_4.835_H_18.821_V_28_Z_m_9.781_-10.163_c_0_-1.259_-1.051_-2.024_-2.45_-2.024_H_18.821_v_4.047_H_22.6_C_24_19.858_25.049_19.071_25.049_17" data-name="{
+	&quot;version&quot;: &quot;1.5.0&quot;,
+	&quot;viewSource&quot;: {
+		&quot;x&quot;: 0,
+		&quot;y&quot;: 0,
+		&quot;width&quot;: 36,
+		&quot;height&quot;: 40
+	},
+	&quot;resources&quot;: {
+		&quot;clipPaths&quot;: {},
+		&quot;filters&quot;: {},
+		&quot;gradients&quot;: {},
+		&quot;masks&quot;: {},
+		&quot;patterns&quot;: {}
+	},
+	&quot;children&quot;: [
+		{
+			&quot;style&quot;: {
+				&quot;stroke&quot;: {
+					&quot;type&quot;: &quot;none&quot;
+				},
+				&quot;fill&quot;: {
+					&quot;type&quot;: &quot;none&quot;
+				}
+			},
+			&quot;name&quot;: &quot;&quot;,
+			&quot;type&quot;: &quot;shape&quot;,
+			&quot;shape&quot;: {
+				&quot;type&quot;: &quot;rect&quot;,
+				&quot;x&quot;: 0,
+				&quot;y&quot;: 0,
+				&quot;width&quot;: 36,
+				&quot;height&quot;: 40
+			}
+		},
+		{
+			&quot;style&quot;: {
+				&quot;stroke&quot;: {
+					&quot;type&quot;: &quot;none&quot;
+				},
+				&quot;fill&quot;: {
+					&quot;type&quot;: &quot;solid&quot;,
+					&quot;color&quot;: {
+						&quot;mode&quot;: &quot;RGB&quot;,
+						&quot;value&quot;: {
+							&quot;r&quot;: 52,
+							&quot;g&quot;: 190,
+							&quot;b&quot;: 245
+						}
+					}
+				}
+			},
+			&quot;name&quot;: &quot;&quot;,
+			&quot;type&quot;: &quot;shape&quot;,
+			&quot;shape&quot;: {
+				&quot;type&quot;: &quot;circle&quot;,
+				&quot;cx&quot;: 18,
+				&quot;cy&quot;: 20,
+				&quot;r&quot;: 18
+			}
+		},
+		{
+			&quot;style&quot;: {
+				&quot;stroke&quot;: {
+					&quot;type&quot;: &quot;none&quot;
+				},
+				&quot;fill&quot;: {
+					&quot;type&quot;: &quot;solid&quot;,
+					&quot;color&quot;: {
+						&quot;mode&quot;: &quot;RGB&quot;,
+						&quot;value&quot;: {
+							&quot;r&quot;: 0,
+							&quot;g&quot;: 0,
+							&quot;b&quot;: 0
+						}
+					}
+				},
+				&quot;opacity&quot;: 0.2
+			},
+			&quot;name&quot;: &quot;&quot;,
+			&quot;type&quot;: &quot;shape&quot;,
+			&quot;shape&quot;: {
+				&quot;type&quot;: &quot;path&quot;,
+				&quot;path&quot;: &quot;M 35.26 25.082 l -6.741 -8.416 L 24 22 H 18 l -3 6 H 9 l 8.088 9.954 c 0.3 0.015 0.6 0.046 0.912 0.046 A 18 18 0 0 0 35.26 25.082 Z&quot;
+			}
+		},
+		{
+			&quot;style&quot;: {
+				&quot;stroke&quot;: {
+					&quot;type&quot;: &quot;none&quot;
+				},
+				&quot;fill&quot;: {
+					&quot;type&quot;: &quot;solid&quot;,
+					&quot;color&quot;: {
+						&quot;mode&quot;: &quot;RGB&quot;,
+						&quot;value&quot;: {
+							&quot;r&quot;: 255,
+							&quot;g&quot;: 255,
+							&quot;b&quot;: 255
+						}
+					}
+				}
+			},
+			&quot;name&quot;: &quot;&quot;,
+			&quot;type&quot;: &quot;shape&quot;,
+			&quot;shape&quot;: {
+				&quot;type&quot;: &quot;path&quot;,
+				&quot;path&quot;: &quot;M 9 27.946 V 13 h 3.485 V 27.946 Z&quot;
+			}
+		},
+		{
+			&quot;style&quot;: {
+				&quot;stroke&quot;: {
+					&quot;type&quot;: &quot;none&quot;
+				},
+				&quot;fill&quot;: {
+					&quot;type&quot;: &quot;solid&quot;,
+					&quot;color&quot;: {
+						&quot;mode&quot;: &quot;RGB&quot;,
+						&quot;value&quot;: {
+							&quot;r&quot;: 255,
+							&quot;g&quot;: 255,
+							&quot;b&quot;: 255
+						}
+					}
+				}
+			},
+			&quot;name&quot;: &quot;&quot;,
+			&quot;type&quot;: &quot;shape&quot;,
+			&quot;shape&quot;: {
+				&quot;type&quot;: &quot;path&quot;,
+				&quot;path&quot;: &quot;M 15.269 28 V 13 h 7.8 c 3.626 0 5.6 2.2 5.6 4.835 c 0 2.608 -2 4.835 -5.6 4.835 H 18.821 V 28 Z m 9.781 -10.163 c 0 -1.259 -1.051 -2.024 -2.45 -2.024 H 18.821 v 4.047 H 22.6 C 24 19.858 25.049 19.071 25.049 17" class="cls-1" width="54" height="60" rx="10" transform="translate(494 893)"/>
+    </clipPath>
+  </defs>
+  <g id="Mask_Group_1" data-name="Mask Group 1" class="cls-2" transform="translate(61 -492)">
+    <g id="IP" data-name="IP" transform="translate(494 893)">
+      <rect id="Rectangle_1" data-name="Rectangle 1" class="cls-3" width="54" height="60"/>
+      <circle id="Ellipse_1" data-name="Ellipse 1" class="cls-4" cx="27" cy="27" r="27" transform="translate(0 3)"/>
+      <path id="Path_1" data-name="Path 1" class="cls-5" d="M52.89,37.623,42.778,25,36,33H27l-4.5,9h-9L25.632,56.931c.45.022.9.069,1.368.069A27,27,0,0,0,52.89,37.623Z"/>
+      <path id="Path_2" data-name="Path 2" class="cls-6" d="M13.5,41.919V19.5h5.227V41.919Z"/>
+      <path id="Path_3" data-name="Path 3" class="cls-6" d="M22.9,42V19.5H34.6c5.439,0,8.4,3.3,8.4,7.252C43,30.664,40,34,34.6,34H28.231v8ZM37.575,26.756c0-1.889-1.576-3.036-3.675-3.036H28.231V29.79H33.9c2.1,0,3.674-1.184,3.674-3.038Z"/>
+    </g>
+  </g>
+</svg>

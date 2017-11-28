@@ -1,0 +1,113 @@
+@import '~i-less/i-less';
+
+.b-arrow {
+    @bl: ~".b-arrow";
+
+    display: inline-block;
+    position: relative;
+    padding: 16px 30px;
+    background: @color-bg-invert;
+
+    &:after {
+        position: absolute;
+        width: 0;
+        height: 0;
+        margin-left: -24px;
+        border: solid transparent;
+        border-width: 24px;
+        content: ' ';
+        pointer-events: none;
+    }
+
+    &_size {
+        &_medium {
+            &:after {
+                margin-left: -30px;
+                border-width: 30px;
+            }
+
+            &@{bl}_direction_left,
+            &@{bl}_direction_right {
+                margin-top: -30px;
+            }
+        }
+    }
+
+    &_direction {
+        &_top {
+            &:after {
+                bottom: 100%;
+                left: 50%;
+                border-bottom-color: @color-bg-invert;
+            }
+        }
+
+        &_bottom {
+            &:after {
+                top: 100%;
+                left: 50%;
+                border-top-color: @color-bg-invert;
+            }
+        }
+
+        &_left {
+            &:after {
+                top: 50%;
+                right: 100%;
+                left: auto;
+                margin-top: -24px;
+                margin-left: 0;
+                border-right-color: @color-bg-invert;
+            }
+        }
+
+        &_right {
+            &:after {
+                top: 50%;
+                left: 100%;
+                margin-top: -24px;
+                margin-left: 0;
+                border-left-color: @color-bg-invert;
+            }
+        }
+    }
+
+    @bg-colors: 'blue', 'dark-blue', 'light-blue', 'azure', 'gray', 'invert', 'done', 'none', 'default';
+    &_bg {
+        .-(@i: length(@bg-colors)) when (@i > 0) {
+            @color: e(extract(@bg-colors, @i));
+            .b-arrow-bg(@color);
+            .-((@i - 1));
+        } .-;
+    }
+}
+
+.b-arrow-bg(@color) {
+    &_@{color} {
+        background-color: ~"@{color-bg-@{color}}";
+
+        &@{bl}_direction_top {
+            &:after {
+                border-bottom-color: ~"@{color-bg-@{color}}";
+            }
+        }
+
+        &@{bl}_direction_bottom {
+            &:after {
+                border-top-color: ~"@{color-bg-@{color}}";
+            }
+        }
+
+        &@{bl}_direction_left {
+            &:after {
+                border-right-color: ~"@{color-bg-@{color}}";
+            }
+        }
+
+        &@{bl}_direction_right {
+            &:after {
+                border-left-color: ~"@{color-bg-@{color}}";
+            }
+        }
+    }
+}

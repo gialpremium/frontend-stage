@@ -1,0 +1,52 @@
+@import '~i-less/i-less';
+
+.b-text-overflow-fade {
+    position: relative;
+    overflow: hidden;
+}
+.b-text-overflow-fade__text {
+    position: relative;
+    z-index: 1;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.b-text-overflow-fade__fade {
+    display: block;
+    width: 50px;
+    height: 100%;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    position: absolute;
+    z-index: 2;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.1), #ffffff);
+}
+.b-text-overflow-fade__fade_color_fedfdf,
+.b-site-monitor-list__item_state_error .b-text-overflow-fade__fade {
+    background-image: linear-gradient(to right, rgba(254, 223, 223, 0.1), #fedfdf);
+}
+.b-text-overflow-fade__fade_color_f2f2f2,
+.b-site-monitor-list__item_state_suspend .b-text-overflow-fade__fade,
+.b-site-monitor-list__item_state_pending .b-text-overflow-fade__fade {
+    background-image: linear-gradient(to right, rgba(242, 242, 242, 0.1), #f2f2f2);
+}
+.b-text-overflow-fade__fade_color_dff5dd,
+.b-site-monitor-list__item_state_active .b-text-overflow-fade__fade {
+    background-image: linear-gradient(to right, rgba(223, 245, 221, 0.1), #dff5dd);
+}
+.no-cssgradients .b-text-overflow-fade__fade {
+    background: url('b-text-overflow-fade__fade_color_ffffff.png') repeat-y top right;
+}
+.no-cssgradients .b-text-overflow-fade__fade_color_fedfdf,
+.no-cssgradients .b-site-monitor-list__item_state_error .b-text-overflow-fade__fade {
+    background: url('b-text-overflow-fade__fade_color_fedfdf.png') repeat-y top right;
+}
+.no-cssgradients .b-text-overflow-fade__fade_color_f2f2f2,
+.no-cssgradients .b-site-monitor-list__item_state_suspend .b-text-overflow-fade__fade,
+.no-cssgradients .b-site-monitor-list__item_state_pending .b-text-overflow-fade__fade {
+    background: url('b-text-overflow-fade__fade_color_f2f2f2.png') repeat-y top right;
+}
+.no-cssgradients .b-text-overflow-fade__fade_color_dff5dd,
+.no-cssgradients .b-site-monitor-list__item_state_active .b-text-overflow-fade__fade {
+    background: url('b-text-overflow-fade__fade_color_dff5dd.png') repeat-y top right;
+}

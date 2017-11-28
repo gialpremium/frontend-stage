@@ -1,0 +1,33 @@
+@import '~i-less/i-less';
+
+.b-notify-browser__wrapper-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #d23500 url('b-notify-browser.png') repeat-x 0px 0px;
+    height: 39px;
+}
+.b-notify-browser {
+    background: url('b-notify-browser.png') no-repeat 0px -39px;
+    width: 966px;
+    padding-left: 34px;
+    margin: 0px auto;
+    position: relative;
+    font: 15px/39px @face;
+    color: #fff;
+}
+.b-notify-browser__link {
+    color: #fefbc9;
+}
+.b-notify-browser__button-close {
+    display: block;
+    background: url('b-notify-browser.png') no-repeat 0px -78px;
+    width: 39px;
+    height: 39px;
+    position: absolute;
+    top: 0px;
+    right: -39px;
+    cursor: pointer;
+    .i-text__hidden();
+}

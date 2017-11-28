@@ -1,0 +1,235 @@
+@import '~i-less/i-less';
+
+.b-widget {
+    @bl: ~".b-widget";
+
+    display: table;
+    position: relative;
+    width: 100%;
+    padding: 24px;
+    background-color: @color-bg-default;
+
+    @media (max-width: 360px) {
+        display: block;
+    }
+
+    .desktop({
+        padding: 30px 50px 30px 36px;
+    });
+
+    box-sizing: border-box;
+
+    &__title {
+        margin-bottom: 6px;
+        font: bold @font-medium-compact;
+
+        .desktop({
+            font: bold @font-large;
+        });
+    }
+
+    &__text {
+        margin-bottom: 0;
+    }
+
+    &__icon-wrapper {
+        float: left;
+        width: 80px;
+        margin-left: -24px;
+        text-align: center;
+
+        @media (max-width: 360px) {
+            display: block;
+            float: none;
+        }
+
+        .desktop({
+            width: 180px;
+            margin-left: -36px;
+        });
+    }
+
+    &__icon {
+        display: inline-block;
+        width: 54px;
+        height: 54px;
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        .desktop({
+            width: 72px;
+            height: 72px;
+        });
+    }
+
+    &__number {
+        color: #cecece;
+        font-weight: bold;
+        font-size: @font-size-giant - @font-size-small;
+    }
+
+    &__content {
+        display: table-cell;
+        width: 100%;
+        padding-right: 12px;
+        vertical-align: top;
+
+        @media (max-width: 360px) {
+            display: block;
+            padding-right: 0;
+            padding-bottom: 12px;
+        }
+
+        .desktop({
+            padding-right: 48px;
+        });
+    }
+
+    &__button-wrapper {
+        display: table-cell;
+        vertical-align: middle;
+
+        @media (max-width: 360px) {
+            display: block;
+            text-align: right;
+        }
+    }
+
+    &__link:after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        width: 100%;
+        height: 100%;
+        content: "";
+    }
+
+    &_type {
+        &_link {
+            text-decoration: none;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #f8f8f8;
+            }
+        }
+    }
+
+    &_button-valign_top {
+        @{bl}__button-wrapper {
+            vertical-align: top;
+        }
+    }
+
+    &_style {
+        &_compact,
+        &_card,
+        &_card-column {
+            @{bl}__icon {
+                .desktop({
+                    width: 54px;
+                    height: 54px;
+                });
+            }
+        }
+
+        &_compact {
+            padding: 24px;
+
+            @{bl}__icon-wrapper {
+                .desktop({
+                    width: 102px;
+                });
+            }
+
+            @{bl}__title {
+                padding-top: @indent-v-tiny;
+                font: bold @font-medium-compact;
+            }
+        }
+
+        @card-rules: {
+            padding: @wrapper-h-small;
+
+            @{bl}__icon-wrapper {
+                display: block;
+                float: left;
+                margin-left: 0;
+                text-align: left;
+            }
+
+            @{bl}__content {
+                display: block;
+                padding-right: 0;
+            }
+
+            @{bl}__text {
+                clear: both;
+            }
+
+            @{bl}__button-wrapper {
+                display: block;
+                padding-top: @indent-v-small;
+            }
+
+            @{bl}__button {
+                margin-top: 0;
+            }
+
+            @{bl}__title {
+                padding: 6px 0 6px;
+                font: bold @font-medium-compact;
+            }
+        };
+
+        &_card,
+        &_card-column {
+            @card-rules();
+        }
+
+        .mobile({
+            &_card-column\@mobile {
+                @card-rules();
+            }
+        });
+
+        &_card {
+            @{bl}__icon-wrapper {
+                width: 72px;
+                height: 60px;
+            }
+
+            @{bl}__icon {
+                margin-top: 2px;
+            }
+        }
+
+        &_card-column {
+            @{bl}__icon-wrapper {
+                float: none;
+                width: auto;
+            }
+        }
+
+        &_content {
+            .desktop({
+                padding: 36px 50px 36px 24px;
+            });
+        }
+    }
+
+    @avail-colors: 'invert';
+
+    &_bg {
+        .-(@i: length(@avail-colors)) when (@i > 0) {
+            @color: e( extract( @avail-colors, @i ) );
+
+            &_@{color} {
+                background-color: ~"@{color-bg-@{color}}";
+            }
+
+            .-((@i - 1));
+        } .-;
+    }
+}

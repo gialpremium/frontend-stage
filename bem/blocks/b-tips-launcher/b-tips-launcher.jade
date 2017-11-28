@@ -1,0 +1,14 @@
+div(class='b-tips-launcher')
+  each item, index in self.tipWizardsInstancesNames
+    -
+      var button = JST['b-button']({
+        attr: {
+          className: 'b-tips-launcher__button',
+          'data-instance-name': item,
+        },
+        block: true,
+        color: 'action',
+        text: item,
+        size: 'tiny'
+      })
+    != button

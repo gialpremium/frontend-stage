@@ -1,0 +1,12 @@
+include ~b-popup/b-popup
+
+- var popup_options = { popup_title: self.title, responsive: 1 }
+- popup_options.attr = { id: self.id, className: 'b-dialog', tabindex: 0 }
+- popup_options.modal = self.modal
+
++bPopup(popup_options)
+  div.b-text
+    != self.message
+
+  - var align = self.buttons_align || 'right'
+  div(class="b-dialog__actions l-align_#{align}")

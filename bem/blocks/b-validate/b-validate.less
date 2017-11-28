@@ -1,0 +1,116 @@
+@import '~i-less/i-less';
+
+.b-validate {
+    @bl: ~".b-validate";
+
+    &_bg-color_white {
+        @{bl}__expand-error {
+            background-position: 0px -14px;
+        }
+        @{bl}__full-error {
+            background: #fff;
+        }
+    }
+
+    &_bg-color_light {
+        @{bl}__expand-error {
+            background-position: 0px -28px;
+        }
+        @{bl}__full-error {
+            background: #eff9ff;
+        }
+    }
+
+    &_bg-color_gray {
+        @{bl}__expand-error {
+            background-position: 0px -28px;
+        }
+        @{bl}__full-error {
+            background: #f9f9f9;
+        }
+    }
+
+    &__header-error-wrapper {position: relative;}
+
+    &__header-error {
+        display: block;
+        background: url(b-validate__header-error.png) no-repeat top left;
+        min-height: 16px;
+        height:auto !important;
+        height: 16px;
+        padding-left: 21px;
+        position: absolute;
+        top: 5px;
+        right: 0px;
+        color: #e50f0f;
+        font: bold @font-small;
+    }
+
+    &__field-wrapper {
+        display: inline-block;
+        position: relative;
+    }
+
+    &__short-error {
+        position: absolute;
+        left: 0px;
+        font-size: 10px;
+        line-height: 12px;
+        color: #f53a00;
+        white-space: nowrap;
+
+        &_state_preview {
+            overflow: hidden;
+        }
+    }
+
+    &__expand-error {
+        display: block;
+        background: url(b-validate__expand-error.png) no-repeat 0px 0px;
+        height: 14px;
+        width: 35px;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        cursor: pointer;
+    }
+
+    &__collapse-error {
+        background: url(b-validate__collapse-error.png) no-repeat center transparent;
+        cursor: pointer;
+        height: 10px;
+        width: 10px;
+        position: absolute;
+        top: 1px;
+        right: 1px;
+    }
+
+    &__full-error {
+        display: block;
+        background: #f1f1f1;
+        padding: 10px;
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        width: 100%;
+        overflow: hidden;
+        border-collapse: separate;
+        box-shadow: 0 1px 7px rgba(0,0,0,.39);
+        font: @font-small;
+        color: #f53a00;
+        white-space: normal;
+    }
+
+
+    .double_border,
+    .b-validate .glamor_error_border {
+        margin: 0px !important;
+        position: relative;
+        z-index: 10;
+    }
+
+    &_error {
+        border: 1px solid #fa8f68 !important;
+    }
+}
+

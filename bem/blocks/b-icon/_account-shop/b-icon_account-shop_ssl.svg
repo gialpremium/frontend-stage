@@ -1,0 +1,224 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="430 347 64.8 72">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #e7e7e7;
+      }
+
+      .cls-2 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-3 {
+        fill: none;
+      }
+
+      .cls-4 {
+        fill: #06b57e;
+      }
+
+      .cls-5 {
+        fill: #fff;
+      }
+
+      .cls-6 {
+        fill: #010000;
+        opacity: 0.1;
+      }
+    </style>
+    <clipPath id="clip-path">
+      <rect id="_version_:_1.5.0_viewSource_:_x_:_0_y_:_0_width_:_36_height_:_40_resources_:_clipPaths_:_filters_:_gradients_:_masks_:_patterns_:_children_:_style_:_stroke_:_type_:_none_fill_:_type_:_none_name_:_type_:_shape_shape_:_type_:_rect_x_:_0_y_:_0_width_:_36_height_:_40_style_:_stroke_:_type_:_none_fill_:_type_:_solid_color_:_mode_:_RGB_value_:_r_:_6_g_:_181_b_:_126_name_:_type_:_shape_shape_:_type_:_path_path_:_M_35.993_14.29_a_22.738_22.738_0_0_0_-1.91_-9.706_c_-0.692_0.054_-1.4_0.084_-2.115_0.084_C_26.069_4.669_20.9_2.8_18_0_C_15.1_2.8_9.932_4.668_4.031_4.668_c_-0.718_0_-1.422_-0.031_-2.115_-0.084_A_22.722_22.722_0_0_0_0.007_14.289_C_0.007_27.608_10.949_39.35_18_39.35_c_7.548_0_17.993_-11.744_17.993_-25.06_Z_style_:_stroke_:_type_:_none_fill_:_type_:_solid_color_:_mode_:_RGB_value_:_r_:_255_g_:_255_b_:_255_name_:_type_:_shape_shape_:_type_:_path_path_:_M_11.954_17.514_H_24.045_a_1.169_1.169_0_0_1_1.169_1.169_V_29_a_1.167_1.167_0_0_1_-1.167_1.167_H_11.955_A_1.169_1.169_0_0_1_10.786_29_V_18.682_a_1.168_1.168_0_0_1_1.168_-1.168_Z_style_:_stroke_:_type_:_none_fill_:_type_:_solid_color_:_mode_:_RGB_value_:_r_:_255_g_:_255_b_:_255_name_:_type_:_shape_shape_:_type_:_path_path_:_M_18_29.459_a_5.461_5.461_0_0_1_-5.46_-5.448_V_13.645_a_5.46_5.46_0_0_1_10.92_0_V_24.011_A_5.461_5.461_0_0_1_18_29.459_Z_m_0_-18.926_a_3.122_3.122_0_0_0_-3.12_3.114_V_24.013_a_3.12_3.12_0_0_0_6.24_0_V_13.647_A_3.12_3.12_0_0_0_18_10.532_Z_style_:_stroke_:_type_:_none_fill_:_type_:_solid_color_:_mode_:_RGB_value_:_r_:_6_g_:_181_b_:_126_name_:_type_:_shape_shape_:_type_:_ellipse_cx_:_18.001_cy_:_22.333_rx_:_1.811_ry_:_1.807_style_:_stroke_:_type_:_none_fill_:_type_:_solid_color_:_mode_:_RGB_value_:_r_:_6_g_:_181_b_:_126_name_:_type_:_shape_shape_:_type_:_path_path_:_M_18.9_26.928_a_0.9_0.9_0_0_1_-0.905_0.9_h_0_a_0.9_0.9_0_0_1_-0.9_-0.9_V_21.882_a_0.9_0.9_0_0_1_0.905_-0.9_h_0_a_0.9_0.9_0_0_1_0.9_0.9_Z_style_:_stroke_:_type_:_none_fill_:_type_:_solid_color_:_mode_:_RGB_value_:_r_:_1_g_:_0_b_:_0_opacity_:_0.1_name_:_type_:_shape_shape_:_type_:_path_path_:_M_34.074_4.584_c_-0.692_0.054_-1.4_0.084_-2.115_0.084_c_-5.868_0_-11.012_-1.846_-13.918_-4.622_v_39.3_c_7.662_0_17.942_-11.8_17.942_-25.056_a_22.738_22.738_0_0_0_-1.909_-9" data-name="{
+	&quot;version&quot;: &quot;1.5.0&quot;,
+	&quot;viewSource&quot;: {
+		&quot;x&quot;: 0,
+		&quot;y&quot;: 0,
+		&quot;width&quot;: 36,
+		&quot;height&quot;: 40
+	},
+	&quot;resources&quot;: {
+		&quot;clipPaths&quot;: {},
+		&quot;filters&quot;: {},
+		&quot;gradients&quot;: {},
+		&quot;masks&quot;: {},
+		&quot;patterns&quot;: {}
+	},
+	&quot;children&quot;: [
+		{
+			&quot;style&quot;: {
+				&quot;stroke&quot;: {
+					&quot;type&quot;: &quot;none&quot;
+				},
+				&quot;fill&quot;: {
+					&quot;type&quot;: &quot;none&quot;
+				}
+			},
+			&quot;name&quot;: &quot;&quot;,
+			&quot;type&quot;: &quot;shape&quot;,
+			&quot;shape&quot;: {
+				&quot;type&quot;: &quot;rect&quot;,
+				&quot;x&quot;: 0,
+				&quot;y&quot;: 0,
+				&quot;width&quot;: 36,
+				&quot;height&quot;: 40
+			}
+		},
+		{
+			&quot;style&quot;: {
+				&quot;stroke&quot;: {
+					&quot;type&quot;: &quot;none&quot;
+				},
+				&quot;fill&quot;: {
+					&quot;type&quot;: &quot;solid&quot;,
+					&quot;color&quot;: {
+						&quot;mode&quot;: &quot;RGB&quot;,
+						&quot;value&quot;: {
+							&quot;r&quot;: 6,
+							&quot;g&quot;: 181,
+							&quot;b&quot;: 126
+						}
+					}
+				}
+			},
+			&quot;name&quot;: &quot;&quot;,
+			&quot;type&quot;: &quot;shape&quot;,
+			&quot;shape&quot;: {
+				&quot;type&quot;: &quot;path&quot;,
+				&quot;path&quot;: &quot;M 35.993 14.29 a 22.738 22.738 0 0 0 -1.91 -9.706 c -0.692 0.054 -1.4 0.084 -2.115 0.084 C 26.069 4.669 20.9 2.8 18 0 C 15.1 2.8 9.932 4.668 4.031 4.668 c -0.718 0 -1.422 -0.031 -2.115 -0.084 A 22.722 22.722 0 0 0 0.007 14.289 C 0.007 27.608 10.949 39.35 18 39.35 c 7.548 0 17.993 -11.744 17.993 -25.06 Z&quot;
+			}
+		},
+		{
+			&quot;style&quot;: {
+				&quot;stroke&quot;: {
+					&quot;type&quot;: &quot;none&quot;
+				},
+				&quot;fill&quot;: {
+					&quot;type&quot;: &quot;solid&quot;,
+					&quot;color&quot;: {
+						&quot;mode&quot;: &quot;RGB&quot;,
+						&quot;value&quot;: {
+							&quot;r&quot;: 255,
+							&quot;g&quot;: 255,
+							&quot;b&quot;: 255
+						}
+					}
+				}
+			},
+			&quot;name&quot;: &quot;&quot;,
+			&quot;type&quot;: &quot;shape&quot;,
+			&quot;shape&quot;: {
+				&quot;type&quot;: &quot;path&quot;,
+				&quot;path&quot;: &quot;M 11.954 17.514 H 24.045 a 1.169 1.169 0 0 1 1.169 1.169 V 29 a 1.167 1.167 0 0 1 -1.167 1.167 H 11.955 A 1.169 1.169 0 0 1 10.786 29 V 18.682 a 1.168 1.168 0 0 1 1.168 -1.168 Z&quot;
+			}
+		},
+		{
+			&quot;style&quot;: {
+				&quot;stroke&quot;: {
+					&quot;type&quot;: &quot;none&quot;
+				},
+				&quot;fill&quot;: {
+					&quot;type&quot;: &quot;solid&quot;,
+					&quot;color&quot;: {
+						&quot;mode&quot;: &quot;RGB&quot;,
+						&quot;value&quot;: {
+							&quot;r&quot;: 255,
+							&quot;g&quot;: 255,
+							&quot;b&quot;: 255
+						}
+					}
+				}
+			},
+			&quot;name&quot;: &quot;&quot;,
+			&quot;type&quot;: &quot;shape&quot;,
+			&quot;shape&quot;: {
+				&quot;type&quot;: &quot;path&quot;,
+				&quot;path&quot;: &quot;M 18 29.459 a 5.461 5.461 0 0 1 -5.46 -5.448 V 13.645 a 5.46 5.46 0 0 1 10.92 0 V 24.011 A 5.461 5.461 0 0 1 18 29.459 Z m 0 -18.926 a 3.122 3.122 0 0 0 -3.12 3.114 V 24.013 a 3.12 3.12 0 0 0 6.24 0 V 13.647 A 3.12 3.12 0 0 0 18 10.532 Z&quot;
+			}
+		},
+		{
+			&quot;style&quot;: {
+				&quot;stroke&quot;: {
+					&quot;type&quot;: &quot;none&quot;
+				},
+				&quot;fill&quot;: {
+					&quot;type&quot;: &quot;solid&quot;,
+					&quot;color&quot;: {
+						&quot;mode&quot;: &quot;RGB&quot;,
+						&quot;value&quot;: {
+							&quot;r&quot;: 6,
+							&quot;g&quot;: 181,
+							&quot;b&quot;: 126
+						}
+					}
+				}
+			},
+			&quot;name&quot;: &quot;&quot;,
+			&quot;type&quot;: &quot;shape&quot;,
+			&quot;shape&quot;: {
+				&quot;type&quot;: &quot;ellipse&quot;,
+				&quot;cx&quot;: 18.001,
+				&quot;cy&quot;: 22.333,
+				&quot;rx&quot;: 1.811,
+				&quot;ry&quot;: 1.807
+			}
+		},
+		{
+			&quot;style&quot;: {
+				&quot;stroke&quot;: {
+					&quot;type&quot;: &quot;none&quot;
+				},
+				&quot;fill&quot;: {
+					&quot;type&quot;: &quot;solid&quot;,
+					&quot;color&quot;: {
+						&quot;mode&quot;: &quot;RGB&quot;,
+						&quot;value&quot;: {
+							&quot;r&quot;: 6,
+							&quot;g&quot;: 181,
+							&quot;b&quot;: 126
+						}
+					}
+				}
+			},
+			&quot;name&quot;: &quot;&quot;,
+			&quot;type&quot;: &quot;shape&quot;,
+			&quot;shape&quot;: {
+				&quot;type&quot;: &quot;path&quot;,
+				&quot;path&quot;: &quot;M 18.9 26.928 a 0.9 0.9 0 0 1 -0.905 0.9 h 0 a 0.9 0.9 0 0 1 -0.9 -0.9 V 21.882 a 0.9 0.9 0 0 1 0.905 -0.9 h 0 a 0.9 0.9 0 0 1 0.9 0.9 Z&quot;
+			}
+		},
+		{
+			&quot;style&quot;: {
+				&quot;stroke&quot;: {
+					&quot;type&quot;: &quot;none&quot;
+				},
+				&quot;fill&quot;: {
+					&quot;type&quot;: &quot;solid&quot;,
+					&quot;color&quot;: {
+						&quot;mode&quot;: &quot;RGB&quot;,
+						&quot;value&quot;: {
+							&quot;r&quot;: 1,
+							&quot;g&quot;: 0,
+							&quot;b&quot;: 0
+						}
+					}
+				},
+				&quot;opacity&quot;: 0.1
+			},
+			&quot;name&quot;: &quot;&quot;,
+			&quot;type&quot;: &quot;shape&quot;,
+			&quot;shape&quot;: {
+				&quot;type&quot;: &quot;path&quot;,
+				&quot;path&quot;: &quot;M 34.074 4.584 c -0.692 0.054 -1.4 0.084 -2.115 0.084 c -5.868 0 -11.012 -1.846 -13.918 -4.622 v 39.3 c 7.662 0 17.942 -11.8 17.942 -25.056 a 22.738 22.738 0 0 0 -1.909 -9" class="cls-1" width="64.8" height="72" rx="10" transform="translate(875 227)"/>
+    </clipPath>
+  </defs>
+  <g id="Mask_Group_1" data-name="Mask Group 1" class="cls-2" transform="translate(-445 120)">
+    <g id="SSL" data-name="SSL" transform="translate(875 227)">
+      <rect id="Rectangle_1" data-name="Rectangle 1" class="cls-3" width="64.799" height="71.999"/>
+      <path id="Path_1" data-name="Path 1" class="cls-4" d="M64.787,25.722A40.928,40.928,0,0,0,61.349,8.251c-1.246.1-2.52.151-3.807.151C46.924,8.4,37.62,5.04,32.4,0,27.18,5.04,17.877,8.4,7.256,8.4c-1.292,0-2.56-.056-3.807-.151A40.9,40.9,0,0,0,.013,25.72c0,23.974,19.7,45.109,32.387,45.109,13.586,0,32.387-21.139,32.387-45.108Z"/>
+      <path id="Path_2" data-name="Path 2" class="cls-5" d="M21.517,31.525H43.281a2.1,2.1,0,0,1,2.1,2.1V52.2a2.1,2.1,0,0,1-2.1,2.1H21.519a2.1,2.1,0,0,1-2.1-2.1V33.627a2.1,2.1,0,0,1,2.1-2.1Z"/>
+      <path id="Path_3" data-name="Path 3" class="cls-5" d="M32.4,53.026a9.829,9.829,0,0,1-9.828-9.8V24.561a9.828,9.828,0,1,1,19.656,0V43.219A9.83,9.83,0,0,1,32.4,53.026Zm0-34.067a5.62,5.62,0,0,0-5.616,5.605V43.223a5.616,5.616,0,0,0,11.232,0V24.564A5.616,5.616,0,0,0,32.4,18.957Z"/>
+      <ellipse id="Ellipse_1" data-name="Ellipse 1" class="cls-4" cx="3.26" cy="3.253" rx="3.26" ry="3.253" transform="translate(29.142 36.946)"/>
+      <path id="Path_4" data-name="Path 4" class="cls-4" d="M34.02,48.47a1.62,1.62,0,0,1-1.629,1.62h0a1.62,1.62,0,0,1-1.62-1.62V39.387a1.62,1.62,0,0,1,1.629-1.62h0a1.62,1.62,0,0,1,1.62,1.62Z"/>
+      <path id="Path_5" data-name="Path 5" class="cls-6" d="M61.333,8.251c-1.246.1-2.52.151-3.807.151C46.963,8.4,37.7,5.08,32.474.083V70.822c13.791,0,32.3-21.24,32.3-45.1A40.928,40.928,0,0,0,61.333,8.251Z"/>
+    </g>
+  </g>
+</svg>

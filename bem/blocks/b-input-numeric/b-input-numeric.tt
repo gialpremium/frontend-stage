@@ -1,0 +1,35 @@
+[%#
+INCLUDE 'b-input-numeric.inc'
+    params => {
+        add_class => 'l-margin_bottom-small',
+        attr => {
+            # скрытый input
+            input => {
+                min   => 1
+                max   => 10000000000
+                step  => ru ? 100 : 1
+            },
+            # видимый фейковый инпут
+            text_field => {
+                value    => ru ? 1000 : 10,
+                currency => 0
+            }
+        };
+    };
+%]
+<div class="b-input-numeric [% params.add_class  IF params.add_class %]">
+    <span class="b-input-numeric__button b-input-numeric__button_icon_decrement"></span>
+    <div class="b-input-numeric__value-wrapper[% ' ' _ params.attr.class  IF params.attr.class %]">
+        <span class="b-input-numeric__value" contenteditable="true">[% params.attr.text_field.value %]</span>
+        [%- IF params.attr.text_field.currency;
+            ' ' _ money().currency_sign();
+        END -%]
+    </div>
+    <input type="hidden" class="b-input-numeric__real-value[% ' ' _ params.attr.input.class  IF params.attr.input.class %]"
+        [%- FOREACH a = params.attr.input;
+            " $a.key=\"$a.value\"";
+        END -%]
+        autocomplete="off"
+    />
+    <span class="b-input-numeric__button b-input-numeric__button_icon_increment"></span>
+</div>

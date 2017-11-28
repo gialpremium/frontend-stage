@@ -1,0 +1,70 @@
+.b-icon {
+    @bl: ~".b-icon";
+    &_payment-logos {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 18px;
+        width: 18px;
+        background: url('b-icon_payment-logos.png') no-repeat;
+
+        &_bank {
+            background-position: 0px -79px;
+        }
+        &_yamoney {
+            background-position:  0px -40px;
+        }
+        &_alfacard {
+            background-position: 0px -160px;
+        }
+        &_card {
+            background-position: 0px -160px;
+        }
+
+        &_big {
+            position: relative;
+            display: block;
+            width: 150px;
+            height: 46px;
+            margin: 0 auto;
+            background: url('b-icon_payment-logos_big.png') no-repeat;
+
+            &_wm {
+                background-position: 7px 0px;
+            }
+            &_bank {
+                background-position: -350px 0px;
+            }
+            &_yamoney {
+                background-position: -175px 0px;
+            }
+            &_alfacard {
+                background-position: -530px 0px;
+            }
+            &_card {
+               background-position: -700px 0px;
+            }
+        }
+
+    }
+
+    &_active {
+        &@{bl}_payment-logos_big {
+            &_wm {
+                background-position: 6px 1px;
+            }
+            &_bank {
+                background-position: -351px 1px;
+            }
+            &_yamoney {
+                background-position: -171px 1px;
+            }
+            &_alfacard  {
+                background-position: -531px 1px;
+            }
+            &_card  {
+                background-position: -701px 1px;
+            }
+        }
+    }
+}

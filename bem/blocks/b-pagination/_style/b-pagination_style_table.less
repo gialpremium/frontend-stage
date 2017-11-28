@@ -1,0 +1,98 @@
+@import '~i-less/i-less';
+
+.b-pagination {
+    @bl: ~".b-pagination";
+
+    &_style_table {
+        display: table;
+        width: 100%;
+
+        &@{bl}_width_auto {
+            width: auto;
+        }
+
+        & @{bl}__link {
+            display: table-cell;
+            background: #f3f3f3;
+            border-left: 1px solid #FFF;
+            width: 3*@blh;
+            height: 3*@blh;
+            text-align: center;
+            vertical-align: middle;
+            text-decoration: none;
+            font: @font-normal;
+            white-space: nowrap;
+            color: #515151;
+            transition: 100ms ease-in-out;
+
+            &:first-child {
+                border-left: 0px none;
+            }
+            &:hover {
+                .i-hover-bg-color(#f3f3f3, 2%);
+            }
+            &:active {
+                .i-active-bg-color(#f3f3f3, 2%);
+            }
+
+            &_icon {
+                &_previous,
+                &_next {
+                    padding: 0px @blh;
+                    font-weight: bold;
+                }
+                &_previous {
+                    text-align: left;
+
+                    & .b-icon {
+                        margin-right: @blh/2;
+                    }
+                }
+                &_next {
+                    text-align: right;
+                    & .b-icon {
+                        margin-left: @blh/2;
+                    }
+                }
+            }
+            &_state_current {
+                background: #e7e7e7;
+            }
+            &_width_full {
+                width: auto;
+            }
+        }
+
+        & @{bl}__icon-label {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        & @{bl}__icon-wrapper {
+            display: block;
+            position: relative;
+        }
+
+        @media (max-width: 600px) {
+            table-layout: fixed;
+
+            @{bl}__link {
+                display: none;
+
+                &_state_current {
+                    display: table-cell;
+                }
+                &_icon {
+                    &_previous,
+                    &_next {
+                        display: table-cell;
+                        padding: 0 12px;
+                    }
+
+                    &_previous {
+                        width: auto;
+                    }
+                }
+            }
+        }
+    }
+}

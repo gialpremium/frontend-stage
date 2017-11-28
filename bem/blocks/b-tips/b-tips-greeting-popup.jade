@@ -1,0 +1,24 @@
+include ~b-popup/b-popup
+
++bPopup( {'overlay':1, 'hide_top_close':1, 'attr':{'id':self.popupId, className:'b-tips-greeting-popup b-popup_padding_none'}} )
+  div( class = 'b-tips-greeting-popup__image b-tips-greeting-popup__image_company_' + self.content )
+  div.b-tips-greeting-popup__content
+    span.b-popup__close.b-popup__trigger-close.b-icon.b-icon_style_cross
+    strong.b-title.b-title_size_medium
+      != t( 'tip_wizards.popup.title' )
+    p.b-text
+      != t( 'tip_wizards.popup.text' )
+    div.l-overflow
+      != t( 'tip_wizards.popup.link.' + self.content )
+      -
+        var button = JST['b-button']({
+          attr: {
+            href: '#',
+            className: 'b-tips-greeting-popup__button l-margin_bottom-small l-float_right',
+            'data-anno-instance': self.annoInstanceName,
+            'data-nextchain': self.nextChainIndex
+          },
+          size: 'medium',
+          text: t('tip_wizards.popup.button')
+        })
+      != button

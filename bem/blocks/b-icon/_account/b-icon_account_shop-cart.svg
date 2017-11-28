@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="449 372.999 26.042 20">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #515151;
+      }
+    </style>
+  </defs>
+  <g id="char_shop-cart" transform="translate(448.961 370.582)">
+    <circle id="Ellipse_252" data-name="Ellipse 252" class="cls-1" cx="2.337" cy="2.337" r="2.337" transform="translate(17.942 17.742)"/>
+    <circle id="Ellipse_253" data-name="Ellipse 253" class="cls-1" cx="2.337" cy="2.337" r="2.337" transform="translate(8.987 17.742)"/>
+    <path id="Path_689" data-name="Path 689" class="cls-1" d="M25.188,4.812a1.121,1.121,0,0,0-1.408.716l-2.5,8.935H10.09L7.065,3.179a1,1,0,0,0-.55-.643.974.974,0,0,0-.393-.113H6.117c-.018,0-.038-.007-.057-.007H1.1A1.119,1.119,0,0,0,.039,3.591,1.119,1.119,0,0,0,1.1,4.766H5.059L8.086,16.058a1.1,1.1,0,0,0,1.253.744.781.781,0,0,0,.087.01H22.182c.016,0,.033,0,.049,0a1.071,1.071,0,0,0,1.039-.756l2.779-9.915A1.12,1.12,0,0,0,25.188,4.812Z" transform="translate(0 0)"/>
+    <circle id="Ellipse_254" data-name="Ellipse 254" class="cls-1" cx="1.364" cy="1.364" r="1.364" transform="translate(9.388 6.259)"/>
+    <circle id="Ellipse_255" data-name="Ellipse 255" class="cls-1" cx="1.364" cy="1.364" r="1.364" transform="translate(14.169 6.259)"/>
+    <circle id="Ellipse_256" data-name="Ellipse 256" class="cls-1" cx="1.364" cy="1.364" r="1.364" transform="translate(19.027 6.259)"/>
+    <circle id="Ellipse_257" data-name="Ellipse 257" class="cls-1" cx="1.364" cy="1.364" r="1.364" transform="translate(11.74 9.777)"/>
+    <circle id="Ellipse_258" data-name="Ellipse 258" class="cls-1" cx="1.364" cy="1.364" r="1.364" transform="translate(16.598 9.777)"/>
+  </g>
+</svg>

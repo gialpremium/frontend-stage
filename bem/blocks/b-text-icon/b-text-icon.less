@@ -1,0 +1,30 @@
+@import '~i-less/i-less';
+
+.b-text-icon {
+    // пока заточен только под стандартный размер текста
+    @bl: ~".b-text-icon";
+
+    display: inline-block;
+    background-position: center left;
+    padding-left: 24px;
+    font: @font-normal;
+    color: @text-color;
+
+    &.b-icon {
+        width: auto;
+        height: auto;
+    }
+
+    &_style_multi-line {
+        position: relative;
+
+        & .b-icon {
+            width: 24px;
+            height: 24px;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            background-position: center left;
+        }
+    }
+}

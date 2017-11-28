@@ -1,0 +1,81 @@
+@import '~i-variables/i-variables';
+
+.b-folded-corner {
+    @bl: ~'.b-folded-corner';
+
+    background-color: #F6FAE8;
+    display: block;
+    padding: 18px 36px;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+
+    &__text {
+        display: block;
+        font: normal @font-normal-compact;
+        margin: 0;
+    }
+
+    & .b-icon {
+        float: left;
+        margin-right: 30px;
+    }
+
+    &:before {
+        background-color: #fff;
+        border-bottom: 20px solid #E4E8D5;
+        border-right: 20px solid transparent;
+        content: '';
+        height: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 0;
+    }
+
+    &_style {
+        &_ssl,
+        &_new-landing {
+            padding-left: 144px;
+
+            .b-icon {
+                position: absolute;
+                height: 68px;
+                width: 78px;
+                top: 50%;
+                left: 36px;
+                margin-top: -34px;
+            }
+        }
+        &_new-landing {
+            padding-left: 120px;
+        }
+        &_hosting {
+            padding-left: 144px;
+
+            .b-icon {
+                position: absolute;
+                height: 68px;
+                width: 84px;
+                top: 50%;
+                left: 36px;
+                margin-top: -34px;
+            }
+        }
+        &_one-line {
+            text-align: center;
+
+            & .b-icon {
+                float: none;
+                margin-right: 24px;
+                vertical-align: middle;
+            }
+
+            @{bl}__text {
+                display: inline-block;
+                font: normal @font-medium;
+                vertical-align: middle;
+            }
+        }
+    }
+}

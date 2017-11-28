@@ -1,0 +1,21 @@
+[% # INCLUDE 'b-promo-price.inc' %]
+[% # bg_color - цвет фона(по умолчанию - красный) ['blue'] %]
+[% # round_size - цвет фона(по умолчанию - 110*110) ['big'] %]
+[% # custom_html - вместо цены произвольный html %]
+[% # old_price - выводи старую цену %]
+<div class="b-promo-price[% IF en %] b-promo-price_currency_usd[% END %][%~ ' ' _ add_class IF add_class ~%][%~ ' b-promo-price_bg-color_' _ bg_color IF bg_color ~%][%~ ' b-promo-price_size_' _ round_size IF round_size ~%][%~ ' b-promo-price_type_custom-html' IF custom_html ~%][%~ ' b-promo-price_type_old-price' IF old_price ~%]">
+[% UNLESS custom_html %]
+    <div class="b-promo-price__inner-wrapper">
+    [% IF ru %]
+        [% IF old_price %]<span class="b-promo-price__amount-old">[% old_price | format('%.0f') | format_number_triads %]</span>[% END %]
+        <small class="b-promo-price__from">от</small><span class="b-promo-price__amount">[% promo_price | format('%.0f') | format_number_triads %]</span><div class="b-promo-price__unit"><u class="b-promo-price__currency">руб.</u>мес.</div>
+    [% ELSE %]
+        <small class="b-promo-price__from">from</small>
+        [% IF old_price %]<span class="b-promo-price__amount-old">$[% old_price | format('%.2f') %]</span>[% END %]
+        <span class="b-promo-price__amount">$[%~ promo_price | format('%.2f') | format_number_triads ~%]</span><div class="b-promo-price__unit">/ mo</div>
+    [% END %]
+    </div>
+[% ELSE # custom_html %]
+    [% custom_html %]
+[% END # custom_html %]
+</div>

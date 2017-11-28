@@ -1,0 +1,12 @@
+<header class="b-header[% ' b-header_page_default' UNLESS no_header_links; ' b-header_site_com' UNLESS ru %]">
+    <div class="b-page__content-wrapper b-header__wrapper">
+    [%-
+        INCLUDE 'b-header__logo.inc' logo_link => logo_link, logo_title => logo_title;
+        UNLESS no_header_links;
+            INCLUDE 'b-header_page_default.inc';
+        END; # UNLESS no_header_links
+
+        custom_html IF custom_html;
+    -%]
+    </div>
+</header>

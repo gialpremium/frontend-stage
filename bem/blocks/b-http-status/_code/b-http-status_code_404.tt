@@ -1,0 +1,24 @@
+<a href="javascript:history.back();" id="goBack" style="display: none" class="b-link-icon b-icon b-icon_arrow_bold-left l-margin_bottom-medium">[% t( 'http_status.go_back' )%]</a>
+[% html.javascripts.push( script = 'if (history.length > 1) $("#goBack").show()' ); %]
+[% WRAPPER grid
+    grid_class => 'l-margin_bottom-big'
+    grid_type => 'float'
+%]
+    [% WRAPPER grid_column
+        column_size => 8
+    %]
+        <div class="b-http-status b-http-status_icon_brick">
+            <h2 class="b-title b-title_size_huge-compact">[% t( 'http_status.site.page_404.title' ) %]</h2>
+            <p class="b-text b-text_size_big-compact l-color_error">[% t( 'http_status.site.page_404.error' ) %]</p>
+            <p class="b-text">[% t( 'http_status.site.page_404.desc' ) %]</p>
+        </div>
+    [% END # WRAPPER grid_column %]
+    [% IF ru %]
+        [% WRAPPER grid_column
+            column_size => 4
+        %]
+            [% INCLUDE 'b-carousel-lite_page_static.inc' static => static %]
+        [% END # WRAPPER grid_column %]
+    [% END # ru %]
+[% END # WRAPPER grid %]
+<p class="b-text">[% t( 'http_status.it_mistake' ) %]<br /><b>[% t( 'http_status.it_mistake_note' ) %]</b></p>

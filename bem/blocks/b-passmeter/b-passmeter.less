@@ -1,0 +1,107 @@
+@import '~i-variables/i-variables';
+
+.pass-meter-gauge {
+  display: block;
+  height: 4px;
+  margin-top: -10px;
+  overflow: hidden;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+}
+
+.pass-meter-unmet-len {
+  margin-top: .5em;
+}
+.pass-meter-unmet-len_visibility_hidden {
+  visibility: hidden;
+  overflow: hidden;
+  height: 1px;
+}
+
+.pass-meter-bar {
+  display: block;
+  width: 0;
+  height: 4px;
+}
+
+.pass-meter-lvl0 {
+  background-color: #aa0033;
+}
+
+.pass-meter-lvl1 {
+  background-color: #f5ac00;
+}
+
+.pass-meter-lvl2 {
+  background-color: #6699cc;
+}
+
+.pass-meter-lvl3 {
+  background-color: #008000;
+}
+
+
+.passmeter-hidden {
+  display: none;
+}
+
+
+.b-passmeter {
+
+    &__title {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 20px;
+        padding: 5px 8px;
+        background-color: #f7f7f7;
+        border-bottom: 1px solid @color-bg-default-darker;
+        border-radius: 5px 5px 0 0;
+    }
+
+    &_type_popover {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        width: 276px;
+        padding: 50px 10px 17px 10px;
+        line-height: 1.42857143;
+        font-size: 14px;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid rgba(0,0,0,.2);
+        border-radius: 6px;
+        box-shadow: 0 5px 10px rgba(0,0,0,.2);
+
+        &:after, &:before {
+            top: 50%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+        }
+        &:after {
+            border-color: rgba(0, 0, 0, 0);
+            border-right-color: #FDFDFD;
+            border-width: 11px;
+            margin-top: -11px;
+            left: -22px;
+        }
+        &:before {
+            border-color: rgba(245,233,59,0);
+            border-right-color: rgba(95, 94, 82, 0.3);
+            border-width: 13px;
+            margin-top: -13px;
+            left: -26px;
+        }
+
+    }
+
+    &_pos_right {
+        text-align: right;
+        margin-left: 10px;
+    }
+
+}

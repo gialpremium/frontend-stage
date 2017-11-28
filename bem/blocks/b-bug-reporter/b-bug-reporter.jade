@@ -1,0 +1,47 @@
+- var selection = self.selection.replace( /\n/g, '' );
+- var context   = self.context
+
+form(class="b-table-form b-bug-reporter__form", method="post", action="/misc/typo_report")
+  .b-title.b-title_size_big-compact
+    != t('bug_reporter.title')
+
+  .b-bug-reporter__errors
+
+  p.b-text
+    | &laquo;...
+
+    if context
+      if context.begin
+        = context.begin
+
+      strong= selection
+
+      if context.end
+        = context.end
+
+    else
+      = selection
+
+    | ...&raquo;
+
+  label.b-title.b-title_size_medium.l-margin_top-normal
+    != t('bug_reporter.comment')
+
+  p.b-text.l-margin_top-normal
+    textarea(
+      name="comment"
+      class="b-textarea b-textarea_style_block"
+      placeholder=t('bug_reporter.comment')
+      value=""
+    )
+
+  h3.l-margin_bottom-small.l-bold.l-color_error
+    != t('bug_reporter.attention.title')
+  p.b-text.b-text_size_small.l-color_error
+    != t('bug_reporter.attention.text')
+
+  .b-bug-reporter__wrapper-button
+    != JST['b-input-file']({tooltip_text: t('bug_reporter.tooltip'), data : {'accept': 'png|gif|tiff|jpg|jpeg|mng|webp|bmp','maxfile': '8192','datamax': '5','maxsize': '20480'}, attr: {class: 'l-margin_top-small', name: 'attachment'}, button: {size:'normal', text: t('bug_reporter.attach_screen')}})
+
+    != JST['b-button']({attr: {type: 'submit', className: 'b-bug-reporter__submit-btn l-float_right l-margin_left-normal l-margin_top-small'}, size: 'medium', text: t('bug_reporter.send_button') })
+

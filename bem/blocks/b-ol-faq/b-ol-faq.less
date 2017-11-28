@@ -1,0 +1,69 @@
+@import '~i-less/i-less';
+
+.b-ol-faq {
+    @bl: ~".b-ol-faq";
+
+    padding: 0;
+    margin: 0 0 36px;
+    color: @text-color;
+    font: normal 15px/24px @face;
+    list-style-type: none;
+
+    &_style_round {
+        @{bl}__item-number {
+            border-radius: 50%;
+        }
+    }
+
+    /*
+        дефолтные стили по идее должны быть такими,
+        а для справки надо отдельный мод
+     */
+    &_type_common {
+        @{bl}__item {
+            padding: 6px 0 0 64px;
+        }
+    }
+
+    @avail-colors: 'primary', 'important', 'invert';
+
+    .-(@i: length(@avail-colors)) when (@i > 0) {
+        @color: e(extract(@avail-colors, @i));
+
+        &_color_@{color} {
+            @{bl}__item-number {
+                color: @color-text-invert;
+                background-color: ~"@{color-bg-@{color}}";
+            }
+        }
+
+        .-((@i - 1));
+    } .-;
+
+    &__item {
+        position: relative;
+        padding: 12px 0 0 48px;
+        margin: 0 0 36px;
+
+        .desktop({
+            padding-left: 82px;
+        });
+    }
+
+    &__item-number {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 36px;
+        height: 36px;
+        font: bold 20px/36px @face;
+        text-align: center;
+        background: #f5f5f5;
+
+        .desktop({
+            width: 48px;
+            height: 48px;
+            line-height: 48px;
+        });
+    }
+}

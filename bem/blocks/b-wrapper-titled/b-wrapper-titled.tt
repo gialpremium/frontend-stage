@@ -1,0 +1,4 @@
+<div class="b-wrapper-titled [% ' l-margin_bottom-medium' UNLESS no_indent %][% params.class ? ' ' _ params.class : '' %]">
+    <div class="b-wrapper-titled__title">[% title %]</div>
+    <div class="b-wrapper-titled__content[% ' b-wrapper-titled__content_indent_none' IF content_indent_none %]">[% content %]</div>
+</div>

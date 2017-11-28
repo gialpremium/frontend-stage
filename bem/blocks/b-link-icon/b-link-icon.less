@@ -1,0 +1,54 @@
+@import '~i-less/i-less';
+
+.b-link-icon {
+    @bl: ~".b-link-icon";
+
+    display: inline-block;
+    background-position: center left;
+    padding-left: 24px;
+    font: @font-normal;
+    color: @link-text-color;
+    cursor: pointer;
+    text-decoration: none;
+
+    .desktop({
+        white-space: nowrap;
+    });
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+    &_style_invert {
+        color: @link-color;
+        text-decoration: underline;
+
+        &:active {
+            color: @link-color-active;
+        }
+        &:visited {
+            color: @link-color-visited;
+        }
+        &:hover {
+            color: @link-color-hover;
+            text-decoration: none;
+        }
+    }
+
+    &_size_middle {
+        padding-left: 30px;
+    }
+
+    &_size_big {
+        padding-left: 38px;
+    }
+
+    &.b-icon {
+        width: auto;
+        height: auto;
+
+        &_main_renew {
+            padding-top: 8px;
+        }
+    }
+}

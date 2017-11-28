@@ -1,0 +1,40 @@
+[%~ # INCLUDE 'b-button-arrow.inc' ~%]
+[%~ # title ~%]
+[%~ # text ~%]
+[%~ # direct ~%]
+[%~ # icon ~%]
+
+[%~ # нужное добовляем по аналогии b-button-square. Если там такого нет, смотрим b-button ~%]
+
+[%~
+    # defaults
+    size = size || 'normal';
+    color = color || 'default';
+    direct = direct || 'right';
+
+    SET button_attr = '';
+        FOREACH a = attr;
+        NEXT IF a.key == 'class';
+        NEXT IF a.key == 'tag';
+        button_attr = button_attr _ " $a.key=\"$a.value\"";
+    END;
+
+    SET button_tag = 'span';
+    IF attr.type == 'button' || attr.type == 'submit';
+        button_tag = 'button';
+    ELSIF attr.href;
+        button_tag = 'a';
+    ELSIF attr.tag;
+        button_tag = attr.tag;
+    END;
+
+    SET button_direct = 'b-button-arrow_direct_' _ direct;
+~%]
+<[% button_tag %]
+    class="b-button-arrow[% ' b-button-arrow_icon_' _ icon IF icon %][% ' b-button-arrow_valign_middle' UNLESS text %] [% button_direct %] b-button-arrow_color_[% color %] b-button-arrow_size_[% size %][% ' ' _ attr.class IF attr.class %]"
+[% button_attr %]>
+    [% IF title %]
+        <span class="b-button-arrow__title">[% title %]</span>
+    [% END %]
+    [% text %]
+</[% button_tag %]>

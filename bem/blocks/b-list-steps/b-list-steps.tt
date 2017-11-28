@@ -1,0 +1,8 @@
+<ul class="b-list-steps [% params.add_class %]">
+[% FOREACH step IN params.steps %]
+    <li class="b-list-steps__item" data-step="[% loop.index + 1 %]">
+        <strong class="b-list-steps__title">[% step.title %]</strong>
+        <p class="b-list-steps__desc">[% step.desc %]</p>
+    </li>
+[% END %]
+</ul>

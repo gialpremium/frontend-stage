@@ -1,0 +1,289 @@
+<!--noindex-->
+    [%- UNLESS html.hide_navigation -%]
+        <div class="b-header__menu-toggle"></div>
+    [%- END -%]
+    [%~ UNLESS html.hide_navigation ~%]
+        [% INCLUDE 'b-header__form.inc' %]
+    [%~ END # UNLESS html.hide_navigation ~%]
+
+    <div class="b-header__user[% ' b-header__user-links' IF user_id; ' b-header__user_cart_none' UNLESS shopcart.additional_data.shopcart_size; ' b-header__user_menu_none' IF html.hide_navigation %]">
+    [%- IF user_id %]
+        <!-- корзина -->
+            <div class="b-header__user-link b-header__user-link-cart">
+            [%- INCLUDE 'b-button.inc'
+                attr => {
+                    href => "/shopcart/view?nocache=$rand",
+                    id   => 'header_cart'
+                },
+                size           => 'small',
+                icon_single    => 'shop-cart',
+                notifier       => "<sup class='b-button__notifier b-button__notifier_bg-color_red'>${shopcart.additional_data.shopcart_size}</sup>",
+                notifier_align => 'left',
+                block          => 0
+            %]
+            [%- # INCLUDE 'b-button-square.inc'
+                # attr => {
+                #     href => "/shopcart/view?nocache=$rand"
+                # },
+                # size => 'small'
+                # notifier => "${shopcart.additional_data.shopcart_size}"
+            %]
+            </div>
+        <!-- /корзина -->
+      [%- UNLESS user_unsecured %]
+        <!-- баланс -->
+            <div class="b-header__user-link">
+            [%- user_notifier = BLOCK -%]
+                [%- IF user_balance < 0 -%]
+                    <sup class="b-button__notifier b-button__notifier_bg-color_red tooltip" title="[% t('header.balance') %]">!</sup>
+                [%- END # IF user_balance < 0 -%]
+
+                [%- IF user_credit -%]
+                    <a class="b-button__notifier b-button__notifier_bg-color_yellow tooltip"
+                       href="/user/bills?paytype=credit&amp;nocache=[% rand %]"
+                       data-title="[%- t('header.credit', value => money(user_credit).format, rand => rand) | html %]">!</a>
+                [%- END # IF user_credit -%]
+
+                [%- IF user.get_unpaid_bills_count() > 0 -%]
+
+                    <a class="b-button__notifier b-button__notifier_bg-color_red tooltip" href="/user/bills?pay_status=not_payed&amp;nocache=[% rand %]" title="[% t('header.not_payed') %]">[% user.get_unpaid_bills_count() %]</a>
+                [%- END # IF user.get_unpaid_bills_count() > 0 -%]
+            [%- END # user_notifier = BLOCK -%]
+            [%-
+                UNLESS ru;
+                    button_tooltip_class = 'tooltip'
+                    balance_currency_tooltip = t('user/balance.acc_currency_tooltip', money(user_balance).amount_only() );
+                END;
+
+                balance_formatted = money(user_balance).currency('RUR').format(html => 0, promo => 0, format => '_html') | strip_html_tags;
+
+                INCLUDE 'b-button.inc'
+                    attr => {
+                        class        => "b-header__popup-trigger $button_tooltip_class l-hidden@mobile",
+                        tag          => 'div',
+                        title        => balance_currency_tooltip,
+                        'data-popup' => '.b-header__balance-refill'
+                    },
+                    color         => 'default',
+                    size          => 'small',
+                    text          => balance_formatted,
+                    text_overflow => 1,
+                    notifier      => ( user_balance < 0 || user_credit || user.get_unpaid_bills_count() > 0  ) ? user_notifier : 0,
+                    icon_left     => 'money',
+                    icon_right    => 'corner-down',
+                    block         => 0;
+
+            -%]
+            [%
+                INCLUDE 'b-button-square.inc'
+                    attr => {
+                        class => "b-header__popup-trigger $button_tooltip_class l-hidden@desktop",
+                        title => balance_currency_tooltip,
+                        'data-popup' => '.b-header__balance-refill'
+                    },
+                    icon        => 'money',
+                    color       => 'default',
+                    notifier    => ( user_balance < 0 || user_credit || user.get_unpaid_bills_count() > 0  ) ? user_notifier : 0,
+                    notifier_bg => 'none'
+            %]
+            </div>
+        <!-- /баланс -->
+      [%- END # UNLESS user_unsecured %]
+    <!-- ЛК -->
+        <div class="b-header__user-link">
+        [%- account_notifier = BLOCK -%]
+            <a href="/user/messages?nocache=[% rand %]" class="b-button__notifier b-button__notifier_bg-color_red tooltip" title="[% t('header.messages') %]">
+                [% user_messages_num %]
+            </a>
+        [%- END # account_notifier = BLOCK -%]
+        [%- INCLUDE 'b-button.inc'
+            attr => {
+                class        => 'b-header__popup-trigger l-hidden@mobile',
+                tag          => 'div',
+                'data-popup' => '.b-header__account-menu'
+            },
+            color         => 'default',
+            size          => 'small',
+            text          => user.get_username( 'short', 1 ),
+            text_overflow => 1,
+            text_tooltip  => user.email,
+            notifier      => user_messages_num ? account_notifier : 0,
+            icon_right    => 'corner-down',
+            block         => 0
+        -%]
+
+        [%
+            INCLUDE 'b-button-square.inc'
+                icon        => 'profile',
+                color       => 'default',
+                notifier    => user_messages_num ? account_notifier : 0,
+                notifier_bg => 'none'
+                attr => {
+                    class        => 'b-header__popup-trigger l-hidden@desktop',
+                    'data-popup' => '.b-header__account-menu'
+                }
+        %]
+
+        </div>
+    <!-- /ЛК -->
+    [%- ELSE # user_id %]
+        <a href="[% site_url_prefix_main %]/user/authorize?mode=register" class="b-header__link i-auth__open-registr-tab qa-registr-btn">[% t('header.register') %]</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        [%- INCLUDE 'b-button.inc'
+            attr => {
+                href  => "${site_url_prefix_main}/user/authorize",
+                class => 'b-header__user-button i-auth__open-login-tab qa-auth-btn',
+            },
+            color => 'link',
+            size  => 'small',
+            wide  => 1,
+            text  => t('user.sign_in'),
+            block => 0
+        %]
+    [%- END # user_id %]
+    </div>
+    [%- IF user_id %]
+    <!-- ЛК попап -->
+    [% WRAPPER popup
+        hide_top_close => 1,
+        attr => {
+            class => 'b-header__popup b-header__account-menu b-popup_padding_small'
+        }
+    %]
+      [%- UNLESS user_unsecured %]
+        <div class="b-header__popup-buttons-placeholder l-nowrap l-padding_bottom-small l-hidden@desktop">
+            <ul class="b-list b-header__links">
+                <li class="b-header__links-item b-header__links-item_type_text"><span class="b-icon b-icon_main_profile l-padding_left-large"><span class="b-text l-bold">[% user.get_username( 'short', 1 ) %]</span></span></li>
+                <li class="b-header__links-item"><a class="b-link b-link_style_text b-link_hover_none" href="/user/domain_list?nocache=[% $rand %]">[% t('user.my_domains') %]</a></li>
+                <li class="b-header__links-item"><a class="b-link b-link_style_text b-link_hover_none" href="/user/service_list?nocache=[% $rand %]">[% t('user.my_services') %]</a></li>
+                <li class="b-header__links-item"><a href="/user/[% user_unsecured ? '' : 'welcomepage' %]" class="b-link b-link_style_text b-link_hover_none">[% t('user.my_profile') %] <span class="b-icon b-icon_arrow_bold-right b-header__links-icon"></span></a></li>
+
+                [% IF feature_enabled( 'beehive_account', user_id) -%]
+                    <li class="b-header__links-item"><a href="/user/account/" class="b-link b-link_style_text b-link_hover_none">Новый список услуг<span class="b-icon b-icon_arrow_bold-right b-header__links-icon"></span></a></li>
+                [%- END %]
+            </ul>
+        </div>
+        <div class="l-hidden@mobile l-margin_bottom-small">
+            [%- INCLUDE 'b-button.inc'
+                attr => {
+                    class => 'l-margin_right-tiny',
+                    href => "/user/domain_list?nocache=$rand"
+                },
+                color => 'link',
+                size => 'small',
+                text => t('user.my_domains'),
+                block => 0
+            %]
+            [%- INCLUDE 'b-button.inc'
+                attr => {
+                    href => "/user/service_list?nocache=$rand"
+                },
+                color => 'link',
+                size => 'small',
+                text => t('user.my_services'),
+                block => 0,
+            %]
+        </div>
+
+        <form method="get" action="/user/domain_list" class="b-form-compact b-form-compact_font-size_14 b-footer__search b-header__account-search">
+            <input type="hidden" name="filters_where_search" value="dom_and_serv" />
+            <input type="hidden" name="sortcol" value="credate" />
+            <input type="hidden" name="sortorder" value="desc" />
+            <input type="hidden" name="search_form" value="1" />
+            <div class="b-form-compact__inner-wrapper">
+                <div class="b-form-compact__buttons-placeholder">
+                    [%- INCLUDE 'b-button.inc'
+                        attr => {
+                            type => 'submit'
+                        },
+                        color => 'transparent',
+                        size => 'small',
+                        icon_single => 'zoom',
+                        block => 0
+                    %]
+                </div>
+                <div class="b-form-compact__field-placeholder">
+                    <input type="text" name="filters_soft_domain_comment_search" class="b-form-compact__query ctrl-enter-submit enter-submit" placeholder="[% t('user.search_in_services') %]" />
+                    <input type="hidden" name="categories" value="services" />
+                </div>
+            </div>
+        </form>
+      [%- END # UNLESS user_unsecured %]
+        <div class="b-header__popup-buttons-placeholder l-nowrap l-padding_top-small l-padding_bottom-small">
+            <ul class="b-list b-header__links">
+                <li class="b-header__links-item l-hidden@mobile"><a href="/user/[% user_unsecured ? '' : 'welcomepage' %]" class="b-link b-link_style_text b-link_hover_none">[% t('user.my_profile') %] <span class="b-icon b-icon_arrow_bold-right b-header__links-icon"></span></a></li>
+                <li class="b-header__links-item"><a href="/user/logout?nocache=[% rand %]" data-confirm-message="[% t('user.sign_out_confirm') %]" class="b-link b-link_style_text b-link_hover_none i-post-link">[% t('user.sign_out') %]</a></li>
+            </ul>
+        </div>
+        [% IF feature_enabled( 'beehive_account', user_id) -%]
+        <div class="b-header__divider-horizontal"></div>
+        <div class="b-header__popup-buttons-placeholder l-nowrap l-padding_top-small">
+            <ul class="b-list b-header__links">
+
+                <li class="b-header__links-item">
+                    <a href="/user/account/" class="b-link b-link_style_text b-link_hover_none">
+                        <span class="b-icon_type_global-gray"></span>
+                        <span class="b-header__account-links-item">Новый список услуг</span>
+                        <span class="b-icon b-icon_arrow_bold-right b-header__links-icon"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        [%- END %]
+    [%- END # popup -%]
+    <!-- /ЛК попап -->
+    <!-- Пополнение баланса -->
+    [% WRAPPER popup
+        hide_top_close => 1,
+        attr => {
+            class => 'b-header__popup b-header__balance-refill b-popup_padding_small'
+        }
+    %]
+        <div class="b-header__popup-buttons-placeholder l-nowrap l-padding_bottom-small">
+            <ul class="b-list b-header__links">
+                <li class="b-header__links-item b-header__links-item_type_text l-hidden@desktop"><span class="b-icon b-icon_main_money l-margin_right-small"></span><strong>[% money(user_balance).format(html => 0) %]</strong></li>
+                <li class="b-header__links-item"><a href="/user/balance" class="b-link b-link_style_text b-link_hover_none">[% t('user.balance') %] <span class="b-icon b-icon_arrow_bold-right b-header__links-icon"></span></a></li>
+            </ul>
+        </div>
+
+
+        <label for="amount_label" class="b-title b-title_size_small-compact">[% t('user.balance_refill') %]</label>
+        <form action="/order/prepayment_order?nocache=[% rand %]" class="b-form-compact b-form-compact_font-size_14" method="post">
+            <div class="b-form-compact__inner-wrapper">
+                <div class="b-form-compact__buttons-placeholder l-float_right">
+                    [%
+                        INCLUDE 'b-button-square.inc'
+                            attr => {
+                                type => 'submit'
+                            },
+                            size    => 'normal',
+                            icon    => 'arrow-right',
+                    ~%]
+                </div>
+                <div class="b-form-compact__field-placeholder">
+                    <input type="text" name="amount" size="6" class="b-form-compact__query" value="[% get_refill_amount() %]" id="amount_label" placeholder="[%- t('user.enter_amount')~%]" />
+                </div>
+            </div>
+        </form>
+        <ul class="b-header__popup-list">
+        [%- IF user.get_unpaid_bills_count() > 0 -%]
+            <li class="b-header__popup-list-item">
+                [%
+                    INCLUDE 'b-button.inc'
+                        color => 'important',
+                        size  => 'small',
+                        attr => {
+                            href  => "/user/bills?pay_status=not_payed&nocache=$rand"
+                            class => 'l-margin_top-tiny'
+                        },
+                        text => t('layout.not_payed_bills', user.get_unpaid_bills_count());
+                %]
+            </li>
+        [%- END -%]
+        </ul>
+    [%- END # popup -%]
+    <!-- /Пополнение баланса -->
+    [%- END # IF user_id %]
+
+
+<!--/noindex-->

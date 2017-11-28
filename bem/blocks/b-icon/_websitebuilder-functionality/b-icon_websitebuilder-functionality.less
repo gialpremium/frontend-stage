@@ -1,0 +1,89 @@
+@import '~i-variables/i-variables';
+
+.b-icon {
+    &_websitebuilder-functionality {
+        &_text {
+            .get-websitebuilder-f-icon(0, -30);
+        }
+        &_photo {
+            .get-websitebuilder-f-icon(-30, -30);
+        }
+        &_gallery {
+            .get-websitebuilder-f-icon(-60, -30);
+        }
+        &_youtube {
+            .get-websitebuilder-f-icon(-90, -30);
+        }
+        &_gmaps {
+            .get-websitebuilder-f-icon(-90, -60);
+        }
+        &_yamaps {
+            .get-websitebuilder-f-icon(-60, 0);
+        }
+        &_figure {
+            .get-websitebuilder-f-icon(-120, -30);
+        }
+        &_line {
+            .get-websitebuilder-f-icon(-150, -30);
+        }
+        &_button {
+            .get-websitebuilder-f-icon(0, -60);
+        }
+        &_form {
+            .get-websitebuilder-f-icon(-180, -30);
+        }
+        &_menu {
+            .get-websitebuilder-f-icon(-210, -30);
+        }
+        &_social {
+            .get-websitebuilder-f-icon(-150, -90);
+        }
+        &_skype {
+            .get-websitebuilder-f-icon(-120, -90);
+        }
+        &_music {
+            .get-websitebuilder-f-icon(-120, -60);
+        }
+        &_banner {
+            .get-websitebuilder-f-icon(-60, -60);
+        }
+        &_flash {
+            .get-websitebuilder-f-icon(-210, -90);
+        }
+        &_adsense {
+            .get-websitebuilder-f-icon(-240, -90);
+        }
+        &_html {
+            .get-websitebuilder-f-icon(-240, -30);
+        }
+        &_paypal {
+            .get-websitebuilder-f-icon(-30, -60);
+        }
+        &_wm {
+            .get-websitebuilder-f-icon(-90, 0);
+        }
+        &_wide {
+            .get-websitebuilder-f-icon(-150, -120);
+        }
+        &_desktop {
+            .get-websitebuilder-f-icon(-180, -120);
+        }
+        &_tablet {
+            .get-websitebuilder-f-icon(-210, -120);
+        }
+        &_phone {
+            .get-websitebuilder-f-icon(-240, -120);
+        }
+        &_locale {
+            .get-websitebuilder-f-icon(-120, -120);
+        }
+    }
+}
+.get-websitebuilder-f-icon(@x, @y) {
+    display: inline-block;
+    border-radius: 3px;
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    background: @color-bg-default url(b-icon_websitebuilder-functionality.png) no-repeat ~"@{x}px @{y}px";
+}

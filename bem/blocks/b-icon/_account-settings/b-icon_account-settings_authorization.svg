@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="444 362 36 40">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #ccc;
+      }
+    </style>
+  </defs>
+  <g transform="translate(444 362)">
+    <rect id="Rectangle_1991" data-name="Rectangle 1991" class="cls-1" width="36" height="40"/>
+    <path id="Path_1573" data-name="Path 1573" class="cls-2" d="M17.263,27.778l7.369-7.369-7.369-7.368v4.421H4v5.9H17.263Z"/>
+    <path id="Path_1574" data-name="Path 1574" class="cls-2" d="M6.947,6v4.421H27.579V29.579H6.947V34H32V6Z"/>
+  </g>
+</svg>

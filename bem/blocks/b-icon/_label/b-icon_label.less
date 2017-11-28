@@ -1,0 +1,165 @@
+@import '~i-less/i-less';
+
+.b-icon {
+    &_label {
+        @bl: ~".b-icon_label";
+
+        &_new {
+            .b-icon-label;
+
+            padding: 3px 4px 2px 4px;
+            font: 700 9px/9px @face;
+            background: #ff2e2e;
+
+            &:before {
+                top: 100%;
+                right: 0;
+                border-width: 5px 5px 0 0;
+                border-color: #bf1d20 transparent transparent transparent;
+            }
+
+            &:after {
+                display: none;
+            }
+
+            &.b-icon_size {
+                &_medium {
+                    padding: 3px 6px;
+                    font: 700 12px/12px @face;
+                }
+            }
+        }
+
+        &_idn {
+            .b-icon-label;
+
+            padding: 1px;
+            margin-right: 5px;
+            margin-left: 5px;
+            font: 700 10px/12px @face;
+            background: #0f82d7;
+
+            &:before {
+                top: 0;
+                left: -5px;
+                border-width: 7px 5px 7px 0;
+                border-color: transparent #0f82d7 transparent transparent;
+            }
+
+            &:after {
+                top: 0;
+                right: -5px;
+                border-width: 7px 0 7px 5px;
+                border-color: transparent transparent transparent #0f82d7;
+            }
+        }
+
+        &_idn-big {
+            .b-icon-label;
+
+            padding: 1px;
+            margin-right: 5px;
+            margin-left: 5px;
+            font: 700 14px/16px @face;
+            background: #0f82d7;
+
+            &:before {
+                top: 0;
+                left: -7px;
+                border-width: 9px 7px 9px 0;
+                border-color: transparent #0f82d7 transparent transparent;
+            }
+
+            &:after {
+                top: 0;
+                right: -7px;
+                border-width: 9px 0 9px 7px;
+                border-color: transparent transparent transparent #0f82d7;
+            }
+        }
+
+        &_preorder {
+            .b-icon-label;
+
+            top: 0;
+            padding: 1px 3px;
+            margin-right: 5px;
+            margin-left: 5px;
+            font: 700 10px/12px @face;
+            background: #ff7300;
+
+            &:before {
+                top: 0;
+                left: -5px;
+                border-width: 0.75em 5px;
+                border-color: #ff7300 transparent #ff7300 transparent;
+            }
+
+            &:after {
+                position: absolute;
+                top: 0;
+                right: -5px;
+                border-width: 0.75em 0 0.75em 5px;
+                border-color: transparent transparent transparent #ff7300;
+            }
+        }
+
+        &_openreg {
+            width: 12px;
+            height: 12px;
+            border-radius: 50% 50%;
+            vertical-align: middle;
+            background: #00b05a;
+        }
+        &_plan-pillar {
+            background-image: url('b-icon_label_plan-pillar.svg');
+            background-repeat: no-repeat;
+            display: inline-block;
+            width: 248px;
+            height: 51px;
+            // .b-icon-label;
+
+            // height: 12px;
+            // background: #ff6600;
+            // vertical-align: middle;
+
+            // &:before {
+            //     left: 0;
+            //     top: 100%;
+            //     border-width: 14px 14px 0 0;
+            //     border-color: #bf1d20 transparent transparent transparent;
+            // }
+
+            // &:after {
+            //     background-image:
+            //         linear-gradient(135deg, #ff6600 50%, transparent 50%),
+            //         linear-gradient(45deg, #ff6600 50%, transparent 50%);
+            //     height: 36px;
+            //     width: 36px;
+            //     top: 0;
+            //     left: 100%;
+            //     border: 0px none;
+            // }
+        }
+        &_recomended {
+            background-image: url('b-icon_label_recomended.svg');
+            background-repeat: no-repeat;
+        }
+    }
+}
+
+.b-icon-label() {
+    display: inline-block;
+    position: relative;
+    color: #fff;
+    vertical-align: middle;
+    text-transform: uppercase;
+
+    &:before, &:after {
+        display: block;
+        position: absolute;
+        border-style: solid;
+        transform: rotate(360deg);
+        content: "";
+    }
+}

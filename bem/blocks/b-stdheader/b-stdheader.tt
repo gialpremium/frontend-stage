@@ -1,0 +1,21 @@
+[%
+# custom_group_text - текст вместо названия группы
+# custom_title_text - текст вместо тайтла
+# html.page_title_html - блок html
+# html.page_title_html_prepend - блок html (до заголовка)
+-%]
+
+<div class="b-stdheader[% ' b-stdheader_type_new'  IF html.new_stdheader; ' ' _ html.stdheader_attr IF html.stdheader_attr; %]">
+    [% html.page_title_html_prepend %]
+[%- UNLESS html.new_stdheader -%]
+    <span class="b-stdheader__page-group">
+    [%~ custom_group_text ? custom_group_text : ru ? groups_title.$group_sidebar.ru : groups_title.$group_sidebar.en ~%]
+    </span>
+    <h1 class="b-stdheader__page-title">
+[%- ELSE # UNLESS html.new_stdheader -%]
+    <h1 class="b-title b-title_size_big">
+[%- END # UNLESS html.new_stdheader -%]
+        [%- custom_title_text ? custom_title_text : html.page_title ? html.page_title : html.title ~%]
+    </h1>
+    [% html.page_title_html %]
+</div>

@@ -1,0 +1,40 @@
+@import '~i-less/i-less';
+
+.b-block-border {
+    background: #fff;
+    border: 1px solid @color-bg-default-darker;
+    padding: 1px;
+    border-radius: 7px;
+
+    &_width_170 {
+        width: 170px;
+    }
+
+    &__bg {
+        padding: 11px 18px;
+        background: url(b-block-border__bg.png) repeat-x;
+        border-radius: 7px;
+    }
+    &__title {
+        display: block;
+        padding: 0px 0px 7px 0px;
+        font: 16px/18px @face;
+        font-weight: bold;
+        color: #ab1c00;
+
+        &_size_14 {
+            font: bold 14px/16px @face;
+        }
+    }
+    &__title-desc {
+        display: block;
+        padding-bottom: 5px;
+        font: 12px/17px @face;
+        font-weight: normal;
+        color: #000000;
+    }
+    &__title-link {
+        font-weight: normal;
+        font: 12px/18px @face;
+    }
+}

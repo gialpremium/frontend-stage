@@ -1,0 +1,39 @@
+[%#
+    breadcrumbs из breadcrumbs.inc в layout/default.html
+ %]
+[% PROCESS 'breadcrumbs.inc'; %]
+<div class="b-breadcrumbs">
+    <div class="b-page__content-wrapper b-page__content-wrapper_style_indent" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+        [%
+            SET crumbs_path = html.breadcrumbs.path || html.breadcrumbs;
+            SET current_title = html.breadcrumbs.current || html.page_title || html.title;
+            SET crumbs = crumbs_path.split('\/(?:#!|\?_)?|\|');
+        %]
+
+        <a class="b-breadcrumbs__item" href="/" itemprop="url title">[% t('breadcrumbs.index') %]</a>
+        [% FOREACH crumb = crumbs;
+            NEXT UNLESS crumb;
+
+            IF current_crumb;
+                current_crumb = current_crumb.elements.$crumb;
+            ELSE;
+                current_crumb = breadcrumbs.$crumb;
+            END;
+
+            LAST UNLESS current_crumb;
+
+            #'&nbsp;/&nbsp;' IF loop.prev;
+
+            '<a class="b-breadcrumbs__item';
+            ' ' _ current_crumb.attr.class  IF current_crumb.attr.class; '"';
+            FOREACH a = current_crumb.attr;
+                NEXT  IF a.key == 'class';
+                " $a.key=\"$a.value\"";
+            END;
+            ' href="' _ current_crumb.href _ '" itemprop="url title">' IF current_crumb.href;
+               current_crumb.text;
+            '</a>' IF current_crumb.href;
+        END %]
+        <span class="b-breadcrumbs__item b-breadcrumbs__item_state_current">[% current_title %]</span>
+    </div>
+</div>

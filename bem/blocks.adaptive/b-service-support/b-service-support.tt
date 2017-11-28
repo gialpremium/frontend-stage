@@ -1,0 +1,20 @@
+[%# copy-paste
+INCLUDE 'b-service-support.inc'
+    params => {
+        icon => 'support'
+        add_class => 'l-margin_bottom-medium'
+        url => '/some/url'
+        target_blank => 1
+        text => 'link text'
+    }
+%]
+
+[% params.icon = params.icon || 'faq' %]
+<div class="b-service-support b-service-support__icon-[% params.icon %][% ' ' _ params.add_class IF params.add_class %]">
+    <div class="b-service-support__content">
+        <div class="b-service-support__content-wrapper">
+            <a class="b-service-support__content-link" [% 'target="_blank"'  IF params.target_blank %] href="[% params.url %]">[% params.text %]</a>
+        </div>
+    </div>
+    <div class="l-float_clear"></div>
+</div>

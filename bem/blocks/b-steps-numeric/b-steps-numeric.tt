@@ -1,0 +1,23 @@
+[% # INCLUDE 'b-steps-numeric.inc' %]
+[% # breadcrumbs_id - идентификатор на случай нескольких breadcrumbs на странице %]
+[% # steps - массив ссылок с указание нужного состояния(prev, current, next),   %]
+[% # ссылки указывать в той последовательности в которой будут выводиться       %]
+[% # TODO: отвязать от последовательности                                       %]
+
+<div class="b-steps-numeric">
+    <ul class="b-steps-numeric__bar [% params.add_class %]"[% IF params.breadcrumbs_id %] id="[%- params.breadcrumbs_id -%]"[% END %]>
+    [% FOREACH item = params.steps -%]
+        [% step_node = loop.first ? 'b-steps-numeric__item_node_first' : loop.last ? 'b-steps-numeric__item_node_last' : '' %]
+        <li class="b-steps-numeric__item b-steps-numeric__item_state_[% item.state %] [% step_node %]">
+            <div class="b-steps-numeric__wrapper">
+            <[% IF item.state == 'prev' || item.state == 'hold' %]a href="[% item.href %]"[% ELSE %]span[% END %] class="b-steps-numeric__counter">
+                [%~ loop.index + 1 ~%]
+                <span class="b-steps-numeric__label">
+                    <span class="b-steps-numeric__label-text">[% item.text %]</span>
+                </span>
+            </[% IF item.state == 'prev' || item.state == 'hold' %]a[% ELSE %]span[% END %]>
+            </div>
+        </li>
+    [%- END %]
+    </ul>
+</div>

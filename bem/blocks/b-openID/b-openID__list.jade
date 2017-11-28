@@ -1,0 +1,8 @@
+div.b-openID.l-margin_top.l-margin_medium.b-openID__list-wrapper
+  ul.b-openID__list
+    each val, i in self.providers
+      li.b-openID__list-items-wrapper
+        a(href=(self.providers[i].auth_url || '#openid-popup'),
+          class="b-openID__list-link b-openID__list-link-icon b-openID__list-link-icon_name_" + t('authorize.providers.' + i + '.name') + "  no-auth tooltip" +(self.providers[i].auth_url ? "" : " b-popup__trigger-open"),
+          data-openid-name=t('authorize.providers.' + i + '.name'))
+          !=t('authorize.providers.' + i + '.name')

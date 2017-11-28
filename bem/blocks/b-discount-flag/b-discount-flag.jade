@@ -1,0 +1,17 @@
+- block = 'b-discount-flag'
+
+span(
+  class=block
+  class=self.add_class
+  class=self.css_style ? '#{block}_style_css' : ''
+  class=self.flag_size ? '#{block}_size_' + self.flag_size : ''
+)
+  span(
+    class='#{block}__content'
+  )
+    if self.percent
+      | -
+      =self.percent
+      | %
+    else
+      =self.content

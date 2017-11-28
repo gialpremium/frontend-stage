@@ -1,0 +1,26 @@
+@import '~i-less/i-less';
+
+.b-input-error {
+    border-color: #eb4444 !important;
+    color: #f97878 !important;
+
+    &__hint {
+        z-index: 11;
+        background: #eb4444;
+        padding: 6px 12px;
+        color: #fff;
+        font: bold @font-normal;
+
+        &::before {
+            content: '';
+            .i-triangle-up(5px, #eb4444);
+            position: absolute;
+            top: -5px;
+            left: 24px;
+        }
+
+        &>p {
+            margin: 0px;
+        }
+    }
+}

@@ -1,0 +1,44 @@
+@import '~i-less/i-less';
+
+.b-breadcrumbs {
+    @bl: ~".b-breadcrumbs";
+
+    padding: 20px 0px 5px 0px;
+    background-color: @color-bg-footer;
+
+    .ie & {
+        margin-top: -510px;
+    }
+
+    &__item {
+        position: relative;
+        font: 16px @face;
+        color: #3a3a3a;
+        text-decoration: none;
+        cursor: pointer;
+        margin-right: 6px;
+
+        &:after {
+            content: '';
+            display: inline-block;
+            margin-left: 9px;
+            .i-triangle-right(4px, #8e8e8e);
+        }
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        &_state_current {
+            cursor: default;
+
+            &:after {
+                content: none;
+            }
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}

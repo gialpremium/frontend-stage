@@ -1,0 +1,22 @@
+
+include ~b-popup/b-popup
+
++bPopup( {"attr":{"className":"b-welcome-popup__window"},"overlay":"1"} )
+  .b-welcome-popup_icon_hello
+  .b-welcome-popup__content
+    .b-welcome-popup__title.b-title.b-title_size_big
+      !=t('common.welcome')
+    .b-welcome-popup__text
+      span.b-text
+        !=t('common.thank_you')
+
+      span.b-text
+        !=t('common.sent_mail_for_you')
+        br
+        strong
+          != self.email
+
+      span.b-text
+        !=t('privacy.agreement_button')
+
+    != JST['b-button']({attr: {className: 'b-welcome-popup__btn'}, size: 'medium', text: t('common.continue') })

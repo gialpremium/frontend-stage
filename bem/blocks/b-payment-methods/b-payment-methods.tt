@@ -1,0 +1,97 @@
+[%-
+    paytypes = {
+        webmoney => {
+          url   => '/company/paytypes',
+          title => 'WebMoney'
+        },
+        yamoney => {
+            url   => '/doc/yamoney_payments',
+            title => ru ? 'Яндекс.Деньги' : 'Yandex.Money'
+        },
+        # так же закоменчено в b-icon_payment-footer.sprite.yaml
+        # paypal => {
+        #     url   => '/doc/paypal_payments',
+        #     title => 'PayPal'
+        # },
+        qiwi => {
+            url   => '/doc/osmp_payments',
+            title => 'Qiwi'
+        },
+        elecsnet => {
+            url   => '/doc/handybank_payments',
+            title => ru ? 'Элекснет' : 'ElecsNet'
+        },
+        bank => {
+            url   => '/company/paytypes',
+            title => ru ? 'Банковский перевод' : 'Bank Transfer'
+        },
+        rbk => {
+            url   => '/company/paytypes',
+            title => 'RBK Money'
+        },
+        card => {
+            url   => '/doc/card_payments',
+            title => ru ? 'Банковские карты' : 'Plastic cards'
+        },
+        robokassa => {
+            url   => '/doc/robokassa_payments',
+            title => 'ROBOKASSA'
+        },
+        contact => {
+            url   => '/doc/contact_payments',
+            title => 'CONTACT'
+        },
+        mastercard => {
+            url   => '/doc/card_payments',
+            title => 'MasterCard'
+        },
+        visa => {
+            url   => '/doc/card_payments',
+            title => 'Visa'
+        },
+        alfabank => {
+            url   => '/company/paytypes',
+            title => 'Alfa bank'
+        },
+        sberbank => {
+            url   => '/company/paytypes',
+            title => 'sberbank'
+        },
+        all => {
+            url   => '/company/paytypes',
+            title => ru
+                ? '<strong class="b-payment-methods__title">Более 30</strong><br />способов<br />оплаты<span class="b-payment-methods__more"></span>'
+                : '<strong class="b-payment-methods__title">Over 30</strong><br />ways <br />to pay<span class="b-payment-methods__more"></span>'
+        }
+    };
+-%]
+[%
+params = params || {};
+
+UNLESS params.paytypes_list;
+    params.paytypes_list = ru
+        ? [ 'mastercard', 'visa', 'alfabank', 'sberbank', 'webmoney', 'yamoney',  'qiwi', 'elecsnet', 'rbk', 'paypal']
+        : [ 'mastercard', 'visa', 'alfabank', 'sberbank', 'webmoney', 'yamoney',  'qiwi', 'elecsnet', 'rbk', 'paypal'];
+END;
+%]
+
+<div class="b-page__content-wrapper">
+    <ul class="b-payment-methods [% params.add_class %]">
+    [% UNLESS params.hide_title %]
+        <li class="b-payment-methods__item b-payment-methods__title">[% ru ? 'Принимаем к оплате' : 'Payment options' %]</li>
+    [% END %]
+    [%-
+        FOREACH paytype IN params.paytypes_list;
+            NEXT UNLESS paytypes.$paytype.defined;
+    -%]
+        <li class="b-payment-methods__item">
+            <a href="[% site_url_prefix_main _ paytypes.$paytype.url %]" rel="nofollow" class="b-payment-methods__link">
+                <span class="b-icon b-icon_payment-footer_[% paytype %]"></span>
+            </a>
+        </li>
+    [%- END; # FOREACH paytype IN params.paytypes_list; -%]
+        <li class="b-payment-methods__item b-payment-methods__all">
+            <a href="[% site_url_prefix_main %]/company/paytypes" rel="nofollow" class="b-payment-methods__link" [% ' target="_blank"' IF params.all_methods_blank %]>[% ru ? 'Все способы оплаты' : 'All payment options' %]</a>
+        </li>
+    </ul>
+</div>

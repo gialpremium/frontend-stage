@@ -1,0 +1,82 @@
+@import '~i-less/i-less';
+
+.b-table-compare {
+    border-spacing: 0;
+    color: #333333;
+    text-align: center;
+    width: 100%;
+
+    &__header {
+        height: 110px;
+
+        &-item {
+            background-position: center;
+            display: block;
+            float: left;
+            height: 100%;
+            width: 50%;
+        }
+    }
+
+    &__cell {
+        background-position: center;
+        border-bottom: 1px solid #c8c8c8;
+        height: 147px;
+        vertical-align: middle;
+        width: 25%;
+
+        &_width {
+            &_50 {
+                width: 50%;
+            }
+        }
+        &_border_none {
+            border: none;
+        }
+    }
+    &__icon {
+        display: inline-block;
+        vertical-align: top;
+        width: 132px;
+
+        &-title {
+            font: normal 14px/18px @face;
+            margin: 5px 0 0;
+            padding: 0;
+        }
+
+        &-wrapper {
+            background-position: center;
+            height: 68px;
+            width: 100%;
+        }
+    }
+    &__criterion {
+        font: normal 14px/18px @face;
+        margin: 10px 0 0;
+        padding: 0px;
+    }
+    &__footer {
+        background: #e6e6e6;
+        height: 150px;
+
+        &-part {
+            width: 50%;
+            float: left;
+        }
+        &-button {
+            width: 180px;
+            font-size: 24px;
+            line-height: 42px;
+
+            &_pos {
+                &_right {
+                    margin-left: 60px;
+                }
+                &_left {
+                    margin-right: 80px;
+                }
+            }
+        }
+    }
+}

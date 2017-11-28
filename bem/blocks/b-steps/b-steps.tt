@@ -1,0 +1,17 @@
+[% # INCLUDE 'b-steps.inc' %]
+[% # breadcrumbs_id - идентификатор на случай нескольких breadcrumbs на странице %]
+[% # steps - массив ссылок с указание нужного состояния(prev, current, next),   %]
+[% # ссылки указывать в той последовательности в которой будут выводиться       %]
+[% # TODO: отвязать от последовательности                                       %]
+
+<ul class="b-steps l-margin_bottom-normal" [% IF breadcrumbs_id %]id="[%- breadcrumbs_id -%]"[% END %]>
+[% FOREACH item = steps -%]
+    [% NEXT IF item.ignore %]
+    <li class="b-steps__item-wrapper">
+        <[% IF item.state == 'prev' || item.state == 'hold' %]a href="[% item.href %]"[% ELSE %]span[% END %] class="b-steps__item b-steps__item_state_[% item.state %] [% 'b-steps__item_style_fake' IF item.state == 'prev' && item.hidden %]"[% ' onclick="return false;"' IF item.state == 'prev' && item.hidden %]>
+            <span class="b-steps__item-text">[% item.text %]</span>
+            <span class="b-steps__item-arrow"></span>
+        </[% IF item.state == 'prev' || item.state == 'hold' %]a[% ELSE %]span[% END %]>
+    </li>
+[%- END %]
+</ul>

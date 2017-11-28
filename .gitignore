@@ -1,0 +1,16 @@
+node_modules/*
+bower_components/*
+root/*
+
+
+.DS_Store
+._*
+.project
+.settings
+*.sublime-*
+
+Thumbs.db
+
+npm-debug.log
+yarn-error.log
+

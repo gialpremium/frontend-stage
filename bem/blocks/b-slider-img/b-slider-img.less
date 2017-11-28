@@ -1,0 +1,70 @@
+@import '~i-less/i-less';
+
+.b-slider-img {
+    position: relative;
+
+    &__switcher {
+        margin-bottom: 10px;
+        overflow: hidden;
+    }
+    &__switch {
+        display: block;
+        float: left;
+        background: url(b-sprites__icons.png) no-repeat;
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+        .i-text__hidden();
+    }
+    &__switch_direct_prev {
+        background-position: 0px -470px;
+    }
+    &__switch_direct_next {
+        background-position: 0px -510px;
+    }
+    &__counter {
+        float: left;
+        padding: 0px 0px 0px 7px;
+        font: 11px @face;
+        line-height: 15px;
+    }
+    &__counter-total {
+        padding-right: 7px; cursor: pointer;
+    }
+    &__list-wrapper {
+        position: relative;
+    }
+    &__list {
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+        list-style-type: none;
+        position: relative;
+        overflow: hidden;
+    }
+    &__list-item {
+        display: none;
+        cursor: pointer;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+    &__list-item-title {
+        display: block;
+        margin: 0px;
+        padding-top: 15px;
+        font: 12px @face;
+        color: #555555;
+        font-style: italic;
+    }
+
+    &_titles_min-height &__list-item-title {
+        min-height: 36px;
+        height: auto !important;
+        height: 36px;
+    }
+
+    &_count_one img, &_count_one &__list-item:hover {
+        cursor: default;
+    }
+}

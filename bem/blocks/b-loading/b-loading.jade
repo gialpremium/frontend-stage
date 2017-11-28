@@ -1,0 +1,14 @@
+-var wrapped = self.wrapped ? ' b-loading_type_wrapped' : ''
+-var bgColor = self.bgColor ? ' b-loading_bg_' + self.bgColor : ''
+-var hidden = self.hidden ? ' b-loading_display_none' : ''
+-var classes= 'b-loading' + wrapped + bgColor + hidden + (self.class ? ' ' + self.class : '')
+
+-var size = self.size ? ' b-loading__circle-wrapper_size_' + self.size : ''
+
+div(class=classes)
+  div(class='b-loading__circle-wrapper' + size)
+    div.b-loading__circle.b-loading__circle_delayed
+    div.b-loading__circle
+    if self.text
+      div.b-loading__text
+        != self.text

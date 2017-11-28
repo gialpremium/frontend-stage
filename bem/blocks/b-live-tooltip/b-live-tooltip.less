@@ -1,0 +1,44 @@
+@import '~i-less/i-less';
+
+.b-live-tooltip {
+    position: absolute;
+    z-index: @zIndex-tooltip;
+    max-width: 400px;
+    padding: 11px 12px;
+    background:#fff;
+    box-shadow: 0 0 5px #aaa;
+    word-wrap: break-word;
+
+    .desktop({
+        padding: 11px;
+    });
+
+    &_type_touch {
+        .desktop({
+            padding-right: 36px;
+        });
+    }
+
+    &_visible_false {
+        left:-9999px !important;
+        top:-9999px !important;
+    }
+    &__close {
+        background-position: center 12px;
+        min-height: 36px;
+        height: auto;
+        width: 36px;
+        position: absolute;
+        cursor: pointer;
+        top: 0px;
+        bottom: 0px;
+        right: 0px;
+    }
+}
+.tooltip {
+    cursor:help;
+}
+a.tooltip[href],
+a.tooltip[href] .tooltip {
+    cursor:pointer;
+}

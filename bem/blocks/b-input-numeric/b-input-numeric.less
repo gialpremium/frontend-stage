@@ -1,0 +1,63 @@
+@import '~i-less/i-less';
+
+.b-input-numeric {
+    @button-size: 48px;
+
+    position: relative;
+    height: @button-size;
+    padding: 0px @button-size;
+    border-radius: 3px;
+    background: #fff;
+
+    &__button {
+        position: absolute;
+        width: @button-size;
+        top: 0px;
+        bottom: 0px;
+        background-color: @color-bg-primary-alternate;
+        background-position: center;
+        cursor: pointer;
+        transition: @transition-default;
+        user-select: none;
+
+        &_icon {
+            &_decrement {
+                background-image: url('b-input-numeric__button_icon_decrement.svg');
+                background-repeat: no-repeat;
+                border-radius: 3px 0 0 3px;
+                left: 0;
+            }
+            &_increment {
+                background-image: url('b-input-numeric__button_icon_increment.svg');
+                background-repeat: no-repeat;
+                border-radius: 0 3px 3px 0;
+                right: 0;
+            }
+        }
+
+        &:hover {
+            .i-hover-bg-color(@color-bg-primary-alternate, 5%);
+        }
+
+        &_state_disabled,
+        &_state_disabled:hover {
+            cursor: default;
+            background-color: @color-bg-primary-alternate;
+            opacity: 0.7;
+            transition: none;
+        }
+    }
+
+    &__value-wrapper {
+        margin: 0;
+        padding: 12px;
+        font: bold 20px/24px @face;
+        color: #515151;
+        display: block;
+        width: 100%;
+        border: 0px none;
+        text-align: center;
+        background: #fff;
+        box-sizing: border-box;
+    }
+}

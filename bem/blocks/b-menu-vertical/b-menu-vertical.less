@@ -1,0 +1,30 @@
+@import '~i-less/i-less';
+
+.b-menu-vertical {
+    @bl: ~".b-menu-vertical";
+
+    &__scroll {
+        height: 150px;
+        overflow-y: scroll;
+    }
+    &__item {
+        display: block;
+        padding: 0px 36px;
+        font: 15px/48px @face;
+        color: #2e353a;
+        text-decoration: none;
+        white-space: nowrap;
+
+        &:hover {
+            background: #f3f3f3;
+        }
+    }
+
+    &_size {
+        &_compact {
+            @{bl}__item {
+                line-height: 36px;
+            }
+        }
+    }
+}

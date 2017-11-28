@@ -1,0 +1,26 @@
+@import '~i-less/i-less';
+
+.b-circle {
+    // если меняем цвет/размер - разносит существующее на модификаторы
+    background: #fff;
+    color: #000;
+    border-radius: 50%;
+    display: inline-block;
+    line-height: 24px;
+    font-weight: bold;
+    text-align: center;
+    min-width: 24px;
+
+    &_size {
+        &_small {
+            line-height: 15px;
+            min-width: 15px;
+        }
+    }
+    &_color {
+        &_red {
+            background-color: #eb4444;
+            color: #fff;
+        }
+    }
+}

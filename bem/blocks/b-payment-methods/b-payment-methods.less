@@ -1,0 +1,49 @@
+@import '~i-less/i-less';
+
+.b-payment-methods {
+    @bl: ~".b-payment-methods";
+    display: table;
+    padding: 0px;
+    margin: 0px auto;
+
+    &__item {
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+        padding-right: 40px;
+    }
+    &__title {
+        text-align: left;
+        font: bold 16px/58px @face;
+        color: #3f3f3f;
+        min-width: 215px;
+        width: 215px;
+        padding-right: 0px;
+    }
+    &__link {
+        line-height: 60px;
+        cursor: pointer;
+        text-decoration: none;
+        font: 15px/58px @face;
+        color: #333;
+
+        &:hover {
+            color: #747474;
+            text-decoration: underline;
+        }
+    }
+    &__all {
+        text-align: right;
+        padding-right: 0px;
+        width: 100%;
+        white-space: nowrap;
+    }
+    & .b-icon {
+        vertical-align: middle;
+        transition: 50ms ease-in-out;
+
+        &:hover {
+            transform: scale(1.08);
+        }
+    }
+}

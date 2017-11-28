@@ -1,0 +1,29 @@
+[% # INCLUDE 'b-price.inc' %]
+[% # price => 777 %]
+[% # price => { amount => 777, from => 1, no_unit => 1 } %]
+[% # color => 'black' %]
+[% # attr => class - для добавления класса %]
+[% # price_details => "за 1 единицу" %]
+
+[% SET amount = price.amount.defined ? price.amount : price %]
+<span class="b-price[% ' b-price_currency_usd b-price_unit_hide' IF en %][% ' b-price_unit_hide' IF price.no_unit %][% ' b-price_size_' _ price.size IF price.size %][% ' tooltip' IF price.note %][% ' ' _ attr.class IF attr.class %]"[% ' title="' _ price.note _ '"' IF price.note %]>
+[% IF amount == 0 %]
+    <span class="b-price__free">[% t('dict.Free' ) %]</span>
+[% ELSIF en %]
+    [% '<span class="b-price__from">' _ t('dict.from' ) _ '&nbsp;</span>' IF price.from %]
+    <span class="b-price__amount">[% t('dict.currency' ) %][%~ amount | format('%.2f') | format_number_triads ~%]</span>&nbsp;
+    [% UNLESS price.no_unit %]
+        <span class="b-price__from">[%  price.unit || '/' _ t('dict.Month.short' ) %]</span>
+    [% END %]
+    [% '<span class="b-price__note">*</span>' IF price.note %]
+[% ELSE %]
+    [% '<span class="b-price__from">' _ t('dict.from' ) _ '</span>' IF price.from %]
+    <span class="b-price__amount">[% amount | format('%.0f') | format_number_triads %]</span>&nbsp;
+    [% UNLESS price.no_unit %]
+        <span class="b-price__currency-wrapper"><span class="b-price__currency[% ' b-price__currency_color_' _ color IF color %]">[% t('dict.currency' ) %][% '<span class="b-price__note">*</span>' IF price.note %]</span><span class="b-price__unit">[%  price.unit || t('dict.Month.short' ) %]</span></span>
+    [% ELSE %]
+        <span class="b-price__from">[% t('dict.currency' ) %]</span>
+        [% '<span class="b-price__from-desc">' _ price_details _ '</span>' IF price_details %]
+    [% END %]
+[% END %]
+</span>

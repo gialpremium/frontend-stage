@@ -1,0 +1,220 @@
+@import '~i-less/i-less';
+
+.b-discount-flag {
+    @bl: ~".b-discount-flag";
+
+    display: inline-block;
+    width: 39px;
+    height: 15px;
+    color: #fff;
+    font: bold 11px/16px @face;
+    text-align: center;
+    text-indent: 5px;
+    background-image: url('b-discount-flag.svg');
+    background-repeat: no-repeat;
+
+    &_size {
+        &_big {
+            width: 50px;
+            height: 21px;
+            font: bold 14px/21px @face;
+            background-image: url('b-discount-flag_size_big.svg');
+            background-repeat: no-repeat;
+        }
+
+        &_large {
+            width: 78px;
+            height: 28px;
+            padding-left: 5px;
+            font: normal 20px/26px @face;
+            background-image: url('b-discount-flag_size_large.svg');
+            background-repeat: no-repeat;
+        }
+    }
+
+    // стили для css версии шильдика
+    &__content {
+        display: block;
+        position: relative;
+        z-index: 2;
+        padding: 0 12px 0 6px;
+        border-radius: 5px;
+        background-color: #f60;
+    }
+
+    &__discount {
+        font: bold 24px/46px @face;
+    }
+
+    &_style_css {
+        position: relative;
+        overflow: hidden;
+        width: auto;
+        height: auto;
+        padding-left: 12px;
+        color: #fff;
+        font: bold @font-normal;
+        vertical-align: middle;
+        text-indent: 0;
+        background-image: none !important;
+
+        &:before,
+        &:after {
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 2px;
+            z-index: 1;
+            width: 20px;
+            height: 20px;
+            margin-top: -10px;
+            margin-left: 6px;
+            content: '';
+        }
+
+        &:before {
+            border-radius: 6px;
+            background-color: #f60;
+            transform: scaleX( 1.5 ) rotate( 45deg );
+        }
+
+        &:after {
+            z-index: 2;
+            margin-left: -2px;
+            font-size: 20px;
+            line-height: 20px;
+            content: '\2022';
+            text-align: center;
+        }
+
+        .no-csstransforms & {
+            border-radius: 0;
+
+            &:before,
+            &:after {
+                top: 0;
+                width: 24px;
+                height: 24px;
+                margin-top: 0;
+                margin-left: 0;
+                border-radius: 0;
+                line-height: 24px;
+                transform: none;
+            }
+
+            &:after {
+                margin-left: -2px;
+            }
+        }
+    }
+
+    &_size {
+        &_small {
+            padding-left: 9px;
+            font: bold @font-small;
+
+            &:before,
+            &:after {
+                width: 16px;
+                height: 16px;
+                margin-top: -8px;
+                margin-left: 6px;
+            }
+
+            &:after {
+                margin-left: -2px;
+                font-size: 15px;
+                line-height: 16px;
+            }
+
+            @{bl}__content {
+                padding: 0 6px;
+            }
+
+            .no-csstransforms & {
+                &:before,
+                &:after {
+                    width: 18px;
+                    height: 18px;
+                    margin-top: 0;
+                    margin-left: 0;
+                    line-height: 18px;
+                }
+
+                &:after {
+                    margin-left: -2px;
+                }
+            }
+        }
+
+        &_medium {
+            padding-left: 20px;
+            font: bold @font-medium;
+
+            &:before,
+            &:after {
+                width: 44px;
+                height: 44px;
+                margin-top: -22px;
+                margin-left: 18px;
+            }
+
+            &:before {
+                border-radius: 9px;
+            }
+
+            &:after {
+                margin-left: -6px;
+                font-size: 30px;
+                line-height: 44px;
+            }
+
+            @{bl}__content {
+                padding: 3px 12px;
+            }
+
+            .no-csstransforms & {
+                &:before,
+                &:after {
+                    width: 36px;
+                    height: 36px;
+                    margin-top: 0;
+                    margin-left: 0;
+                    line-height: 36px;
+                }
+
+                &:after {
+                    margin-left: -2px;
+                }
+            }
+        }
+
+        &_huge {
+            padding-left: 36px;
+            font: normal 20px/48px @face;
+
+            &:before,
+            &:after {
+                width: 48px;
+                height: 48px;
+                margin-top: -24px;
+                margin-left: 18px;
+            }
+
+            @{bl}__content {
+                padding: 0 24px;
+                border-radius: 0;
+            }
+
+            &:before {
+                border-radius: 18px;
+            }
+
+            &:after {
+                margin-left: 0;
+                font-size: 48px;
+                line-height: 48px;
+            }
+        }
+    }
+}

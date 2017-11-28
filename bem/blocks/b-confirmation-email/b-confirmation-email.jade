@@ -1,0 +1,16 @@
+
+include ~b-popup/b-popup
+
++bPopup( {"attr":{"className":"b-confirmation-email__window"},"overlay":"1"} )
+  .b-confirmation-email__message-item
+  .b-icon_user-reminder_email.b-confirmation-email__icon
+  .b-confirmation-email__content
+    .b-confirmation-email__title.b-title.b-title_size_big
+      !=t('common.email_not_confirmed')
+    .b-confirmation-email__errors
+    .b-confirmation-email__text
+      span.b-text
+        !=t('common.confirm_email_for_support')
+      br
+    != JST['b-button']({attr: {className: 'b-confirmation-email__confirm-btn l-margin_bottom-small'}, size: 'medium', text: t('common.send_link_to_email') })
+    //- != JST['b-button']({attr: {className: 'b-confirmation-email__confirmed-btn'}, 'color': 'primary-alternate', size: 'medium', text: t('common.email_confirmed') })

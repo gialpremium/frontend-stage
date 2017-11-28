@@ -1,0 +1,92 @@
+@import '~i-less/i-less';
+
+.b-promo-price {
+    text-align: center;
+    width: 110px;
+    height: 110px;
+    font: bold 31px/36px @face;
+    color: #FFF;
+    letter-spacing: -1px;
+    border-radius: 50%;
+    background-color: #AD2C10;
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxsaW5lYXJHcmFkaWVudCBpZD0iaGF0MCIgZ3JhZGllbnRVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHgxPSI1MCUiIHkxPSIxMDAlIiB4Mj0iNTAlIiB5Mj0iLTEuNDIxMDg1NDcxNTIwMmUtMTQlIj4KPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2FkMmIwZiIgc3RvcC1vcGFjaXR5PSIxIi8+CjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZkNTkwZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgIDwvbGluZWFyR3JhZGllbnQ+Cgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0idXJsKCNoYXQwKSIgLz4KPC9zdmc+);
+    background-image: linear-gradient(to top, #AD2C10 0%, #FE590D 100%);
+
+    &_bg-color_blue {
+        background-color: #3e81c5;
+        background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxsaW5lYXJHcmFkaWVudCBpZD0iaGF0MCIgZ3JhZGllbnRVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHgxPSI1MCUiIHkxPSIxMDAlIiB4Mj0iNTAlIiB5Mj0iLTEuNDIxMDg1NDcxNTIwMmUtMTQlIj4KPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzNkODFjNSIgc3RvcC1vcGFjaXR5PSIxIi8+CjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzhiYzNlNSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgIDwvbGluZWFyR3JhZGllbnQ+Cgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0idXJsKCNoYXQwKSIgLz4KPC9zdmc+);
+        background-image: linear-gradient(to top, #3e81c5 0%, #8bc4e5 100%);
+    }
+    &__inner-wrapper {
+        padding: 36px 0 0 0px;
+
+        .b-jelastic-promo__price & {
+            padding-top: 30px;
+        }
+    }
+    &__from {
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 14px;
+        letter-spacing: 0;
+    }
+    &__unit {
+        font: bold 12px/13px @face;
+        display: inline-block;
+        letter-spacing: 0;
+    }
+    &__for {
+        font: bold 12px/13px @face;
+        display: block;
+        letter-spacing: 0;
+    }
+    &__amount {
+        display: inline-block;
+        padding:0 3px;
+        text-align: center;
+    }
+    &__amount-old {
+        display: block;
+        font-size: 16px;
+        font-weight: normal;
+        text-decoration: line-through;
+        line-height: 14px;
+    }
+    &__currency {
+        display: block;
+        border-bottom:1px solid #fff;
+        text-decoration: none;
+    }
+    &_type_old-price &__inner-wrapper {
+        padding-top: 22px;
+    }
+
+    &_currency_usd &__inner-wrapper {
+        padding-top: 22px;
+    }
+    &_currency_usd&_type_old-price &__inner-wrapper {
+        padding-top: 11px;
+    }
+    &_currency_usd &__unit,
+    &_currency_usd &__from {
+        display: block;
+        line-height: 20px;
+    }
+    &_size_big {
+        width: 150px;
+        height: 150px;
+    }
+    &_size_big &__inner-wrapper {
+        padding-top: 54px;
+    }
+    &_size_big&_currency_usd &__inner-wrapper {
+        padding-top: 33px;
+    }
+    &_size_big &__from {
+        font-size: 18px;
+        line-height: 28px;
+    }
+    &_size_big &__amount {
+        font: bold 28px/28px "Trebuchet MS",Helvetica,sans-serif;
+    }
+}

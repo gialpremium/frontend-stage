@@ -1,0 +1,149 @@
+@import '~i-less/i-less';
+
+.b-button-square {
+    @bl: ~'.b-button-square';
+    @c-p: @button-color-primary;
+    @c-p-a: @button-color-primary-alternate;
+    @c-d: @button-color-default;
+    @c-dd: @color-border-default;
+    @c-i: @button-color-important;
+    @c-a: @button-color-action;
+    @c-l: @button-color-link;
+    @c-in: @button-color-invert;
+
+    background-color: transparent;
+    background-position: center;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0;
+    vertical-align: middle;
+    transition: @transition-default;
+    transition-property: background-color;
+    user-select: none;
+
+    &[disabled], &_state_disabled {
+        cursor: default !important;
+        opacity: 0.4;
+        transition: none;
+    }
+
+    &_radius_none {
+        border-radius: 0px;
+    }
+    &_state_pressed {
+        box-shadow: inset 0 2px 0 rgba(0,0,0,.2);
+    }
+    &_color {
+        &_primary {
+            .b-button-square-color(@c-p);
+        }
+        &_primary-alternate {
+            .b-button-square-color(@c-p-a);
+        }
+        &_default {
+            background-color: @c-d;
+            transition: 100ms ease-in-out;
+
+            &:hover, &@{bl}_state_hover, &@{bl}_state_pressed {
+                .i-hover-bg-color(@c-d, 2%);
+            }
+            &:active {
+                .i-active-bg-color(@c-d, 2%);
+            }
+            &[disabled] {
+                background-color: @c-d;
+            }
+        }
+        &_default-darker {
+            .b-button-square-color(@c-dd);
+        }
+        &_important {
+            .b-button-square-color(@c-i);
+        }
+        &_link {
+            .b-button-square-color(@c-l);
+        }
+        &_action {
+            .b-button-square-color(@c-a);
+        }
+        &_invert {
+            .b-button-square-color(@c-in);
+        }
+    }
+    &_size {
+        &_small {
+            width: 1.25 * @blh;
+            height: 1.25 * @blh;
+        }
+        &_normal {
+            width: 1.5 * @blh;
+            height: 1.5 * @blh;
+
+            &@{bl}_icon_arrow-right,
+            &@{bl}_icon_profile {
+                background-size: 16px;
+            }
+        }
+        &_medium {
+            width: 1.5 * @blh;
+            height: 1.5 * @blh;
+
+            &@{bl}_icon_arrow-right,
+            &@{bl}_icon_profile {
+                background-size: 16px;
+            }
+
+            .desktop({
+                width: 2 * @blh;
+                height: 2 * @blh;
+
+                &@{bl}_icon_arrow-right {
+                    background-size: 18px 18px;
+                }
+            });
+        }
+        &_big {
+            width: 2.5 * @blh;
+            height: 2.5 * @blh;
+        }
+    }
+
+    &__notifier {
+        position: absolute;
+        top: -6px;
+        right: -6px;
+        color: #fff;
+        display: inline-block;
+        font: bold 12px/14px @face;
+        height: 14px;
+        min-width: 8px;
+        padding: 0px 3px;
+        text-align: center;
+        text-decoration: none;
+        vertical-align: middle;
+        border-radius: 7px;
+        background-color: #eb4343;
+
+
+        &_bg_none {
+            background: none;
+        }
+
+    }
+}
+
+.b-button-square-color(@color) {
+    background-color: @color;
+
+    &:hover, &@{bl}_state_hover {
+        .i-hover-bg-color(@color);
+    }
+    &:active {
+        .i-active-bg-color(@color);
+    }
+    &[disabled] {
+        background-color: @color;
+    }
+}
