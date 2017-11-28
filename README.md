@@ -49,6 +49,7 @@ $ webpack
 - принят наставником и находится в общей ветке (master)
 - issue закрыт
 
+
 ## Что можно
 
 1. Привести bem-блоки в соответствие с принятым [Code Style](https://github.com/regru/frontend-stage#CODESTYLE.md)

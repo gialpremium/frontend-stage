@@ -89,8 +89,6 @@
 - Форматтеры:
     - EditorConfig - раздельная настройка отступов и кодировок на основе файла .editorconfig в проекте, используется [наш форк](https://github.com/regru/editorconfig-sublime-1251)
     - ESLint-Formatter
-    - _Stylefmt_ - пока не работает с less
-    - _CSScomb_ - пока не работает с less
 
 Рекомендуемые плагины:
 
@@ -203,34 +201,16 @@ npm install -g eslint eslint-plugin-regru
 
 - [stylelint](http://stylelint.io/)
 - [SublimeLinter-contrib-stylelint](https://github.com/kungfusheep/SublimeLinter-contrib-stylelint)
-- ? [https://github.com/davidtheclark/stylelint-selector-bem-pattern](https://github.com/davidtheclark/stylelint-selector-bem-pattern)
 
 ```bash
 # оба пакета есть в package.json
-npm i stylelint stylelint-plugin-regru 
+npm i -g stylelint stylelint-plugin-regru 
 ```
 
 <a name="todo-%D0%A4%D0%BE%D1%80%D0%BC%D0%B0%D1%82%D1%82%D0%B5%D1%80%D1%8B"></a>
 ### TODO Форматтеры
 
-[Stylefmt](https://github.com/dmnsgn/sublime-stylefmt) - в настоящее время [не поддерживает less](https://github.com/morishitter/stylefmt/issues/75)
-
-[CSScomb](https://github.com/csscomb/sublime-csscomb) - также валится на less. [issues](https://github.com/csscomb/csscomb.js/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aopen%20less). При этом используемый парсер [Gonzales-pe](https://github.com/csscomb/csscomb.js/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aopen%20less) less поддерживает. Возможно, стоит обновить зависимости саблайм плагина.
-
-<a name="todo-tt"></a>
-## TODO TT 
-
-__нужен линтер для SublimeLinter__
-
-<a name="jade"></a>
-## Jade
-
-[SublimeLinter-contrib-jade-lint](https://github.com/benedfit/SublimeLinter-contrib-jade-lint)
-
-`npm install -g jade-lint`
-
-[https://github.com/benedfit/jade-lint#configuration-file](https://github.com/benedfit/jade-lint#configuration-file)
-
+[CSScomb](https://github.com/csscomb/sublime-csscomb) - также валится на less. [issues](https://github.com/csscomb/csscomb.js/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aopen%20less).
 
 
 <a name="%D0%9E%D0%B1%D1%89%D0%B8%D0%B5-%D0%B4%D0%BB%D1%8F-%D0%B2%D1%81%D0%B5%D1%85-%D1%8F%D0%B7%D1%8B%D0%BA%D0%BE%D0%B2-%D0%BC%D0%BE%D0%BC%D0%B5%D0%BD%D1%82%D1%8B"></a>
