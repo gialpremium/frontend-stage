@@ -1,4 +1,4 @@
 module.exports = [
+    { block: 'i-underscore' },
     { block: 'i-jquery' },
-    { block: 'b-html' },
 ];

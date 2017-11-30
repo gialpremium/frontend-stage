@@ -1,8 +1,0 @@
-[%- BLOCK footer_wrapper -%]
-<!-- b-footer -->
-<footer class="b-footer[% ' b-footer_links_hidden' IF no_footer_links %][% ' b-footer_style_compact' IF footer_compact %]">
-[% content %]
-</footer>
-<!-- /b-footer -->
-[% END %]
-

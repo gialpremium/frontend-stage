@@ -1,1 +1,1 @@
-require('jquery.validation/dist/jquery.validate.min.js');
+require('jquery-validation/dist/jquery.validate.min.js');
