@@ -19,10 +19,10 @@ $ node -v
 v8.8.1
 ```
 2. Настроить редактор: линтеры, конфиги, плагины
-3. Прочитать [Code Style](https://github.com/regru/frontend-stage#CODESTYLE.md) и держать открытым
-3. Прочитать [Code Style](https://github.com/regru/frontend-stage#CODESTYLE.md) и держать открытым
-3. Прочитать [Code Style](https://github.com/regru/frontend-stage#CODESTYLE.md) и держать открытым
-3. Прочитать [Code Style](https://github.com/regru/frontend-stage#CODESTYLE.md) и держать открытым
+3. Прочитать [Code Style](https://github.com/regru/frontend-stage/blob/master/CODESTYLE.md) и держать открытым
+3. Прочитать [Code Style](https://github.com/regru/frontend-stage/blob/master/CODESTYLE.md) и держать открытым
+3. Прочитать [Code Style](https://github.com/regru/frontend-stage/blob/master/CODESTYLE.md) и держать открытым
+3. Прочитать [Code Style](https://github.com/regru/frontend-stage/blob/master/CODESTYLE.md) и держать открытым
 4. Убедиться, что знаешь git
 
 
@@ -56,7 +56,7 @@ $ webpack
 
 ## Что можно
 
-1. Привести bem-блоки в соответствие с принятым [Code Style](https://github.com/regru/frontend-stage#CODESTYLE.md)
+1. Привести bem-блоки в соответствие с принятым [Code Style](https://github.com/regru/frontend-stage/blob/master/CODESTYLE.md)
 - eslint
 - csscomb
 - руки
