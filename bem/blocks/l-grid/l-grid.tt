@@ -1,0 +1,39 @@
+[%#
+
+WRAPPER grid
+    grid_tag   => 'div'
+    grid_type  => 'float' # 'table'
+    grid_class => ''
+    grid_relative => 0;
+
+END; # WRAPPER grid
+
+WRAPPER grid_column
+    column_tag   => 'div'
+    column_size  => 2
+    column_class => ''
+    column_relative => 0 # pos:rel, ради старых ff добавляет див-обертку
+    column_relative_class => '';
+    column_attrs => ''
+
+END; # WRAPPER grid_column;
+-%]
+
+[%- BLOCK grid -%]
+    [% grid_tag = grid_tag || 'div' %]
+    <[% grid_tag %] class="l-grid_tt l-grid_[% grid_type %] [% grid_class || '' %][% ' l-grid_relative' IF grid_relative %]">
+        [%- content -%]
+    </[% grid_tag %]>
+[%- END # BLOCK grid -%]
+
+[%- BLOCK grid_column -%]
+    [% column_tag = column_tag || 'div' %]
+    <div class="l-grid__divider"></div>
+    <[% column_tag %] class="l-grid__column l-grid__column_size_[% column_size %] [% column_class || '' %]"[% ' ' _ column_attrs  IF column_attrs %]>
+    [% IF column_relative %]
+        <div class="l-grid__relative-wrapper[% ' ' _ column_relative_class  IF column_relative_class %]">
+    [% END %]
+        [%- content -%]
+    [% '</div>' IF column_relative %]
+    </[% column_tag %]>
+[%- END # BLOCK grid_column -%]

@@ -1,0 +1,19 @@
+@import '~i-less/i-less';
+
+.b-form-compact {
+    @bl: ~".b-form-compact";
+
+    &__outer-wrapper {
+        &_style_afternic {
+            background-image: url('b-form-compact__outer-wrapper_style_afternic.svg');
+            background-repeat: no-repeat;
+            padding: 24px 170px 24px 24px;
+            background-color: #f3f3f3;
+            background-position: bottom right;
+
+            & @{bl}__inner-wrapper {
+                margin-bottom: 24px;
+            }
+        }
+    }
+}
