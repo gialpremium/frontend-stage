@@ -1,42 +1,36 @@
 [%#
     INCLUDE 'b-widget.inc'
         params => {
-            attr => { //атрибуты блока
-                href => 'http://yandex.ru' //если задано, блок становится ссылкой
+            attr => { // html-Р°С‚СЂРёР±СѓС‚С‹ РІРёРґР¶РµС‚Р°
             },
-            number => Number вместо иконки
-            icon   => 'класс иконки',
-            title  => 'заголовок',
-            text   => 'текст',
+            number => 'РЅРѕРјРµСЂ'
+            icon   => 'РёРєРѕРЅРєР°',
+            title  => 'Р—Р°РіРѕР»РѕРІРѕРє',
+            text   => 'С‚РµРєСЃС‚',
             styles => {
                 style => 'compact' compact | card | card-column | card-column@mobile,
-                'button-valign' => 'top' // выравнивает кнопку
+                'button-valign' => 'top'
             },
 
-            button => { // параметры для b-button / b-button-square, не работает если задан attr => href
+            button => {
                 attr => {
                     href => ''
                 },
-                text => 'текст ссылки',
+                text => 'С‚РµРєСЃС‚',
                 size => 'medium'
             },
 
-            is_external      => 0 || 1, // внешний урл?
-            is_button_square => 1, // подключает b-button-square.inc вместо b-button
-
-
+            is_external      => 0 || 1,
+            is_button_square => 1,
         };
 
-
-    # Блок как враппер
 
     WRAPPER widget
         params => {
             icon   => 'b-icon b-icon_metro_whois',
-            title  => 'Виджет стандартный с кастомным контентом',
+            title  => 'С‚РµРєСЃС‚',
         };
 
-        # тут контент, если блок является ссылкой (attr => href), ссылки и кнопки в контенте работать не будут
     END;
 %]
 [%-
