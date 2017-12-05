@@ -17,7 +17,7 @@ bem/
 
 config  # служебная папка
 pages   # обычные html-страницы, на которых можно проверять верстку
-root    # статика, отсюда подключаем js и стили в html
+root    # статика, генерится вебпаком, отсюда подключаем js и css
 ```
 
 ## Что нужно сделать, прежде чем приступить
@@ -43,7 +43,7 @@ $ yarn
 
 Глобальные модули
 ```
-$ npm i -g stylelint stylelint-plugin-regru eslint eslint-plugin-regru csscomb
+$ npm i -g stylelint stylelint-plugin-regru eslint eslint-plugin-regru csscomb@3.1.8
 ```
 
 Соберет всю статику из модулей (bem-блоков) из папки bem => в папку root/dist, где all.css - all - имя бандла, css - технология
@@ -90,6 +90,7 @@ $ webpack
 3. Переписать jade реализацию на vuejs
 4. Написать vuejs-реализацию для блока
 5. Переписать backbone-код на Vanilla/Jquery/VueJS
+6. Можно использовать расширение `*.babel.js` для использования babel и новых стандартов
 
 ## Что можно еще +
 1. Написать доку по использованию bem-блока в ТТ
@@ -142,6 +143,6 @@ l - layout, блоки-помощники, обычно служат для ст
 Ошибки линтера в Sublime Text 3
 ![Sublime Plugin](/example.png?raw=true "Stylelint ST3 errors")
 
-
+Красным подсвечиваются ошибки, которые нужно исправить
 
 
