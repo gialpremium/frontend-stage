@@ -17,6 +17,7 @@
     "unitless-zero": true,
     "lines-between-rulesets": 1,
     "verbose": true,
+    "eof-newline": true,
 
     "sort-order": [ [
         "$variable",
