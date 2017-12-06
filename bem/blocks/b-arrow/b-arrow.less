@@ -2,19 +2,24 @@
 
 .b-arrow {
     @bl: ~".b-arrow";
+    @bg-colors: 'blue', 'dark-blue', 'light-blue', 'azure', 'gray', 'invert', 'done', 'none', 'default';
 
     display: inline-block;
     position: relative;
-    padding: 16px 30px;
+    width: 0;
+    height: 0;
+    padding: 30px 16px;
     background: @color-bg-invert;
 
     &:after {
         position: absolute;
+        top: 100%;
         width: 0;
         height: 0;
         margin-left: -24px;
         border: solid transparent;
         border-width: 24px;
+        border-top-color: @color-bg-invert;
         content: ' ';
         pointer-events: none;
     }
@@ -28,7 +33,9 @@
 
             &@{bl}_direction_left,
             &@{bl}_direction_right {
-                margin-top: -30px;
+                &:after {
+                    margin-top: -30px;
+                }
             }
         }
     }
@@ -36,43 +43,40 @@
     &_direction {
         &_top {
             &:after {
+                top: auto;
                 bottom: 100%;
-                left: 50%;
+                border-top-color: transparent;
                 border-bottom-color: @color-bg-invert;
             }
         }
 
-        &_bottom {
-            &:after {
-                top: 100%;
-                left: 50%;
-                border-top-color: @color-bg-invert;
-            }
-        }
-
-        &_left {
-            &:after {
-                top: 50%;
-                right: 100%;
-                left: auto;
-                margin-top: -24px;
-                margin-left: 0;
-                border-right-color: @color-bg-invert;
-            }
-        }
-
         &_right {
+            padding: 16px 30px;
+
             &:after {
                 top: 50%;
                 left: 100%;
                 margin-top: -24px;
                 margin-left: 0;
+                border-top-color: transparent;
                 border-left-color: @color-bg-invert;
+            }
+        }
+
+        &_left {
+            padding: 16px 30px;
+
+            &:after {
+                top: 50%;
+                right: 100%;
+                margin-top: -24px;
+                margin-left: 0;
+                border-top-color: transparent;
+                border-right-color: @color-bg-invert;
             }
         }
     }
 
-    @bg-colors: 'blue', 'dark-blue', 'light-blue', 'azure', 'gray', 'invert', 'done', 'none', 'default';
     &_bg {
         .-(@i: length(@bg-colors)) when (@i > 0) {
             @color: e(extract(@bg-colors, @i));
@@ -85,27 +89,28 @@
 .b-arrow-bg(@color) {
     &_@{color} {
         background-color: ~"@{color-bg-@{color}}";
+        
+        &:after {
+            border-top-color: ~"@{color-bg-@{color}}";
+        }
 
         &@{bl}_direction_top {
             &:after {
+                border-top-color: transparent;
                 border-bottom-color: ~"@{color-bg-@{color}}";
-            }
-        }
-
-        &@{bl}_direction_bottom {
-            &:after {
-                border-top-color: ~"@{color-bg-@{color}}";
             }
         }
 
         &@{bl}_direction_left {
             &:after {
+                border-top-color: transparent;
                 border-right-color: ~"@{color-bg-@{color}}";
             }
         }
 
         &@{bl}_direction_right {
             &:after {
+                border-top-color: transparent;
                 border-left-color: ~"@{color-bg-@{color}}";
             }
         }
