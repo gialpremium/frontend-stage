@@ -6,10 +6,13 @@
 
     display: inline-block;
     position: relative;
+    padding: 16px 30px;
+    background: @color-bg-invert;
 
     &:after {
         position: absolute;
         top: 100%;
+        left: 50%;
         width: 0;
         height: 0;
         margin-left: -24px;
@@ -40,6 +43,7 @@
         &_top {
             &:after {
                 top: auto;
+                left: 50%;
                 bottom: 100%;
                 border-top-color: transparent;
                 border-bottom-color: @color-bg-invert;
@@ -61,6 +65,7 @@
             &:after {
                 top: 50%;
                 right: 100%;
+                left: auto;
                 margin-top: -24px;
                 margin-left: 0;
                 border-top-color: transparent;
