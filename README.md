@@ -43,7 +43,7 @@ $ yarn
 
 Глобальные модули
 ```
-$ npm i -g webpack stylelint stylelint-plugin-regru eslint eslint-plugin-regru csscomb@3.1.8
+$ npm i -g webpack stylelint@7.9.0 stylelint-plugin-regru eslint eslint-plugin-regru csscomb@3.1.8
 ```
 
 Соберет всю статику из модулей (bem-блоков) из папки bem => в папку root/dist, где all.css - all - имя бандла, css - технология
