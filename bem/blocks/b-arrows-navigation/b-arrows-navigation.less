@@ -5,17 +5,18 @@
 
     display: table;
     width: 100%;
+    border-spacing: 0;
 
     &__controls-text {
         display: table-cell;
         padding: 0;
-        margin: 0;
         vertical-align: middle;
     }
 
     &__arrow-relative-wrapper {
         position: static;
     }
+
     .no-tablerelative & @{bl}__arrow-relative-wrapper {
         position: relative;
         height: 100%;
@@ -28,13 +29,11 @@
         min-height: 60px;
         padding: @indent-h-large @indent-v-normal;
         padding-left: 72px;
-        margin: 0;
-        color: #515151 !important;
-        font: @font-medium !important;
-        text-decoration: none;
-        text-decoration: none;
         outline: 5px solid #fff;
+        color: @color-link-text !important;
+        font: @font-medium !important;
         vertical-align: middle;
+        text-decoration: none;
         background-color: @button-color-default;
         transition: @transition-default;
 
@@ -48,7 +47,7 @@
             top: 50%;
             left: 12px;
             margin-top: -25px;
-            .i-triangle-left(25px, #515151, 15px);
+            .i-triangle-left(25px, @color-bg-gray-darker, 15px);
         }
     }
 
@@ -66,13 +65,11 @@
         padding: @indent-h-large @indent-v-normal;
         padding-right: 72px;
         padding-left: 50px;
-        margin: 0;
         outline: 5px solid #fff;
-        color: #515151 !important;
+        color: @color-link-text !important;
         font: @font-medium !important;
-        text-align: left;
         vertical-align: middle;
-        text-decoration: none;
+        text-align: left;
         text-decoration: none;
         background-color: @button-color-default;
         transition: @transition-default;
@@ -87,7 +84,7 @@
             top: 50%;
             right: 12px;
             margin-top: -25px;
-            .i-triangle-right(25px, #515151, 15px);
+            .i-triangle-right(25px, @color-bg-gray-darker, 15px);
         }
     }
 
