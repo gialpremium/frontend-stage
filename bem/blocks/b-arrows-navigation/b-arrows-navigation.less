@@ -5,50 +5,49 @@
 
     display: table;
     width: 100%;
+    border-spacing: 0;
 
     &__controls-text {
         display: table-cell;
+        padding: 0;
         vertical-align: middle;
-        margin: 0px;
-        padding: 0px;
     }
 
     &__arrow-relative-wrapper {
         position: static;
     }
+
     .no-tablerelative & @{bl}__arrow-relative-wrapper {
         position: relative;
         height: 100%;
     }
 
     &__prev {
-        position: relative;
-        font: @font-medium !important;
-        color: #515151 !important;
-        margin: 0px;
         display: table-cell;
+        position: relative;
         width: 382px;
+        min-height: 60px;
         padding: @indent-h-large @indent-v-normal;
         padding-left: 72px;
-        text-decoration: none;
-        min-height: 60px;
-        text-decoration: none;
         outline: 5px solid #fff;
+        color: @color-link-text;
+        font: @font-medium;
         vertical-align: middle;
+        text-decoration: none;
         background-color: @button-color-default;
         transition: @transition-default;
 
         &:hover {
             outline: 5px solid #cdcdcd;
-            background-color: #ffffff;
+            background-color: #fff;
         }
 
         & @{bl}__arrow {
             position: absolute;
-            left: 12px;
             top: 50%;
+            left: 12px;
             margin-top: -25px;
-            .i-triangle-left(25px, #515151, 15px);
+            .i-triangle-left(25px, @color-bg-gray-darker, 15px);
         }
     }
 
@@ -59,35 +58,33 @@
     }
 
     &__next {
-        position: relative;
-        font: @font-medium !important;
-        color: #515151 !important;
-        margin: 0px;
         display: table-cell;
+        position: relative;
         width: 358px;
+        min-height: 60px;
         padding: @indent-h-large @indent-v-normal;
         padding-right: 72px;
         padding-left: 50px;
-        text-decoration: none;
-        min-height: 60px;
-        text-decoration: none;
-        text-align: left;
         outline: 5px solid #fff;
+        color: @color-link-text;
+        font: @font-medium;
         vertical-align: middle;
+        text-align: left;
+        text-decoration: none;
         background-color: @button-color-default;
         transition: @transition-default;
 
         &:hover {
             outline: 5px solid #cdcdcd;
-            background-color: #ffffff;
+            background-color: #fff;
         }
 
-        & @{bl}__arrow  {
+        & @{bl}__arrow {
             position: absolute;
-            right: 12px;
             top: 50%;
+            right: 12px;
             margin-top: -25px;
-            .i-triangle-right(25px, #515151, 15px);
+            .i-triangle-right(25px, @color-bg-gray-darker, 15px);
         }
     }
 
