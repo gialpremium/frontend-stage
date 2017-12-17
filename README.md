@@ -2,6 +2,7 @@ Frontend Stage Community
 ===================
 
 # Ссылки для самостоятельного изучения
+- Всё про верстку -> http://webmasters.teamdev.com/
 - Что такое BEM  ->  https://ru.bem.info/ (critical!) - именование классов
 - Что такое yarn ->  https://yarnpkg.com/lang/en/ (в общих чертах)
 - Что такое Webpack ->  https://webpack.js.org/ (в общих чертах)
