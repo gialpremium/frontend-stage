@@ -1,84 +1,98 @@
 @import '~i-less/i-less';
 
 .b-steps {
-    padding: 0px 0px 0px 15px;
-    margin-top: 0px;
-    margin-left: 0px;
-    margin-bottom: 20px;
     overflow: hidden;
+    padding: 0 0 0 15px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    margin-left: 0;
     list-style-type: none;
 
     &__item-wrapper {
         float: left;
-        margin-left: -15px;
         overflow: hidden;
+        margin-left: -15px;
     }
+
     &__item {
+        position: relative;
         float: left;
         height: 28px;
         padding-right: 15px;
         font: 12px/28px @face;
         font-weight: normal;
         cursor: default;
-        position: relative;
     }
+
     &__item_state_prev {
-        cursor: pointer;
         color: #163759;
+        cursor: pointer;
     }
+
     &__item_state_hold {
-        cursor: pointer;
         color: #163759;
+        cursor: pointer;
     }
+
     &__item_style_fake {
         cursor: default;
     }
+
     &__item_state_current {
         color: #000;
         font-weight: bold;
         text-decoration: none;
     }
+
     &__item_state_next {
         color: #555;
     }
+
     &__item-arrow {
         display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 7;
+        width: 15px;
+        height: 28px;
         background-image: url(b-steps.png);
         background-repeat: no-repeat;
-        height: 28px;
-        width: 15px;
-        position: absolute;
-        top: 0px;
-        right: 0px;
-        z-index: 7;
     }
+
     &__item_state_prev &__item-arrow {
-        background-position: 100% 0px;
+        background-position: 100% 0;
     }
+
     &__item_state_current &__item-arrow,
     &__item_state_hold &__item-arrow,
     &__item_state_next &__item-arrow {
         background-position: 100% -40px;
     }
+
     &__item-text {
         float: left;
         height: 28px;
-        background-image: url(b-steps.png);
-        background-position: 0px -120px;
-        background-repeat: repeat-x;
         padding-left: 25px;
+        background-image: url(b-steps.png);
+        background-position: 0 -120px;
+        background-repeat: repeat-x;
     }
+
     &__item_state_prev &__item-text {
-        background-position: 0px -80px;
         text-decoration: underline;
+        background-position: 0 -80px;
     }
+
     &__item_state_prev:hover &__item-text {
         text-decoration: none;
     }
-    &__item-wrapper:first-child &__item-text  {
-        padding-left: 10px !important;
-        border-radius: 5px 0px 0px 5px;
+
+    &__item-wrapper:first-child &__item-text {
+        padding-left: 10px;
+        border-radius: 5px 0 0 5px;
     }
+
     &__item_style_fake &__item-text {
         text-decoration: none;
     }
