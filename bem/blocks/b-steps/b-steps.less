@@ -54,34 +54,43 @@
         top: 0;
         right: 0;
         z-index: 7;
-        width: 15px;
+        border-width: 14px 0 14px 6px;
+        border-style: solid;
+        border-color: transparent transparent transparent #e2e2e2;
+    }
+
+    &__item-arrow:before {
+        position: absolute;
+        top: -14px;
+        left: -15px;
+        width: 9px;
         height: 28px;
-        background-image: url(b-steps.png);
-        background-repeat: no-repeat;
+        content: '';
+        background: #d4d4d4;
+        background: linear-gradient( to top, #d4d4d4, #ececec );
     }
 
     &__item_state_prev &__item-arrow {
-        background-position: 100% 0;
+        border-color: transparent transparent transparent #dceaf3;
     }
 
-    &__item_state_current &__item-arrow,
-    &__item_state_hold &__item-arrow,
-    &__item_state_next &__item-arrow {
-        background-position: 100% -40px;
+    &__item_state_prev &__item-arrow:before {
+        background: #d3e3ed;
+        background: linear-gradient( to top, #d3e3ed, #f8f4ff );
     }
 
     &__item-text {
         float: left;
         height: 28px;
         padding-left: 25px;
-        background-image: url(b-steps.png);
-        background-position: 0 -120px;
-        background-repeat: repeat-x;
+        background: #d4d4d4; /* для старых браузеров */
+        background: linear-gradient( to top, #d4d4d4, #ececec );
     }
 
     &__item_state_prev &__item-text {
         text-decoration: underline;
-        background-position: 0 -80px;
+        background: #d3e3ed;
+        background: linear-gradient( to top, #d3e3ed, #f8f4ff );
     }
 
     &__item_state_prev:hover &__item-text {
