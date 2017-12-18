@@ -20,7 +20,6 @@
         height: 28px;
         padding-right: 15px;
         font: 12px/28px @face;
-        font-weight: normal;
         cursor: default;
     }
 
@@ -54,11 +53,14 @@
         top: 0;
         right: 0;
         z-index: 7;
+
+        // рисуем треугольник, вместо картинки
         border-width: 14px 0 14px 6px;
         border-style: solid;
         border-color: transparent transparent transparent #e2e2e2;
     }
 
+    // рисуем маленький прямоугольник, примыкающий к треугольнику
     &__item-arrow:before {
         position: absolute;
         top: -14px;
@@ -66,7 +68,6 @@
         width: 9px;
         height: 28px;
         content: '';
-        background: #d4d4d4;
         background: linear-gradient( to top, #d4d4d4, #ececec );
     }
 
@@ -75,7 +76,6 @@
     }
 
     &__item_state_prev &__item-arrow:before {
-        background: #d3e3ed;
         background: linear-gradient( to top, #d3e3ed, #f8f4ff );
     }
 
@@ -83,13 +83,11 @@
         float: left;
         height: 28px;
         padding-left: 25px;
-        background: #d4d4d4; /* для старых браузеров */
         background: linear-gradient( to top, #d4d4d4, #ececec );
     }
 
     &__item_state_prev &__item-text {
         text-decoration: underline;
-        background: #d3e3ed;
         background: linear-gradient( to top, #d3e3ed, #f8f4ff );
     }
 
