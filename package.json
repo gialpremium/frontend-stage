@@ -109,7 +109,6 @@
     "babel-polyfill": "6.9.1",
     "isotope-layout": "3.0.1",
     "lodash.uniqby": "^4.7.0",
-    "marked": "0.3.6",
     "node-transliteration": "https://github.com/attikos/node-transliteration.git#v1.0.1-regru",
     "object-assign-shim": "^1.0.0",
     "punycode": "2.1.0",
