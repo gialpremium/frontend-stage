@@ -204,7 +204,7 @@ npm install -g eslint eslint-plugin-regru
 
 ```bash
 # оба пакета есть в package.json
-npm i -g stylelint stylelint-plugin-regru 
+npm i -g stylelint@7.9.0 stylelint-plugin-regru 
 ```
 
 <a name="todo-%D0%A4%D0%BE%D1%80%D0%BC%D0%B0%D1%82%D1%82%D0%B5%D1%80%D1%8B"></a>
