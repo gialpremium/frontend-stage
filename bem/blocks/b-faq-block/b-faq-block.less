@@ -26,8 +26,7 @@
         position: relative;
         padding: 0 0 0 35px;
         margin: 0 0 15px;
-        font: @font-medium-compact @face;
-        font-weight: bold;
+        font: bold @font-medium-compact;
         .desktop({
             padding-right: 170px;
         });
@@ -36,8 +35,8 @@
     &__icon {
         display: block;
         position: absolute;
-        top: @indent-v-none;
-        left: @indent-h-none;
+        top: 0;
+        left: 0;
         width: 24px;
         height: 24px;
         background-position: center;
@@ -46,14 +45,14 @@
 
     &__content {
         overflow: auto;
-        font: @font-normal @face;
+        font: @font-normal;
     }
 
     &__download-link {
         display: block;
         position: absolute;
         top: 40px;
-        right: @base-column-width;
+        right: 50px;
         z-index: 1;
         padding: 0 0 0 30px;
     }
@@ -61,8 +60,8 @@
     &__download-link-icon {
         display: block;
         position: absolute;
-        top: @indent-v-none;
-        left: @indent-h-none;
+        top: 0;
+        left: 0;
         width: 24px;
         height: 24px;
         background-position: center;
