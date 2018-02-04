@@ -88,7 +88,7 @@
     "vue-template-compiler": "2.3.3",
     "webdriverio": "^3.3.0",
     "webpack": "^2.6.1",
-    "webpack-dev-server": "^2.7.1",
+    "webpack-dev-server": "^2.11.1",
     "webpack-node-externals": "^1.6.0",
     "webpack-stats-plugin": "https://github.com/shifteee/webpack-stats-plugin.git#0.1.5-regru"
   },

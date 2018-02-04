@@ -1,55 +1,62 @@
 @import '~i-less/i-less';
 
 .b-price {
-    @bl: ~".b-price";
+    @bl: "~.b-price";
 
     position: relative;
-    text-decoration: none;
     top: -2px;
+    line-height: @blh;
+    text-decoration: none;
     white-space: nowrap;
-    line-height: normal;
 
     &_unit_hide {
         line-height: 50px;
     }
+
     &__from {
-        font: normal 18px @face;
         letter-spacing: 0;
+        font: normal 18px @face;
         vertical-align: baseline;
     }
+
     &__from-desc {
         font: 18px/24px @face;
     }
+
     &__amount {
         display: inline-block;
+        padding: 0 0 0 2px;
         font: bold 29px/30px @face;
-        padding:0 0 0 2px;
-        text-align: center;
         vertical-align: baseline;
+        text-align: center;
     }
+
     &__free {
         display: inline-block;
+        padding: 0 0 0 2px;
         font: bold 22px/30px @face;
-        padding:0 0 0 2px;
-        text-align: center;
         vertical-align: baseline;
+        text-align: center;
     }
+
     &__note {
         position: absolute;
     }
+
     &__currency-wrapper {
         display: inline-block;
         letter-spacing: 0;
         vertical-align: baseline;
         text-align: left;
     }
-    &__currency {
-        border-bottom: 1px solid #fff;
+
+   &__currency {
         display: inline-block;
-        font: 14px @face;
-        text-decoration: none;
         position: relative;
         top: 3px;
+        border-bottom: 1px solid #fff;
+        font: 14px @face;
+        text-decoration: none;
 
         &_color {
             &_black {
@@ -62,11 +69,12 @@
         }
 
         @{bl}_unit_hide & {
-            border-bottom: 0px none;
+            top: 0;
+            border-bottom: 0 none;
             vertical-align: baseline;
-            top: 0px;
         }
     }
+
     &__unit {
         display: block;
         font: 14px @face;
@@ -78,8 +86,9 @@
             @{bl}__from {
                 font-size: 16px;
             }
-            @{bl}__amount{
-                font-size: 24px;
+
+            @{bl}__amount {
+                font-size: (round( 1.6 * @bfs ));
             }
         }
 
