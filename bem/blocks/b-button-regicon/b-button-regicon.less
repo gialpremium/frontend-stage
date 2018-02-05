@@ -3,17 +3,17 @@
 .b-button-regicon {
     @bl: ~".b-button-regicon";
 
-    font: bold @font-normal-compact;
     color: @color-link-text;
+    font: bold @font-normal-compact;
     cursor: pointer;
     transition: @transition-default;
 
     .b-font-regicons {
-        background: @color-bg-primary;
-        border-radius: 50%;
         padding: 6px;
-        color: #fff;
-        font-size: 12px;
+        border-radius: 50%;
+        color: @color-bg-invert;
+        font-size: @font-size-small;
+        background: @color-bg-primary;
         transition: @transition-default;
     }
 
@@ -22,15 +22,15 @@
             .i-hover-bg-color(@color-bg-primary);
         }
 
-        color: lighten(@color-link-text, 5%);
+        color: lighten (@color-link-text, 5%);
     }
 
     &__wrapper:hover {
         @{bl} {
-            color: lighten(@color-link-text, 5%);
+            color: lighten (@color-link-text, 5%);
 
             .b-font-regicons {
-                border-color: lighten(@color-bg-primary, 5%);
+                border-color: lighten (@color-bg-primary, 5%);
                 .i-hover-bg-color(@color-bg-primary);
             }
         }
